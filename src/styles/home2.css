@@ -56,6 +56,8 @@
 @media screen and (max-width: 500px) {
   .all-boxes {
     /* padding-inline: 20px; */
+    /* border: 2px solid red; */
+    /* width: 100vw; */
   }
 }
 
@@ -72,7 +74,7 @@
   .misson-con,
   .vision-con,
   .history-con {
-    width: 100%;
+    max-width: 100%;
     padding: 20px;
   }
 }
