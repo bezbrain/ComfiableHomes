@@ -62,7 +62,7 @@
   .misson-con,
   .vision-con,
   .history-con {
-    width: 200px;
+    width: 100%;
   }
 }
 
@@ -171,6 +171,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 500px) {
+  .copyright-con {
+    flex-direction: column;
+  }
 }
 
 .copyright-con div:first-child {
