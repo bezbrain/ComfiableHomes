@@ -9,6 +9,11 @@
   max-width: 1250px;
   margin: 0px auto;
 }
+@media screen and (max-width: 500px) {
+  .third-sect-con {
+    /* padding-inline: 20px; */
+  }
+}
 
 .top-sect {
   /* border: 2px solid red; */
@@ -48,6 +53,11 @@
   gap: 30px;
   padding-bottom: 5em;
 }
+@media screen and (max-width: 500px) {
+  .all-boxes {
+    /* padding-inline: 20px; */
+  }
+}
 
 .misson-con,
 .vision-con,
@@ -63,6 +73,7 @@
   .vision-con,
   .history-con {
     width: 100%;
+    padding: 20px;
   }
 }
 
