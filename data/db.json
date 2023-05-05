@@ -1,0 +1,136 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753501/react-comfy-store-products/prod-12_ga6sdq.jpg",
+      "type": "Modern Poster",
+      "price": "30.99"
+    },
+    {
+      "id": 2,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750929/react-comfy-store-products/product-4_ebl6q1.jpg",
+      "type": "Armchair",
+      "price": "125.99"
+    },
+    {
+      "id": 3,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753657/react-comfy-store-products/prod-16_jfwx3m.jpg",
+      "type": "Suede Armchair",
+      "price": "159.99"
+    },
+    {
+      "id": 4,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753354/react-comfy-store-products/prod-9_j3dsja.jpg",
+      "type": "Leather Chair",
+      "price": "200.99"
+    },
+    {
+      "id": 5,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681752461/react-comfy-store-products/product-6_rhaxfo.jpg",
+      "type": "Emperor Bed",
+      "price": "239.99"
+    },
+    {
+      "id": 6,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681749482/react-comfy-store-products/iuYyO9RP_o_upinxq.jpg",
+      "type": "Accent Chair",
+      "price": "259.99"
+    },
+    {
+      "id": 7,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753552/react-comfy-store-products/prod-13_cv5csw.jpg",
+      "type": "Shelf",
+      "price": "309.99"
+    },
+    {
+      "id": 8,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753441/react-comfy-store-products/prod-11_lff6yt.jpg",
+      "type": "Modern Bookshelf",
+      "price": "319.99"
+    },
+    {
+      "id": 9,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753314/react-comfy-store-products/prod-8_qzulqi.jpg",
+      "type": "High-Back Bench",
+      "price": "399.99"
+    },
+    {
+      "id": 10,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753872/react-comfy-store-products/prod-21_a5wgef.jpg",
+      "type": "Wooden Desk",
+      "price": "400.99"
+    },
+    {
+      "id": 11,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753280/react-comfy-store-products/prod-7_ta21yy.jpg",
+      "type": "Entertainment Center",
+      "price": "599.99"
+    },
+    {
+      "id": 12,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753719/react-comfy-store-products/prod-17_inmzle.jpg",
+      "type": "Utopia Sofa",
+      "price": "799.99"
+    },
+    {
+      "id": 13,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681751026/react-comfy-store-products/product-5_n184nu.jpg",
+      "type": "Dining Table",
+      "price": "429.99"
+    },
+    {
+      "id": 14,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753394/react-comfy-store-products/prod-10_d0jqoh.jpg",
+      "type": "Leather Sofa",
+      "price": "999.99"
+    },
+    {
+      "id": 15,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750782/react-comfy-store-products/product-2_lusrzx.jpg",
+      "type": "Albany Sectional",
+      "price": "1,099.99"
+    },
+    {
+      "id": 16,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753587/react-comfy-store-products/prod-14_bx2qzb.jpg",
+      "type": "Simple Chair",
+      "price": "1,099.99"
+    },
+    {
+      "id": 17,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753757/react-comfy-store-products/prod-18_qa04uo.jpg",
+      "type": "Vase Table",
+      "price": "1,209.99"
+    },
+    {
+      "id": 18,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753621/react-comfy-store-products/prod-15_jbnypy.jpg",
+      "type": "Sofa Set",
+      "price": "1,299.99"
+    },
+    {
+      "id": 19,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753836/react-comfy-store-products/prod-20_wvente.jpg",
+      "type": "Wooden Desk",
+      "price": "1,509.99"
+    },
+    {
+      "id": 20,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753939/react-comfy-store-products/prod-22_fhljfo.jpg",
+      "type": "Wooden Table",
+      "price": "2,349.99"
+    },
+    {
+      "id": 21,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753801/react-comfy-store-products/prod-19_foqbma.jpg",
+      "type": "Wooden Bed",
+      "price": "2,500.99"
+    },
+    {
+      "id": 22,
+      "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750874/react-comfy-store-products/product-3_znpiqa.jpg",
+      "type": "Albany Table",
+      "price": "3,0999.99"
+    }
+  ]
+}

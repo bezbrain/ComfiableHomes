@@ -1,0 +1,350 @@
+.home-page {
+  /* border: 2px solid red; */
+}
+
+.close {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  z-index: 9999;
+  color: red;
+  font-size: 2em;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 0.6;
+}
+@media screen and (min-width: 991px) {
+  .close {
+    display: none;
+  }
+}
+
+.open {
+  position: absolute;
+  right: 30px;
+  font-size: 2em;
+  cursor: pointer;
+  /* z-index: 999999; */
+}
+@media screen and (min-width: 991px) {
+  .open {
+    display: none;
+  }
+}
+
+header {
+  /* border: solid red; */
+  padding-inline: 30px;
+  max-width: 1250px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+@media screen and (max-width: 990px) {
+  header {
+    /* border: 2px solid red; */
+    /* flex-direction: column;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    margin-top: 0; */
+  }
+}
+
+h1 {
+  font-size: calc(2vw + 5px);
+  width: fit-content;
+  z-index: 99999;
+}
+@media screen and (max-width: 990px) {
+  h1 {
+    /* position: fixed; */
+    top: 20px;
+    font-size: 25px;
+  }
+}
+
+header h1 span:first-child {
+  font-family: "Kaushan Script", cursive;
+  text-shadow: 1px 1px #d9d9d9;
+  /* Add a background gradient to the text */
+  background: linear-gradient(to right, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header h1 span:last-child {
+  color: var(--darkblue);
+  text-shadow: #6699cc;
+}
+
+header nav {
+  /* border: 2px solid red; */
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: ease 1s all;
+}
+@media screen and (max-width: 990px) {
+  header nav {
+    flex-direction: column;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: -110vw;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+  }
+}
+.add-show-nav-css {
+  left: 0;
+}
+
+nav ul {
+  /* border: solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 60%;
+}
+@media screen and (max-width: 990px) {
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 6em;
+    width: 100%;
+    align-items: flex-start;
+  }
+  nav ul li {
+    /* border: 2px solid red; */
+    width: 100%;
+    padding: 20px;
+    transition: ease 0.6s all;
+  }
+  nav ul li:hover {
+    background-color: var(--verylightblue);
+    padding-left: 30px;
+    /* border: none; */
+  }
+}
+
+nav ul li {
+  list-style-type: none;
+}
+nav ul li:hover {
+  border-bottom: 3px solid var(--darkblue);
+}
+
+.cart-and-logout-sect {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30%;
+  /* border: 2px solid yellowgreen; */
+}
+@media screen and (max-width: 990px) {
+  .cart-and-logout-sect {
+    /* border: 2px solid red; */
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    justify-content: center;
+  }
+  .cart-and-logout-sect p {
+    margin-right: 20px;
+  }
+}
+
+.cart-and-logout-sect p {
+  font-size: 1.4em;
+}
+
+/* ======== */
+/* First Body Section */
+.design-your-comfort {
+  /* border: 2px solid red; */
+  padding-inline: 20px;
+  max-width: 1250px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block: 8em;
+}
+
+.design-your-comfort article {
+  /* border: 2px solid green; */
+  width: 50%;
+}
+@media screen and (max-width: 990px) {
+  .design-your-comfort article {
+    /* width: 70%; */
+    width: 700px;
+    margin-inline: auto;
+  }
+  .design-your-comfort article h2 {
+    /* border: 2px solid red; */
+    width: 350px;
+  }
+}
+
+.design-your-comfort article h2 {
+  font-size: 2.5em;
+  margin-block: 30px;
+}
+
+.design-your-comfort article p {
+  line-height: 0.9cm;
+}
+
+.shop-now-btn {
+  background-color: var(--darkblue);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 30px;
+  transition: ease 0.5s all;
+  font-size: 16px;
+  font-weight: 700;
+}
+.shop-now-btn:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}
+
+.design-comfort-img-sect {
+  /* border: 2px solid red; */
+  position: relative;
+  width: 50%;
+  text-align: right;
+}
+@media screen and (max-width: 990px) {
+  .design-comfort-img-sect {
+    display: none;
+  }
+}
+
+.des-comfort-img-one {
+  width: 80%;
+  border-radius: 5px;
+}
+
+.des-comfort-img-two {
+  width: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 5px;
+}
+
+/* ======== */
+/* Second Body Section */
+.add-bg-con {
+  background-color: var(--verylightblue);
+}
+
+.featured-pro-con {
+  padding-inline: 20px;
+  max-width: 1250px;
+  margin: 0px auto;
+  padding-block: 70px;
+}
+
+.featured-pro-con h2 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.featured-pro-con hr {
+  width: 100px;
+  height: 5px;
+  background-color: var(--darkblue);
+  margin-inline: auto;
+  margin-top: 10px;
+}
+
+.home-images-con {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-items: center;
+  gap: 30px;
+  margin-top: 60px;
+  /* align-items: stretch; */
+}
+
+.each-image-con {
+  /* border: 2px solid red; */
+  position: relative;
+}
+
+.img-overlay {
+  /* border: 2px solid green; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: ease 1s all;
+  border-radius: 5px;
+}
+.img-overlay:hover {
+  background-color: var(--extremelylightblack);
+  opacity: 0.6;
+}
+
+.search-icon {
+  background-color: var(--darkblue);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  opacity: 0.7;
+}
+
+.home-images {
+  width: 100%;
+  border-radius: 5px;
+  /* height: 200px; */
+  /* border: 2px solid red; */
+}
+
+.img-text-sect {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-text-sect P:last-child {
+  color: var(--darkblue);
+}
+
+.all-product-con {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.all-product-btn {
+  background-color: var(--darkblue);
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  transition: ease 0.5s all;
+}
+.all-product-btn:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}
