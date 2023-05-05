@@ -74,8 +74,9 @@
   .misson-con,
   .vision-con,
   .history-con {
-    max-width: 100%;
+    max-width: 90%;
     padding: 20px;
+    margin-inline: auto;
   }
 }
 
