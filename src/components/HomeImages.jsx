@@ -15,7 +15,9 @@ const HomeImages = () => {
           return each.id % 6 === 0;
         });
         // console.log(getProduct);
-        setProducts(getProduct);
+        localStorage.setItem("HomeImages", JSON.stringify(getProduct));
+        const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
+        setProducts(getHomeImages);
       } catch (error) {
         console.log(error);
       }
