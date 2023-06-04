@@ -13,6 +13,11 @@
   font-size: 2.5rem;
   font-weight: 700;
 }
+@media screen and (max-width: 600px) {
+  .header-path div p {
+    font-size: 30px;
+  }
+}
 
 .about-page-sect {
   /* min-height: 50vh; */
