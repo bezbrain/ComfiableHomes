@@ -2,6 +2,7 @@
   "products": [
     {
       "id": 1,
+      "category": "",
       "image": "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753501/react-comfy-store-products/prod-12_ga6sdq.jpg",
       "type": "Modern Poster",
       "price": "30.99"

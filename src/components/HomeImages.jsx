@@ -9,12 +9,12 @@ const HomeImages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/products");
+        const { data } = await axios.get("http://localhost:3000/products");
 
-        const getProduct = res.data.filter((each) => {
+        const getProduct = data.filter((each) => {
           return each.id % 6 === 0;
         });
-        console.log(getProduct);
+        // console.log(getProduct);
         setProducts(getProduct);
       } catch (error) {
         console.log(error);

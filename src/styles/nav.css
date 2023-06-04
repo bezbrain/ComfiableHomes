@@ -1,0 +1,176 @@
+.close {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+  z-index: 9999;
+  color: red;
+  font-size: 2em;
+  cursor: pointer;
+}
+.close:hover {
+  opacity: 0.6;
+}
+@media screen and (min-width: 1001px) {
+  .close {
+    display: none;
+  }
+}
+
+.open {
+  position: absolute;
+  right: 30px;
+  font-size: 2em;
+  cursor: pointer;
+  /* z-index: 999999; */
+}
+@media screen and (min-width: 1001px) {
+  .open {
+    display: none;
+  }
+}
+
+header {
+  /* border: 3px solid green; */
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+h1 {
+  font-size: calc(2vw + 5px);
+  width: fit-content;
+  z-index: 99999;
+}
+nav .logo-link {
+  display: none;
+}
+@media screen and (max-width: 1000px) {
+  h1 {
+    /* position: fixed; */
+    top: 20px;
+    font-size: 25px;
+  }
+
+  /* Position only the logo at this screensize */
+  nav .logo-link {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+  }
+}
+
+header h1 span:first-child {
+  font-family: "Kaushan Script", cursive;
+  text-shadow: 1px 1px #d9d9d9;
+  /* Add a background gradient to the text */
+  background: linear-gradient(to right, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header h1 span:last-child {
+  color: var(--darkblue);
+  text-shadow: #6699cc;
+}
+
+header nav {
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  transition: ease 1s all;
+  width: 60%;
+}
+@media screen and (max-width: 1000px) {
+  header nav {
+    flex-direction: column;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: -110vw;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+  }
+}
+.add-show-nav-css {
+  left: 0;
+}
+
+nav ul {
+  /* border: solid green; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 40%;
+  font-size: 18px;
+}
+@media screen and (max-width: 1000px) {
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 4em;
+    width: 100%;
+    align-items: flex-start;
+  }
+  nav ul a {
+    /* border: 2px solid red; */
+    width: 100%;
+    padding: 20px;
+    transition: ease 0.6s all;
+  }
+  nav ul a:hover {
+    background-color: var(--verylightblue);
+    padding-left: 30px;
+    /* border: none; */
+  }
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
+nav ul a {
+  text-decoration: none;
+  color: var(--lightblack);
+}
+
+nav ul a:hover {
+  border-bottom: 3px solid var(--darkblue);
+}
+
+.cart-and-logout-sect {
+  /* border: 2px solid yellowgreen; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+}
+@media screen and (max-width: 1200px) {
+  .cart-and-logout-sect {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .cart-and-logout-sect {
+    /* border: 2px solid red; */
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    justify-content: center;
+  }
+  .cart-and-logout-sect p {
+    margin-right: 20px;
+    font-size: 2em !important;
+  }
+}
+
+.cart-and-logout-sect p {
+  font-size: 1.4em;
+}

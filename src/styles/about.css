@@ -1,0 +1,83 @@
+.header-path {
+  background-color: var(--lightblue);
+  padding-block: 6vh;
+}
+
+.header-path div {
+  max-width: var(--pagesectionswidth);
+  margin-inline: auto;
+  padding-inline: var(--pagesectionspadding);
+}
+
+.header-path div p {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.about-page-sect {
+  height: 60vh;
+  max-width: var(--pagesectionswidth);
+  margin-inline: auto;
+  padding-inline: var(--pagesectionspadding);
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding-block: 1.8rem;
+  margin-block: 3rem;
+}
+
+.about-page-sect img {
+  width: 47%;
+}
+
+.about-story-con {
+  width: 47%;
+  margin-top: 20px;
+}
+
+.about-story-con h2 {
+  font-size: 35px;
+}
+
+hr {
+  width: 80px;
+  height: 5px;
+  background-color: var(--lightblue);
+  border: none;
+  margin-top: 8px;
+}
+@keyframes wobble {
+  0% {
+    transform: none;
+  }
+  15% {
+    transform: translateX(-25%);
+  }
+  30% {
+    transform: translateX(20%);
+  }
+  45% {
+    /* transform: translateX(-15%); */
+  }
+  60% {
+    transform: translateX(10%);
+  }
+  75% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+.wobble {
+  animation-name: wobble;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.about-story-con p {
+  margin-top: 2.5rem;
+  line-height: 0.8cm;
+}

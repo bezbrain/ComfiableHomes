@@ -1,5 +1,5 @@
-import HomeImages from "../HomeImages";
-import AllProducts from "../AllProducts";
+import HomeImages from "../../components/HomeImages";
+import AllProductsBtn from "../../components/AllProductsBtn";
 
 const FeaturedPro = () => {
   return (
@@ -9,7 +9,7 @@ const FeaturedPro = () => {
           <h2>Featured Products</h2>
           <hr />
           <HomeImages />
-          <AllProducts allProductBtn={"all-product-btn"} />
+          <AllProductsBtn allProductBtn={"all-product-btn"} />
         </div>
       </div>
     </>

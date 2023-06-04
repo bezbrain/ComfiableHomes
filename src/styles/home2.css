@@ -5,8 +5,8 @@
 }
 
 .third-sect-con {
-  padding-inline: 20px;
-  max-width: 1250px;
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
   margin: 0px auto;
 }
 @media screen and (max-width: 500px) {
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: space-between;
 }
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1000px) {
   .top-sect {
     /* border: 2px solid red; */
     flex-direction: column;
@@ -63,10 +63,11 @@
 .vision-con,
 .history-con {
   text-align: center;
-  background-color: var(--lightyellow);
+  background-color: blue;
   padding: 1.8em 2.5em;
   border-radius: 5px;
-  box-shadow: 0px 0px 15px -3px;
+  color: #fff;
+  box-shadow: 0px 0px 14px 0px blue;
 }
 @media screen and (max-width: 500px) {
   .misson-con,
@@ -90,8 +91,8 @@
 /* ======== */
 /* Fourth Body Section */
 .fourth-body-con {
-  padding-inline: 20px;
-  max-width: 1250px;
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
   margin: 5em auto;
 }
 
@@ -105,7 +106,7 @@
   align-items: center;
   margin-top: 2em;
 }
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1000px) {
   .newsletter-input {
     /* border: 2px solid red; */
     flex-direction: column;
@@ -169,10 +170,14 @@
 .footer-bg {
   background-color: #000;
 }
+.add-footer-css {
+  position: fixed;
+  bottom: 0;
+}
 
 .footer {
-  padding-inline: 20px;
-  max-width: 1250px;
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
   margin: 0 auto;
 }
 

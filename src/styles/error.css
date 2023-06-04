@@ -1,0 +1,57 @@
+.error-page {
+  background-color: #fff;
+  text-align: center;
+  min-height: 70vh;
+}
+
+.error-page img {
+  width: 20%;
+  margin-block: 6rem 2vw;
+}
+@media screen and (max-width: 1000px) {
+  .error-page img {
+    width: 200px;
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.pulse {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.error-page h3 {
+  color: red;
+  font-size: 20px;
+}
+
+.error-btn {
+  background-color: var(--lightblue);
+  border: none;
+  width: 100px;
+  padding-block: 10px;
+  color: var(--lightblack);
+  font-size: 16px;
+  margin: 20px 10px;
+  transition: ease 0.5s all;
+}
+
+.error-btn:hover {
+  color: #fff;
+  background-color: var(--darkblue);
+}

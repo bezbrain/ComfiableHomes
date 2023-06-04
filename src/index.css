@@ -19,7 +19,11 @@
   --extremelylightyellow: #fcfcf0;
   --darkred: #fd0d21;
   --lightred: #f8d7da;
+  --lightblack: #323333;
   --extremelylightblack: #959799;
+
+  --pagesectionswidth: 1250px;
+  --pagesectionspadding: 30px;
 }
 
 body {

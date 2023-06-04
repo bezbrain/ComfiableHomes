@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const FirstSect = () => {
   return (
     <>
@@ -11,7 +13,9 @@ const FirstSect = () => {
             possimus cum ratione?Lorem ipsum dolor, sit amet consectetur
             adipisicing elit. Excepturi, vero!
           </p>
-          <button className="shop-now-btn">SHOP NOW</button>
+          <Link to="/products">
+            <button className="shop-now-btn">SHOP NOW</button>
+          </Link>
         </article>
         <section className="design-comfort-img-sect">
           <img
