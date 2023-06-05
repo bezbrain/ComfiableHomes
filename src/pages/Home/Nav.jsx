@@ -15,7 +15,6 @@ const Nav = () => {
   const location = useLocation();
 
   const handleOpen = () => {
-    console.log("Open clicked");
     setShowNav("add-show-nav-css");
   };
 
@@ -30,7 +29,7 @@ const Nav = () => {
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
         <nav className={showNav}>
-          <Logo />
+          <Logo onClick={closeNav} />
           <FaTimes className="close" onClick={closeNav} />
           <ul>
             <Link to="/" onClick={closeNav}>

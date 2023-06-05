@@ -88,6 +88,7 @@
 }
 
 .featured-pro-con {
+  position: relative;
   padding-inline: var(--pagesectionspadding);
   max-width: var(--pagesectionswidth);
   margin: 0px auto;
@@ -154,7 +155,13 @@
 
 .home-images {
   width: 100%;
+  height: 300px;
   border-radius: 5px;
+}
+@media screen and (max-width: 750px) {
+  .home-images {
+    height: 400px;
+  }
 }
 
 .img-text-sect {

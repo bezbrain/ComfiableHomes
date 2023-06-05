@@ -170,10 +170,11 @@
 .footer-bg {
   background-color: #000;
 }
-.add-footer-css {
+/* .add-footer-css {
   position: fixed;
   bottom: 0;
-}
+  width: 100%;
+} */
 
 .footer {
   padding-inline: var(--pagesectionspadding);

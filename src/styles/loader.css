@@ -1,0 +1,32 @@
+.loader {
+  border: 4px solid #9b9898; /* Light gray */
+  border-top: 4px solid #2785c4; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: loader 1s linear infinite; /* Adjust the animation duration as needed */
+  margin: 0 auto; /* Center the loader horizontally */
+  /* z-index: 20; */
+}
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.add-featured-loader-css {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.add-product-loader-css {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}

@@ -58,17 +58,17 @@
     width: 100%;
     margin-top: 5rem;
   }
-  hr {
+  .wobble {
     margin-left: 25px;
   }
   .about-story-con p {
     width: 80%;
     margin-inline: auto;
-    text-align: justify;
+    /* text-align: justify; */
   }
 }
 
-hr {
+.wobble {
   width: 80px;
   height: 5px;
   background-color: var(--lightblue);

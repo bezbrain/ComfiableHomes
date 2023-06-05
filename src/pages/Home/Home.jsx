@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 // Importing Components
 import FirstSect from "./FirstSect";
 import FeaturedPro from "./FeaturedPro";
