@@ -1,7 +1,7 @@
 import HomeImages from "../../components/HomeImages";
 import AllProductsBtn from "../../components/AllProductsBtn";
 import { useGlobalContext } from "../../components/context";
-import Loader from "../../components/loader";
+import Loader from "../../components/Loader";
 
 const FeaturedPro = () => {
   const { isLoading, setIsLoading } = useGlobalContext();
