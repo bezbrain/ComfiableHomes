@@ -1,5 +1,5 @@
 import { useGlobalContext } from "../components/context";
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 import "../styles/product.css";
 
 const Products = () => {
