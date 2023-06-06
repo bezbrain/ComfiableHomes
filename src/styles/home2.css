@@ -103,10 +103,10 @@
 
 .fourth-body-con h3 {
   font-size: 2.2em;
-  /* border: 2px solid red; */
 }
 
 .newsletter-input {
+  /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,7 +123,7 @@
   }
   .newletter-email {
     /* border: 2px solid red; */
-    min-width: 60%;
+    min-width: 70%;
   }
 }
 @media screen and (max-width: 700px) {
@@ -136,7 +136,7 @@
   }
   .newletter-email input {
     /* border: 3px solid yellow; */
-    max-width: 200px;
+    width: 300px;
   }
 }
 
@@ -147,11 +147,10 @@
 
 .newletter-email {
   width: 50%;
-  /* border: 2px solid red; */
 }
 
 .newletter-email input {
-  width: 80%;
+  /* width: 80%; */
   height: 40px;
   padding-left: 10px;
   font-size: 17px;
@@ -160,7 +159,8 @@
 
 .sub-btn {
   width: 20%;
-  height: 40px;
+  /* height: 40px; */
+  padding-block: 12px 10px;
   border-radius: 0px 5px 5px 0px;
   background-color: var(--extremelydarkblue);
   font-size: 17px;
@@ -169,6 +169,16 @@
 }
 .sub-btn:hover {
   background-color: var(--darkblue);
+}
+@media screen and (max-width: 450px) {
+  .newletter-email input {
+    /* border: 3px solid yellow; */
+    width: 200px;
+  }
+
+  .sub-btn {
+    font-size: 3.5vw;
+  }
 }
 
 /* ======== */

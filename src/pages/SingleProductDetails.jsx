@@ -25,10 +25,6 @@ const SingleProductDetails = () => {
     }
   };
 
-  // console.log(getProductDetails);
-  // console.log(productId);
-  // console.log(getProductDetails.details.name);
-
   useEffect(() => {
     getDetails();
   }, []);

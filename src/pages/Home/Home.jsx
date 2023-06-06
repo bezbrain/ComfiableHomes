@@ -14,6 +14,11 @@ const Home = () => {
   return (
     <>
       {/* To Display "Loading" if the homepage has not loaded */}
+      {/* {isLoading && (
+        <div className="home-loader-con">
+          <p>Loading...</p>
+        </div>
+      )} */}
       <div className="home-page">
         {/* Body Section */}
         <article className="body-section">
