@@ -160,12 +160,13 @@
 .sub-btn {
   width: 20%;
   /* height: 40px; */
-  padding-block: 12px 10px;
+  padding-block: 14px 12px;
   border-radius: 0px 5px 5px 0px;
   background-color: var(--extremelydarkblue);
   font-size: 17px;
   transition: ease 0.5s all;
   color: #fff;
+  border: none;
 }
 .sub-btn:hover {
   background-color: var(--darkblue);
