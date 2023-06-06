@@ -6,19 +6,14 @@ import FourthSect from "./FourthSect";
 // Importing Styles
 import "../../styles/home.css";
 import "../../styles/home2.css";
-import { useGlobalContext } from "../../components/context";
+// import { useGlobalContext } from "../../components/context";
 
 const Home = () => {
-  const { isLoading } = useGlobalContext();
+  // const { isLoading } = useGlobalContext();
 
   return (
     <>
       {/* To Display "Loading" if the homepage has not loaded */}
-      {isLoading && (
-        <div className="home-loader-con">
-          <p>Loading...</p>
-        </div>
-      )}
       <div className="home-page">
         {/* Body Section */}
         <article className="body-section">
