@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 :root {
@@ -29,6 +30,6 @@
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   background-color: var(--extremelylightblue);
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   /* color: var(--extremelylightblack); */
 }
