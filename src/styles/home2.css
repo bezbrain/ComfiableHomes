@@ -1,7 +1,7 @@
 /* ======== */
 /* Third Body Section */
 .add-bg-third-sect-con {
-  background-color: var(--extremelylightyellow);
+  background-color: var(--extremelylightblue);
 }
 
 .third-sect-con {
@@ -63,7 +63,7 @@
 .vision-con,
 .history-con {
   text-align: center;
-  background-color: blue;
+  background-color: var(--darkblue);
   padding: 1.8em 2.5em;
   border-radius: 5px;
   color: #fff;
@@ -90,6 +90,10 @@
 
 /* ======== */
 /* Fourth Body Section */
+.fourth-sect-bg {
+  background-color: var(--verylightblue);
+}
+
 .fourth-body-con {
   /* border: 2px solid green; */
   padding-inline: var(--pagesectionspadding);
@@ -208,6 +212,7 @@
   border-radius: 50%;
   margin-right: 5px;
   padding-bottom: 5px;
+  overflow-y: hidden;
 }
 
 .brand-name {

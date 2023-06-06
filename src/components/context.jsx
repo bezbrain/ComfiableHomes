@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const AppContext = React.createContext();
@@ -10,6 +11,7 @@ export const AppProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(false);
+  // const { productId } = useParams();
 
   // Fetch all Products
   const getAllProducts = async () => {
@@ -45,6 +47,7 @@ export const AppProvider = ({ children }) => {
         setAllProducts,
         hoveredIndex,
         setHoveredIndex,
+        // productId,
       }}
     >
       {children}

@@ -40,25 +40,26 @@ const HomeImages = () => {
   return (
     <>
       <div className="home-images-con">
-        {products.map((each, i) => {
-          const { id, image, type, price } = each;
-          return (
-            <div className="image-text-con" key={id}>
-              <div
-                className="each-image-con"
-                onMouseOver={() => handleMouseOver(i)}
-                onMouseOut={() => handleMouseOut(i)}
-              >
-                <SearchHover i={i} />
-                <img src={image} alt="Home-img" className="home-images" />
+        {products &&
+          products.map((each, i) => {
+            const { id, image, type, price } = each;
+            return (
+              <div className="image-text-con" key={id}>
+                <div
+                  className="each-image-con"
+                  onMouseOver={() => handleMouseOver(i)}
+                  onMouseOut={() => handleMouseOut(i)}
+                >
+                  <SearchHover i={i} />
+                  <img src={image} alt="Home-img" className="home-images" />
+                </div>
+                <section className="img-text-sect">
+                  <p>{type}</p>
+                  <p>${price}</p>
+                </section>
               </div>
-              <section className="img-text-sect">
-                <p>{type}</p>
-                <p>${price}</p>
-              </section>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </>
   );

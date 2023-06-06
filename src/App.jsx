@@ -5,6 +5,7 @@ import SharedLayouts from "./pages/SharedLayouts";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Error from "./pages/Error";
+import SingleProductDetails from "./pages/SingleProductDetails";
 
 function App() {
   // const [isDisplay, setIsDisplay] = useState(true);
@@ -19,6 +20,10 @@ function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/*" element={<Error />} />
+            <Route
+              path="products/:productId"
+              element={<SingleProductDetails />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

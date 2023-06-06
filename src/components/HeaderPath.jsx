@@ -1,7 +1,9 @@
 import "../styles/about.css";
 import { useLocation, Link } from "react-router-dom";
+import { useGlobalContext } from "./context";
 
 const HeaderPath = () => {
+  const { allProducts } = useGlobalContext();
   const location = useLocation();
 
   return (
@@ -20,7 +22,9 @@ const HeaderPath = () => {
                 ? "Products"
                 : location.pathname === "/cart"
                 ? "Cart"
-                : "Error Page"}
+                : // : location.pathname === "/products/2"
+                  // ? location.pathname
+                  "Error Page"}
             </span>
           </p>
         </div>
