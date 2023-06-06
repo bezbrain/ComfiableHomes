@@ -21,8 +21,9 @@
 }
 @media screen and (max-width: 1000px) {
   .design-your-comfort article {
-    /* width: 70%; */
-    width: 700px;
+    border: 2px solid red;
+    width: 70%;
+    /* width: 700px; */
     margin-inline: auto;
   }
   .design-your-comfort article h2 {
