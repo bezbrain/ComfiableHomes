@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 const FourthSect = () => {
+  const [btnValue] = useState("Subscribe");
+
   return (
     <>
       <div className="fourth-sect-bg">
@@ -11,7 +15,8 @@ const FourthSect = () => {
             </p>
             <div className="newletter-email">
               <input type="text" placeholder="Enter Email" />
-              <button className="sub-btn">Subscribe</button>
+              <input type="submit" value={btnValue} />
+              {/* <button className="sub-btn">Subscribe</button> */}
             </div>
           </section>
         </div>
