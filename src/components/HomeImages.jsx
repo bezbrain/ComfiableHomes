@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "./context";
+import SearchHover from "./SearchHover";
 
 const HomeImages = () => {
-  const { products, setProducts, isLoading, setIsLoading } = useGlobalContext();
-  const [hoveredIndex, setHoveredIndex] = useState(false);
+  const { products, setProducts, isLoading, setIsLoading, setHoveredIndex } =
+    useGlobalContext();
 
   const getHomeProducts = async () => {
     setIsLoading(true);
@@ -48,8 +49,7 @@ const HomeImages = () => {
                 onMouseOver={() => handleMouseOver(i)}
                 onMouseOut={() => handleMouseOut(i)}
               >
-                <div className="img-overlay"></div>
-                {i === hoveredIndex && <FaSearch className="search-icon" />}
+                <SearchHover i={i} />
                 <img src={image} alt="Home-img" className="home-images" />
               </div>
               <section className="img-text-sect">

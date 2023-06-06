@@ -1,9 +1,18 @@
 import { useGlobalContext } from "../components/context";
 import Loader from "../components/Loader";
+import SearchHover from "../components/SearchHover";
 import "../styles/product.css";
+import "../styles/product2.css";
 
 const Products = () => {
-  const { isLoading, allProducts } = useGlobalContext();
+  const { isLoading, allProducts, setHoveredIndex } = useGlobalContext();
+
+  const handleMouseOver = (index) => {
+    setHoveredIndex(index);
+  };
+  const handleMouseOut = () => {
+    setHoveredIndex(false);
+  };
 
   return (
     <>
@@ -28,7 +37,6 @@ const Products = () => {
           <div className="company-con">
             <h3>Company</h3>
             <select name="" id="">
-              <option value=""></option>
               <option value="">all</option>
               <option value="">caressa</option>
               <option value="">ikea</option>
@@ -51,27 +59,36 @@ const Products = () => {
           <button className="clear-filter-btn">Clear Filters</button>
         </aside>
         {/* Right hand side */}
-        <section className="products-images-sect">
+        <section className="products-images-sect scrolling-section">
           <header className="product-header">
-            <p>22 products Found</p>
+            <p>
+              {allProducts.length} product{allProducts.length < 2 ? "" : "s"}{" "}
+              Found
+            </p>
             <hr className="wobble" />
-            <p>Sort By</p>
-            <select name="" id="">
-              <option value=""></option>
-              <option value="">Price (Lowest)</option>
-              <option value="">Price (Highest)</option>
-              <option value="">Name (A-Z)</option>
-              <option value="">Name (Z-A)</option>
-            </select>
+            <div className="sort-con">
+              <p>Sort By: </p>
+              <select name="" id="">
+                <option value="">Price (Lowest)</option>
+                <option value="">Price (Highest)</option>
+                <option value="">Name (A-Z)</option>
+                <option value="">Name (Z-A)</option>
+              </select>
+            </div>
           </header>
-          <section className="loader-images-sect">
+          <section className="loader-and-image-sect">
             {isLoading && <Loader loaderCss="add-product-loader-css" />}
             {allProducts &&
               allProducts.map((each, i) => {
                 const { id, image, type, price } = each;
                 return (
                   <div className="product-images-con" key={id}>
-                    <div className="image-con">
+                    <div
+                      className="image-con"
+                      onMouseOver={() => handleMouseOver(i)}
+                      onMouseOut={() => handleMouseOut(i)}
+                    >
+                      <SearchHover i={i} />
                       <img src={image} alt={type} />
                     </div>
                     <div className="name-and-amt-con">

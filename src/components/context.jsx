@@ -7,9 +7,11 @@ export const AppProvider = ({ children }) => {
   const [showNav, setShowNav] = useState("");
   const [pathname, setPathname] = useState("");
   const [products, setProducts] = useState([]);
-  const [allProducts, setAllProducts] = useState();
+  const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hoveredIndex, setHoveredIndex] = useState(false);
 
+  // Fetch all Products
   const getAllProducts = async () => {
     setIsLoading(true);
     try {
@@ -41,6 +43,8 @@ export const AppProvider = ({ children }) => {
         setIsLoading,
         allProducts,
         setAllProducts,
+        hoveredIndex,
+        setHoveredIndex,
       }}
     >
       {children}
