@@ -92,8 +92,8 @@ header nav {
     background-color: #fff;
     position: fixed;
     top: 0;
-    left: -110vw;
-    width: 100%;
+    left: -100vw;
+    width: 100vw;
     height: 100vh;
     z-index: 999;
   }
