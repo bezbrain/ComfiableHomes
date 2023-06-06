@@ -105,6 +105,11 @@
   text-align: center;
   font-size: 40px;
 }
+@media screen and (max-width: 600px) {
+  .featured-pro-con h2 {
+    font-size: 7vw;
+  }
+}
 
 .featured-pro-con hr {
   width: 100px;
