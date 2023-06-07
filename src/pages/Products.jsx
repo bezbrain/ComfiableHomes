@@ -85,10 +85,10 @@ const Products = () => {
                   <div className="product-images-con" key={id}>
                     <div
                       className="image-con"
-                      onMouseOver={() => handleMouseOver(i)}
-                      onMouseOut={() => handleMouseOut(i)}
+                      onMouseOver={() => handleMouseOver(id)}
+                      onMouseOut={() => handleMouseOut(id)}
                     >
-                      <SearchHover i={i} />
+                      <SearchHover id={id} />
                       <img src={image} alt={type} />
                     </div>
                     <div className="name-and-amt-con">

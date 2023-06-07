@@ -4,6 +4,7 @@ import axios from "axios";
 import { useGlobalContext } from "./context";
 import SearchHover from "./SearchHover";
 
+// let getHomeImages;
 const HomeImages = () => {
   const { products, setProducts, isLoading, setIsLoading, setHoveredIndex } =
     useGlobalContext();
@@ -16,18 +17,22 @@ const HomeImages = () => {
       const getProduct = data.filter((each) => {
         return each.id % 6 === 0;
       });
-      // console.log(getProduct);
       localStorage.setItem("HomeImages", JSON.stringify(getProduct));
-      const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
-      setProducts(getHomeImages);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const dispalyHomeData = () => {
+    const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
+    setProducts(getHomeImages);
+    console.log(getHomeImages);
+  };
+
   useEffect(() => {
-    getHomeProducts();
+    // getHomeProducts();
+    dispalyHomeData();
   }, []);
 
   const handleMouseOver = (index) => {
@@ -47,10 +52,10 @@ const HomeImages = () => {
               <div className="image-text-con" key={id}>
                 <div
                   className="each-image-con"
-                  onMouseOver={() => handleMouseOver(i)}
-                  onMouseOut={() => handleMouseOut(i)}
+                  onMouseOver={() => handleMouseOver(id)}
+                  onMouseOut={() => handleMouseOut(id)}
                 >
-                  <SearchHover i={i} />
+                  <SearchHover id={id} />
                   <img src={image} alt="Home-img" className="home-images" />
                 </div>
                 <section className="img-text-sect">

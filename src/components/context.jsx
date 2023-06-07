@@ -19,17 +19,22 @@ export const AppProvider = ({ children }) => {
     try {
       const { data } = await axios.get("http://localhost:3000/products");
       // console.log(data);
-      setAllProducts(data);
+      // setAllProducts(data);
+      localStorage.setItem("AllProducts", JSON.stringify(data));
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // console.log(allProducts);
+  const dispalyAllData = () => {
+    const getAllImages = JSON.parse(localStorage.getItem("AllProducts"));
+    setAllProducts(getAllImages);
+  };
 
   useEffect(() => {
-    getAllProducts();
+    // getAllProducts();
+    dispalyAllData();
   }, []);
 
   return (
@@ -47,7 +52,6 @@ export const AppProvider = ({ children }) => {
         setAllProducts,
         hoveredIndex,
         setHoveredIndex,
-        // productId,
       }}
     >
       {children}

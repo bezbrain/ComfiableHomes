@@ -49,12 +49,16 @@
   position: absolute;
   top: 20%;
   right: 40%;
+  width: 80px;
+  height: 80px;
 }
 @media screen and (max-width: 800px) {
   .add-product-loader-css {
     position: absolute;
     top: 50%;
     right: 40%;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -64,4 +68,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 80px;
+  height: 80px;
+}
+@media screen and (max-width: 800px) {
+  .add-details-loader-css {
+    width: 40px;
+    height: 40px;
+  }
 }
