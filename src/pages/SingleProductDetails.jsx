@@ -5,11 +5,13 @@ import axios from "axios";
 import { useGlobalContext } from "../components/context";
 import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
+import { ACTIONS } from "../components/context";
+import CartIncDecrease from "../components/CartIncDecrease";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
   const [getProductDetails, setGetProductDetails] = useState({});
-  const { isLoading, setIsLoading } = useGlobalContext();
+  const { isLoading, setIsLoading, dispatch, allProducts } = useGlobalContext();
 
   //   Get details of each product
   const getDetails = async () => {
@@ -19,6 +21,7 @@ const SingleProductDetails = () => {
         `http://localhost:3000/products/${productId}`
       );
       setGetProductDetails(data);
+      //dispatch({ type: ACTIONS.ADD_TO_CART, payload: { prodId: productId } }); //Get the id to each item in the cart
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -28,6 +31,14 @@ const SingleProductDetails = () => {
   useEffect(() => {
     getDetails();
   }, []);
+
+  // Function to have access to single product id and also all products
+  const handleCart = () => {
+    dispatch({
+      type: ACTIONS.ADD_TO_CART,
+      payload: { prodId: productId, products: allProducts },
+    });
+  };
 
   return (
     <>
@@ -82,12 +93,10 @@ const SingleProductDetails = () => {
                   </tbody>
                 </table>
                 <hr />
-                <div className="count-con">
-                  <button className="decrease">-</button>
-                  <p>1</p>
-                  <button className="increase">+</button>
-                </div>
-                <button className="add-to-cart-btn">ADD TO CART</button>
+                <CartIncDecrease cartCSS="add-cart-css" />
+                <Link to="/cart" onClick={handleCart}>
+                  ADD TO CART
+                </Link>
               </article>
             </div>
           </section>

@@ -16,7 +16,7 @@
         "brand": "Liddy"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -35,7 +35,7 @@
         "brand": "Marcos"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -54,7 +54,7 @@
         "brand": "Caressa"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -73,7 +73,7 @@
         "brand": "Caressa"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
     {
       "id": 5,
@@ -91,7 +91,7 @@
         "brand": "Ikea"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -111,7 +111,7 @@
       },
 
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -130,7 +130,7 @@
         "brand": "Ikea"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -149,7 +149,7 @@
         "brand": "Caressa"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -168,7 +168,7 @@
         "brand": "Ikea"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -188,7 +188,7 @@
       },
 
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -207,7 +207,7 @@
         "brand": "Caressa"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -226,7 +226,7 @@
         "brand": "Liddy"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -245,7 +245,7 @@
         "brand": "Ikea"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -264,7 +264,7 @@
         "brand": "Caressa"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -283,7 +283,7 @@
         "brand": "Liddy"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": false
     },
 
     {
@@ -302,7 +302,7 @@
         "brand": "Liddy"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": false
     },
 
     {
@@ -321,7 +321,7 @@
         "brand": "Marcos"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -340,7 +340,7 @@
         "brand": "Marcos"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -359,7 +359,7 @@
         "brand": "Ikea"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -378,7 +378,7 @@
         "brand": "Caressa"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -397,7 +397,7 @@
         "brand": "Ikea"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     },
 
     {
@@ -416,7 +416,7 @@
         "brand": "Liddy"
       },
       "isInCart": false,
-      "isinStock": true
+      "isInStock": true
     }
   ]
 }

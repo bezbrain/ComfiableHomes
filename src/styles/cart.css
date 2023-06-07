@@ -1,0 +1,236 @@
+.cart-sect {
+  min-height: 65vh;
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.cart-sect h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cart-sect > a {
+  text-decoration: none;
+  background-color: var(--darkblue);
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: ease 0.5s all;
+}
+
+.cart-sect a:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}
+
+/* The CSS when product in cart */
+.cart-content {
+  /* border: 2px solid red; */
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.cart-content tr {
+  /* border: 2px solid yellow; */
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 800px) {
+  .cart-content {
+    margin-top: 0px;
+  }
+
+  .header-of-cart {
+    display: none;
+  }
+
+  .body-of-cart td:nth-child(even) {
+    display: none;
+  }
+}
+
+.header-of-cart td {
+  padding-bottom: 2rem;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.body-of-cart td {
+  padding-block: 3rem;
+}
+
+.body-of-cart td:first-child {
+  /* border: 2px solid green; */
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.body-of-cart td img {
+  width: 120px;
+  height: 80px;
+  border-radius: 5px;
+  margin-right: 20px;
+}
+@media screen and (max-width: 450px) {
+  .body-of-cart td:first-child {
+    font-size: 4vw;
+  }
+  .body-of-cart td img {
+    width: 80px;
+    height: 60px;
+  }
+}
+
+.body-of-cart td:nth-child(2) {
+  color: var(--darkblue);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.body-of-cart td:nth-child(3) .count-con {
+  margin-inline: auto;
+}
+@media screen and (max-width: 800px) {
+  .body-of-cart td:nth-child(3) .count-con {
+    /* border: 2px solid red; */
+    margin-left: auto;
+    font-size: 5vw;
+    margin-left: 0;
+    width: 15vw;
+  }
+
+  .body-of-cart td:nth-child(3) * {
+    font-size: inherit;
+    margin: inherit;
+  }
+}
+
+.body-of-cart td:nth-child(4) {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.delete-product {
+  background-color: red;
+  color: #fff;
+  padding: 5px;
+  font-size: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Lower section of Cart page */
+.base-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.base-btns a {
+  text-decoration: none;
+  background-color: var(--darkblue);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: ease 0.5s all;
+}
+.base-btns a:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}
+@media screen and (max-width: 500px) {
+  .base-btns a {
+    padding: 3px 8px;
+    font-size: 15px;
+  }
+  .base-btns a span {
+    display: none;
+  }
+  .delete-product {
+    font-size: 18px;
+    padding: 3px;
+  }
+}
+
+.clear-shopping-cart-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+  .clear-shopping-cart-btn {
+    padding: 3px 8px;
+    font-size: 15px;
+  }
+}
+
+.base-total {
+  width: 350px;
+  margin-left: auto;
+}
+
+.cart-summary {
+  border: 2px solid #bcccdc;
+  margin-top: 2.5rem;
+  padding: 25px 50px;
+  border-radius: 5px;
+  width: 100%;
+}
+@media screen and (max-width: 800px) {
+  .base-total {
+    width: 250px;
+    margin-inline: auto;
+  }
+
+  .cart-summary {
+    padding: 20px;
+  }
+}
+
+.cart-summary tr {
+  /* display: inline-block; */
+  text-align: left;
+  line-height: 1cm;
+}
+
+.cart-summary tr:nth-child(2) td {
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.cart-summary tr:nth-child(3) th {
+  padding-top: 20px;
+  font-size: 25px;
+}
+@media screen and (max-width: 800px) {
+  .cart-summary tr:nth-child(3) th {
+    padding-top: 10px;
+    font-size: 3.2vw;
+  }
+}
+
+.base-total a {
+  text-decoration: none;
+  background-color: var(--darkblue);
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  color: #fff;
+  padding-block: 5px;
+  border-radius: 5px;
+  transition: ease 0.5 all;
+}
+.base-total a:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}

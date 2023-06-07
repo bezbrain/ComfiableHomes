@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const SearchHover = ({ id }) => {
   const { hoveredIndex } = useGlobalContext();
+  // console.log(id);
 
   return (
     <>

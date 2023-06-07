@@ -43,7 +43,11 @@ const Nav = () => {
             </Link>
           </ul>
           <section className="cart-and-logout-sect">
-            <Link to="/cart" style={{ textDecoration: "none", color: "#000" }}>
+            <Link
+              to="/cart"
+              style={{ textDecoration: "none", color: "#000" }}
+              onClick={closeNav}
+            >
               <p>
                 Cart
                 <FaCartPlus />

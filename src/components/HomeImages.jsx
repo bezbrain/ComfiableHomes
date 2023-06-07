@@ -17,7 +17,10 @@ const HomeImages = () => {
       const getProduct = data.filter((each) => {
         return each.id % 6 === 0;
       });
+      setProducts(getProduct);
       localStorage.setItem("HomeImages", JSON.stringify(getProduct));
+      // const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
+      // setProducts(getHomeImages);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -32,8 +35,8 @@ const HomeImages = () => {
   };
 
   useEffect(() => {
-    // getHomeProducts();
-    dispalyHomeData();
+    getHomeProducts();
+    // dispalyHomeData();
   }, []);
 
   const handleMouseOver = (index) => {

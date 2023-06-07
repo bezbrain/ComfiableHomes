@@ -161,13 +161,13 @@ nav ul a:hover {
   .cart-and-logout-sect {
     /* border: 2px solid red; */
     position: absolute;
-    top: 40%;
+    top: 50%;
     width: 100%;
     justify-content: center;
   }
   .cart-and-logout-sect p {
     margin-right: 20px;
-    font-size: 2em !important;
+    /* font-size: 1.5em !important; */
   }
 }
 
