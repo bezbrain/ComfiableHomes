@@ -27,15 +27,17 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const dispalyAllData = () => {
+  const displayAllData = () => {
+    setIsLoading(true);
     const getAllImages = JSON.parse(localStorage.getItem("AllProducts"));
     setAllProducts(getAllImages);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     // getAllProducts();
-    dispalyAllData();
-  }, []);
+    displayAllData();
+  }, [allProducts]);
 
   return (
     <AppContext.Provider
