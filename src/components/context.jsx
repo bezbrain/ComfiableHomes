@@ -37,7 +37,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     // getAllProducts();
     displayAllData();
-  }, [allProducts]);
+  }, []);
 
   return (
     <AppContext.Provider
