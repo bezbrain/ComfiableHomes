@@ -25,9 +25,10 @@ const HomeImages = () => {
   };
 
   const dispalyHomeData = () => {
+    setIsLoading(true);
     const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
     setProducts(getHomeImages);
-    console.log(getHomeImages);
+    setIsLoading(false);
   };
 
   useEffect(() => {

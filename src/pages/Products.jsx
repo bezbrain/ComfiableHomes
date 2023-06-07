@@ -61,10 +61,12 @@ const Products = () => {
         {/* Right hand side */}
         <section className="products-images-sect scrolling-section">
           <header className="product-header">
-            <p>
-              {allProducts.length} product{allProducts.length < 2 ? "" : "s"}{" "}
-              Found
-            </p>
+            {allProducts && (
+              <p>
+                {allProducts.length} product{allProducts.length < 2 ? "" : "s"}{" "}
+                Found
+              </p>
+            )}
             <hr className="wobble" />
             <div className="sort-con">
               <p>Sort By: </p>
