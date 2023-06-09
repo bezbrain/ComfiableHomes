@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import "../styles/cart.css";
 import { useGlobalContext } from "../components/context";
@@ -7,9 +7,14 @@ import Notification from "../components/Notification";
 import { ACTIONS } from "../components/context";
 
 const Cart = () => {
-  const { initState, dispatch, notification, successNoti } = useGlobalContext();
+  const { initState, dispatch, notification, successNoti, getCartItems } =
+    useGlobalContext();
+  const location = useLocation();
 
-  // console.log(initState);
+  if (location.pathname === "/cart") {
+    // JSON.parse(localStorage.getItem("addItem"));
+    // console.log(initState);
+  }
 
   const handleDeleteCart = (index) => {
     dispatch({
@@ -28,7 +33,7 @@ const Cart = () => {
         />
       )}
       <section className="cart-sect">
-        {initState.length === 0 ? (
+        {getCartItems.length === 0 ? (
           <>
             <h2>Your cart is empty</h2>
             <Link to="/products" className="fill-it-btn">
@@ -46,8 +51,8 @@ const Cart = () => {
                   <td>Subtotal</td>
                   <td></td>
                 </tr>
-                {initState &&
-                  initState.map((each, i) => {
+                {getCartItems &&
+                  getCartItems.map((each, i) => {
                     const { id, image, name, price } = each;
                     return (
                       <tr className="body-of-cart" key={i}>

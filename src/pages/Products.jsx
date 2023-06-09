@@ -9,7 +9,6 @@ const Products = () => {
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
-    console.log(index);
   };
   const handleMouseOut = () => {
     setHoveredIndex(false);
@@ -81,27 +80,25 @@ const Products = () => {
           </header>
           <section className="loader-and-image-sect">
             {isLoading && <Loader loaderCss="add-product-loader-css" />}
-            {allProducts &&
-              allProducts.map((each, i) => {
-                const { id, image, type, price } = each;
-                return (
-                  <div className="product-images-con" key={id}>
-                    <div
-                      className="image-con"
-                      onMouseOver={() => handleMouseOver(id)}
-                      onMouseOut={() => handleMouseOut(id)}
-                    >
-                      <SearchHover id={id} />
-                      <img src={image} alt={type} />
-                    </div>
-                    <div className="name-and-amt-con">
-                      <p>{type}</p>
-                      <p>${price}</p>
-                    </div>
-                    {/* {console.log(each.id)} */}
+            {allProducts.map((each, i) => {
+              const { id, image, type, price } = each;
+              return (
+                <div className="product-images-con" key={id}>
+                  <div
+                    className="image-con"
+                    onMouseOver={() => handleMouseOver(id)}
+                    onMouseOut={() => handleMouseOut(id)}
+                  >
+                    <SearchHover id={id} />
+                    <img src={image} alt={type} />
                   </div>
-                );
-              })}
+                  <div className="name-and-amt-con">
+                    <p>{type}</p>
+                    <p>${price}</p>
+                  </div>
+                </div>
+              );
+            })}
           </section>
         </section>
       </main>

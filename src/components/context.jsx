@@ -23,7 +23,7 @@ const reducer = (currState, action) => {
     }
 
     const updatedState = {
-      ...currState,
+      // ...currState,
       id: Date.now(),
       prevId: getId,
       name: getProduct[getId - 1].details.name,
@@ -32,11 +32,20 @@ const reducer = (currState, action) => {
       isInCart: getProduct[getId - 1].isInCart,
       isInStock: getProduct[getId - 1].isInStock,
     };
-    return [...currState, updatedState];
+
+    let accAddedCart = [...currState, updatedState];
+    localStorage.setItem("addItem", JSON.stringify(accAddedCart));
+    const getCartItems = JSON.parse(localStorage.getItem("addItem"));
+    console.log(getCartItems);
+
+    console.log(accAddedCart);
+    // return accAddedCart;
+    return getCartItems;
   } else if (action.type === ACTIONS.DELETE_FROM_CART) {
     let filterId = action.payload.filterId;
     const newProduct = currState.filter((each) => each.id !== filterId);
-    console.log(newProduct);
+    localStorage.setItem("addItem", JSON.stringify(newProduct));
+    // console.log(newProduct);
     return newProduct;
   }
   return currState;
@@ -56,10 +65,15 @@ export const AppProvider = ({ children }) => {
   const [successNoti, setSuccessNoti] = useState(false);
   const [failureNoti, setFailureNoti] = useState(false);
 
+  const getCartItems = JSON.parse(localStorage.getItem("addItem"));
+
   const [cartCount, setCartCount] = useState(1);
 
   // Using useReducer for Cart
-  const [initState, dispatch] = useReducer(reducer, []);
+  const [initState, dispatch] = useReducer(reducer, [], () => {
+    const storedCartItems = localStorage.getItem("addItem");
+    return storedCartItems ? JSON.parse(storedCartItems) : [];
+  });
 
   // Fetch all Products
   const getAllProducts = async () => {
@@ -76,8 +90,9 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const displayAllData = () => {
+  const displayAllData = async () => {
     setIsLoading(true);
+    localStorage.setItem("allProducts", JSON.stringify(products));
     setAllProducts(products);
     setIsLoading(false);
   };
@@ -85,9 +100,11 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     // getAllProducts();
     displayAllData();
+    const storedCartItems = localStorage.getItem("addItem");
+    if (storedCartItems) {
+      dispatch({ type: "", payload: { products: [], prodId: "" } }); // Initial dispatch to set the stored cart items as the initial state
+    }
   }, []);
-
-  // console.log(products[2]);
 
   const handleIncrease = () => {
     return;
@@ -118,6 +135,7 @@ export const AppProvider = ({ children }) => {
         setFailureNoti,
         cartCount,
         setCartCount,
+        getCartItems,
       }}
     >
       {children}

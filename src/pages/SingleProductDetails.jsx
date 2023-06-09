@@ -41,12 +41,16 @@ const SingleProductDetails = () => {
     }
   };
 
+  // console.log(allProducts);
+  // console.log(allProducts[0].details);
+
+  // Get the details of single product
   const getSingleDetails = () => {
-    console.log(allProducts);
-    console.log(productId);
-    const data = allProducts[productId];
+    const getAllProducts = JSON.parse(localStorage.getItem("allProducts"));
+    // console.log(getAllProducts);
+    const data = getAllProducts[productId - 1];
     setGetProductDetails(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {
