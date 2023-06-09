@@ -7,11 +7,25 @@ import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
 import { ACTIONS } from "../components/context";
 import CartIncDecrease from "../components/CartIncDecrease";
+import { products } from "../data";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
   const [getProductDetails, setGetProductDetails] = useState({});
-  const { isLoading, setIsLoading, dispatch, allProducts } = useGlobalContext();
+  const {
+    isLoading,
+    setIsLoading,
+    dispatch,
+    allProducts,
+    setNotification,
+    successNoti,
+    setSuccessNoti,
+    failureNoti,
+    setFailureNoti,
+    initState,
+  } = useGlobalContext();
+
+  console.log(productId);
 
   //   Get details of each product
   const getDetails = async () => {
@@ -21,23 +35,51 @@ const SingleProductDetails = () => {
         `http://localhost:3000/products/${productId}`
       );
       setGetProductDetails(data);
-      //dispatch({ type: ACTIONS.ADD_TO_CART, payload: { prodId: productId } }); //Get the id to each item in the cart
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const getSingleDetails = () => {
+    console.log(allProducts);
+    console.log(productId);
+    const data = allProducts[productId];
+    setGetProductDetails(data);
+    console.log(data);
+  };
+
   useEffect(() => {
-    getDetails();
+    // getDetails();
+    getSingleDetails();
   }, []);
 
-  // Function to have access to single product id and also all products
+  // On click of "ADD TO CART" btn
   const handleCart = () => {
+    // Access to single product id and also all products
     dispatch({
       type: ACTIONS.ADD_TO_CART,
       payload: { prodId: productId, products: allProducts },
     });
+
+    const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
+    // If product already in cart, send a negative notification
+    if (newProd) {
+      setNotification(true);
+      setFailureNoti(true);
+      setSuccessNoti(false);
+      setTimeout(() => {
+        setNotification(false);
+      }, 2000);
+      return;
+    }
+    // If product not in cart, send a positive notification
+    setNotification(true);
+    setSuccessNoti(true);
+    setFailureNoti(false);
+    setTimeout(() => {
+      setNotification(false);
+    }, 2000);
   };
 
   return (

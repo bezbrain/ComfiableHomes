@@ -1,55 +1,65 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-// import { useParams } from "react-router-dom";
 import axios from "axios";
+import { products } from "../data";
 
 const AppContext = React.createContext();
 
 export const ACTIONS = {
   ADD_TO_CART: "add-to-cart",
+  DELETE_FROM_CART: "delete-from-cart",
 };
 
-const cart = {
-  name: "",
-  price: "",
-  image: "",
-  isInCart: false,
-  isInStock: true,
-  cart: [],
-};
-
+/* ======== */
+// The reducer function
 const reducer = (currState, action) => {
   if (action.type === ACTIONS.ADD_TO_CART) {
     const getProduct = action.payload.products;
     const getId = action.payload.prodId;
-    console.log(getProduct);
     console.log(getId);
+    // Get equal Id's
+    const productExists = currState.some((each) => each.prevId === getId);
+    if (productExists) {
+      return currState;
+    }
+
     const updatedState = {
       ...currState,
+      id: Date.now(),
+      prevId: getId,
       name: getProduct[getId - 1].details.name,
       price: getProduct[getId - 1].price,
       image: getProduct[getId - 1].image,
       isInCart: getProduct[getId - 1].isInCart,
       isInStock: getProduct[getId - 1].isInStock,
     };
-    const updatedCart = [...currState.cart, updatedState];
-    console.log(updatedCart);
-    return { ...currState, cart: updatedCart };
+    return [...currState, updatedState];
+  } else if (action.type === ACTIONS.DELETE_FROM_CART) {
+    let filterId = action.payload.filterId;
+    const newProduct = currState.filter((each) => each.id !== filterId);
+    console.log(newProduct);
+    return newProduct;
   }
   return currState;
 };
 
+/* ========= */
+// AppProvider Component
 export const AppProvider = ({ children }) => {
   const [showNav, setShowNav] = useState("");
   const [pathname, setPathname] = useState("");
-  const [products, setProducts] = useState([]);
+  const [homeProducts, setHomeProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(false);
+  // const notiRef = useRef(null);
+  const [notification, setNotification] = useState(false);
+  const [successNoti, setSuccessNoti] = useState(false);
+  const [failureNoti, setFailureNoti] = useState(false);
+
+  const [cartCount, setCartCount] = useState(1);
 
   // Using useReducer for Cart
-  const [initState, dispatch] = useReducer(reducer, cart);
-
-  // console.log(initState.cart);
+  const [initState, dispatch] = useReducer(reducer, []);
 
   // Fetch all Products
   const getAllProducts = async () => {
@@ -68,15 +78,16 @@ export const AppProvider = ({ children }) => {
 
   const displayAllData = () => {
     setIsLoading(true);
-    const getAllImages = JSON.parse(localStorage.getItem("AllProducts"));
-    setAllProducts(getAllImages);
+    setAllProducts(products);
     setIsLoading(false);
   };
 
   useEffect(() => {
-    getAllProducts();
-    // displayAllData();
+    // getAllProducts();
+    displayAllData();
   }, []);
+
+  // console.log(products[2]);
 
   const handleIncrease = () => {
     return;
@@ -89,8 +100,8 @@ export const AppProvider = ({ children }) => {
         setShowNav,
         pathname,
         setPathname,
-        products,
-        setProducts,
+        homeProducts,
+        setHomeProducts,
         isLoading,
         setIsLoading,
         allProducts,
@@ -99,6 +110,14 @@ export const AppProvider = ({ children }) => {
         setHoveredIndex,
         dispatch,
         initState,
+        notification,
+        setNotification,
+        successNoti,
+        setSuccessNoti,
+        failureNoti,
+        setFailureNoti,
+        cartCount,
+        setCartCount,
       }}
     >
       {children}

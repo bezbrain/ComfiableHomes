@@ -9,6 +9,7 @@ const Products = () => {
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
+    console.log(index);
   };
   const handleMouseOut = () => {
     setHoveredIndex(false);
@@ -97,6 +98,7 @@ const Products = () => {
                       <p>{type}</p>
                       <p>${price}</p>
                     </div>
+                    {/* {console.log(each.id)} */}
                   </div>
                 );
               })}

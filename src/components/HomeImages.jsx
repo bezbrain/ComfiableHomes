@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
-import { FaSearch } from "react-icons/fa";
 import axios from "axios";
 import { useGlobalContext } from "./context";
 import SearchHover from "./SearchHover";
+import { products } from "../data";
 
 // let getHomeImages;
 const HomeImages = () => {
-  const { products, setProducts, isLoading, setIsLoading, setHoveredIndex } =
-    useGlobalContext();
+  const {
+    homeProducts,
+    setHomeProducts,
+    isLoading,
+    setIsLoading,
+    setHoveredIndex,
+  } = useGlobalContext();
 
   const getHomeProducts = async () => {
     setIsLoading(true);
@@ -17,7 +22,7 @@ const HomeImages = () => {
       const getProduct = data.filter((each) => {
         return each.id % 6 === 0;
       });
-      setProducts(getProduct);
+      homeProducts(getProduct);
       localStorage.setItem("HomeImages", JSON.stringify(getProduct));
       // const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
       // setProducts(getHomeImages);
@@ -28,16 +33,18 @@ const HomeImages = () => {
   };
 
   const dispalyHomeData = () => {
-    setIsLoading(true);
-    const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
-    setProducts(getHomeImages);
-    setIsLoading(false);
+    // setIsLoading(true);
+    const homeProduct = products.filter((each) => each.id % 6 === 0);
+    setHomeProducts(homeProduct);
   };
 
   useEffect(() => {
-    getHomeProducts();
-    // dispalyHomeData();
+    // getHomeProducts();
+    dispalyHomeData();
   }, []);
+  useEffect(() => {
+    setIsLoading(false);
+  }, [homeProducts]);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -49,8 +56,8 @@ const HomeImages = () => {
   return (
     <>
       <div className="home-images-con">
-        {products &&
-          products.map((each, i) => {
+        {homeProducts &&
+          homeProducts.map((each, i) => {
             const { id, image, type, price } = each;
             return (
               <div className="image-text-con" key={id}>

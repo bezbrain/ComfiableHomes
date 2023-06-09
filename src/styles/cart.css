@@ -13,6 +13,7 @@
 
 .cart-sect > a {
   text-decoration: none;
+  display: inline-block;
   background-color: var(--darkblue);
   color: #fff;
   padding: 5px 15px;
@@ -35,7 +36,7 @@
 
 .cart-content tr {
   /* border: 2px solid yellow; */
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 @media screen and (max-width: 800px) {
   .cart-content {
@@ -75,13 +76,16 @@
   border-radius: 5px;
   margin-right: 20px;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
   .body-of-cart td:first-child {
-    font-size: 4vw;
+    /* border: 2px solid red; */
+    font-size: 15px;
+    width: 150px;
   }
   .body-of-cart td img {
     width: 80px;
     height: 60px;
+    margin-right: 5px;
   }
 }
 
