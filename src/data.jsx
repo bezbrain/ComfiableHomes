@@ -39,7 +39,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Marcos",
     details: {
       name: "Armchair",
       rating: 1,
@@ -67,7 +67,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Caressa",
     details: {
       name: "Suede Armchair",
       rating: 1,
@@ -95,7 +95,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Caressa",
     details: {
       name: "Leather Chair",
       rating: 1,
@@ -122,7 +122,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "Emperor Bed",
       rating: 1,
@@ -150,7 +150,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Marcos",
     details: {
       name: "Accent Chair",
       rating: 1,
@@ -179,7 +179,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "Shelf",
       rating: 1,
@@ -207,7 +207,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Caressa",
     details: {
       name: "Modern Bookshelf",
       rating: 1,
@@ -235,7 +235,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "High-Back Bench",
       rating: 1,
@@ -263,7 +263,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "Wooden Desk",
       rating: 1,
@@ -292,7 +292,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Caressa",
     details: {
       name: "Entertainment Center",
       rating: 1,
@@ -338,7 +338,7 @@ export const products = [
 
   {
     id: 13,
-    category: "Dining",
+    category: "Dining Room",
     image:
       "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681751026/react-comfy-store-products/product-5_n184nu.jpg",
     type: "Dining Table",
@@ -348,7 +348,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "Dining Table",
       rating: 1,
@@ -376,7 +376,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Caressa",
     details: {
       name: "Leather Sofa",
       rating: 1,
@@ -460,7 +460,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Marcos",
     details: {
       name: "Vase Table",
       rating: 1,
@@ -488,7 +488,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Marcos",
     details: {
       name: "Sofa Set",
       rating: 1,
@@ -516,7 +516,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "Wooden Desk",
       rating: 1,
@@ -544,7 +544,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Caressa",
     details: {
       name: "Wooden Table",
       rating: 1,
@@ -572,7 +572,7 @@ export const products = [
       "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
     available: "In Stock",
     sku: "RecQ0fMd8T0Vk211E",
-    brand: "Liddy",
+    brand: "Ikea",
     details: {
       name: "Wooden Bed",
       rating: 1,
@@ -614,5 +614,59 @@ export const products = [
     isInCart: false,
     isInStock: true,
     counter: 1,
+  },
+];
+
+export const category = [
+  {
+    id: 1,
+    cat: "All",
+  },
+  {
+    id: 2,
+    cat: "Office",
+  },
+  {
+    id: 3,
+    cat: "Living Room",
+  },
+  {
+    id: 4,
+    cat: "Kitchen",
+  },
+  {
+    id: 5,
+    cat: "Bedroom",
+  },
+  {
+    id: 6,
+    cat: "Dining Room",
+  },
+  {
+    id: 7,
+    cat: "Kids",
+  },
+];
+
+export const company = [
+  {
+    id: 1,
+    company: "All",
+  },
+  {
+    id: 2,
+    company: "Caressa",
+  },
+  {
+    id: 3,
+    company: "Ikea",
+  },
+  {
+    id: 4,
+    company: "Liddy",
+  },
+  {
+    id: 5,
+    company: "Marcos",
   },
 ];

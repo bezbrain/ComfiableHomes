@@ -15,6 +15,7 @@ export const ACTIONS = {
 /* ======== */
 // The reducer function
 const reducer = (currState, action) => {
+  // Add to cart
   if (action.type === ACTIONS.ADD_TO_CART) {
     const getProduct = action.payload.products;
     const getId = action.payload.prodId;
@@ -149,20 +150,6 @@ export const AppProvider = ({ children }) => {
       type: ACTIONS.INCREASE_COUNT,
       payload: { filterId: index },
     });
-    // if (getCartItems.length > 0) {
-    //   const updateCounter = getCartItems.map((each) => {
-    //     console.log(each.counter);
-    //     if (each.id === index) {
-    //       return {
-    //         ...each,
-    //         counter: each.counter < 10 ? each.counter + 1 : (each.counter = 10),
-    //       };
-    //     }
-    //     return each;
-    //   });
-    //   console.log(updateCounter);
-    //   return;
-    // }
   };
 
   // Cart Page DecreaseHandler
@@ -171,20 +158,6 @@ export const AppProvider = ({ children }) => {
       type: ACTIONS.DECREASE_COUNT,
       payload: { filterId: index },
     });
-    // if (getCartItems.length > 0) {
-    //   const updateCounter = getCartItems.map((each) => {
-    //     console.log(each.counter);
-    //     if (each.id === index) {
-    //       return {
-    //         ...each,
-    //         counter: each.counter > 1 ? each.counter - 1 : (each.counter = 1),
-    //       };
-    //     }
-    //     return each;
-    //   });
-    //   console.log(updateCounter);
-    //   return;
-    // }
   };
 
   return (
