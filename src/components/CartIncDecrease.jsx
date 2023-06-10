@@ -1,29 +1,27 @@
+import { useState } from "react";
 import "../styles/singleproduct.css";
 import { useGlobalContext } from "./context";
 
-const CartIncDecrease = ({ cartCSS }) => {
-  const { cartCount, setCartCount } = useGlobalContext();
+const CartIncDecrease = ({
+  cartCSS,
+  increase,
+  decrease,
+  itemValue,
+  singleInc,
+}) => {
+  const { count, setCount, getCartItems } = useGlobalContext();
+  // const [count, setCount] = useState(itemValue);
 
-  const increaseHandler = () => {
-    if (cartCount > 0 && cartCount < 10) {
-      setCartCount(cartCount + 1);
-    }
-  };
-
-  const decreaseHandler = () => {
-    if (cartCount > 1) {
-      setCartCount(cartCount - 1);
-    }
-  };
+  // const
 
   return (
     <>
       <div className={`count-con ${cartCSS}`}>
-        <button className="decrease" onClick={decreaseHandler}>
+        <button className="decrease" onClick={decrease}>
           -
         </button>
-        <p>{cartCount}</p>
-        <button className="increase" onClick={increaseHandler}>
+        <p>{itemValue}</p>
+        <button className="increase" onClick={(increase, singleInc)}>
           +
         </button>
       </div>

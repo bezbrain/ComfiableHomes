@@ -7,6 +7,9 @@ const AppContext = React.createContext();
 export const ACTIONS = {
   ADD_TO_CART: "add-to-cart",
   DELETE_FROM_CART: "delete-from-cart",
+  INCREASE_COUNT: "increase-count",
+  DECREASE_COUNT: "decreaase-count",
+  CLEAR_CART: "clear-cart",
 };
 
 /* ======== */
@@ -15,7 +18,7 @@ const reducer = (currState, action) => {
   if (action.type === ACTIONS.ADD_TO_CART) {
     const getProduct = action.payload.products;
     const getId = action.payload.prodId;
-    console.log(getId);
+    const getCounter = action.payload.counter;
     // Get equal Id's
     const productExists = currState.some((each) => each.prevId === getId);
     if (productExists) {
@@ -31,27 +34,58 @@ const reducer = (currState, action) => {
       image: getProduct[getId - 1].image,
       isInCart: getProduct[getId - 1].isInCart,
       isInStock: getProduct[getId - 1].isInStock,
+      counter: getCounter,
     };
 
     let accAddedCart = [...currState, updatedState];
     localStorage.setItem("addItem", JSON.stringify(accAddedCart));
     const getCartItems = JSON.parse(localStorage.getItem("addItem"));
-    console.log(getCartItems);
-
-    console.log(accAddedCart);
-    // return accAddedCart;
     return getCartItems;
+    // Delete from cart
   } else if (action.type === ACTIONS.DELETE_FROM_CART) {
     let filterId = action.payload.filterId;
     const newProduct = currState.filter((each) => each.id !== filterId);
     localStorage.setItem("addItem", JSON.stringify(newProduct));
-    // console.log(newProduct);
+    console.log(newProduct);
     return newProduct;
+    // Increase Counter
+  } else if (action.type === ACTIONS.INCREASE_COUNT) {
+    let id = action.payload.filterId;
+    const updateCounterState = currState.map((each) => {
+      if (each.id === id) {
+        return {
+          ...each,
+          counter: each.counter < 10 ? each.counter + 1 : (each.counter = 10),
+        };
+      }
+      return each;
+    });
+    localStorage.setItem("addItem", JSON.stringify(updateCounterState));
+    return updateCounterState;
+    // Decrease Counter
+  } else if (action.type === ACTIONS.DECREASE_COUNT) {
+    let id = action.payload.filterId;
+    const updateCounterState = currState.map((each) => {
+      if (each.id === id) {
+        return {
+          ...each,
+          counter: each.counter > 1 ? each.counter - 1 : (each.counter = 1),
+        };
+      }
+      return each;
+    });
+    localStorage.setItem("addItem", JSON.stringify(updateCounterState));
+    return updateCounterState;
+    // Clear cart
+  } else if (action.type === ACTIONS.CLEAR_CART) {
+    localStorage.removeItem("addItem");
+    return [];
   }
   return currState;
 };
 
-/* ========= */
+/* =================== */
+/* =================== */
 // AppProvider Component
 export const AppProvider = ({ children }) => {
   const [showNav, setShowNav] = useState("");
@@ -65,15 +99,18 @@ export const AppProvider = ({ children }) => {
   const [successNoti, setSuccessNoti] = useState(false);
   const [failureNoti, setFailureNoti] = useState(false);
 
-  const getCartItems = JSON.parse(localStorage.getItem("addItem"));
+  const getCartItems = JSON.parse(localStorage.getItem("addItem")) || [];
+
+  const [count, setCount] = useState(1);
 
   const [cartCount, setCartCount] = useState(1);
+  const [getProductDetails, setGetProductDetails] = useState({});
 
   // Using useReducer for Cart
   const [initState, dispatch] = useReducer(reducer, [], () => {
     const storedCartItems = localStorage.getItem("addItem");
     return storedCartItems ? JSON.parse(storedCartItems) : [];
-  });
+  }); //The third arguement is an initializer that checks if there are any existing cart items stored in the local storage.
 
   // Fetch all Products
   const getAllProducts = async () => {
@@ -106,8 +143,48 @@ export const AppProvider = ({ children }) => {
     }
   }, []);
 
-  const handleIncrease = () => {
-    return;
+  // Cart Page IncreaseHandler
+  const increaseHandler = (index) => {
+    dispatch({
+      type: ACTIONS.INCREASE_COUNT,
+      payload: { filterId: index },
+    });
+    // if (getCartItems.length > 0) {
+    //   const updateCounter = getCartItems.map((each) => {
+    //     console.log(each.counter);
+    //     if (each.id === index) {
+    //       return {
+    //         ...each,
+    //         counter: each.counter < 10 ? each.counter + 1 : (each.counter = 10),
+    //       };
+    //     }
+    //     return each;
+    //   });
+    //   console.log(updateCounter);
+    //   return;
+    // }
+  };
+
+  // Cart Page DecreaseHandler
+  const decreaseHandler = (index) => {
+    dispatch({
+      type: ACTIONS.DECREASE_COUNT,
+      payload: { filterId: index },
+    });
+    // if (getCartItems.length > 0) {
+    //   const updateCounter = getCartItems.map((each) => {
+    //     console.log(each.counter);
+    //     if (each.id === index) {
+    //       return {
+    //         ...each,
+    //         counter: each.counter > 1 ? each.counter - 1 : (each.counter = 1),
+    //       };
+    //     }
+    //     return each;
+    //   });
+    //   console.log(updateCounter);
+    //   return;
+    // }
   };
 
   return (
@@ -136,6 +213,12 @@ export const AppProvider = ({ children }) => {
         cartCount,
         setCartCount,
         getCartItems,
+        increaseHandler,
+        decreaseHandler,
+        getProductDetails,
+        setGetProductDetails,
+        count,
+        setCount,
       }}
     >
       {children}

@@ -61,7 +61,10 @@
   cursor: pointer;
   color: var(--extremelylightblack);
   font-weight: 600;
-  line-height: 0.65cm;
+  line-height: 0.8cm;
+}
+.add-li-css {
+  border-bottom: 2px solid #000;
 }
 
 .company-con,

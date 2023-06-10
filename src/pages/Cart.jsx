@@ -2,25 +2,46 @@ import { Link, useLocation } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import "../styles/cart.css";
 import { useGlobalContext } from "../components/context";
-import CartIncDecrease from "../components/CartIncDecrease";
 import Notification from "../components/Notification";
 import { ACTIONS } from "../components/context";
+import { useState } from "react";
 
 const Cart = () => {
-  const { initState, dispatch, notification, successNoti, getCartItems } =
-    useGlobalContext();
-  const location = useLocation();
+  const {
+    initState,
+    dispatch,
+    notification,
+    successNoti,
+    getCartItems,
+    increaseHandler,
+    decreaseHandler,
+  } = useGlobalContext();
 
-  if (location.pathname === "/cart") {
-    // JSON.parse(localStorage.getItem("addItem"));
-    // console.log(initState);
-  }
+  const [shippingFee] = useState(5.34);
+
+  let roundNumber;
 
   const handleDeleteCart = (index) => {
     dispatch({
       type: ACTIONS.DELETE_FROM_CART,
       payload: { filterId: index },
     });
+  };
+
+  const clearHandler = () => {
+    console.log("It is clear");
+    dispatch({ type: ACTIONS.CLEAR_CART });
+  };
+
+  // Calculate the subtotal
+  const calculateSubtotal = () => {
+    let sum = 0;
+    getCartItems.forEach((each) => {
+      const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
+      roundNumber = each.counter * Number(cleanedString); //Round number to two decimal places
+      sum += Number(roundNumber);
+    });
+    return sum.toFixed(2);
   };
 
   return (
@@ -54,6 +75,11 @@ const Cart = () => {
                 {getCartItems &&
                   getCartItems.map((each, i) => {
                     const { id, image, name, price } = each;
+                    const cleanedString = price.replace(/,/g, ""); //Remove the commas
+                    roundNumber = (
+                      each.counter * Number(cleanedString)
+                    ).toFixed(2); //Round number to two decimal places
+                    // check();
                     return (
                       <tr className="body-of-cart" key={i}>
                         <td>
@@ -62,9 +88,23 @@ const Cart = () => {
                         </td>
                         <td>${price}</td>
                         <td>
-                          <CartIncDecrease />
+                          <div className={`count-con`}>
+                            <button
+                              className="decrease"
+                              onClick={() => decreaseHandler(id)}
+                            >
+                              -
+                            </button>
+                            <p>{each.counter}</p>
+                            <button
+                              className="increase"
+                              onClick={() => increaseHandler(id)}
+                            >
+                              +
+                            </button>
+                          </div>
                         </td>
-                        <td>$92.97</td>
+                        <td>${roundNumber}</td>
                         <td>
                           <FaTrash
                             className="delete-product"
@@ -81,22 +121,29 @@ const Cart = () => {
               <Link to="/products">
                 Continue <span>Shopping</span>
               </Link>
-              <button className="clear-shopping-cart-btn">Clear Cart</button>
+              <button
+                className="clear-shopping-cart-btn"
+                onClick={clearHandler}
+              >
+                Clear Cart
+              </button>
             </div>
             <section className="base-total">
               <table className="cart-summary">
                 <tbody>
                   <tr>
                     <th>Subtotal :</th>
-                    <th>$92.97</th>
+                    <th>${calculateSubtotal()}</th>
                   </tr>
                   <tr>
                     <td>Shipping Fee :</td>
-                    <td>$5.34</td>
+                    <td>${shippingFee}</td>
                   </tr>
                   <tr>
                     <th>Order Total :</th>
-                    <th>$98.32</th>
+                    <th>
+                      ${(Number(calculateSubtotal()) + shippingFee).toFixed(2)}
+                    </th>
                   </tr>
                 </tbody>
               </table>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useGlobalContext } from "../components/context";
 import Loader from "../components/Loader";
 import SearchHover from "../components/SearchHover";
@@ -6,6 +7,7 @@ import "../styles/product2.css";
 
 const Products = () => {
   const { isLoading, allProducts, setHoveredIndex } = useGlobalContext();
+  const [borderBottom, setBorderBottom] = useState(false);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -24,13 +26,23 @@ const Products = () => {
             <h3>Category</h3>
             <div>
               <ul>
-                <li>All</li>
-                <li>Office</li>
-                <li>Living Room</li>
-                <li>Kitchen</li>
-                <li>Bedroom</li>
-                <li>Dining</li>
-                <li>Kids</li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>All</li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>
+                  Office
+                </li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>
+                  Living Room
+                </li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>
+                  Kitchen
+                </li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>
+                  Bedroom
+                </li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>
+                  Dining
+                </li>
+                <li className={`${borderBottom ? "add-li-css" : ""}`}>Kids</li>
               </ul>
             </div>
           </div>

@@ -11,21 +11,23 @@ import { products } from "../data";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
-  const [getProductDetails, setGetProductDetails] = useState({});
+
   const {
     isLoading,
     setIsLoading,
     dispatch,
     allProducts,
     setNotification,
-    successNoti,
     setSuccessNoti,
-    failureNoti,
     setFailureNoti,
     initState,
+    cartCount,
+    getCartItems,
+    getProductDetails,
+    setGetProductDetails,
+    count,
+    setCount,
   } = useGlobalContext();
-
-  console.log(productId);
 
   //   Get details of each product
   const getDetails = async () => {
@@ -41,16 +43,12 @@ const SingleProductDetails = () => {
     }
   };
 
-  // console.log(allProducts);
-  // console.log(allProducts[0].details);
-
   // Get the details of single product
   const getSingleDetails = () => {
-    const getAllProducts = JSON.parse(localStorage.getItem("allProducts"));
-    // console.log(getAllProducts);
-    const data = getAllProducts[productId - 1];
+    const getSingleCartItem =
+      JSON.parse(localStorage.getItem("allProducts")) || [];
+    const data = getSingleCartItem[productId - 1];
     setGetProductDetails(data);
-    // console.log(data);
   };
 
   useEffect(() => {
@@ -63,8 +61,9 @@ const SingleProductDetails = () => {
     // Access to single product id and also all products
     dispatch({
       type: ACTIONS.ADD_TO_CART,
-      payload: { prodId: productId, products: allProducts },
+      payload: { prodId: productId, products: allProducts, counter: count },
     });
+    setCount(1);
 
     const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
     // If product already in cart, send a negative notification
@@ -86,11 +85,23 @@ const SingleProductDetails = () => {
     }, 2000);
   };
 
+  const SingleProIncrease = () => {
+    if ((count < 10) & (count > 0)) {
+      setCount(count + 1);
+    }
+  };
+
+  const SingleProDecrease = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
+
   return (
     <>
       <main className="single-detail-page">
         {isLoading && <Loader loaderCss="add-details-loader-css" />}
-        {getProductDetails.details && (
+        {getProductDetails && (
           <section className="display-details-con">
             <div className="back-to-product">
               <Link to="/products">BACK TO PRODUCTS</Link>
@@ -99,11 +110,11 @@ const SingleProductDetails = () => {
               <div className="single-img-details-con">
                 <img
                   src={getProductDetails.image}
-                  alt={getProductDetails.details.name}
+                  alt={getProductDetails.type}
                 />
               </div>
               <article>
-                <h2>{getProductDetails.details.name}</h2>
+                <h2>{getProductDetails.type}</h2>
                 <p>
                   <span>
                     <FaStar />
@@ -112,34 +123,42 @@ const SingleProductDetails = () => {
                     <FaStar />
                     <FaStar />
                   </span>
-                  {getProductDetails.details.reviews}
+                  {getProductDetails.reviews}
                 </p>
                 <p>${getProductDetails.price}</p>
-                <summary>{getProductDetails.details.content}</summary>
+                <summary>{getProductDetails.content}</summary>
                 <table>
                   <tbody>
                     <tr>
                       <td>
                         <span>Available :</span>
                       </td>
-                      <td>{getProductDetails.details.available}</td>
+                      <td>{getProductDetails.available}</td>
                     </tr>
                     <tr>
                       <td>
                         <span>SKU :</span>
                       </td>
-                      <td>{getProductDetails.details.sku}</td>
+                      <td>{getProductDetails.sku}</td>
                     </tr>
                     <tr>
                       <td>
                         <span>Brand :</span>
                       </td>
-                      <td>{getProductDetails.details.brand}</td>
+                      <td>{getProductDetails.brand}</td>
                     </tr>
                   </tbody>
                 </table>
                 <hr />
-                <CartIncDecrease cartCSS="add-cart-css" />
+                <div className={`count-con add-cart-css`}>
+                  <button className="decrease" onClick={SingleProDecrease}>
+                    -
+                  </button>
+                  <p>{count}</p>
+                  <button className="increase" onClick={SingleProIncrease}>
+                    +
+                  </button>
+                </div>
                 <Link to="/cart" onClick={handleCart}>
                   ADD TO CART
                 </Link>
