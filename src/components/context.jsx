@@ -13,7 +13,7 @@ export const ACTIONS = {
 };
 
 const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
-console.log(allProductInStorage);
+// console.log(allProductInStorage);
 
 /* ======== */
 // The reducer function
@@ -101,10 +101,13 @@ export const AppProvider = ({ children }) => {
   const [allProducts, setAllProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(false);
-  // const notiRef = useRef(null);
+
   const [notification, setNotification] = useState(false);
   const [successNoti, setSuccessNoti] = useState(false);
   const [failureNoti, setFailureNoti] = useState(false);
+  const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
+  const [loginLogout, setLoginLogout] = useState(false);
+  const [loginLogoutOverlay, setLoginLogoutOverlay] = useState(false);
 
   const getCartItems = JSON.parse(localStorage.getItem("addItem")) || [];
 
@@ -196,6 +199,12 @@ export const AppProvider = ({ children }) => {
         setCount,
         quantityOfProductInCart,
         allProductInStorage,
+        toggleLoginLogout,
+        setToggleLoginLogout,
+        loginLogoutOverlay,
+        setLoginLogoutOverlay,
+        loginLogout,
+        setLoginLogout,
       }}
     >
       {children}

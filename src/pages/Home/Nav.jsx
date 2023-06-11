@@ -1,18 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
-// Importing icons
-import { FaTimes } from "react-icons/fa";
-import { FaCartPlus } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
-import { FaBars } from "react-icons/fa";
-
+import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
 import Logo from "../../components/Logo";
 import "../../styles/nav.css";
 // import { navData } from "../../../data/pagesData";
 import { useGlobalContext } from "../../components/context";
 
 const Nav = () => {
-  const { showNav, setShowNav, setPathname, quantityOfProductInCart } =
-    useGlobalContext();
+  const {
+    showNav,
+    setShowNav,
+    setPathname,
+    quantityOfProductInCart,
+    toggleLoginLogout,
+    setToggleLoginLogout,
+    setLoginLogoutOverlay,
+  } = useGlobalContext();
   const location = useLocation();
 
   const handleOpen = () => {
@@ -57,9 +59,9 @@ const Nav = () => {
                 {quantityOfProductInCart()}
               </div>
             </Link>
-            <p>
-              Logout
-              <FaUser />
+            <p onClick={() => setLoginLogoutOverlay(true)}>
+              {toggleLoginLogout ? "Logout" : "Login"}
+              <FaUserPlus />
             </p>
           </section>
         </nav>

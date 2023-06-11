@@ -154,7 +154,8 @@ nav ul a:hover {
 }
 @media screen and (max-width: 1200px) {
   .cart-and-logout-sect {
-    width: 30%;
+    /* border: 2px solid red; */
+    width: 35%;
   }
 }
 @media screen and (max-width: 1000px) {
