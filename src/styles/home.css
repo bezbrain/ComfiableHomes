@@ -131,6 +131,9 @@
 .each-image-con {
   /* border: 2px solid red; */
   position: relative;
+  height: 200px;
+  border-radius: 5px;
+  overflow-y: hidden;
 }
 
 .img-overlay {

@@ -50,6 +50,7 @@
 @media screen and (max-width: 980px) {
   .single-img-details-con {
     width: 100%;
+    height: 400px;
   }
 }
 

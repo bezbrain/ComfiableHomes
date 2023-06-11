@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../components/context";
 import Loader from "../components/Loader";
 import SearchHover from "../components/SearchHover";
@@ -11,6 +11,8 @@ const Products = () => {
     useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
   const [rangeValue, setRangeValue] = useState(3099.99);
+  const scrollPage = useRef(null);
+  // const asideRef = useRef(null);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -63,11 +65,12 @@ const Products = () => {
     setAllProducts(newRange);
   };
 
+  // "Sort by" Filter function
   const sortingHandler = (e) => {
     //First set category back to All
     setBorderBottom(1);
     setAllProducts(allProductInStorage);
-    if (e.target.value === "Price(Highest)") {
+    if (e.target.value === "Price (Highest)") {
       allProductInStorage.sort((a, b) => {
         let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
         let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
@@ -76,7 +79,7 @@ const Products = () => {
         return toNumberB - toNumberA;
       });
       setAllProducts(allProductInStorage);
-    } else if (e.target.value === "Price(Lowest)") {
+    } else if (e.target.value === "Price (Lowest)") {
       allProductInStorage.sort((a, b) => {
         let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
         let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
@@ -85,7 +88,7 @@ const Products = () => {
         return toNumberA - toNumberB;
       });
       setAllProducts(allProductInStorage);
-    } else if (e.target.value === "Name(A-Z)") {
+    } else if (e.target.value === "Name (A - Z)") {
       allProductInStorage.sort((a, b) => {
         let nameA = a.type.toUpperCase();
         let nameB = b.type.toUpperCase();
@@ -113,17 +116,41 @@ const Products = () => {
       setAllProducts(allProductInStorage);
     }
   };
+  // console.log(scrollPage.current);
 
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
     setAllProducts(allProductInStorage); //To make sure the page has all products on first visit
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    // const asideElement = scrollPage.current;
+    // const sectionElement = asideElement.nextElementSibling;
+    // const scrollTop = window.scrollY;
+    // console.log(window.scrollY);
+    // console.log(scrollTop);
+    // console.log(sectionElement.offsetTop);
+    // if (scrollTop > sectionElement.offsetTop) {
+    //   asideElement.style.transform = `translateY(${
+    //     scrollTop - sectionElement.offsetTop
+    //   }px)`;
+    // } else {
+    //   asideElement.style.transform = "none";
+    // }
+  };
+
   return (
     <>
       <main className="products">
         {/* Left hand side */}
-        <aside>
+        <aside ref={scrollPage}>
           <input type="text" placeholder="Search" />
           <div className="category">
             <h3>Category</h3>
@@ -171,7 +198,16 @@ const Products = () => {
               onChange={rangeValueHandler}
             />
           </div>
-          <button className="clear-filter-btn">Clear Filters</button>
+          <button
+            className="clear-filter-btn"
+            onClick={() => {
+              setBorderBottom(1);
+              setAllProducts(allProductInStorage);
+              setRangeValue(3099.99);
+            }}
+          >
+            Clear Filters
+          </button>
         </aside>
         {/* Right hand side */}
         <section className="products-images-sect scrolling-section">

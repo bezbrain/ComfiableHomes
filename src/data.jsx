@@ -674,18 +674,18 @@ export const company = [
 export const sortBy = [
   {
     id: 1,
-    sort: "Price(Lowest)",
+    sort: "Price (Lowest)",
   },
   {
     id: 2,
-    sort: "Price(Highest)",
+    sort: "Price (Highest)",
   },
   {
     id: 3,
-    sort: "Name(A-Z)",
+    sort: "Name (A - Z)",
   },
   {
     id: 4,
-    sort: "Name(Z-A)",
+    sort: "Name (Z - A)",
   },
 ];
