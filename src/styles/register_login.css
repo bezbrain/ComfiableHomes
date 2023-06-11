@@ -44,6 +44,12 @@
     width: 350px;
   }
 }
+@media screen and (max-width: 500px) {
+  .login-con,
+  .register-con {
+    width: 85%;
+  }
+}
 
 .login-con form input,
 .register-con form input {
