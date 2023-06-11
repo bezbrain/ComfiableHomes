@@ -7,12 +7,16 @@ import "../styles/product2.css";
 import { category, company, sortBy } from "../data";
 
 const Products = () => {
-  const { isLoading, allProducts, setHoveredIndex, setAllProducts } =
-    useGlobalContext();
+  const {
+    isLoading,
+    allProducts,
+    setHoveredIndex,
+    setAllProducts,
+    allProductInStorage,
+  } = useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
   const [rangeValue, setRangeValue] = useState(3099.99);
   const scrollPage = useRef(null);
-  // const asideRef = useRef(null);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -21,7 +25,7 @@ const Products = () => {
     setHoveredIndex(false);
   };
 
-  const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
+  // const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
   // Handle each category
   const categoryHandler = (index, e) => {
     setBorderBottom(index);
@@ -34,6 +38,7 @@ const Products = () => {
     const newCategory = allProductInStorage.filter(
       (each) => each.category === e.textContent
     );
+    console.log(newCategory);
     setAllProducts(newCategory);
   };
 

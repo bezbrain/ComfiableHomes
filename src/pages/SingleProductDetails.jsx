@@ -29,25 +29,12 @@ const SingleProductDetails = () => {
     setCount,
   } = useGlobalContext();
 
-  //   Get details of each product
-  const getDetails = async () => {
-    setIsLoading(true);
-    try {
-      const { data } = await axios.get(
-        `http://localhost:3000/products/${productId}`
-      );
-      setGetProductDetails(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // Get the details of single product
   const getSingleDetails = () => {
     const getSingleCartItem =
       JSON.parse(localStorage.getItem("allProducts")) || [];
     const data = getSingleCartItem[productId - 1];
+    console.log(data);
     setGetProductDetails(data);
   };
 

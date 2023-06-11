@@ -12,6 +12,9 @@ export const ACTIONS = {
   CLEAR_CART: "clear-cart",
 };
 
+const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
+console.log(allProductInStorage);
+
 /* ======== */
 // The reducer function
 const reducer = (currState, action) => {
@@ -26,17 +29,21 @@ const reducer = (currState, action) => {
       return currState;
     }
 
+    console.log(currState);
+
     const updatedState = {
       // ...currState,
       id: Date.now(),
       prevId: getId,
-      name: getProduct[getId - 1].details.name,
-      price: getProduct[getId - 1].price,
-      image: getProduct[getId - 1].image,
-      isInCart: getProduct[getId - 1].isInCart,
-      isInStock: getProduct[getId - 1].isInStock,
+      name: allProductInStorage[getId - 1].type,
+      price: allProductInStorage[getId - 1].price,
+      image: allProductInStorage[getId - 1].image,
+      isInCart: allProductInStorage[getId - 1].isInCart,
+      isInStock: allProductInStorage[getId - 1].isInStock,
       counter: getCounter,
     };
+
+    console.log(updatedState);
 
     let accAddedCart = [...currState, updatedState];
     localStorage.setItem("addItem", JSON.stringify(accAddedCart));
@@ -47,7 +54,6 @@ const reducer = (currState, action) => {
     let filterId = action.payload.filterId;
     const newProduct = currState.filter((each) => each.id !== filterId);
     localStorage.setItem("addItem", JSON.stringify(newProduct));
-    console.log(newProduct);
     return newProduct;
     // Increase Counter
   } else if (action.type === ACTIONS.INCREASE_COUNT) {
@@ -113,25 +119,12 @@ export const AppProvider = ({ children }) => {
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   }); //The third arguement is an initializer that checks if there are any existing cart items stored in the local storage.
 
-  // Fetch all Products
-  const getAllProducts = async () => {
-    setIsLoading(true);
-    try {
-      const { data } = await axios.get("http://localhost:3000/products");
-      setAllProducts(data);
-      localStorage.setItem("AllProducts", JSON.stringify(data));
-      // const getAllImages = JSON.parse(localStorage.getItem("AllProducts"));
-      // setAllProducts(getAllImages);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
+  // Get all Products
   const displayAllData = async () => {
     setIsLoading(true);
     localStorage.setItem("allProducts", JSON.stringify(products));
-    setAllProducts(products);
+    const getStoredProducts = JSON.parse(localStorage.getItem("allProducts"));
+    setAllProducts(getStoredProducts);
     setIsLoading(false);
   };
 
@@ -202,6 +195,7 @@ export const AppProvider = ({ children }) => {
         count,
         setCount,
         quantityOfProductInCart,
+        allProductInStorage,
       }}
     >
       {children}
