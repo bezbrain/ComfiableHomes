@@ -34,8 +34,8 @@
   }
 }
 
-.products aside input {
-  width: 150px;
+.products aside input:first-child {
+  width: 100%;
   height: 35px;
   border-radius: 5px;
   border: none;
@@ -83,8 +83,13 @@
   padding-left: 5px;
 }
 
+.radio-price-con {
+  /* border: 2px solid red; */
+  width: 120px;
+}
+
 .radio-price-con input {
-  width: 50px;
+  width: 100%;
 }
 
 .clear-filter-btn {

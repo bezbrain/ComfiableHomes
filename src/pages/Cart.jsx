@@ -28,8 +28,7 @@ const Cart = () => {
     });
   };
 
-  const clearHandler = () => {
-    console.log("It is clear");
+  const clearCartHandler = () => {
     dispatch({ type: ACTIONS.CLEAR_CART });
   };
 
@@ -38,7 +37,7 @@ const Cart = () => {
     let sum = 0;
     getCartItems.forEach((each) => {
       const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
-      roundNumber = each.counter * Number(cleanedString); //Round number to two decimal places
+      roundNumber = each.counter * Number(cleanedString);
       sum += Number(roundNumber);
     });
     return sum.toFixed(2);
@@ -123,7 +122,7 @@ const Cart = () => {
               </Link>
               <button
                 className="clear-shopping-cart-btn"
-                onClick={clearHandler}
+                onClick={clearCartHandler}
               >
                 Clear Cart
               </button>

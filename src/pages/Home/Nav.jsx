@@ -11,7 +11,8 @@ import "../../styles/nav.css";
 import { useGlobalContext } from "../../components/context";
 
 const Nav = () => {
-  const { showNav, setShowNav, setPathname } = useGlobalContext();
+  const { showNav, setShowNav, setPathname, quantityOfProductInCart } =
+    useGlobalContext();
   const location = useLocation();
 
   const handleOpen = () => {
@@ -52,6 +53,9 @@ const Nav = () => {
                 Cart
                 <FaCartPlus />
               </p>
+              <div className="products-in-cart">
+                {quantityOfProductInCart()}
+              </div>
             </Link>
             <p>
               Logout

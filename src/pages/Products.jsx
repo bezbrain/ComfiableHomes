@@ -4,8 +4,7 @@ import Loader from "../components/Loader";
 import SearchHover from "../components/SearchHover";
 import "../styles/product.css";
 import "../styles/product2.css";
-import { category } from "../data";
-import { company } from "../data";
+import { category, company, sortBy } from "../data";
 
 const Products = () => {
   const { isLoading, allProducts, setHoveredIndex, setAllProducts } =
@@ -53,15 +52,64 @@ const Products = () => {
 
   const rangeValueHandler = (e) => {
     setRangeValue(e.target.value);
-    console.log(rangeValue);
     const newRange = allProductInStorage.filter((each) => {
+      //First set category back to All
+      setBorderBottom(1);
+      setAllProducts(allProductInStorage);
       const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
       const toNumber = Number(cleanedString);
-      console.log(toNumber);
-      return toNumber >= Number(rangeValue);
+      return toNumber >= Number(rangeValue) && toNumber <= 3099.99;
     });
-    // console.log(newRange);
     setAllProducts(newRange);
+  };
+
+  const sortingHandler = (e) => {
+    console.log(e.target.value);
+    if (e.target.value === "Price(Highest)") {
+      allProductInStorage.sort((a, b) => {
+        let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
+        let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
+        let toNumberA = Number(cleanedStringA);
+        let toNumberB = Number(cleanedStringB);
+        return toNumberB - toNumberA;
+      });
+      setAllProducts(allProductInStorage);
+    } else if (e.target.value === "Price(Lowest)") {
+      allProductInStorage.sort((a, b) => {
+        let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
+        let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
+        let toNumberA = Number(cleanedStringA);
+        let toNumberB = Number(cleanedStringB);
+        return toNumberA - toNumberB;
+      });
+      setAllProducts(allProductInStorage);
+    } else if (e.target.value === "Name(A-Z)") {
+      allProductInStorage.sort((a, b) => {
+        let nameA = a.type.toUpperCase();
+        let nameB = b.type.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      });
+      setAllProducts(allProductInStorage);
+    } else {
+      allProductInStorage.sort((a, b) => {
+        let nameA = a.type.toUpperCase();
+        let nameB = b.type.toUpperCase();
+        if (nameA < nameB) {
+          return 1;
+        }
+        if (nameA > nameB) {
+          return -1;
+        }
+        return 0;
+      });
+      setAllProducts(allProductInStorage);
+    }
   };
 
   useEffect(() => {
@@ -135,11 +183,15 @@ const Products = () => {
             <hr className="wobble" />
             <div className="sort-con">
               <p>Sort By: </p>
-              <select name="" id="">
-                <option value="">Price (Lowest)</option>
-                <option value="">Price (Highest)</option>
-                <option value="">Name (A-Z)</option>
-                <option value="">Name (Z-A)</option>
+              <select name="" id="" onChange={(e) => sortingHandler(e)}>
+                {sortBy.map((each, i) => {
+                  const { id, sort } = each;
+                  return (
+                    <option value={sort} key={i}>
+                      {sort}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </header>

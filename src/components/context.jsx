@@ -160,6 +160,15 @@ export const AppProvider = ({ children }) => {
     });
   };
 
+  // Quantity of items in cart function
+  const quantityOfProductInCart = () => {
+    let sum = 0;
+    getCartItems.forEach((each) => {
+      sum += each.counter;
+    });
+    return sum;
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -192,6 +201,7 @@ export const AppProvider = ({ children }) => {
         setGetProductDetails,
         count,
         setCount,
+        quantityOfProductInCart,
       }}
     >
       {children}
