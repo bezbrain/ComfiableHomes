@@ -64,7 +64,9 @@ const Products = () => {
   };
 
   const sortingHandler = (e) => {
-    console.log(e.target.value);
+    //First set category back to All
+    setBorderBottom(1);
+    setAllProducts(allProductInStorage);
     if (e.target.value === "Price(Highest)") {
       allProductInStorage.sort((a, b) => {
         let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
