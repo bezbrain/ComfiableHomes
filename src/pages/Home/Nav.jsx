@@ -59,7 +59,12 @@ const Nav = () => {
                 {quantityOfProductInCart()}
               </div>
             </Link>
-            <p onClick={() => setLoginLogoutOverlay(true)}>
+            <p
+              onClick={() => {
+                setShowNav("");
+                setLoginLogoutOverlay(true);
+              }}
+            >
               {toggleLoginLogout ? "Logout" : "Login"}
               <FaUserPlus />
             </p>

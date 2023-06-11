@@ -16,6 +16,7 @@
   align-items: center;
   transition: ease 1s all;
   transform: scale(1);
+  overflow-y: hidden;
 }
 
 .close-overlay {
