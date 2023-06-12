@@ -13,7 +13,6 @@ export const ACTIONS = {
   CLEAR_CART: "clear-cart",
 };
 
-const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
 // console.log(allProductInStorage);
 
 /* ======== */
@@ -21,6 +20,7 @@ const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
 const reducer = (currState, action) => {
   // Add to cart
   if (action.type === ACTIONS.ADD_TO_CART) {
+    const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
     const getProduct = action.payload.products;
     const getId = action.payload.prodId;
     const getCounter = action.payload.counter;
@@ -122,6 +122,7 @@ export const AppProvider = ({ children }) => {
   const [loginRegister, setloginRegister] = useState(false);
   const [loginLogoutOverlay, setLoginLogoutOverlay] = useState(false);
 
+  const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
   const getCartItems = JSON.parse(localStorage.getItem("addItem")) || [];
 
   const [count, setCount] = useState(1);
