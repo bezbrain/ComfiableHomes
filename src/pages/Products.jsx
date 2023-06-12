@@ -124,22 +124,9 @@ const Products = () => {
   };
 
   useEffect(() => {
-    const newPathHeight = pathHeightRef.current.getBoundingClientRect();
     setBorderBottom(1); //To make "All" have the border botton when page loads
     setAllProducts(allProductInStorage); //To make sure the page has all products on first visit
-    // console.log(newPathHeight);
-    if (newPathHeight.height === 138.4375) {
-      // console.log(scrollPage.current);
-    } else {
-      // console.log("Nothing here");
-    }
   }, []);
-
-  window.onscroll = () => {
-    const newPathHeight = pathHeightRef.current.getBoundingClientRect();
-    // console.log(scrollPage.current);
-    // console.log(newPathHeight);
-  };
 
   return (
     <>
