@@ -227,18 +227,19 @@
   }
 }
 
-.base-total a {
+.base-total button {
   text-decoration: none;
   background-color: var(--darkblue);
   display: inline-block;
   width: 100%;
   margin-top: 10px;
   color: #fff;
-  padding-block: 5px;
+  padding-block: 10px;
   border-radius: 5px;
+  border: none;
   transition: ease 0.5 all;
 }
-.base-total a:hover {
+.base-total button:hover {
   background-color: var(--lightblue);
   color: #000;
 }

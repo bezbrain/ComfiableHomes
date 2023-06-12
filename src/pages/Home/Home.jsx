@@ -6,7 +6,6 @@ import FourthSect from "./FourthSect";
 // Importing Styles
 import "../../styles/home.css";
 import "../../styles/home2.css";
-import Register_Login from "../../components/Register_Login";
 // import { useGlobalContext } from "../../components/context";
 
 const Home = () => {
@@ -20,7 +19,6 @@ const Home = () => {
           <p>Loading...</p>
         </div>
       )} */}
-      <Register_Login />
       <div className="home-page">
         {/* Body Section */}
         <article className="body-section">

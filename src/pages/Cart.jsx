@@ -15,6 +15,9 @@ const Cart = () => {
     getCartItems,
     increaseHandler,
     decreaseHandler,
+    toggleLoginLogout,
+    setLoginLogoutOverlay,
+    handleLoginLogout,
   } = useGlobalContext();
 
   const [shippingFee] = useState(5.34);
@@ -146,7 +149,9 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
-              <Link>LOGIN</Link>
+              <button onClick={handleLoginLogout}>
+                {toggleLoginLogout ? "LOGOUT" : "LOGIN"}
+              </button>
             </section>
           </>
         )}

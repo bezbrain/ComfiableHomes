@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { products } from "../data";
+import { useRef } from "react";
 
 const AppContext = React.createContext();
 
@@ -102,11 +103,23 @@ export const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(false);
 
+  // For calculating the height of header path
+  const pathHeightRef = useRef(null);
+  const loginLogoutRef = useRef(null);
+
+  // For popup notification
   const [notification, setNotification] = useState(false);
   const [successNoti, setSuccessNoti] = useState(false);
   const [failureNoti, setFailureNoti] = useState(false);
+  const [loginPopupNoti, setLoginPopupNoti] = useState(false);
+  const [registerPopupNoti, setRegisterPopupNoti] = useState(false);
+  const [showRegisterNoti, setShowRegisterNoti] = useState(false);
+  const [showLoginNoti, setShowLoginNoti] = useState(false);
+  const [showNavLoginNoti, setShowNavLoginNoti] = useState(false);
+
+  // For login and logout
   const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
-  const [loginLogout, setLoginLogout] = useState(false);
+  const [loginRegister, setloginRegister] = useState(false);
   const [loginLogoutOverlay, setLoginLogoutOverlay] = useState(false);
 
   const getCartItems = JSON.parse(localStorage.getItem("addItem")) || [];
@@ -165,6 +178,21 @@ export const AppProvider = ({ children }) => {
     return sum;
   };
 
+  // Nav Bar Login and Logout text toggle
+  const handleLoginLogout = () => {
+    setShowNav("");
+    if (loginLogoutRef.current.textContent === "Login") {
+      setLoginLogoutOverlay(true);
+    } else {
+      setLoginLogoutOverlay(false);
+      setToggleLoginLogout(false);
+      setShowNavLoginNoti(true);
+      setTimeout(() => {
+        setShowNavLoginNoti(false);
+      }, 3000);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -203,8 +231,21 @@ export const AppProvider = ({ children }) => {
         setToggleLoginLogout,
         loginLogoutOverlay,
         setLoginLogoutOverlay,
-        loginLogout,
-        setLoginLogout,
+        loginRegister,
+        setloginRegister,
+        pathHeightRef,
+        registerPopupNoti,
+        setRegisterPopupNoti,
+        loginPopupNoti,
+        setLoginPopupNoti,
+        showRegisterNoti,
+        setShowRegisterNoti,
+        showLoginNoti,
+        setShowLoginNoti,
+        loginLogoutRef,
+        showNavLoginNoti,
+        setShowNavLoginNoti,
+        handleLoginLogout,
       }}
     >
       {children}

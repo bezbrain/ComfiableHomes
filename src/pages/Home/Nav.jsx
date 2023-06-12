@@ -4,6 +4,8 @@ import Logo from "../../components/Logo";
 import "../../styles/nav.css";
 // import { navData } from "../../../data/pagesData";
 import { useGlobalContext } from "../../components/context";
+import { useEffect, useRef } from "react";
+import Notification from "../../components/Notification";
 
 const Nav = () => {
   const {
@@ -14,8 +16,13 @@ const Nav = () => {
     toggleLoginLogout,
     setToggleLoginLogout,
     setLoginLogoutOverlay,
+    loginLogoutRef,
+    showNavLoginNoti,
+    setShowNavLoginNoti,
+    handleLoginLogout,
   } = useGlobalContext();
   const location = useLocation();
+  // const navHeightRef = useRef(null);
 
   const handleOpen = () => {
     setShowNav("add-show-nav-css");
@@ -26,9 +33,18 @@ const Nav = () => {
     setPathname(location);
   };
 
+  // console.log(loginLogoutRef.current);
+
+  // useEffect(() => {
+  //   console.log(navHeightRef.current);
+  //   const newNavHeight = navHeightRef.current.getBoundingClientRect();
+  //   console.log(newNavHeight);
+  // }, []);
+
   return (
     <>
-      <header>
+      {showNavLoginNoti && <Notification notiText="You are logged out" />}
+      <header /*ref={navHeightRef}*/>
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
         <nav className={showNav}>
@@ -59,12 +75,7 @@ const Nav = () => {
                 {quantityOfProductInCart()}
               </div>
             </Link>
-            <p
-              onClick={() => {
-                setShowNav("");
-                setLoginLogoutOverlay(true);
-              }}
-            >
+            <p ref={loginLogoutRef} onClick={handleLoginLogout}>
               {toggleLoginLogout ? "Logout" : "Login"}
               <FaUserPlus />
             </p>

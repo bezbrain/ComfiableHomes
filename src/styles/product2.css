@@ -3,7 +3,7 @@
 .products-images-sect {
   /* border: 2px solid green; */
   width: 75%;
-  margin-left: auto;
+  margin-left: auto; /* To move the right container to the right on position absolute */
 }
 @media screen and (max-width: 800px) {
   .products-images-sect {

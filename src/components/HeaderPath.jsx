@@ -1,14 +1,21 @@
 import "../styles/about.css";
 import { useLocation, Link } from "react-router-dom";
 import { useGlobalContext } from "./context";
+import { useEffect } from "react";
 
 const HeaderPath = () => {
-  const { allProducts } = useGlobalContext();
+  const { allProducts, pathHeightRef } = useGlobalContext();
   const location = useLocation();
+
+  useEffect(() => {
+    // console.log(pathHeightRef.current);
+    // const newPathHeight = pathHeightRef.current.getBoundingClientRect();
+    // console.log(newPathHeight);
+  }, []);
 
   return (
     <>
-      <section className="header-path">
+      <section className="header-path" ref={pathHeightRef}>
         <div>
           <p>
             <Link to={"/"} style={{ textDecoration: "none", color: "#000" }}>

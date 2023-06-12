@@ -13,6 +13,7 @@ const Products = () => {
     setHoveredIndex,
     setAllProducts,
     allProductInStorage,
+    pathHeightRef,
   } = useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
   const [rangeValue, setRangeValue] = useState(3099.99);
@@ -121,34 +122,23 @@ const Products = () => {
       setAllProducts(allProductInStorage);
     }
   };
-  // console.log(scrollPage.current);
 
   useEffect(() => {
+    const newPathHeight = pathHeightRef.current.getBoundingClientRect();
     setBorderBottom(1); //To make "All" have the border botton when page loads
     setAllProducts(allProductInStorage); //To make sure the page has all products on first visit
+    // console.log(newPathHeight);
+    if (newPathHeight.height === 138.4375) {
+      // console.log(scrollPage.current);
+    } else {
+      // console.log("Nothing here");
+    }
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleScroll = () => {
-    // const asideElement = scrollPage.current;
-    // const sectionElement = asideElement.nextElementSibling;
-    // const scrollTop = window.scrollY;
-    // console.log(window.scrollY);
-    // console.log(scrollTop);
-    // console.log(sectionElement.offsetTop);
-    // if (scrollTop > sectionElement.offsetTop) {
-    //   asideElement.style.transform = `translateY(${
-    //     scrollTop - sectionElement.offsetTop
-    //   }px)`;
-    // } else {
-    //   asideElement.style.transform = "none";
-    // }
+  window.onscroll = () => {
+    const newPathHeight = pathHeightRef.current.getBoundingClientRect();
+    // console.log(scrollPage.current);
+    // console.log(newPathHeight);
   };
 
   return (
