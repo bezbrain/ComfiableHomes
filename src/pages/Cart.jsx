@@ -90,7 +90,7 @@ const Cart = () => {
                         </td>
                         <td>${price}</td>
                         <td>
-                          <div className={`count-con`}>
+                          <div className="count-con">
                             <button
                               className="decrease"
                               onClick={() => decreaseHandler(id)}
