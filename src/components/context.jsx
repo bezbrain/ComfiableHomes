@@ -13,8 +13,6 @@ export const ACTIONS = {
   CLEAR_CART: "clear-cart",
 };
 
-// console.log(allProductInStorage);
-
 /* ======== */
 // The reducer function
 const reducer = (currState, action) => {
@@ -33,7 +31,6 @@ const reducer = (currState, action) => {
     console.log(currState);
 
     const updatedState = {
-      // ...currState,
       id: Date.now(),
       prevId: getId,
       name: allProductInStorage[getId - 1].type,
@@ -43,8 +40,6 @@ const reducer = (currState, action) => {
       isInStock: allProductInStorage[getId - 1].isInStock,
       counter: getCounter,
     };
-
-    console.log(updatedState);
 
     let accAddedCart = [...currState, updatedState];
     localStorage.setItem("addItem", JSON.stringify(accAddedCart));

@@ -13,9 +13,18 @@
   font-size: 2.5rem;
   font-weight: 700;
 }
+
+.header-path p span span a {
+  text-decoration: none;
+  color: var(--darkblue);
+}
 @media screen and (max-width: 600px) {
+  .header-path {
+    padding-block: 3vh;
+  }
+
   .header-path div p {
-    font-size: 30px;
+    font-size: 5vw;
   }
 }
 

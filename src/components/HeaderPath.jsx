@@ -4,14 +4,12 @@ import { useGlobalContext } from "./context";
 import { useEffect } from "react";
 
 const HeaderPath = () => {
-  const { allProducts, pathHeightRef } = useGlobalContext();
+  const { allProducts, getProductDetails, allProductInStorage, pathHeightRef } =
+    useGlobalContext();
   const location = useLocation();
 
-  useEffect(() => {
-    // console.log(pathHeightRef.current);
-    // const newPathHeight = pathHeightRef.current.getBoundingClientRect();
-    // console.log(newPathHeight);
-  }, []);
+  // Get single object from the localStorage
+  const getSingleObj = JSON.parse(localStorage.getItem("singleItem")) || {};
 
   return (
     <>
@@ -23,15 +21,19 @@ const HeaderPath = () => {
             </Link>
             <span style={{ color: "blue" }}>
               {" "}
-              {location.pathname === "/about"
-                ? "About"
-                : location.pathname === "/products"
-                ? "Products"
-                : location.pathname === "/cart"
-                ? "Cart"
-                : // : location.pathname === "/products/2"
-                  // ? location.pathname
-                  "Error Page"}
+              {location.pathname === "/about" ? (
+                "About"
+              ) : location.pathname === "/products" ? (
+                "Products"
+              ) : location.pathname === "/cart" ? (
+                "Cart"
+              ) : location.pathname === `/products/${getSingleObj.id}` ? (
+                <span>
+                  <Link to="/products">Products</Link> / {getSingleObj.type}
+                </span>
+              ) : (
+                "Error Page"
+              )}
             </span>
           </p>
         </div>

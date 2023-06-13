@@ -33,13 +33,14 @@ const SingleProductDetails = () => {
   const getSingleDetails = () => {
     const getSingleCartItem =
       JSON.parse(localStorage.getItem("allProducts")) || [];
-    const data = getSingleCartItem[productId - 1];
-    console.log(data);
-    setGetProductDetails(data);
+    const singleObj = getSingleCartItem[productId - 1];
+    localStorage.setItem("singleItem", JSON.stringify(singleObj));
+    const getSingleObj = JSON.parse(localStorage.getItem("singleItem"));
+    // console.log(getSingleObj);
+    setGetProductDetails(getSingleObj);
   };
 
   useEffect(() => {
-    // getDetails();
     getSingleDetails();
   }, []);
 
