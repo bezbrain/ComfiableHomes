@@ -20,6 +20,7 @@ const Nav = () => {
     showNavLoginNoti,
     setShowNavLoginNoti,
     handleLoginLogout,
+    isLogged,
   } = useGlobalContext();
   const location = useLocation();
   // const navHeightRef = useRef(null);
@@ -33,18 +34,10 @@ const Nav = () => {
     setPathname(location);
   };
 
-  // console.log(loginLogoutRef.current);
-
-  // useEffect(() => {
-  //   console.log(navHeightRef.current);
-  //   const newNavHeight = navHeightRef.current.getBoundingClientRect();
-  //   console.log(newNavHeight);
-  // }, []);
-
   return (
     <>
       {showNavLoginNoti && <Notification notiText="You are logged out" />}
-      <header /*ref={navHeightRef}*/>
+      <header>
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
         <nav className={showNav}>
@@ -76,7 +69,8 @@ const Nav = () => {
               </div>
             </Link>
             <p ref={loginLogoutRef} onClick={handleLoginLogout}>
-              {toggleLoginLogout ? "Logout" : "Login"}
+              {/* {toggleLoginLogout ? "Logout" : "Login"} */}
+              {isLogged}
               <FaUserPlus />
             </p>
           </section>

@@ -5,6 +5,16 @@ import { useRef } from "react";
 
 const AppContext = React.createContext();
 
+import { initializeApp } from "firebase/app";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
+
 export const ACTIONS = {
   ADD_TO_CART: "add-to-cart",
   DELETE_FROM_CART: "delete-from-cart",
@@ -91,6 +101,19 @@ const reducer = (currState, action) => {
 /* =================== */
 // AppProvider Component
 export const AppProvider = ({ children }) => {
+  const firebaseConfig = {
+    apiKey: "AIzaSyBXI8PuElPuXsSqFWVnvJcpFgeh3rG0jig",
+    authDomain: "comfiablehomes.firebaseapp.com",
+    projectId: "comfiablehomes",
+    storageBucket: "comfiablehomes.appspot.com",
+    messagingSenderId: "778014108141",
+    appId: "1:778014108141:web:925007899f36eaba085fe4",
+  };
+
+  initializeApp(firebaseConfig);
+
+  const auth = getAuth();
+
   const [showNav, setShowNav] = useState("");
   const [pathname, setPathname] = useState("");
   const [homeProducts, setHomeProducts] = useState([]);
@@ -106,8 +129,8 @@ export const AppProvider = ({ children }) => {
   const [notification, setNotification] = useState(false);
   const [successNoti, setSuccessNoti] = useState(false);
   const [failureNoti, setFailureNoti] = useState(false);
-  const [loginPopupNoti, setLoginPopupNoti] = useState(false);
-  const [registerPopupNoti, setRegisterPopupNoti] = useState(false);
+  const [loginPopupNoti, setLoginPopupNoti] = useState("");
+  const [registerPopupNoti, setRegisterPopupNoti] = useState("");
   const [showRegisterNoti, setShowRegisterNoti] = useState(false);
   const [showLoginNoti, setShowLoginNoti] = useState(false);
   const [showNavLoginNoti, setShowNavLoginNoti] = useState(false);
@@ -116,6 +139,11 @@ export const AppProvider = ({ children }) => {
   const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
   const [loginRegister, setloginRegister] = useState(false);
   const [loginLogoutOverlay, setLoginLogoutOverlay] = useState(false);
+
+  // "Login"-nav item to Change to "Logout" if Logged in and vice versa
+  const [isLogged, setIsLogged] = useState("Log in");
+
+  const [userToken, setUserToken] = useState("");
 
   const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
   const getCartItems = JSON.parse(localStorage.getItem("addItem")) || [];
@@ -175,19 +203,49 @@ export const AppProvider = ({ children }) => {
   };
 
   // Nav Bar Login and Logout text toggle
-  const handleLoginLogout = () => {
+  const handleLoginLogout = async () => {
     setShowNav("");
     if (loginLogoutRef.current.textContent === "Login") {
       setLoginLogoutOverlay(true);
     } else {
+      await signOut(auth);
+      // Clear the authentication token from session storage
+      sessionStorage.removeItem("authToken");
       setLoginLogoutOverlay(false);
-      setToggleLoginLogout(false);
+      setSuccessNoti(true);
+      // setToggleLoginLogout(false);
       setShowNavLoginNoti(true);
       setTimeout(() => {
         setShowNavLoginNoti(false);
       }, 3000);
     }
   };
+
+  /* Function to extract error message from the firebase returned message */
+  const extratingErrorMsg = (error) => {
+    const startIndex = error.indexOf("/") + 1;
+    const endIndex = error.indexOf(")");
+    const errorCode = error.substring(startIndex, endIndex);
+    // Capitalize the error message
+    const capitalizedError =
+      errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
+    return capitalizedError;
+  };
+
+  /* ================ */
+  // Access the user to login or logout
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLogged("Logout");
+      } else {
+        setIsLogged("Login");
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   return (
     <AppContext.Provider
@@ -242,6 +300,13 @@ export const AppProvider = ({ children }) => {
         showNavLoginNoti,
         setShowNavLoginNoti,
         handleLoginLogout,
+        auth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        extratingErrorMsg,
+        userToken,
+        setUserToken,
+        isLogged,
       }}
     >
       {children}

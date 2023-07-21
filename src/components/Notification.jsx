@@ -7,8 +7,6 @@ import { useGlobalContext } from "./context";
 const Notification = ({ notiText }) => {
   const { successNoti, setSuccessNoti, failureNoti, setFailureNoti } =
     useGlobalContext();
-  //   const [notiText, setNotiText] = useState("");
-  // console.log(notiRef.current);
 
   return (
     <>

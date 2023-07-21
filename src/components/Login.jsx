@@ -18,6 +18,9 @@ const Login = () => {
     setLoginLogoutOverlay,
     setToggleLoginLogout,
     loginLogoutRef,
+    auth,
+    signInWithEmailAndPassword,
+    extratingErrorMsg,
   } = useGlobalContext();
 
   const eachPerson = {
@@ -28,6 +31,8 @@ const Login = () => {
 
   const { email, password } = person;
 
+  const [firebaseError, setFirebaseError] = useState("");
+
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -37,33 +42,53 @@ const Login = () => {
     });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
       setShowLoginNoti(true);
       setShowRegisterNoti(false);
       setFailureNoti(true);
       setSuccessNoti(false);
-      setLoginPopupNoti(true);
+      setLoginPopupNoti("error");
       setTimeout(() => {
         setShowLoginNoti(false);
       }, 3000);
       return;
     }
-    console.log(person);
-    setPerson(eachPerson);
-    setloginRegister(false);
-    setToggleLoginLogout(true);
-    setFailureNoti(false);
-    setLoginPopupNoti(false);
-    setSuccessNoti(true);
-    setShowRegisterNoti(false);
-    setShowLoginNoti(true);
+    try {
+      // console.log(person);
+      const cred = await signInWithEmailAndPassword(auth, email, password);
+      console.log(cred.user);
 
-    setTimeout(() => {
-      setLoginLogoutOverlay(false);
-      setShowLoginNoti(false);
-    }, 3000);
+      const userToken = await auth.currentUser.getIdToken();
+
+      sessionStorage.setItem("authToken", userToken); // Store the authentication token in session storage
+
+      setPerson(eachPerson);
+      setloginRegister(false);
+      setToggleLoginLogout(true);
+      setFailureNoti(false);
+      setLoginPopupNoti("success");
+      setSuccessNoti(true);
+      setShowRegisterNoti(false);
+      setShowLoginNoti(true);
+
+      setTimeout(() => {
+        setLoginLogoutOverlay(false);
+        setShowLoginNoti(false);
+      }, 3000);
+    } catch (error) {
+      setShowLoginNoti(true);
+      setLoginPopupNoti("firebase-error");
+      setFailureNoti(true);
+      const errorMessage = extratingErrorMsg(error.message);
+      setFirebaseError(errorMessage);
+      setLoginPopupNoti(errorMessage);
+      console.log(error.message);
+      setTimeout(() => {
+        setShowLoginNoti(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -72,7 +97,11 @@ const Login = () => {
       {showLoginNoti && (
         <Notification
           notiText={`${
-            loginPopupNoti ? "No field should be empty" : "Login successfully"
+            loginPopupNoti === "error"
+              ? "No field should be empty"
+              : loginPopupNoti === "success"
+              ? "Login successfully"
+              : firebaseError
           }`}
         />
       )}

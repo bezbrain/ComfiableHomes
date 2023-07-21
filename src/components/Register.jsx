@@ -15,7 +15,11 @@ const Register = () => {
     showRegisterNoti,
     setShowRegisterNoti,
     setShowLoginNoti,
+    auth,
+    createUserWithEmailAndPassword,
+    extratingErrorMsg,
   } = useGlobalContext();
+
   const eachPerson = {
     username: "",
     email: "",
@@ -23,6 +27,8 @@ const Register = () => {
   };
   const [person, setPerson] = useState(eachPerson);
   const { username, email, password } = person;
+
+  const [firebaseError, setFirebaseError] = useState("");
 
   const handleInputChange = (e) => {
     let name = e.target.name;
@@ -33,30 +39,45 @@ const Register = () => {
     });
   };
 
-  const registerHandler = (e) => {
+  const registerHandler = async (e) => {
     e.preventDefault();
     if (!username || !email || !password) {
       setShowRegisterNoti(true);
       setShowLoginNoti(false);
       setFailureNoti(true);
       setSuccessNoti(false);
-      setRegisterPopupNoti(true);
+      setRegisterPopupNoti("error");
       setTimeout(() => {
         setShowRegisterNoti(false);
       }, 3000);
       return;
     }
-    console.log(person);
-    setPerson(eachPerson);
-    setloginRegister(false);
-    setShowRegisterNoti(true);
-    setShowLoginNoti(false);
-    setSuccessNoti(true);
-    setFailureNoti(false);
-    setRegisterPopupNoti(false);
-    setTimeout(() => {
-      setShowRegisterNoti(false);
-    }, 3000);
+    try {
+      // console.log(person);
+      const cred = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(cred.user);
+      setPerson(eachPerson);
+      setloginRegister(false);
+      setShowRegisterNoti(true);
+      setShowLoginNoti(false);
+      setSuccessNoti(true);
+      setFailureNoti(false);
+      setRegisterPopupNoti("success");
+      setTimeout(() => {
+        setShowRegisterNoti(false);
+      }, 3000);
+    } catch (error) {
+      setShowRegisterNoti(true);
+      setRegisterPopupNoti("firebase-error");
+      setFailureNoti(true);
+      const errorMessage = extratingErrorMsg(error.message);
+      setFirebaseError(errorMessage);
+      setRegisterPopupNoti(errorMessage);
+      console.log(error.message);
+      setTimeout(() => {
+        setShowRegisterNoti(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -65,9 +86,11 @@ const Register = () => {
       {showRegisterNoti && (
         <Notification
           notiText={`${
-            registerPopupNoti
+            registerPopupNoti === "error"
               ? "No field should be empty"
-              : "Registered! Now Login"
+              : registerPopupNoti === "success"
+              ? "Registered! Now Login"
+              : firebaseError
           }`}
         />
       )}
