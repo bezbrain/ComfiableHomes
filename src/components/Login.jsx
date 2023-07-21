@@ -81,6 +81,7 @@ const Login = () => {
       setShowLoginNoti(true);
       setLoginPopupNoti("firebase-error");
       setFailureNoti(true);
+      setSuccessNoti(false);
       const errorMessage = extratingErrorMsg(error.message);
       setFirebaseError(errorMessage);
       setLoginPopupNoti(errorMessage);
