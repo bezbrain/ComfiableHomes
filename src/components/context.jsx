@@ -209,11 +209,9 @@ export const AppProvider = ({ children }) => {
       setLoginLogoutOverlay(true);
     } else {
       await signOut(auth);
-      // Clear the authentication token from session storage
-      sessionStorage.removeItem("authToken");
+      sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
       setLoginLogoutOverlay(false);
       setSuccessNoti(true);
-      // setToggleLoginLogout(false);
       setShowNavLoginNoti(true);
       setTimeout(() => {
         setShowNavLoginNoti(false);
