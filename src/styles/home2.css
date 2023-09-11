@@ -157,7 +157,6 @@
 
 @media screen and (max-width: 450px) {
   .newletter-email input:first-child {
-    /* border: 3px solid yellow; */
     width: 200px;
   }
 }
@@ -169,6 +168,7 @@
   border-radius: 0px 5px 5px 0px;
   border: none;
   color: #fff;
+  cursor: pointer;
 }
 
 /* ======== */
@@ -176,11 +176,6 @@
 .footer-bg {
   background-color: #000;
 }
-/* .add-footer-css {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-} */
 
 .footer {
   padding-inline: var(--pagesectionspadding);

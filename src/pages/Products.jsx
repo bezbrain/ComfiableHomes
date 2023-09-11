@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../components/context";
 import Loader from "../components/Loader";
@@ -39,7 +40,7 @@ const Products = () => {
     const newCategory = allProductInStorage.filter(
       (each) => each.category === e.textContent
     );
-    console.log(newCategory);
+    // console.log(newCategory);
     setAllProducts(newCategory);
   };
 

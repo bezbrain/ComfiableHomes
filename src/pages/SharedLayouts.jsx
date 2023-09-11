@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Outlet } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import Nav from "./Home/Nav";

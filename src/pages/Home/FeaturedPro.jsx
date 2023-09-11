@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import HomeImages from "../../components/HomeImages";
 import AllProductsBtn from "../../components/AllProductsBtn";
 import { useGlobalContext } from "../../components/context";

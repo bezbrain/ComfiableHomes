@@ -20,20 +20,6 @@
   width: 200px;
   margin-top: 20px;
 }
-@media screen and (min-width: 800px) {
-  .products aside {
-    /* height: fit-content; */
-    /* position: fixed;
-    top: 0px; */
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .products aside {
-    /* width: 10%; */
-    /* border: 2px solid red; */
-  }
-}
 
 .products aside input:first-child {
   width: 100%;
@@ -88,6 +74,7 @@
   height: 25px;
   border-radius: 5px;
   padding-left: 5px;
+  cursor: pointer;
 }
 
 .radio-price-con {
@@ -97,6 +84,7 @@
 
 .radio-price-con input {
   width: 100%;
+  cursor: pointer;
 }
 
 .clear-filter-btn {

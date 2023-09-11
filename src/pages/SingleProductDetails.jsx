@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -8,6 +9,7 @@ import "../styles/singleproduct.css";
 import { ACTIONS } from "../components/context";
 import CartIncDecrease from "../components/CartIncDecrease";
 import { products } from "../data";
+import Notification from "../components/Notification";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
@@ -19,6 +21,7 @@ const SingleProductDetails = () => {
     allProducts,
     setNotification,
     setSuccessNoti,
+    failureNoti,
     setFailureNoti,
     initState,
     cartCount,
@@ -44,33 +47,41 @@ const SingleProductDetails = () => {
     getSingleDetails();
   }, []);
 
+  const authToken = sessionStorage.getItem("authToken");
   // On click of "ADD TO CART" btn
   const handleCart = () => {
-    // Access to single product id and also all products
-    dispatch({
-      type: ACTIONS.ADD_TO_CART,
-      payload: { prodId: productId, products: allProducts, counter: count },
-    });
-    setCount(1);
-
-    const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
-    // If product already in cart, send a negative notification
-    if (newProd) {
-      setNotification(true);
+    if (!authToken) {
       setFailureNoti(true);
-      setSuccessNoti(false);
+      setTimeout(() => {
+        setFailureNoti(false);
+      }, 3000);
+    } else {
+      // Access to single product id and also all products
+      dispatch({
+        type: ACTIONS.ADD_TO_CART,
+        payload: { prodId: productId, products: allProducts, counter: count },
+      });
+      setCount(1);
+
+      const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
+      // If product already in cart, send a negative notification
+      if (newProd) {
+        setNotification(true);
+        setFailureNoti(true);
+        setSuccessNoti(false);
+        setTimeout(() => {
+          setNotification(false);
+        }, 2000);
+        return;
+      }
+      // If product not in cart, send a positive notification
+      setNotification(true);
+      setSuccessNoti(true);
+      setFailureNoti(false);
       setTimeout(() => {
         setNotification(false);
       }, 2000);
-      return;
     }
-    // If product not in cart, send a positive notification
-    setNotification(true);
-    setSuccessNoti(true);
-    setFailureNoti(false);
-    setTimeout(() => {
-      setNotification(false);
-    }, 2000);
   };
 
   const SingleProIncrease = () => {
@@ -87,6 +98,7 @@ const SingleProductDetails = () => {
 
   return (
     <>
+      {failureNoti && <Notification notiText="Please Login" />}
       <main className="single-detail-page">
         {isLoading && <Loader loaderCss="add-details-loader-css" />}
         {getProductDetails && (
@@ -147,7 +159,7 @@ const SingleProductDetails = () => {
                     +
                   </button>
                 </div>
-                <Link to="/cart" onClick={handleCart}>
+                <Link to={`${!authToken ? "" : "/cart"}`} onClick={handleCart}>
                   ADD TO CART
                 </Link>
               </article>

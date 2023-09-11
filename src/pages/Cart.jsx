@@ -1,4 +1,5 @@
-import { Link, useLocation } from "react-router-dom";
+/* eslint-disable no-unused-vars */
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
 import "../styles/cart.css";
 import { useGlobalContext } from "../components/context";
@@ -12,15 +13,20 @@ const Cart = () => {
     dispatch,
     notification,
     successNoti,
+    setSuccessNoti,
     getCartItems,
     increaseHandler,
     decreaseHandler,
     toggleLoginLogout,
     setLoginLogoutOverlay,
     handleLoginLogout,
+    showNavLoginNoti,
+    setShowNavLoginNoti,
   } = useGlobalContext();
 
   const [shippingFee] = useState(5.34);
+
+  const navigate = useNavigate();
 
   let roundNumber;
 
@@ -45,6 +51,8 @@ const Cart = () => {
     });
     return sum.toFixed(2);
   };
+
+  const authToken = sessionStorage.getItem("authToken");
 
   return (
     <>
@@ -149,8 +157,15 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
-              <button onClick={handleLoginLogout}>
-                {toggleLoginLogout ? "LOGOUT" : "LOGIN"}
+              <button
+                onClick={() => {
+                  handleLoginLogout();
+                  setTimeout(() => {
+                    navigate("/");
+                  }, 2000);
+                }}
+              >
+                {authToken ? "LOGOUT" : "LOGIN"}
               </button>
             </section>
           </>

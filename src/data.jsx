@@ -2,8 +2,7 @@ export const products = [
   {
     id: 1,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753501/react-comfy-store-products/prod-12_ga6sdq.jpg",
+    image: "https://www.course-api.com/images/store/product-12.jpeg",
     type: "Modern Poster",
     price: "30.99",
     reviews: "(100 customer reviews)",
@@ -30,8 +29,7 @@ export const products = [
   {
     id: 2,
     category: "Bedroom",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750929/react-comfy-store-products/product-4_ebl6q1.jpg",
+    image: "https://www.course-api.com/images/store/product-4.jpeg",
     type: "Armchair",
     price: "125.99",
     reviews: "(100 customer reviews)",
@@ -58,8 +56,7 @@ export const products = [
   {
     id: 3,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753657/react-comfy-store-products/prod-16_jfwx3m.jpg",
+    image: "https://www.course-api.com/images/store/product-16.jpeg",
     type: "Suede Armchair",
     price: "159.99",
     reviews: "(100 customer reviews)",
@@ -86,8 +83,7 @@ export const products = [
   {
     id: 4,
     category: "Bedroom",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753354/react-comfy-store-products/prod-9_j3dsja.jpg",
+    image: "https://www.course-api.com/images/store/product-9.jpeg",
     type: "Leather Chair",
     price: "200.99",
     reviews: "(100 customer reviews)",
@@ -113,8 +109,7 @@ export const products = [
   {
     id: 5,
     category: "Bedroom",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681752461/react-comfy-store-products/product-6_rhaxfo.jpg",
+    image: "https://www.course-api.com/images/store/product-6.jpeg",
     type: "Emperor Bed",
     price: "239.99",
     reviews: "(100 customer reviews)",
@@ -141,8 +136,7 @@ export const products = [
   {
     id: 6,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681749482/react-comfy-store-products/iuYyO9RP_o_upinxq.jpg",
+    image: "https://www.course-api.com/images/store/product-1.jpeg",
     type: "Accent Chair",
     price: "259.99",
     reviews: "(100 customer reviews)",
@@ -170,8 +164,7 @@ export const products = [
   {
     id: 7,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753552/react-comfy-store-products/prod-13_cv5csw.jpg",
+    image: "https://www.course-api.com/images/store/product-13.jpeg",
     type: "Shelf",
     price: "309.99",
     reviews: "(100 customer reviews)",
@@ -198,8 +191,7 @@ export const products = [
   {
     id: 8,
     category: "Kids",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753441/react-comfy-store-products/prod-11_lff6yt.jpg",
+    image: "https://www.course-api.com/images/store/product-11.jpeg",
     type: "Modern Bookshelf",
     price: "319.99",
     reviews: "(100 customer reviews)",
@@ -226,8 +218,7 @@ export const products = [
   {
     id: 9,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753314/react-comfy-store-products/prod-8_qzulqi.jpg",
+    image: "https://www.course-api.com/images/store/product-8.jpeg",
     type: "High-Back Bench",
     price: "399.99",
     reviews: "(100 customer reviews)",
@@ -254,8 +245,7 @@ export const products = [
   {
     id: 10,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753872/react-comfy-store-products/prod-21_a5wgef.jpg",
+    image: "https://www.course-api.com/images/store/product-21.jpeg",
     type: "Wooden Desk",
     price: "400.99",
     reviews: "(100 customer reviews)",
@@ -283,8 +273,7 @@ export const products = [
   {
     id: 11,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753280/react-comfy-store-products/prod-7_ta21yy.jpg",
+    image: "https://www.course-api.com/images/store/product-5.jpeg",
     type: "Entertainment Center",
     price: "599.99",
     reviews: "(100 customer reviews)",
@@ -311,8 +300,7 @@ export const products = [
   {
     id: 12,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753719/react-comfy-store-products/prod-17_inmzle.jpg",
+    image: "https://www.course-api.com/images/store/product-7.jpeg",
     type: "Utopia Sofa",
     price: "799.99",
     reviews: "(100 customer reviews)",
@@ -339,8 +327,7 @@ export const products = [
   {
     id: 13,
     category: "Dining Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681751026/react-comfy-store-products/product-5_n184nu.jpg",
+    image: "https://www.course-api.com/images/store/product-17.jpeg",
     type: "Dining Table",
     price: "429.99",
     reviews: "(100 customer reviews)",
@@ -367,8 +354,7 @@ export const products = [
   {
     id: 14,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753394/react-comfy-store-products/prod-10_d0jqoh.jpg",
+    image: "https://www.course-api.com/images/store/product-10.jpeg",
     type: "Leather Sofa",
     price: "999.99",
     reviews: "(100 customer reviews)",
@@ -395,8 +381,7 @@ export const products = [
   {
     id: 15,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750782/react-comfy-store-products/product-2_lusrzx.jpg",
+    image: "https://www.course-api.com/images/store/product-2.jpeg",
     type: "Albany Sectional",
     price: "1,099.99",
     reviews: "(100 customer reviews)",
@@ -423,8 +408,7 @@ export const products = [
   {
     id: 16,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753587/react-comfy-store-products/prod-14_bx2qzb.jpg",
+    image: "https://www.course-api.com/images/store/product-14.jpeg",
     type: "Simple Chair",
     price: "1,099.99",
     reviews: "(100 customer reviews)",
@@ -451,8 +435,7 @@ export const products = [
   {
     id: 17,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753757/react-comfy-store-products/prod-18_qa04uo.jpg",
+    image: "https://www.course-api.com/images/store/product-18.jpeg",
     type: "Vase Table",
     price: "1,209.99",
     reviews: "(100 customer reviews)",
@@ -479,8 +462,7 @@ export const products = [
   {
     id: 18,
     category: "Living Room",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753621/react-comfy-store-products/prod-15_jbnypy.jpg",
+    image: "https://www.course-api.com/images/store/product-15.jpeg",
     type: "Sofa Set",
     price: "1,299.99",
     reviews: "(100 customer reviews)",
@@ -507,8 +489,7 @@ export const products = [
   {
     id: 19,
     category: "Office",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753836/react-comfy-store-products/prod-20_wvente.jpg",
+    image: "https://www.course-api.com/images/store/product-20.jpeg",
     type: "Wooden Desk",
     price: "1,509.99",
     reviews: "(100 customer reviews)",
@@ -535,8 +516,7 @@ export const products = [
   {
     id: 20,
     category: "Kitchen",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753939/react-comfy-store-products/prod-22_fhljfo.jpg",
+    image: "https://www.course-api.com/images/store/product-22.jpeg",
     type: "Wooden Table",
     price: "2,349.99",
     reviews: "(100 customer reviews)",
@@ -563,8 +543,7 @@ export const products = [
   {
     id: 21,
     category: "Bedroom",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681753801/react-comfy-store-products/prod-19_foqbma.jpg",
+    image: "https://www.course-api.com/images/store/product-19.jpeg",
     type: "Wooden Bed",
     price: "2,500.99",
     reviews: "(100 customer reviews)",
@@ -591,8 +570,7 @@ export const products = [
   {
     id: 22,
     category: "Kitchen",
-    image:
-      "https://res.cloudinary.com/dt2g7mgtv/image/upload/v1681750874/react-comfy-store-products/product-3_znpiqa.jpg",
+    image: "https://www.course-api.com/images/store/product-3.jpeg",
     type: "Albany Table",
     price: "3,099.99",
     reviews: "(100 customer reviews)",
