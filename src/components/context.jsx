@@ -212,6 +212,7 @@ export const AppProvider = ({ children }) => {
     } else {
       await signOut(auth);
       sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
+      setFailureNoti(false);
       setLoginLogoutOverlay(false);
       setSuccessNoti(true);
       setShowNavLoginNoti(true);

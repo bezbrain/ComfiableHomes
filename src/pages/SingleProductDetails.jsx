@@ -19,6 +19,7 @@ const SingleProductDetails = () => {
     setIsLoading,
     dispatch,
     allProducts,
+    notification,
     setNotification,
     setSuccessNoti,
     failureNoti,
@@ -48,12 +49,15 @@ const SingleProductDetails = () => {
   }, []);
 
   const authToken = sessionStorage.getItem("authToken");
+
   // On click of "ADD TO CART" btn
   const handleCart = () => {
     if (!authToken) {
+      setSuccessNoti(false);
       setFailureNoti(true);
+      setNotification(true);
       setTimeout(() => {
-        setFailureNoti(false);
+        setNotification(false);
       }, 3000);
     } else {
       // Access to single product id and also all products
@@ -98,7 +102,7 @@ const SingleProductDetails = () => {
 
   return (
     <>
-      {failureNoti && <Notification notiText="Please Login" />}
+      {notification && <Notification notiText="Please Login" />}
       <main className="single-detail-page">
         {isLoading && <Loader loaderCss="add-details-loader-css" />}
         {getProductDetails && (

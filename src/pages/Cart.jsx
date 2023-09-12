@@ -14,6 +14,7 @@ const Cart = () => {
     notification,
     successNoti,
     setSuccessNoti,
+    setFailureNoti,
     getCartItems,
     increaseHandler,
     decreaseHandler,
@@ -159,6 +160,7 @@ const Cart = () => {
               </table>
               <button
                 onClick={() => {
+                  setFailureNoti(false);
                   handleLoginLogout();
                   setTimeout(() => {
                     navigate("/");

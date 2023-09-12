@@ -17,8 +17,12 @@ const Nav = () => {
     toggleLoginLogout,
     setToggleLoginLogout,
     setLoginLogoutOverlay,
+    notification,
+    setNotification,
     loginLogoutRef,
     showNavLoginNoti,
+    setFailureNoti,
+    setSuccessNoti,
     setShowNavLoginNoti,
     handleLoginLogout,
     isLogged,
@@ -35,9 +39,12 @@ const Nav = () => {
     setPathname(location);
   };
 
+  const authToken = sessionStorage.getItem("authToken");
+
   return (
     <>
       {showNavLoginNoti && <Notification notiText="You are logged out" />}
+      {notification && <Notification notiText="Please Login" />}
       <header>
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
@@ -57,20 +64,27 @@ const Nav = () => {
           </ul>
           <section className="cart-and-logout-sect">
             <Link
-              to="/cart"
+              to={`${authToken ? "/cart" : ""}`}
               style={{ textDecoration: "none", color: "#000" }}
-              onClick={closeNav}
+              onClick={() => {
+                setSuccessNoti(false);
+                closeNav;
+                setNotification(true);
+                setFailureNoti(true);
+                setTimeout(() => {
+                  setNotification(false);
+                }, 2000);
+              }}
             >
               <p>
                 Cart
                 <FaCartPlus />
               </p>
               <div className="products-in-cart">
-                {quantityOfProductInCart()}
+                {authToken ? quantityOfProductInCart() : 0}
               </div>
             </Link>
             <p ref={loginLogoutRef} onClick={handleLoginLogout}>
-              {/* {toggleLoginLogout ? "Logout" : "Login"} */}
               {isLogged}
               <FaUserPlus />
             </p>
