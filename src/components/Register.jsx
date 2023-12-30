@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import "../styles/register_login.css";
 import { useGlobalContext } from "./context";
 import { useState } from "react";
 import Notification from "./Notification";
+import { toast } from "react-toastify";
+import { registerUser } from "../apis/users";
 
 const Register = () => {
   const {
@@ -42,58 +45,24 @@ const Register = () => {
   const registerHandler = async (e) => {
     e.preventDefault();
     if (!username || !email || !password) {
-      setShowRegisterNoti(true);
-      setShowLoginNoti(false);
-      setFailureNoti(true);
-      setSuccessNoti(false);
-      setRegisterPopupNoti("error");
-      setTimeout(() => {
-        setShowRegisterNoti(false);
-      }, 3000);
+      toast.error("No field should be empty");
       return;
     }
     try {
       // console.log(person);
-      const cred = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(cred.user);
+      // const cred = await createUserWithEmailAndPassword(auth, email, password);
+      // console.log(cred.user);
+      const { data } = await registerUser(person);
+      toast.success(data.message);
       setPerson(eachPerson);
       setloginRegister(false);
-      setShowRegisterNoti(true);
-      setShowLoginNoti(false);
-      setSuccessNoti(true);
-      setFailureNoti(false);
-      setRegisterPopupNoti("success");
-      setTimeout(() => {
-        setShowRegisterNoti(false);
-      }, 3000);
     } catch (error) {
-      setShowRegisterNoti(true);
-      setRegisterPopupNoti("firebase-error");
-      setFailureNoti(true);
-      const errorMessage = extratingErrorMsg(error.message);
-      setFirebaseError(errorMessage);
-      setRegisterPopupNoti(errorMessage);
-      console.log(error.message);
-      setTimeout(() => {
-        setShowRegisterNoti(false);
-      }, 3000);
+      toast.error(error.response.data.message);
     }
   };
 
   return (
     <>
-      {/* Notification popup */}
-      {showRegisterNoti && (
-        <Notification
-          notiText={`${
-            registerPopupNoti === "error"
-              ? "No field should be empty"
-              : registerPopupNoti === "success"
-              ? "Registered! Now Login"
-              : firebaseError
-          }`}
-        />
-      )}
       {loginRegister && (
         <div className="register-con">
           <h2>Register here</h2>

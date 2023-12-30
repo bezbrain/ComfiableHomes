@@ -16,6 +16,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { logoutUser } from "../apis/users";
 
 export const ACTIONS = {
   ADD_TO_CART: "add-to-cart",
@@ -141,7 +142,7 @@ export const AppProvider = ({ children }) => {
   const [loginLogoutOverlay, setLoginLogoutOverlay] = useState(false);
 
   // "Login"-nav item to Change to "Logout" if Logged in and vice versa
-  const [isLogged, setIsLogged] = useState("Log in");
+  const [isLogged, setIsLogged] = useState("Login");
 
   const [userToken, setUserToken] = useState("");
 
@@ -202,24 +203,6 @@ export const AppProvider = ({ children }) => {
     return sum;
   };
 
-  // Nav Bar Login and Logout text toggle
-  const handleLoginLogout = async () => {
-    setShowNav("");
-    if (loginLogoutRef.current.textContent === "Login") {
-      setLoginLogoutOverlay(true);
-    } else {
-      await signOut(auth);
-      sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
-      setFailureNoti(false);
-      setLoginLogoutOverlay(false);
-      setSuccessNoti(true);
-      setShowNavLoginNoti(true);
-      setTimeout(() => {
-        setShowNavLoginNoti(false);
-      }, 3000);
-    }
-  };
-
   /* Function to extract error message from the firebase returned message */
   const extratingErrorMsg = (error) => {
     const startIndex = error.indexOf("/") + 1;
@@ -234,16 +217,12 @@ export const AppProvider = ({ children }) => {
   /* ================ */
   // Access the user to login or logout
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLogged("Logout");
-      } else {
-        setIsLogged("Login");
-      }
-    });
-
-    // Clean up the listener when the component unmounts
-    return () => unsubscribe();
+    const authToken = sessionStorage.getItem("authToken");
+    if (authToken) {
+      setIsLogged("Logout");
+    } else {
+      setIsLogged("Login");
+    }
   }, []);
 
   return (
@@ -298,7 +277,6 @@ export const AppProvider = ({ children }) => {
         loginLogoutRef,
         showNavLoginNoti,
         setShowNavLoginNoti,
-        handleLoginLogout,
         auth,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
@@ -306,6 +284,7 @@ export const AppProvider = ({ children }) => {
         userToken,
         setUserToken,
         isLogged,
+        setIsLogged,
       }}
     >
       {children}

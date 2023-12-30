@@ -7,6 +7,8 @@ import "../../styles/nav.css";
 import { useGlobalContext } from "../../components/context";
 import { useEffect, useRef } from "react";
 import Notification from "../../components/Notification";
+import { toast } from "react-toastify";
+import { logoutUser } from "../../apis/users";
 
 const Nav = () => {
   const {
@@ -24,11 +26,11 @@ const Nav = () => {
     setFailureNoti,
     setSuccessNoti,
     setShowNavLoginNoti,
-    handleLoginLogout,
     isLogged,
+    setIsLogged,
   } = useGlobalContext();
+
   const location = useLocation();
-  // const navHeightRef = useRef(null);
 
   const handleOpen = () => {
     setShowNav("add-show-nav-css");
@@ -39,12 +41,28 @@ const Nav = () => {
     setPathname(location);
   };
 
-  const authToken = sessionStorage.getItem("authToken");
+  const authToken = sessionStorage.getItem("authToken") || "";
+
+  // Nav Bar Login and Logout text toggle
+  const handleLoginLogout = async () => {
+    setShowNav("");
+    if (loginLogoutRef.current.textContent === "Login") {
+      setLoginLogoutOverlay(true);
+    } else {
+      try {
+        const { data } = await logoutUser();
+        toast.success(data.message);
+        setIsLogged("Login");
+        sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message);
+      }
+    }
+  };
 
   return (
     <>
-      {showNavLoginNoti && <Notification notiText="You are logged out" />}
-      {notification && <Notification notiText="Please Login" />}
       <header>
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
@@ -66,15 +84,7 @@ const Nav = () => {
             <Link
               to={`${authToken ? "/cart" : ""}`}
               style={{ textDecoration: "none", color: "#000" }}
-              onClick={() => {
-                setSuccessNoti(false);
-                closeNav;
-                setNotification(true);
-                setFailureNoti(true);
-                setTimeout(() => {
-                  setNotification(false);
-                }, 2000);
-              }}
+              onClick={() => (authToken ? "" : toast.error("Please Login"))}
             >
               <p>
                 Cart
