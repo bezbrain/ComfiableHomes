@@ -40,8 +40,6 @@ const reducer = (currState, action) => {
       return currState;
     }
 
-    console.log(currState);
-
     const updatedState = {
       id: Date.now(),
       prevId: getId,
