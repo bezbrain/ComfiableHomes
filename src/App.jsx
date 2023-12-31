@@ -6,6 +6,8 @@ import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Error from "./pages/Error";
 import SingleProductDetails from "./pages/SingleProductDetails";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   // const [isDisplay, setIsDisplay] = useState(true);
@@ -26,6 +28,7 @@ function App() {
             />
           </Route>
         </Routes>
+        <ToastContainer position="top-center" />
       </BrowserRouter>
     </>
   );

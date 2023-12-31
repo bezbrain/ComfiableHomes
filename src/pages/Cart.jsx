@@ -6,23 +6,24 @@ import { useGlobalContext } from "../components/context";
 import Notification from "../components/Notification";
 import { ACTIONS } from "../components/context";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const {
     initState,
     dispatch,
-    notification,
-    successNoti,
-    setSuccessNoti,
-    setFailureNoti,
+    // notification,
+    // successNoti,
+    // setSuccessNoti,
+    // setFailureNoti,
     getCartItems,
     increaseHandler,
     decreaseHandler,
-    toggleLoginLogout,
-    setLoginLogoutOverlay,
+    // toggleLoginLogout,
+    // setLoginLogoutOverlay,
     handleLoginLogout,
-    showNavLoginNoti,
-    setShowNavLoginNoti,
+    // showNavLoginNoti,
+    // setShowNavLoginNoti,
   } = useGlobalContext();
 
   const [shippingFee] = useState(5.34);
@@ -57,13 +58,6 @@ const Cart = () => {
 
   return (
     <>
-      {notification && (
-        <Notification
-          notiText={`${
-            successNoti ? "Added to cart" : "Product already in cart"
-          }`}
-        />
-      )}
       <section className="cart-sect">
         {getCartItems.length === 0 ? (
           <>
@@ -158,15 +152,7 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
-              <button
-                onClick={() => {
-                  setFailureNoti(false);
-                  handleLoginLogout();
-                  setTimeout(() => {
-                    navigate("/");
-                  }, 2000);
-                }}
-              >
+              <button onClick={() => handleLoginLogout(toast, navigate)}>
                 {authToken ? "LOGOUT" : "LOGIN"}
               </button>
             </section>

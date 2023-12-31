@@ -10,6 +10,7 @@ import { ACTIONS } from "../components/context";
 import CartIncDecrease from "../components/CartIncDecrease";
 import { products } from "../data";
 import Notification from "../components/Notification";
+import { toast } from "react-toastify";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
@@ -53,12 +54,7 @@ const SingleProductDetails = () => {
   // On click of "ADD TO CART" btn
   const handleCart = () => {
     if (!authToken) {
-      setSuccessNoti(false);
-      setFailureNoti(true);
-      setNotification(true);
-      setTimeout(() => {
-        setNotification(false);
-      }, 3000);
+      toast.error("Please Login");
     } else {
       // Access to single product id and also all products
       dispatch({
@@ -70,21 +66,10 @@ const SingleProductDetails = () => {
       const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
       // If product already in cart, send a negative notification
       if (newProd) {
-        setNotification(true);
-        setFailureNoti(true);
-        setSuccessNoti(false);
-        setTimeout(() => {
-          setNotification(false);
-        }, 2000);
+        toast.error("Item already in cart");
         return;
       }
-      // If product not in cart, send a positive notification
-      setNotification(true);
-      setSuccessNoti(true);
-      setFailureNoti(false);
-      setTimeout(() => {
-        setNotification(false);
-      }, 2000);
+      toast.success("Item added to cart");
     }
   };
 
@@ -102,7 +87,6 @@ const SingleProductDetails = () => {
 
   return (
     <>
-      {notification && <Notification notiText="Please Login" />}
       <main className="single-detail-page">
         {isLoading && <Loader loaderCss="add-details-loader-css" />}
         {getProductDetails && (

@@ -1,23 +1,26 @@
+/* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import "../styles/register_login.css";
 import { useGlobalContext } from "./context";
 import { useState } from "react";
 import Notification from "./Notification";
+import { toast } from "react-toastify";
+import { registerUser } from "../apis/users";
 
 const Register = () => {
   const {
     loginRegister,
     setloginRegister,
-    setSuccessNoti,
-    setFailureNoti,
-    registerPopupNoti,
-    setRegisterPopupNoti,
-    showRegisterNoti,
-    setShowRegisterNoti,
-    setShowLoginNoti,
-    auth,
-    createUserWithEmailAndPassword,
-    extratingErrorMsg,
+    // setSuccessNoti,
+    // setFailureNoti,
+    // registerPopupNoti,
+    // setRegisterPopupNoti,
+    // showRegisterNoti,
+    // setShowRegisterNoti,
+    // setShowLoginNoti,
+    // auth,
+    // createUserWithEmailAndPassword,
+    // extratingErrorMsg,
   } = useGlobalContext();
 
   const eachPerson = {
@@ -27,8 +30,9 @@ const Register = () => {
   };
   const [person, setPerson] = useState(eachPerson);
   const { username, email, password } = person;
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [firebaseError, setFirebaseError] = useState("");
+  // const [firebaseError, setFirebaseError] = useState("");
 
   const handleInputChange = (e) => {
     let name = e.target.name;
@@ -42,58 +46,27 @@ const Register = () => {
   const registerHandler = async (e) => {
     e.preventDefault();
     if (!username || !email || !password) {
-      setShowRegisterNoti(true);
-      setShowLoginNoti(false);
-      setFailureNoti(true);
-      setSuccessNoti(false);
-      setRegisterPopupNoti("error");
-      setTimeout(() => {
-        setShowRegisterNoti(false);
-      }, 3000);
+      toast.error("No field should be empty");
       return;
     }
     try {
       // console.log(person);
-      const cred = await createUserWithEmailAndPassword(auth, email, password);
-      console.log(cred.user);
+      // const cred = await createUserWithEmailAndPassword(auth, email, password);
+      // console.log(cred.user);
+      setIsLoading(true);
+      const { data } = await registerUser(person);
+      toast.success(data.message);
       setPerson(eachPerson);
       setloginRegister(false);
-      setShowRegisterNoti(true);
-      setShowLoginNoti(false);
-      setSuccessNoti(true);
-      setFailureNoti(false);
-      setRegisterPopupNoti("success");
-      setTimeout(() => {
-        setShowRegisterNoti(false);
-      }, 3000);
+      setIsLoading(false);
     } catch (error) {
-      setShowRegisterNoti(true);
-      setRegisterPopupNoti("firebase-error");
-      setFailureNoti(true);
-      const errorMessage = extratingErrorMsg(error.message);
-      setFirebaseError(errorMessage);
-      setRegisterPopupNoti(errorMessage);
-      console.log(error.message);
-      setTimeout(() => {
-        setShowRegisterNoti(false);
-      }, 3000);
+      setIsLoading(false);
+      toast.error(error.response.data.message);
     }
   };
 
   return (
     <>
-      {/* Notification popup */}
-      {showRegisterNoti && (
-        <Notification
-          notiText={`${
-            registerPopupNoti === "error"
-              ? "No field should be empty"
-              : registerPopupNoti === "success"
-              ? "Registered! Now Login"
-              : firebaseError
-          }`}
-        />
-      )}
       {loginRegister && (
         <div className="register-con">
           <h2>Register here</h2>
@@ -122,8 +95,11 @@ const Register = () => {
               onChange={handleInputChange}
             />
             <br />
-            <button className="register-btn" onClick={registerHandler}>
-              Register
+            <button
+              className={`${isLoading ? "add-disable" : ""} register-btn`}
+              onClick={registerHandler}
+            >
+              {isLoading ? "Loading..." : "Register"}
             </button>
             <p>
               Already have an account?

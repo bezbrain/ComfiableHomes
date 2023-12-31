@@ -253,6 +253,7 @@
   border-radius: 5px;
   border: none;
   transition: ease 0.5 all;
+  cursor: pointer;
 }
 .base-total button:hover {
   background-color: var(--lightblue);

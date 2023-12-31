@@ -1,27 +1,33 @@
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable no-unused-vars */
 import "../styles/register_login.css";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "./context";
 import { useState } from "react";
 import Notification from "./Notification";
+import { toast } from "react-toastify";
+import { loginUser } from "../apis/users";
 
 const Login = () => {
   const {
     loginRegister,
     setloginRegister,
-    setFailureNoti,
-    setSuccessNoti,
-    loginPopupNoti,
-    setLoginPopupNoti,
-    showLoginNoti,
-    setShowLoginNoti,
-    setShowRegisterNoti,
+    // setFailureNoti,
+    // setSuccessNoti,
+    // loginPopupNoti,
+    // setLoginPopupNoti,
+    // showLoginNoti,
+    // setShowLoginNoti,
+    // setShowRegisterNoti,
     setLoginLogoutOverlay,
-    setToggleLoginLogout,
-    loginLogoutRef,
-    auth,
-    signInWithEmailAndPassword,
-    extratingErrorMsg,
+    // setToggleLoginLogout,
+    // loginLogoutRef,
+    setIsLogged,
+    // auth,
+    // signInWithEmailAndPassword,
+    // extratingErrorMsg,
   } = useGlobalContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const eachPerson = {
     email: "",
@@ -45,67 +51,35 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setShowLoginNoti(true);
-      setShowRegisterNoti(false);
-      setFailureNoti(true);
-      setSuccessNoti(false);
-      setLoginPopupNoti("error");
-      setTimeout(() => {
-        setShowLoginNoti(false);
-      }, 3000);
+      toast.error("No field should be empty");
       return;
     }
     try {
-      // console.log(person);
-      const cred = await signInWithEmailAndPassword(auth, email, password);
-      console.log(cred.user);
-
-      const userToken = await auth.currentUser.getIdToken();
-
+      // const cred = await signInWithEmailAndPassword(auth, email, password);
+      // console.log(cred.user);
+      // const userToken = await auth.currentUser.getIdToken();
+      // sessionStorage.setItem("authToken", userToken); // Store the authentication token in session storage
+      setIsLoading(true);
+      const { data } = await loginUser(person);
+      toast.success(data.message);
+      setIsLogged("Logout");
+      const userToken = data.token;
       sessionStorage.setItem("authToken", userToken); // Store the authentication token in session storage
-
       setPerson(eachPerson);
+      setIsLoading(false);
       setloginRegister(false);
-      setToggleLoginLogout(true);
-      setFailureNoti(false);
-      setLoginPopupNoti("success");
-      setSuccessNoti(true);
-      setShowRegisterNoti(false);
-      setShowLoginNoti(true);
 
       setTimeout(() => {
         setLoginLogoutOverlay(false);
-        setShowLoginNoti(false);
-      }, 3000);
+      }, 2000);
     } catch (error) {
-      setShowLoginNoti(true);
-      setLoginPopupNoti("firebase-error");
-      setFailureNoti(true);
-      setSuccessNoti(false);
-      const errorMessage = extratingErrorMsg(error.message);
-      setFirebaseError(errorMessage);
-      setLoginPopupNoti(errorMessage);
-      console.log(error.message);
-      setTimeout(() => {
-        setShowLoginNoti(false);
-      }, 3000);
+      setIsLoading(false);
+      toast.error(error.response.data.message);
     }
   };
 
   return (
     <>
-      {/* Notification popup */}
-      {showLoginNoti && (
-        <Notification
-          notiText={`${
-            loginPopupNoti === "error"
-              ? "No field should be empty"
-              : loginPopupNoti === "success"
-              ? "Login successfully"
-              : firebaseError
-          }`}
-        />
-      )}
       {!loginRegister && (
         <div className="login-con">
           <h2>Login here</h2>
@@ -126,8 +100,12 @@ const Login = () => {
               onChange={handleChange}
             />
             <br />
-            <button className="login-btn" onClick={handleLogin}>
-              Login
+            <button
+              className={`${isLoading ? "add-disable" : ""} login-btn`}
+              onClick={handleLogin}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Login"}
             </button>
             <p>
               Don't have an account?

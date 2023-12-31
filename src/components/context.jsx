@@ -16,6 +16,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+import { logoutUser } from "../apis/users";
 
 export const ACTIONS = {
   ADD_TO_CART: "add-to-cart",
@@ -39,8 +40,6 @@ const reducer = (currState, action) => {
     if (productExists) {
       return currState;
     }
-
-    console.log(currState);
 
     const updatedState = {
       id: Date.now(),
@@ -104,7 +103,7 @@ const reducer = (currState, action) => {
 // AppProvider Component
 export const AppProvider = ({ children }) => {
   const firebaseConfig = {
-    apiKey: "AIzaSyBXI8PuElPuXsSqFWVnvJcpFgeh3rG0jig",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "comfiablehomes.firebaseapp.com",
     projectId: "comfiablehomes",
     storageBucket: "comfiablehomes.appspot.com",
@@ -127,23 +126,13 @@ export const AppProvider = ({ children }) => {
   const pathHeightRef = useRef(null);
   const loginLogoutRef = useRef(null);
 
-  // For popup notification
-  const [notification, setNotification] = useState(false);
-  const [successNoti, setSuccessNoti] = useState(false);
-  const [failureNoti, setFailureNoti] = useState(false);
-  const [loginPopupNoti, setLoginPopupNoti] = useState("");
-  const [registerPopupNoti, setRegisterPopupNoti] = useState("");
-  const [showRegisterNoti, setShowRegisterNoti] = useState(false);
-  const [showLoginNoti, setShowLoginNoti] = useState(false);
-  const [showNavLoginNoti, setShowNavLoginNoti] = useState(false);
-
   // For login and logout
   const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
   const [loginRegister, setloginRegister] = useState(false);
   const [loginLogoutOverlay, setLoginLogoutOverlay] = useState(false);
 
   // "Login"-nav item to Change to "Logout" if Logged in and vice versa
-  const [isLogged, setIsLogged] = useState("Log in");
+  const [isLogged, setIsLogged] = useState("Login");
 
   const [userToken, setUserToken] = useState("");
 
@@ -154,6 +143,8 @@ export const AppProvider = ({ children }) => {
 
   const [cartCount, setCartCount] = useState(1);
   const [getProductDetails, setGetProductDetails] = useState({});
+
+  const [isDisable, setIsDisable] = useState(false);
 
   // Using useReducer for Cart
   const [initState, dispatch] = useReducer(reducer, [], () => {
@@ -204,48 +195,36 @@ export const AppProvider = ({ children }) => {
     return sum;
   };
 
-  // Nav Bar Login and Logout text toggle
-  const handleLoginLogout = async () => {
+  // Logout user
+  const handleLoginLogout = async (toastMessage, navigate) => {
     setShowNav("");
     if (loginLogoutRef.current.textContent === "Login") {
       setLoginLogoutOverlay(true);
     } else {
-      await signOut(auth);
-      sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
-      setFailureNoti(false);
-      setLoginLogoutOverlay(false);
-      setSuccessNoti(true);
-      setShowNavLoginNoti(true);
-      setTimeout(() => {
-        setShowNavLoginNoti(false);
-      }, 3000);
+      try {
+        setIsDisable(true);
+        const { data } = await logoutUser();
+        toastMessage.success(data.message);
+        setIsLogged("Login");
+        navigate("/");
+        sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
+        setIsDisable(false);
+      } catch (error) {
+        console.log(error);
+        toastMessage.error(error.response.data.message);
+      }
     }
-  };
-
-  /* Function to extract error message from the firebase returned message */
-  const extratingErrorMsg = (error) => {
-    const startIndex = error.indexOf("/") + 1;
-    const endIndex = error.indexOf(")");
-    const errorCode = error.substring(startIndex, endIndex);
-    // Capitalize the error message
-    const capitalizedError =
-      errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
-    return capitalizedError;
   };
 
   /* ================ */
   // Access the user to login or logout
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLogged("Logout");
-      } else {
-        setIsLogged("Login");
-      }
-    });
-
-    // Clean up the listener when the component unmounts
-    return () => unsubscribe();
+    const authToken = sessionStorage.getItem("authToken");
+    if (authToken) {
+      setIsLogged("Logout");
+    } else {
+      setIsLogged("Login");
+    }
   }, []);
 
   return (
@@ -265,12 +244,6 @@ export const AppProvider = ({ children }) => {
         setHoveredIndex,
         dispatch,
         initState,
-        notification,
-        setNotification,
-        successNoti,
-        setSuccessNoti,
-        failureNoti,
-        setFailureNoti,
         cartCount,
         setCartCount,
         getCartItems,
@@ -289,25 +262,16 @@ export const AppProvider = ({ children }) => {
         loginRegister,
         setloginRegister,
         pathHeightRef,
-        registerPopupNoti,
-        setRegisterPopupNoti,
-        loginPopupNoti,
-        setLoginPopupNoti,
-        showRegisterNoti,
-        setShowRegisterNoti,
-        showLoginNoti,
-        setShowLoginNoti,
         loginLogoutRef,
-        showNavLoginNoti,
-        setShowNavLoginNoti,
-        handleLoginLogout,
         auth,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        extratingErrorMsg,
+        handleLoginLogout,
         userToken,
         setUserToken,
         isLogged,
+        setIsLogged,
+        isDisable,
       }}
     >
       {children}

@@ -84,7 +84,7 @@
   border: none;
   margin-top: 8px;
 }
-@keyframes wobble {
+/* @keyframes wobble {
   0% {
     transform: none;
   }
@@ -93,9 +93,6 @@
   }
   30% {
     transform: translateX(20%);
-  }
-  45% {
-    /* transform: translateX(-15%); */
   }
   60% {
     transform: translateX(10%);
@@ -106,14 +103,14 @@
   100% {
     transform: none;
   }
-}
+} */
 
-.wobble {
+/* .wobble {
   animation-name: wobble;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-}
+} */
 
 .about-story-con p {
   margin-top: 2rem;

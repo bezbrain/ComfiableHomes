@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
 import Logo from "../../components/Logo";
 import "../../styles/nav.css";
@@ -7,6 +7,8 @@ import "../../styles/nav.css";
 import { useGlobalContext } from "../../components/context";
 import { useEffect, useRef } from "react";
 import Notification from "../../components/Notification";
+import { toast } from "react-toastify";
+import { logoutUser } from "../../apis/users";
 
 const Nav = () => {
   const {
@@ -14,21 +16,14 @@ const Nav = () => {
     setShowNav,
     setPathname,
     quantityOfProductInCart,
-    toggleLoginLogout,
-    setToggleLoginLogout,
-    setLoginLogoutOverlay,
-    notification,
-    setNotification,
     loginLogoutRef,
-    showNavLoginNoti,
-    setFailureNoti,
-    setSuccessNoti,
-    setShowNavLoginNoti,
-    handleLoginLogout,
     isLogged,
+    handleLoginLogout,
+    isDisable,
   } = useGlobalContext();
+
   const location = useLocation();
-  // const navHeightRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setShowNav("add-show-nav-css");
@@ -39,12 +34,10 @@ const Nav = () => {
     setPathname(location);
   };
 
-  const authToken = sessionStorage.getItem("authToken");
+  const authToken = sessionStorage.getItem("authToken") || "";
 
   return (
     <>
-      {showNavLoginNoti && <Notification notiText="You are logged out" />}
-      {notification && <Notification notiText="Please Login" />}
       <header>
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
@@ -52,13 +45,29 @@ const Nav = () => {
           <Logo onClick={closeNav} />
           <FaTimes className="close" onClick={closeNav} />
           <ul>
-            <Link to="/" onClick={closeNav}>
+            <Link
+              to="/"
+              onClick={closeNav}
+              className={`${location.pathname === "/" ? "active-page" : ""}`}
+            >
               <li>Home</li>
             </Link>
-            <Link to="about" onClick={closeNav}>
+            <Link
+              to="about"
+              onClick={closeNav}
+              className={`${
+                location.pathname === "/about" ? "active-page" : ""
+              }`}
+            >
               <li>About</li>
             </Link>
-            <Link to="products" onClick={closeNav}>
+            <Link
+              to="products"
+              onClick={closeNav}
+              className={`${
+                location.pathname === "/products" ? "active-page" : ""
+              }`}
+            >
               <li>Products</li>
             </Link>
           </ul>
@@ -66,15 +75,7 @@ const Nav = () => {
             <Link
               to={`${authToken ? "/cart" : ""}`}
               style={{ textDecoration: "none", color: "#000" }}
-              onClick={() => {
-                setSuccessNoti(false);
-                closeNav;
-                setNotification(true);
-                setFailureNoti(true);
-                setTimeout(() => {
-                  setNotification(false);
-                }, 2000);
-              }}
+              onClick={() => (authToken ? "" : toast.error("Please Login"))}
             >
               <p>
                 Cart
@@ -84,10 +85,15 @@ const Nav = () => {
                 {authToken ? quantityOfProductInCart() : 0}
               </div>
             </Link>
-            <p ref={loginLogoutRef} onClick={handleLoginLogout}>
+            <button
+              className="login-logout"
+              ref={loginLogoutRef}
+              onClick={() => handleLoginLogout(toast, navigate)}
+              disabled={isDisable}
+            >
               {isLogged}
               <FaUserPlus />
-            </p>
+            </button>
           </section>
         </nav>
       </header>
