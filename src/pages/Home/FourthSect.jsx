@@ -10,8 +10,9 @@ const FourthSect = () => {
           <h3>Join our newsletter and get 20% off</h3>
           <section className="newsletter-input">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel,
-              nulla! Quo officiis, architecto expedita, officia ducimus sapiente
+              Embark on a journey to elevate your comfort and style. Explore our
+              curated collection at ComfiableHomes and transform your living
+              spaces into havens of personal luxury.
             </p>
             <div className="newletter-email">
               <input type="text" placeholder="Enter Email" />

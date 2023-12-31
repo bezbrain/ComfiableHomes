@@ -45,13 +45,29 @@ const Nav = () => {
           <Logo onClick={closeNav} />
           <FaTimes className="close" onClick={closeNav} />
           <ul>
-            <Link to="/" onClick={closeNav}>
+            <Link
+              to="/"
+              onClick={closeNav}
+              className={`${location.pathname === "/" ? "active-page" : ""}`}
+            >
               <li>Home</li>
             </Link>
-            <Link to="about" onClick={closeNav}>
+            <Link
+              to="about"
+              onClick={closeNav}
+              className={`${
+                location.pathname === "/about" ? "active-page" : ""
+              }`}
+            >
               <li>About</li>
             </Link>
-            <Link to="products" onClick={closeNav}>
+            <Link
+              to="products"
+              onClick={closeNav}
+              className={`${
+                location.pathname === "/products" ? "active-page" : ""
+              }`}
+            >
               <li>Products</li>
             </Link>
           </ul>

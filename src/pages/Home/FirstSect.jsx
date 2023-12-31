@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Link } from "react-router-dom";
 
 const FirstSect = () => {
@@ -7,11 +8,15 @@ const FirstSect = () => {
         <article>
           <h2>Design Your Comfort Zone</h2>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut hic
-            repellat incidunt voluptatum totam, sit temporibus minima iusto illo
-            repellendus expedita eligendi harum ea provident maiores laudantium
-            possimus cum ratione?Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Excepturi, vero!
+            Welcome to our online sanctuary where style meets serenity –
+            introducing <span className="brand-name">ComfiableHomes</span> Dive
+            into a world where you can "Design Your Comfort Zone", curated with
+            a harmonious blend of elegance and ease. Discover a collection that
+            transcends trends, offering a seamless fusion of design and comfort
+            that empowers you to shape your surroundings with a touch of
+            personal luxury. Immerse yourself in a shopping experience where
+            every click brings you closer to creating a space that reflects your
+            unique taste and embraces the essence of coziness.
           </p>
           <Link to="/products">
             <button className="shop-now-btn">SHOP NOW</button>
