@@ -32,6 +32,9 @@
   .open {
     right: 1rem;
   }
+  .close {
+    right: 1rem;
+  }
 }
 
 header {
@@ -93,7 +96,7 @@ header nav {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  transition: ease 1s all;
+  transition: ease 0.5s all;
   width: 60%;
 }
 @media screen and (max-width: 1000px) {
