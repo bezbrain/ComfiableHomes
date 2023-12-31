@@ -8,11 +8,17 @@ const AboutPageHead = () => {
         <img
           src="https://react-course-comfy-sloth-store.netlify.app/static/media/hero-bcg.a876f19f6786a3aca992.jpeg"
           alt="about-img"
+          className="small-img"
         />
         <div className="about-story-con">
           <h2>Our Story</h2>
           <hr className="wobble" />
           <p>
+            <img
+              src="https://react-course-comfy-sloth-store.netlify.app/static/media/hero-bcg.a876f19f6786a3aca992.jpeg"
+              alt="about-img"
+              className="big-img"
+            />
             Welcome to ComfiableHomes, where passion meets purpose, and every
             click brings you closer to a world of curated comfort and style. As
             the architects of your comfort zones, we take pride in presenting an

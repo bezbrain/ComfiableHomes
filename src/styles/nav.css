@@ -28,6 +28,11 @@
     display: none;
   }
 }
+@media screen and (max-width: 650px) {
+  .open {
+    right: 1rem;
+  }
+}
 
 header {
   /* border: 3px solid green; */
@@ -61,6 +66,11 @@ nav .logo-link {
     position: absolute;
     left: 20px;
     top: 20px;
+  }
+}
+@media screen and (max-width: 650px) {
+  header {
+    padding-inline: 1rem;
   }
 }
 
@@ -147,6 +157,13 @@ nav ul a:hover {
 
 .active-page {
   border-bottom: 3px solid var(--darkblue);
+}
+@media screen and (max-width: 1000px) {
+  .active-page {
+    border-bottom: none;
+    color: var(--darkblue);
+    font-weight: 700;
+  }
 }
 
 .cart-and-logout-sect {
