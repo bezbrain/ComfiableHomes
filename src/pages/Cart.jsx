@@ -57,13 +57,6 @@ const Cart = () => {
 
   return (
     <>
-      {notification && (
-        <Notification
-          notiText={`${
-            successNoti ? "Added to cart" : "Product already in cart"
-          }`}
-        />
-      )}
       <section className="cart-sect">
         {getCartItems.length === 0 ? (
           <>

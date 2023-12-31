@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
 import Logo from "../../components/Logo";
 import "../../styles/nav.css";
@@ -31,6 +31,7 @@ const Nav = () => {
   } = useGlobalContext();
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleOpen = () => {
     setShowNav("add-show-nav-css");
@@ -54,6 +55,7 @@ const Nav = () => {
         toast.success(data.message);
         setIsLogged("Login");
         sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
+        navigate("/");
       } catch (error) {
         console.log(error);
         toast.error(error.response.data.message);
