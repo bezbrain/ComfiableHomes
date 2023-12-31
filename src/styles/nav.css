@@ -166,8 +166,10 @@ nav ul a:hover {
     width: 100%;
     justify-content: center;
   }
-  .cart-and-logout-sect p:nth-child(2) {
-    margin-left: 20px;
+  .cart-and-logout-sect button {
+    /* margin-left: 20px;
+    font-size: 1.4em;
+    border: none; */
     /* font-size: 1.5em !important; */
   }
 }
@@ -180,6 +182,14 @@ nav ul a:hover {
   /* border: 2px solid red; */
   position: relative;
   padding: 8px;
+}
+
+.login-logout {
+  margin-left: 20px;
+  font-size: 1.4em;
+  border: none;
+  cursor: pointer;
+  background: inherit;
 }
 
 .products-in-cart {

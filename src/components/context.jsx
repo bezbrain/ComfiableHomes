@@ -144,6 +144,8 @@ export const AppProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(1);
   const [getProductDetails, setGetProductDetails] = useState({});
 
+  const [isDisable, setIsDisable] = useState(false);
+
   // Using useReducer for Cart
   const [initState, dispatch] = useReducer(reducer, [], () => {
     const storedCartItems = localStorage.getItem("addItem");
@@ -200,11 +202,13 @@ export const AppProvider = ({ children }) => {
       setLoginLogoutOverlay(true);
     } else {
       try {
+        setIsDisable(true);
         const { data } = await logoutUser();
         toastMessage.success(data.message);
         setIsLogged("Login");
         navigate("/");
         sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
+        setIsDisable(false);
       } catch (error) {
         console.log(error);
         toastMessage.error(error.response.data.message);
@@ -267,6 +271,7 @@ export const AppProvider = ({ children }) => {
         setUserToken,
         isLogged,
         setIsLogged,
+        isDisable,
       }}
     >
       {children}

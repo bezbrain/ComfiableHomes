@@ -19,6 +19,7 @@ const Nav = () => {
     loginLogoutRef,
     isLogged,
     handleLoginLogout,
+    isDisable,
   } = useGlobalContext();
 
   const location = useLocation();
@@ -68,13 +69,15 @@ const Nav = () => {
                 {authToken ? quantityOfProductInCart() : 0}
               </div>
             </Link>
-            <p
+            <button
+              className="login-logout"
               ref={loginLogoutRef}
               onClick={() => handleLoginLogout(toast, navigate)}
+              disabled={isDisable}
             >
               {isLogged}
               <FaUserPlus />
-            </p>
+            </button>
           </section>
         </nav>
       </header>
