@@ -203,15 +203,34 @@ export const AppProvider = ({ children }) => {
     return sum;
   };
 
-  /* Function to extract error message from the firebase returned message */
-  const extratingErrorMsg = (error) => {
-    const startIndex = error.indexOf("/") + 1;
-    const endIndex = error.indexOf(")");
-    const errorCode = error.substring(startIndex, endIndex);
-    // Capitalize the error message
-    const capitalizedError =
-      errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
-    return capitalizedError;
+  // /* Function to extract error message from the firebase returned message */
+  // const extratingErrorMsg = (error) => {
+  //   const startIndex = error.indexOf("/") + 1;
+  //   const endIndex = error.indexOf(")");
+  //   const errorCode = error.substring(startIndex, endIndex);
+  //   // Capitalize the error message
+  //   const capitalizedError =
+  //     errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
+  //   return capitalizedError;
+  // };
+
+  // Logout user
+  const handleLoginLogout = async (toastMessage, navigate) => {
+    setShowNav("");
+    if (loginLogoutRef.current.textContent === "Login") {
+      setLoginLogoutOverlay(true);
+    } else {
+      try {
+        const { data } = await logoutUser();
+        toastMessage.success(data.message);
+        setIsLogged("Login");
+        navigate("/");
+        sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
+      } catch (error) {
+        console.log(error);
+        toastMessage.error(error.response.data.message);
+      }
+    }
   };
 
   /* ================ */
@@ -280,7 +299,8 @@ export const AppProvider = ({ children }) => {
         auth,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        extratingErrorMsg,
+        // extratingErrorMsg,
+        handleLoginLogout,
         userToken,
         setUserToken,
         isLogged,

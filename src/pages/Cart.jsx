@@ -6,6 +6,7 @@ import { useGlobalContext } from "../components/context";
 import Notification from "../components/Notification";
 import { ACTIONS } from "../components/context";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const {
@@ -151,15 +152,7 @@ const Cart = () => {
                   </tr>
                 </tbody>
               </table>
-              <button
-                onClick={() => {
-                  setFailureNoti(false);
-                  handleLoginLogout();
-                  setTimeout(() => {
-                    navigate("/");
-                  }, 2000);
-                }}
-              >
+              <button onClick={() => handleLoginLogout(toast, navigate)}>
                 {authToken ? "LOGOUT" : "LOGIN"}
               </button>
             </section>

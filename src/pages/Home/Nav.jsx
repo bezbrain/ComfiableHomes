@@ -28,6 +28,7 @@ const Nav = () => {
     setShowNavLoginNoti,
     isLogged,
     setIsLogged,
+    handleLoginLogout,
   } = useGlobalContext();
 
   const location = useLocation();
@@ -43,25 +44,6 @@ const Nav = () => {
   };
 
   const authToken = sessionStorage.getItem("authToken") || "";
-
-  // Nav Bar Login and Logout text toggle
-  const handleLoginLogout = async () => {
-    setShowNav("");
-    if (loginLogoutRef.current.textContent === "Login") {
-      setLoginLogoutOverlay(true);
-    } else {
-      try {
-        const { data } = await logoutUser();
-        toast.success(data.message);
-        setIsLogged("Login");
-        sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
-        navigate("/");
-      } catch (error) {
-        console.log(error);
-        toast.error(error.response.data.message);
-      }
-    }
-  };
 
   return (
     <>
@@ -96,7 +78,10 @@ const Nav = () => {
                 {authToken ? quantityOfProductInCart() : 0}
               </div>
             </Link>
-            <p ref={loginLogoutRef} onClick={handleLoginLogout}>
+            <p
+              ref={loginLogoutRef}
+              onClick={() => handleLoginLogout(toast, navigate)}
+            >
               {isLogged}
               <FaUserPlus />
             </p>
