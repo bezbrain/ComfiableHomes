@@ -16,18 +16,8 @@ const Nav = () => {
     setShowNav,
     setPathname,
     quantityOfProductInCart,
-    toggleLoginLogout,
-    setToggleLoginLogout,
-    setLoginLogoutOverlay,
-    notification,
-    setNotification,
     loginLogoutRef,
-    showNavLoginNoti,
-    setFailureNoti,
-    setSuccessNoti,
-    setShowNavLoginNoti,
     isLogged,
-    setIsLogged,
     handleLoginLogout,
   } = useGlobalContext();
 

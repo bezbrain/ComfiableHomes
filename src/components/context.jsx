@@ -103,7 +103,7 @@ const reducer = (currState, action) => {
 // AppProvider Component
 export const AppProvider = ({ children }) => {
   const firebaseConfig = {
-    apiKey: "AIzaSyBXI8PuElPuXsSqFWVnvJcpFgeh3rG0jig",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "comfiablehomes.firebaseapp.com",
     projectId: "comfiablehomes",
     storageBucket: "comfiablehomes.appspot.com",
@@ -125,16 +125,6 @@ export const AppProvider = ({ children }) => {
   // For calculating the height of header path
   const pathHeightRef = useRef(null);
   const loginLogoutRef = useRef(null);
-
-  // For popup notification
-  // const [notification, setNotification] = useState(false);
-  // const [successNoti, setSuccessNoti] = useState(false);
-  // const [failureNoti, setFailureNoti] = useState(false);
-  // const [loginPopupNoti, setLoginPopupNoti] = useState("");
-  // const [registerPopupNoti, setRegisterPopupNoti] = useState("");
-  // const [showRegisterNoti, setShowRegisterNoti] = useState(false);
-  // const [showLoginNoti, setShowLoginNoti] = useState(false);
-  // const [showNavLoginNoti, setShowNavLoginNoti] = useState(false);
 
   // For login and logout
   const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
@@ -203,17 +193,6 @@ export const AppProvider = ({ children }) => {
     return sum;
   };
 
-  // /* Function to extract error message from the firebase returned message */
-  // const extratingErrorMsg = (error) => {
-  //   const startIndex = error.indexOf("/") + 1;
-  //   const endIndex = error.indexOf(")");
-  //   const errorCode = error.substring(startIndex, endIndex);
-  //   // Capitalize the error message
-  //   const capitalizedError =
-  //     errorCode.charAt(0).toUpperCase() + errorCode.slice(1).toLowerCase();
-  //   return capitalizedError;
-  // };
-
   // Logout user
   const handleLoginLogout = async (toastMessage, navigate) => {
     setShowNav("");
@@ -261,12 +240,6 @@ export const AppProvider = ({ children }) => {
         setHoveredIndex,
         dispatch,
         initState,
-        // notification,
-        // setNotification,
-        // successNoti,
-        // setSuccessNoti,
-        // failureNoti,
-        // setFailureNoti,
         cartCount,
         setCartCount,
         getCartItems,
@@ -285,21 +258,10 @@ export const AppProvider = ({ children }) => {
         loginRegister,
         setloginRegister,
         pathHeightRef,
-        // registerPopupNoti,
-        // setRegisterPopupNoti,
-        // loginPopupNoti,
-        // setLoginPopupNoti,
-        // showRegisterNoti,
-        // setShowRegisterNoti,
-        // showLoginNoti,
-        // setShowLoginNoti,
         loginLogoutRef,
-        // showNavLoginNoti,
-        // setShowNavLoginNoti,
         auth,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        // extratingErrorMsg,
         handleLoginLogout,
         userToken,
         setUserToken,
