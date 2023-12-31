@@ -75,7 +75,10 @@ const Nav = () => {
             <Link
               to={`${authToken ? "/cart" : ""}`}
               style={{ textDecoration: "none", color: "#000" }}
-              onClick={() => (authToken ? "" : toast.error("Please Login"))}
+              onClick={() => {
+                authToken ? "" : toast.error("Please Login");
+                setShowNav("");
+              }}
             >
               <p>
                 Cart
