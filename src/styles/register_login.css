@@ -80,11 +80,15 @@
   border-radius: 5px;
   transition: ease 0.5s all;
   border: none;
+  cursor: pointer;
 }
 .login-btn:hover,
 .register-btn:hover {
   background-color: var(--lightblue);
   color: #fff;
+}
+.add-disable {
+  cursor: not-allowed;
 }
 
 .login-con form p,

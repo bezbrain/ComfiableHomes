@@ -11,16 +11,16 @@ const Register = () => {
   const {
     loginRegister,
     setloginRegister,
-    setSuccessNoti,
-    setFailureNoti,
-    registerPopupNoti,
-    setRegisterPopupNoti,
-    showRegisterNoti,
-    setShowRegisterNoti,
-    setShowLoginNoti,
-    auth,
-    createUserWithEmailAndPassword,
-    extratingErrorMsg,
+    // setSuccessNoti,
+    // setFailureNoti,
+    // registerPopupNoti,
+    // setRegisterPopupNoti,
+    // showRegisterNoti,
+    // setShowRegisterNoti,
+    // setShowLoginNoti,
+    // auth,
+    // createUserWithEmailAndPassword,
+    // extratingErrorMsg,
   } = useGlobalContext();
 
   const eachPerson = {
@@ -30,8 +30,9 @@ const Register = () => {
   };
   const [person, setPerson] = useState(eachPerson);
   const { username, email, password } = person;
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [firebaseError, setFirebaseError] = useState("");
+  // const [firebaseError, setFirebaseError] = useState("");
 
   const handleInputChange = (e) => {
     let name = e.target.name;
@@ -52,11 +53,14 @@ const Register = () => {
       // console.log(person);
       // const cred = await createUserWithEmailAndPassword(auth, email, password);
       // console.log(cred.user);
+      setIsLoading(true);
       const { data } = await registerUser(person);
       toast.success(data.message);
       setPerson(eachPerson);
       setloginRegister(false);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       toast.error(error.response.data.message);
     }
   };
@@ -91,8 +95,11 @@ const Register = () => {
               onChange={handleInputChange}
             />
             <br />
-            <button className="register-btn" onClick={registerHandler}>
-              Register
+            <button
+              className={`${isLoading ? "add-disable" : ""} register-btn`}
+              onClick={registerHandler}
+            >
+              {isLoading ? "Loading..." : "Register"}
             </button>
             <p>
               Already have an account?

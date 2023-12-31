@@ -127,14 +127,14 @@ export const AppProvider = ({ children }) => {
   const loginLogoutRef = useRef(null);
 
   // For popup notification
-  const [notification, setNotification] = useState(false);
-  const [successNoti, setSuccessNoti] = useState(false);
-  const [failureNoti, setFailureNoti] = useState(false);
-  const [loginPopupNoti, setLoginPopupNoti] = useState("");
-  const [registerPopupNoti, setRegisterPopupNoti] = useState("");
-  const [showRegisterNoti, setShowRegisterNoti] = useState(false);
-  const [showLoginNoti, setShowLoginNoti] = useState(false);
-  const [showNavLoginNoti, setShowNavLoginNoti] = useState(false);
+  // const [notification, setNotification] = useState(false);
+  // const [successNoti, setSuccessNoti] = useState(false);
+  // const [failureNoti, setFailureNoti] = useState(false);
+  // const [loginPopupNoti, setLoginPopupNoti] = useState("");
+  // const [registerPopupNoti, setRegisterPopupNoti] = useState("");
+  // const [showRegisterNoti, setShowRegisterNoti] = useState(false);
+  // const [showLoginNoti, setShowLoginNoti] = useState(false);
+  // const [showNavLoginNoti, setShowNavLoginNoti] = useState(false);
 
   // For login and logout
   const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
@@ -261,12 +261,12 @@ export const AppProvider = ({ children }) => {
         setHoveredIndex,
         dispatch,
         initState,
-        notification,
-        setNotification,
-        successNoti,
-        setSuccessNoti,
-        failureNoti,
-        setFailureNoti,
+        // notification,
+        // setNotification,
+        // successNoti,
+        // setSuccessNoti,
+        // failureNoti,
+        // setFailureNoti,
         cartCount,
         setCartCount,
         getCartItems,
@@ -285,17 +285,17 @@ export const AppProvider = ({ children }) => {
         loginRegister,
         setloginRegister,
         pathHeightRef,
-        registerPopupNoti,
-        setRegisterPopupNoti,
-        loginPopupNoti,
-        setLoginPopupNoti,
-        showRegisterNoti,
-        setShowRegisterNoti,
-        showLoginNoti,
-        setShowLoginNoti,
+        // registerPopupNoti,
+        // setRegisterPopupNoti,
+        // loginPopupNoti,
+        // setLoginPopupNoti,
+        // showRegisterNoti,
+        // setShowRegisterNoti,
+        // showLoginNoti,
+        // setShowLoginNoti,
         loginLogoutRef,
-        showNavLoginNoti,
-        setShowNavLoginNoti,
+        // showNavLoginNoti,
+        // setShowNavLoginNoti,
         auth,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,

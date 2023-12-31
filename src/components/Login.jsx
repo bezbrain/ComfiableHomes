@@ -12,21 +12,22 @@ const Login = () => {
   const {
     loginRegister,
     setloginRegister,
-    setFailureNoti,
-    setSuccessNoti,
-    loginPopupNoti,
-    setLoginPopupNoti,
-    showLoginNoti,
-    setShowLoginNoti,
-    setShowRegisterNoti,
+    // setFailureNoti,
+    // setSuccessNoti,
+    // loginPopupNoti,
+    // setLoginPopupNoti,
+    // showLoginNoti,
+    // setShowLoginNoti,
+    // setShowRegisterNoti,
     setLoginLogoutOverlay,
-    setToggleLoginLogout,
-    loginLogoutRef,
+    // setToggleLoginLogout,
+    // loginLogoutRef,
     setIsLogged,
-    auth,
-    signInWithEmailAndPassword,
-    extratingErrorMsg,
+    // auth,
+    // signInWithEmailAndPassword,
+    // extratingErrorMsg,
   } = useGlobalContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const eachPerson = {
     email: "",
@@ -58,19 +59,21 @@ const Login = () => {
       // console.log(cred.user);
       // const userToken = await auth.currentUser.getIdToken();
       // sessionStorage.setItem("authToken", userToken); // Store the authentication token in session storage
-
+      setIsLoading(true);
       const { data } = await loginUser(person);
       toast.success(data.message);
       setIsLogged("Logout");
       const userToken = data.token;
       sessionStorage.setItem("authToken", userToken); // Store the authentication token in session storage
       setPerson(eachPerson);
+      setIsLoading(false);
       setloginRegister(false);
 
       setTimeout(() => {
         setLoginLogoutOverlay(false);
-      }, 3000);
+      }, 2000);
     } catch (error) {
+      setIsLoading(false);
       toast.error(error.response.data.message);
     }
   };
@@ -97,8 +100,12 @@ const Login = () => {
               onChange={handleChange}
             />
             <br />
-            <button className="login-btn" onClick={handleLogin}>
-              Login
+            <button
+              className={`${isLoading ? "add-disable" : ""} login-btn`}
+              onClick={handleLogin}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Login"}
             </button>
             <p>
               Don't have an account?
