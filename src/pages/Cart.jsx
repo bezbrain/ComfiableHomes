@@ -12,18 +12,10 @@ const Cart = () => {
   const {
     initState,
     dispatch,
-    // notification,
-    // successNoti,
-    // setSuccessNoti,
-    // setFailureNoti,
     getCartItems,
     increaseHandler,
     decreaseHandler,
-    // toggleLoginLogout,
-    // setLoginLogoutOverlay,
     handleLoginLogout,
-    // showNavLoginNoti,
-    // setShowNavLoginNoti,
   } = useGlobalContext();
 
   const [shippingFee] = useState(5.34);

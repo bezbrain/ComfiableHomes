@@ -3,8 +3,10 @@ import HomeImages from "../../components/HomeImages";
 import AllProductsBtn from "../../components/AllProductsBtn";
 import { useGlobalContext } from "../../components/context";
 import Loader from "../../components/Loader";
+import { getAllProducts } from "../../apis/products";
 
 const FeaturedPro = () => {
+  // getAllProducts();
   const { isLoading, setIsLoading } = useGlobalContext();
 
   return (
@@ -15,7 +17,7 @@ const FeaturedPro = () => {
           <hr />
           {isLoading && <Loader loaderCss="add-featured-loader-css" />}
           <HomeImages />
-          <AllProductsBtn allProductBtn={"all-product-btn"} />
+          <AllProductsBtn allProductBtn="all-product-btn" />
         </div>
       </div>
     </>

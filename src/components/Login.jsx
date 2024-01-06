@@ -12,20 +12,8 @@ const Login = () => {
   const {
     loginRegister,
     setloginRegister,
-    // setFailureNoti,
-    // setSuccessNoti,
-    // loginPopupNoti,
-    // setLoginPopupNoti,
-    // showLoginNoti,
-    // setShowLoginNoti,
-    // setShowRegisterNoti,
     setLoginLogoutOverlay,
-    // setToggleLoginLogout,
-    // loginLogoutRef,
     setIsLogged,
-    // auth,
-    // signInWithEmailAndPassword,
-    // extratingErrorMsg,
   } = useGlobalContext();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -55,10 +43,6 @@ const Login = () => {
       return;
     }
     try {
-      // const cred = await signInWithEmailAndPassword(auth, email, password);
-      // console.log(cred.user);
-      // const userToken = await auth.currentUser.getIdToken();
-      // sessionStorage.setItem("authToken", userToken); // Store the authentication token in session storage
       setIsLoading(true);
       const { data } = await loginUser(person);
       toast.success(data.message);

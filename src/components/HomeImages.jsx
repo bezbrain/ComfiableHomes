@@ -14,24 +14,6 @@ const HomeImages = () => {
     setHoveredIndex,
   } = useGlobalContext();
 
-  const getHomeProducts = async () => {
-    setIsLoading(true);
-    try {
-      const { data } = await axios.get("http://localhost:3000/products");
-
-      const getProduct = data.filter((each) => {
-        return each.id % 6 === 0;
-      });
-      homeProducts(getProduct);
-      localStorage.setItem("HomeImages", JSON.stringify(getProduct));
-      // const getHomeImages = JSON.parse(localStorage.getItem("HomeImages"));
-      // setProducts(getHomeImages);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const dispalyHomeData = () => {
     // setIsLoading(true);
     const homeProduct = products.filter((each) => each.id % 6 === 0);
@@ -39,9 +21,9 @@ const HomeImages = () => {
   };
 
   useEffect(() => {
-    // getHomeProducts();
     dispalyHomeData();
   }, []);
+
   useEffect(() => {
     setIsLoading(false);
   }, [homeProducts]);
