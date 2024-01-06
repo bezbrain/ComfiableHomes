@@ -7,6 +7,7 @@ import "../styles/product.css";
 import "../styles/product2.css";
 import { category, company, sortBy } from "../data";
 import { getAllProducts } from "../apis/products";
+import { toast } from "react-toastify";
 
 const Products = () => {
   const {
@@ -39,6 +40,7 @@ const Products = () => {
       setIsLoading(false);
     } catch (error) {
       console.log(error);
+      toast.error(error.message);
     }
   };
 

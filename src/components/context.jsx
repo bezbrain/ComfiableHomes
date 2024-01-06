@@ -142,7 +142,7 @@ export const AppProvider = ({ children }) => {
   const [count, setCount] = useState(1);
 
   const [cartCount, setCartCount] = useState(1);
-  const [getProductDetails, setGetProductDetails] = useState({});
+  // const [getProductDetails, setGetProductDetails] = useState({});
 
   const [isDisable, setIsDisable] = useState(false);
 
@@ -249,8 +249,8 @@ export const AppProvider = ({ children }) => {
         getCartItems,
         increaseHandler,
         decreaseHandler,
-        getProductDetails,
-        setGetProductDetails,
+        // getProductDetails,
+        // setGetProductDetails,
         count,
         setCount,
         quantityOfProductInCart,

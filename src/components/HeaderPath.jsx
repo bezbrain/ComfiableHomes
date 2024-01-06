@@ -2,14 +2,14 @@ import "../styles/about.css";
 import { useLocation, Link } from "react-router-dom";
 import { useGlobalContext } from "./context";
 import { useEffect } from "react";
+import { useApiContext } from "../contexts/apiContext";
 
 const HeaderPath = () => {
-  const { allProducts, getProductDetails, allProductInStorage, pathHeightRef } =
-    useGlobalContext();
-  const location = useLocation();
+  const { pathHeightRef } = useGlobalContext();
 
-  // Get single object from the localStorage
-  const getSingleObj = JSON.parse(localStorage.getItem("singleItem")) || {};
+  const { getProductDetails } = useApiContext();
+
+  const location = useLocation();
 
   return (
     <>
@@ -27,9 +27,11 @@ const HeaderPath = () => {
                 "Products"
               ) : location.pathname === "/cart" ? (
                 "Cart"
-              ) : location.pathname === `/products/${getSingleObj.id}` ? (
+              ) : location.pathname ===
+                `/products/${getProductDetails?._id}` ? (
                 <span>
-                  <Link to="/products">Products</Link> / {getSingleObj.type}
+                  <Link to="/products">Products</Link> /{" "}
+                  {getProductDetails.type}
                 </span>
               ) : (
                 "Error Page"

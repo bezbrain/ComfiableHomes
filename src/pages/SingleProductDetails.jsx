@@ -11,42 +11,20 @@ import CartIncDecrease from "../components/CartIncDecrease";
 import { products } from "../data";
 import Notification from "../components/Notification";
 import { toast } from "react-toastify";
+import { getSingleProduct } from "../apis/products";
+import { useApiContext } from "../contexts/apiContext";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
 
-  const {
-    isLoading,
-    setIsLoading,
-    dispatch,
-    allProducts,
-    notification,
-    setNotification,
-    setSuccessNoti,
-    failureNoti,
-    setFailureNoti,
-    initState,
-    cartCount,
-    getCartItems,
-    getProductDetails,
-    setGetProductDetails,
-    count,
-    setCount,
-  } = useGlobalContext();
+  const { dispatch, allProducts, initState, count, setCount } =
+    useGlobalContext();
 
-  // Get the details of single product
-  const getSingleDetails = () => {
-    const getSingleCartItem =
-      JSON.parse(localStorage.getItem("allProducts")) || [];
-    const singleObj = getSingleCartItem[productId - 1];
-    localStorage.setItem("singleItem", JSON.stringify(singleObj));
-    const getSingleObj = JSON.parse(localStorage.getItem("singleItem"));
-    // console.log(getSingleObj);
-    setGetProductDetails(getSingleObj);
-  };
+  const { getSingleDetails, getProductDetails, isLoading, setIsLoading } =
+    useApiContext();
 
   useEffect(() => {
-    getSingleDetails();
+    getSingleDetails(productId);
   }, []);
 
   const authToken = sessionStorage.getItem("authToken");
