@@ -6,19 +6,23 @@ import SearchHover from "../components/SearchHover";
 import "../styles/product.css";
 import "../styles/product2.css";
 import { category, company, sortBy } from "../data";
+import { getAllProducts } from "../apis/products";
 
 const Products = () => {
   const {
     isLoading,
-    allProducts,
+    setIsLoading,
+    // allProducts,
     setHoveredIndex,
-    setAllProducts,
-    allProductInStorage,
+    // setAllProducts,
+    // allProductInStorage,
     pathHeightRef,
   } = useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
   const [rangeValue, setRangeValue] = useState(3099.99);
   const scrollPage = useRef(null);
+
+  const [allProducts, setAllProducts] = useState([]);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -27,17 +31,27 @@ const Products = () => {
     setHoveredIndex(false);
   };
 
-  // const allProductInStorage = JSON.parse(localStorage.getItem("allProducts"));
+  const allProductInStorage = async () => {
+    try {
+      setIsLoading(true);
+      const { products } = await getAllProducts();
+      setAllProducts(products);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // Handle each category
   const categoryHandler = (index, e) => {
     setBorderBottom(index);
 
     if (e.textContent === "All") {
       console.log("I am all");
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
       return;
     }
-    const newCategory = allProductInStorage.filter(
+    const newCategory = allProductInStorage().filter(
       (each) => each.category === e.textContent
     );
     // console.log(newCategory);
@@ -48,12 +62,12 @@ const Products = () => {
   const companyHandler = (e) => {
     //First set category back to All
     setBorderBottom(1);
-    setAllProducts(allProductInStorage);
+    setAllProducts(allProductInStorage());
     if (e.target.value === "All") {
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
       return;
     }
-    const newCompany = allProductInStorage.filter(
+    const newCompany = allProductInStorage().filter(
       (each) => each.brand === e.target.value
     );
     setAllProducts(newCompany);
@@ -61,10 +75,10 @@ const Products = () => {
 
   const rangeValueHandler = (e) => {
     setRangeValue(e.target.value);
-    const newRange = allProductInStorage.filter((each) => {
+    const newRange = allProductInStorage().filter((each) => {
       //First set category back to All
       setBorderBottom(1);
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
       const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
       const toNumber = Number(cleanedString);
       return toNumber >= Number(rangeValue) && toNumber <= 3099.99;
@@ -76,27 +90,27 @@ const Products = () => {
   const sortingHandler = (e) => {
     //First set category back to All
     setBorderBottom(1);
-    setAllProducts(allProductInStorage);
+    setAllProducts(allProductInStorage());
     if (e.target.value === "Price (Highest)") {
-      allProductInStorage.sort((a, b) => {
+      allProductInStorage().sort((a, b) => {
         let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
         let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
         let toNumberA = Number(cleanedStringA);
         let toNumberB = Number(cleanedStringB);
         return toNumberB - toNumberA;
       });
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
     } else if (e.target.value === "Price (Lowest)") {
-      allProductInStorage.sort((a, b) => {
+      allProductInStorage().sort((a, b) => {
         let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
         let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
         let toNumberA = Number(cleanedStringA);
         let toNumberB = Number(cleanedStringB);
         return toNumberA - toNumberB;
       });
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
     } else if (e.target.value === "Name (A - Z)") {
-      allProductInStorage.sort((a, b) => {
+      allProductInStorage().sort((a, b) => {
         let nameA = a.type.toUpperCase();
         let nameB = b.type.toUpperCase();
         if (nameA < nameB) {
@@ -107,9 +121,9 @@ const Products = () => {
         }
         return 0;
       });
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
     } else {
-      allProductInStorage.sort((a, b) => {
+      allProductInStorage().sort((a, b) => {
         let nameA = a.type.toUpperCase();
         let nameB = b.type.toUpperCase();
         if (nameA < nameB) {
@@ -120,13 +134,13 @@ const Products = () => {
         }
         return 0;
       });
-      setAllProducts(allProductInStorage);
+      setAllProducts(allProductInStorage());
     }
   };
 
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
-    setAllProducts(allProductInStorage); //To make sure the page has all products on first visit
+    allProductInStorage();
   }, []);
 
   return (
@@ -185,7 +199,7 @@ const Products = () => {
             className="clear-filter-btn"
             onClick={() => {
               setBorderBottom(1);
-              setAllProducts(allProductInStorage);
+              setAllProducts(allProductInStorage());
               setRangeValue(3099.99);
             }}
           >
@@ -219,15 +233,15 @@ const Products = () => {
           <section className="loader-and-image-sect">
             {isLoading && <Loader loaderCss="add-product-loader-css" />}
             {allProducts.map((each, i) => {
-              const { id, image, type, price } = each;
+              const { _id, image, type, price } = each;
               return (
-                <div className="product-images-con" key={id}>
+                <div className="product-images-con" key={_id}>
                   <div
                     className="image-con"
-                    onMouseOver={() => handleMouseOver(id)}
-                    onMouseOut={() => handleMouseOut(id)}
+                    onMouseOver={() => handleMouseOver(_id)}
+                    onMouseOut={() => handleMouseOut(_id)}
                   >
-                    <SearchHover id={id} />
+                    <SearchHover id={_id} />
                     <img src={image} alt={type} />
                   </div>
                   <div className="name-and-amt-con">
