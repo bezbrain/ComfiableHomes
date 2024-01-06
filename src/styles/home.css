@@ -144,6 +144,10 @@
   /* align-items: stretch; */
 }
 
+.image-text-con {
+  width: 100%;
+}
+
 .each-image-con {
   /* border: 2px solid red; */
   position: relative;

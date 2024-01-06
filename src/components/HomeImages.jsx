@@ -3,6 +3,8 @@ import axios from "axios";
 import { useGlobalContext } from "./context";
 import SearchHover from "./SearchHover";
 import { products } from "../data";
+import { getAllProducts } from "../apis/products";
+import { toast } from "react-toastify";
 
 // let getHomeImages;
 const HomeImages = () => {
@@ -14,19 +16,35 @@ const HomeImages = () => {
     setHoveredIndex,
   } = useGlobalContext();
 
-  const dispalyHomeData = () => {
-    // setIsLoading(true);
-    const homeProduct = products.filter((each) => each.id % 6 === 0);
-    setHomeProducts(homeProduct);
+  const dispalyHomeData = async () => {
+    try {
+      setIsLoading(true);
+      const { products } = await getAllProducts();
+
+      // Select random indices
+      let productIndices = [];
+      for (let i = 0; i < 3; i++) {
+        const randomProduct = Math.floor(products.length * Math.random());
+        productIndices.push(randomProduct);
+      }
+      // Randomly pick three items from all products
+      let homeProduct = [];
+      for (let i = 0; i < productIndices.length; i++) {
+        const indices = productIndices[i];
+        homeProduct.push(products[indices]);
+      }
+
+      setHomeProducts(homeProduct);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {
     dispalyHomeData();
   }, []);
-
-  useEffect(() => {
-    setIsLoading(false);
-  }, [homeProducts]);
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -40,15 +58,15 @@ const HomeImages = () => {
       <div className="home-images-con">
         {homeProducts &&
           homeProducts.map((each, i) => {
-            const { id, image, type, price } = each;
+            const { _id, image, type, price } = each;
             return (
-              <div className="image-text-con" key={id}>
+              <div className="image-text-con" key={i}>
                 <div
                   className="each-image-con"
-                  onMouseOver={() => handleMouseOver(id)}
-                  onMouseOut={() => handleMouseOut(id)}
+                  onMouseOver={() => handleMouseOver(_id)}
+                  onMouseOut={() => handleMouseOut(_id)}
                 >
-                  <SearchHover id={id} />
+                  <SearchHover id={_id} />
                   <img src={image} alt="Home-img" className="home-images" />
                 </div>
                 <section className="img-text-sect">

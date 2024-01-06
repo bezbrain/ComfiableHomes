@@ -3,10 +3,8 @@ import HomeImages from "../../components/HomeImages";
 import AllProductsBtn from "../../components/AllProductsBtn";
 import { useGlobalContext } from "../../components/context";
 import Loader from "../../components/Loader";
-import { getAllProducts } from "../../apis/products";
 
 const FeaturedPro = () => {
-  // getAllProducts();
   const { isLoading, setIsLoading } = useGlobalContext();
 
   return (
