@@ -69,7 +69,7 @@ export const getCartProducts = async () => {
 // DELETE PRODUCT FROM CART
 export const deleteCartProduct = async (routeParam) => {
   const token = sessionStorage.getItem("authToken");
-  const { data } = await axios.get(
+  const { data } = await axios.delete(
     `https://comfiable-homes.onrender.com/api/v1/deleteCart/${routeParam}`,
     {
       headers: {
@@ -78,6 +78,6 @@ export const deleteCartProduct = async (routeParam) => {
       },
     }
   );
-  console.log(data);
+  // console.log(data);
   return data;
 };

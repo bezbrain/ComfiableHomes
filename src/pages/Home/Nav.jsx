@@ -42,16 +42,20 @@ const Nav = () => {
   const authToken = sessionStorage.getItem("authToken") || "";
 
   useEffect(() => {
+    // This is to trigger the number of cart items in nav bar
     const getCartCount = async () => {
       try {
         const res = await getCartProducts();
         setCartCount(res.count);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         toast.error(error.response.data.message || error.message);
       }
     };
-    getCartCount();
+    // Run useEffect only if authToken is available
+    if (authToken) {
+      getCartCount();
+    }
   }, [getCartProduct]);
 
   return (

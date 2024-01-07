@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useApiContext } from "../../contexts/apiContext";
 import { FaTrash } from "react-icons/fa";
@@ -14,7 +14,11 @@ const CartUI = ({
   shippingFee,
   authToken,
 }) => {
-  const { getCartProduct, handleCartProduct } = useApiContext();
+  const { getCartProduct } = useApiContext();
+
+  // useEffect(() => {
+  //   console.log(getCartProduct);
+  // }, [getCartProduct]);
 
   return (
     <>

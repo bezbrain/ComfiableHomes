@@ -6,7 +6,7 @@ import axios from "axios";
 import { useGlobalContext } from "../components/context";
 import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
-import { ACTIONS } from "../components/context";
+// import { ACTIONS } from "../components/context";
 import CartIncDecrease from "../components/CartIncDecrease";
 import { products } from "../data";
 import Notification from "../components/Notification";
@@ -34,13 +34,8 @@ const SingleProductDetails = () => {
     if (!authToken) {
       toast.error("Please Login");
     } else {
-      // Access to single product id and also all products
-      // dispatch({
-      //   type: ACTIONS.ADD_TO_CART,
-      //   payload: { prodId: productId, products: allProducts, counter: count },
-      // });
       try {
-        const { toCart } = await addToCart(productId);
+        const toCart = await addToCart(productId);
         toast.success(toCart.message);
       } catch (error) {
         console.log(error);
@@ -48,14 +43,6 @@ const SingleProductDetails = () => {
       }
 
       setCount(1);
-
-      // const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
-      // If product already in cart, send a negative notification
-      // if (newProd) {
-      //   toast.error("Item already in cart");
-      //   return;
-      // }
-      // toast.success("Item added to cart");
     }
   };
 

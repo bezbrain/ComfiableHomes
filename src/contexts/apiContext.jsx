@@ -24,14 +24,17 @@ export const ApiProvider = ({ children }) => {
       setGetProductDetails(products);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setIsLoading(false);
     }
   };
 
   const handleCartProduct = async (authToken, toast, setShowNav) => {
-    authToken ? "" : toast.error("Please Login");
-    setShowNav("");
+    if (!authToken) {
+      setShowNav("");
+      toast.error("Please Login");
+      return;
+    }
     try {
       setIsLoading(true);
       const { items } = await getCartProducts();
@@ -39,7 +42,7 @@ export const ApiProvider = ({ children }) => {
       setGetCartProduct(items);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.response.data.message || error.message);
       setIsLoading(false);
     }

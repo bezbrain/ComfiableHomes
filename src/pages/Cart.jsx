@@ -3,13 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/cart.css";
 import { useGlobalContext } from "../components/context";
 import Notification from "../components/Notification";
-import { ACTIONS } from "../components/context";
+// import { ACTIONS } from "../components/context";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import CartUI from "../components/cart/cartUI";
 import Loader from "../components/Loader";
-import { deleteCartProduct } from "../apis/products";
+import { deleteCartProduct, getCartProducts } from "../apis/products";
 
 const Cart = () => {
   const {
@@ -24,6 +24,8 @@ const Cart = () => {
 
   const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
 
+  const authToken = sessionStorage.getItem("authToken");
+
   const [shippingFee] = useState(5.34);
 
   const navigate = useNavigate();
@@ -31,12 +33,13 @@ const Cart = () => {
 
   let roundNumber;
 
-  const handleDeleteCart = (index) => {
+  const handleDeleteCart = async (index) => {
     try {
-      const response = deleteCartProduct(index);
+      const response = await deleteCartProduct(index);
       toast.success(response.message);
+      await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.response.data.message || error.message);
     }
     // dispatch({
@@ -46,7 +49,7 @@ const Cart = () => {
   };
 
   const clearCartHandler = () => {
-    dispatch({ type: ACTIONS.CLEAR_CART });
+    // dispatch({ type: ACTIONS.CLEAR_CART });
   };
 
   useEffect(() => {
@@ -65,8 +68,6 @@ const Cart = () => {
     });
     return sum.toFixed(2);
   };
-
-  const authToken = sessionStorage.getItem("authToken");
 
   return (
     <>
