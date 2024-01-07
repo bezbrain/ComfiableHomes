@@ -9,17 +9,19 @@ import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import CartUI from "../components/cart/cartUI";
 import Loader from "../components/Loader";
-import { deleteCartProduct, getCartProducts } from "../apis/products";
+import {
+  deleteAll,
+  deleteCartProduct,
+  getCartProducts,
+} from "../apis/products";
 
 const Cart = () => {
   const {
-    initState,
-    dispatch,
-    // getCartProduct,
     increaseHandler,
     decreaseHandler,
     handleLoginLogout,
     setShowNav,
+    setIsDisable,
   } = useGlobalContext();
 
   const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
@@ -42,14 +44,20 @@ const Cart = () => {
       // console.log(error);
       toast.error(error.response.data.message || error.message);
     }
-    // dispatch({
-    //   type: ACTIONS.DELETE_FROM_CART,
-    //   payload: { filterId: index },
-    // });
   };
 
-  const clearCartHandler = () => {
-    // dispatch({ type: ACTIONS.CLEAR_CART });
+  const clearCartHandler = async () => {
+    try {
+      setIsDisable(true);
+      const data = await deleteAll();
+      toast.success(data.message);
+      setIsDisable(false);
+      await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
+    } catch (error) {
+      // console.log(error);
+      setIsDisable(false);
+      toast.error(error.response.data.message || error.message);
+    }
   };
 
   useEffect(() => {

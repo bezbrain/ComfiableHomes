@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useApiContext } from "../../contexts/apiContext";
 import { FaTrash } from "react-icons/fa";
+import { useGlobalContext } from "../context";
 
 const CartUI = ({
   decreaseHandler,
@@ -15,6 +16,7 @@ const CartUI = ({
   authToken,
 }) => {
   const { getCartProduct } = useApiContext();
+  const { isDisable } = useGlobalContext();
 
   // useEffect(() => {
   //   console.log(getCartProduct);
@@ -78,7 +80,11 @@ const CartUI = ({
         <Link to="/products">
           Continue <span>Shopping</span>
         </Link>
-        <button className="clear-shopping-cart-btn" onClick={clearCartHandler}>
+        <button
+          className="clear-shopping-cart-btn"
+          onClick={clearCartHandler}
+          disabled={isDisable}
+        >
           Clear Cart
         </button>
       </div>

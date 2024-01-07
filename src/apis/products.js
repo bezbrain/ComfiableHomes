@@ -81,3 +81,19 @@ export const deleteCartProduct = async (routeParam) => {
   // console.log(data);
   return data;
 };
+
+// CLEAR ALL ITEMS FROM CART
+export const deleteAll = async () => {
+  const token = sessionStorage.getItem("authToken");
+  const { data } = await axios.delete(
+    "https://comfiable-homes.onrender.com/api/v1/deleteAll",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  // console.log(data);
+  return data;
+};

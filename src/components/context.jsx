@@ -172,6 +172,7 @@ export const AppProvider = ({ children }) => {
         isLogged,
         setIsLogged,
         isDisable,
+        setIsDisable,
       }}
     >
       {children}
