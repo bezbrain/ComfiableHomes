@@ -33,13 +33,15 @@ export const ApiProvider = ({ children }) => {
     authToken ? "" : toast.error("Please Login");
     setShowNav("");
     try {
-      // console.log(items);
+      setIsLoading(true);
       const { items } = await getCartProducts();
       // console.log(items);
       setGetCartProduct(items);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message || error.message);
+      setIsLoading(false);
     }
   };
 

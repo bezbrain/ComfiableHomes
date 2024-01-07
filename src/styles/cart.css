@@ -259,3 +259,9 @@
   background-color: var(--lightblue);
   color: #000;
 }
+
+.add-product-loader-css {
+  margin-top: 8rem;
+  left: 40%;
+  /* transform: translateX(-50%); */
+}

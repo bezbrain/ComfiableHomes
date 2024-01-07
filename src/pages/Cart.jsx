@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import CartUI from "../components/cart/cartUI";
+import Loader from "../components/Loader";
 
 const Cart = () => {
   const {
@@ -20,7 +21,7 @@ const Cart = () => {
     setShowNav,
   } = useGlobalContext();
 
-  const { getCartProduct, handleCartProduct } = useApiContext();
+  const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
 
   const [shippingFee] = useState(5.34);
 
@@ -62,25 +63,31 @@ const Cart = () => {
   return (
     <>
       <section className="cart-sect">
-        {getCartProduct.length === 0 ? (
-          <>
-            <h2>Your cart is empty</h2>
-            <Link to="/products" className="fill-it-btn">
-              FILL IT
-            </Link>
-          </>
+        {isLoading ? (
+          <Loader loaderCss="add-product-loader-css" />
         ) : (
-          <CartUI
-            decreaseHandler={decreaseHandler}
-            increaseHandler={increaseHandler}
-            handleDeleteCart={handleDeleteCart}
-            calculateSubtotal={calculateSubtotal}
-            handleLoginLogout={() => handleLoginLogout(toast, navigate)}
-            roundNumber={roundNumber}
-            clearCartHandler={clearCartHandler}
-            shippingFee={shippingFee}
-            authToken={authToken}
-          />
+          <>
+            {getCartProduct.length === 0 ? (
+              <>
+                <h2>Your cart is empty</h2>
+                <Link to="/products" className="fill-it-btn">
+                  FILL IT
+                </Link>
+              </>
+            ) : (
+              <CartUI
+                decreaseHandler={decreaseHandler}
+                increaseHandler={increaseHandler}
+                handleDeleteCart={handleDeleteCart}
+                calculateSubtotal={calculateSubtotal}
+                handleLoginLogout={() => handleLoginLogout(toast, navigate)}
+                roundNumber={roundNumber}
+                clearCartHandler={clearCartHandler}
+                shippingFee={shippingFee}
+                authToken={authToken}
+              />
+            )}
+          </>
         )}
       </section>
     </>
