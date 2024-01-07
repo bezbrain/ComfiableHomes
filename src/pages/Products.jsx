@@ -40,6 +40,7 @@ const Products = () => {
       setIsLoading(false);
     } catch (error) {
       // console.log(error);
+      setIsLoading(false);
       toast.error(error.response.data.message || error.message);
     }
   };

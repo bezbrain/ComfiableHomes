@@ -2,14 +2,9 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import axios from "axios";
 import { useGlobalContext } from "../components/context";
 import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
-// import { ACTIONS } from "../components/context";
-import CartIncDecrease from "../components/CartIncDecrease";
-import { products } from "../data";
-import Notification from "../components/Notification";
 import { toast } from "react-toastify";
 import { addToCart, getSingleProduct } from "../apis/products";
 import { useApiContext } from "../contexts/apiContext";
@@ -17,8 +12,7 @@ import { useApiContext } from "../contexts/apiContext";
 const SingleProductDetails = () => {
   const { productId } = useParams();
 
-  const { dispatch, allProducts, initState, count, setCount } =
-    useGlobalContext();
+  const { count, setCount } = useGlobalContext();
 
   const { getSingleDetails, getProductDetails, isLoading, setIsLoading } =
     useApiContext();

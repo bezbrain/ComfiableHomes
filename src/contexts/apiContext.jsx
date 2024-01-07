@@ -1,18 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { getCartProducts, getSingleProduct } from "../apis/products";
 
 const ApiContext = React.createContext();
 
 export const ApiProvider = ({ children }) => {
-  //   const { productId } = useParams();
-
   const [getProductDetails, setGetProductDetails] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const [getCartProduct, setGetCartProduct] = useState([]);
-
-  // let items = 0;
 
   const [cartCount, setCartCount] = useState(0);
 
@@ -25,6 +20,7 @@ export const ApiProvider = ({ children }) => {
       setIsLoading(false);
     } catch (error) {
       // console.log(error);
+      toast.error(error.response.data.message || error.message);
       setIsLoading(false);
     }
   };
