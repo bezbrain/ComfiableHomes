@@ -74,8 +74,9 @@ const SingleProductDetails = () => {
   return (
     <>
       <main className="single-detail-page">
-        {isLoading && <Loader loaderCss="add-details-loader-css" />}
-        {getProductDetails && (
+        {isLoading ? (
+          <Loader loaderCss="add-details-loader-css" />
+        ) : (
           <section className="display-details-con">
             <div className="back-to-product">
               <Link to="/products">BACK TO PRODUCTS</Link>

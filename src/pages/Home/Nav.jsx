@@ -93,6 +93,9 @@ const Nav = () => {
             <Link
               to={`${authToken ? "/cart" : ""}`}
               style={{ textDecoration: "none", color: "#000" }}
+              className={`${
+                location.pathname === "/cart" ? "active-page" : ""
+              }`}
               onClick={() => handleCartProduct(authToken, toast, setShowNav)}
             >
               <p>

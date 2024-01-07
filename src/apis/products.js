@@ -62,7 +62,7 @@ export const getCartProducts = async () => {
       },
     }
   );
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
