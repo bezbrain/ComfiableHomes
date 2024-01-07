@@ -9,6 +9,8 @@ import { useEffect, useRef } from "react";
 import Notification from "../../components/Notification";
 import { toast } from "react-toastify";
 import { logoutUser } from "../../apis/users";
+import { useApiContext } from "../../contexts/apiContext";
+import { getCartProducts } from "../../apis/products";
 
 const Nav = () => {
   const {
@@ -21,6 +23,9 @@ const Nav = () => {
     handleLoginLogout,
     isDisable,
   } = useGlobalContext();
+
+  const { handleCartProduct, getCartProduct, cartCount, setCartCount } =
+    useApiContext();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,6 +40,19 @@ const Nav = () => {
   };
 
   const authToken = sessionStorage.getItem("authToken") || "";
+
+  useEffect(() => {
+    const getCartCount = async () => {
+      try {
+        const res = await getCartProducts();
+        setCartCount(res.count);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message || error.message);
+      }
+    };
+    getCartCount();
+  }, [getCartProduct]);
 
   return (
     <>
@@ -75,17 +93,16 @@ const Nav = () => {
             <Link
               to={`${authToken ? "/cart" : ""}`}
               style={{ textDecoration: "none", color: "#000" }}
-              onClick={() => {
-                authToken ? "" : toast.error("Please Login");
-                setShowNav("");
-              }}
+              onClick={() => handleCartProduct(authToken, toast, setShowNav)}
             >
               <p>
                 Cart
                 <FaCartPlus />
               </p>
               <div className="products-in-cart">
-                {authToken ? quantityOfProductInCart() : 0}
+                {authToken
+                  ? cartCount || quantityOfProductInCart(getCartProduct)
+                  : 0}
               </div>
             </Link>
             <button

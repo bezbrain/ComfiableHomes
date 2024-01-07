@@ -7,6 +7,8 @@ import { useState } from "react";
 import Notification from "./Notification";
 import { toast } from "react-toastify";
 import { loginUser } from "../apis/users";
+import { getCartProducts } from "../apis/products";
+import { useApiContext } from "../contexts/apiContext";
 
 const Login = () => {
   const {
@@ -15,6 +17,9 @@ const Login = () => {
     setLoginLogoutOverlay,
     setIsLogged,
   } = useGlobalContext();
+
+  const { getCartProduct, setCartCount } = useApiContext();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const eachPerson = {
@@ -56,9 +61,13 @@ const Login = () => {
       // setTimeout(() => {
       setLoginLogoutOverlay(false);
       // }, 2000);
+
+      // Call the get all cart items endpoint to make sure number of items in cart is readily available on login
+      const res = await getCartProducts();
+      setCartCount(res.count);
     } catch (error) {
       setIsLoading(false);
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message || error.message);
     }
   };
 

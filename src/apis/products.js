@@ -1,5 +1,7 @@
 import axios from "axios";
 
+// const token = sessionStorage.getItem("authToken");
+
 // GET ALL PRODUCTS
 export const getAllProducts = async () => {
   const token = sessionStorage.getItem("authToken");
@@ -37,6 +39,38 @@ export const addToCart = async (productId) => {
   const { data } = await axios.post(
     "https://comfiable-homes.onrender.com/api/v1/addToCart",
     { productId },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  // console.log(data);
+  return data;
+};
+
+// GET ALL PRODUCTS IN CART
+export const getCartProducts = async () => {
+  const token = sessionStorage.getItem("authToken");
+  const { data } = await axios.get(
+    "https://comfiable-homes.onrender.com/api/v1/getCartItems",
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  console.log(data);
+  return data;
+};
+
+// DELETE PRODUCT FROM CART
+export const deleteCartProduct = async (routeParam) => {
+  const token = sessionStorage.getItem("authToken");
+  const { data } = await axios.get(
+    `https://comfiable-homes.onrender.com/api/v1/deleteCart/${routeParam}`,
     {
       headers: {
         "Content-Type": "application/json",

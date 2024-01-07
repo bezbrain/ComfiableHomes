@@ -187,9 +187,9 @@ export const AppProvider = ({ children }) => {
   };
 
   // Quantity of items in cart function
-  const quantityOfProductInCart = () => {
+  const quantityOfProductInCart = (getCartProducts) => {
     let sum = 0;
-    getCartItems.forEach((each) => {
+    getCartProducts.forEach((each) => {
       sum += each.counter;
     });
     return sum;
@@ -209,9 +209,13 @@ export const AppProvider = ({ children }) => {
         navigate("/");
         sessionStorage.removeItem("authToken"); // Clear the authentication token from session storage
         setIsDisable(false);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       } catch (error) {
         console.log(error);
-        toastMessage.error(error.response.data.message);
+        setIsDisable(false);
+        toastMessage.error(error.response.data.message || error.message);
       }
     }
   };
