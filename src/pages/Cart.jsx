@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import CartUI from "../components/cart/cartUI";
 import Loader from "../components/Loader";
+import { deleteCartProduct } from "../apis/products";
 
 const Cart = () => {
   const {
@@ -31,6 +32,13 @@ const Cart = () => {
   let roundNumber;
 
   const handleDeleteCart = (index) => {
+    try {
+      const response = deleteCartProduct(index);
+      toast.success(response.message);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.message || error.message);
+    }
     // dispatch({
     //   type: ACTIONS.DELETE_FROM_CART,
     //   payload: { filterId: index },
