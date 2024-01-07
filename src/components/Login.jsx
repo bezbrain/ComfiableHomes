@@ -53,9 +53,9 @@ const Login = () => {
       setIsLoading(false);
       setloginRegister(false);
 
-      setTimeout(() => {
-        setLoginLogoutOverlay(false);
-      }, 2000);
+      // setTimeout(() => {
+      setLoginLogoutOverlay(false);
+      // }, 2000);
     } catch (error) {
       setIsLoading(false);
       toast.error(error.response.data.message);

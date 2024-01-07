@@ -11,7 +11,7 @@ import CartIncDecrease from "../components/CartIncDecrease";
 import { products } from "../data";
 import Notification from "../components/Notification";
 import { toast } from "react-toastify";
-import { getSingleProduct } from "../apis/products";
+import { addToCart, getSingleProduct } from "../apis/products";
 import { useApiContext } from "../contexts/apiContext";
 
 const SingleProductDetails = () => {
@@ -30,24 +30,32 @@ const SingleProductDetails = () => {
   const authToken = sessionStorage.getItem("authToken");
 
   // On click of "ADD TO CART" btn
-  const handleCart = () => {
+  const handleCart = async () => {
     if (!authToken) {
       toast.error("Please Login");
     } else {
       // Access to single product id and also all products
-      dispatch({
-        type: ACTIONS.ADD_TO_CART,
-        payload: { prodId: productId, products: allProducts, counter: count },
-      });
+      // dispatch({
+      //   type: ACTIONS.ADD_TO_CART,
+      //   payload: { prodId: productId, products: allProducts, counter: count },
+      // });
+      try {
+        const { toCart } = await addToCart(productId);
+        toast.success(toCart.message);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message);
+      }
+
       setCount(1);
 
-      const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
+      // const newProd = initState.some((each) => each.prevId === productId); //Get equal Id's
       // If product already in cart, send a negative notification
-      if (newProd) {
-        toast.error("Item already in cart");
-        return;
-      }
-      toast.success("Item added to cart");
+      // if (newProd) {
+      //   toast.error("Item already in cart");
+      //   return;
+      // }
+      // toast.success("Item added to cart");
     }
   };
 

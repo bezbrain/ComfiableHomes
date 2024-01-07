@@ -8,20 +8,7 @@ import { toast } from "react-toastify";
 import { registerUser } from "../apis/users";
 
 const Register = () => {
-  const {
-    loginRegister,
-    setloginRegister,
-    // setSuccessNoti,
-    // setFailureNoti,
-    // registerPopupNoti,
-    // setRegisterPopupNoti,
-    // showRegisterNoti,
-    // setShowRegisterNoti,
-    // setShowLoginNoti,
-    // auth,
-    // createUserWithEmailAndPassword,
-    // extratingErrorMsg,
-  } = useGlobalContext();
+  const { loginRegister, setloginRegister } = useGlobalContext();
 
   const eachPerson = {
     username: "",
