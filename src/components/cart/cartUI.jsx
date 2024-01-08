@@ -14,6 +14,8 @@ const CartUI = ({
   clearCartHandler,
   shippingFee,
   authToken,
+  toast,
+  navigate,
 }) => {
   const { getCartProduct } = useApiContext();
   const { isDisable } = useGlobalContext();

@@ -102,6 +102,8 @@ const Cart = () => {
                 clearCartHandler={clearCartHandler}
                 shippingFee={shippingFee}
                 authToken={authToken}
+                toast={toast}
+                navigate={navigate}
               />
             )}
           </>
