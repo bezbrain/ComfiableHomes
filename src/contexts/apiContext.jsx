@@ -33,6 +33,7 @@ export const ApiProvider = ({ children }) => {
     }
     try {
       setIsLoading(true);
+      setShowNav("");
       const { items } = await getCartProducts();
       // console.log(items);
       setGetCartProduct(items);
