@@ -7,7 +7,7 @@ import { useApiContext } from "../contexts/apiContext";
 const HeaderPath = () => {
   const { pathHeightRef } = useGlobalContext();
 
-  const { getProductDetails, isLoading, setIsLoading } = useApiContext();
+  const { getProductDetails, isLoading } = useApiContext();
 
   const location = useLocation();
 
