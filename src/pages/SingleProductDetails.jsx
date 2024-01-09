@@ -14,8 +14,7 @@ const SingleProductDetails = () => {
 
   const { count, setCount } = useGlobalContext();
 
-  const { getSingleDetails, getProductDetails, isLoading, setIsLoading } =
-    useApiContext();
+  const { getSingleDetails, getProductDetails, isLoading } = useApiContext();
 
   useEffect(() => {
     getSingleDetails(productId);
@@ -32,23 +31,9 @@ const SingleProductDetails = () => {
         const toCart = await addToCart(productId);
         toast.success(toCart.message);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         toast.error(error.response.data.message);
       }
-
-      setCount(1);
-    }
-  };
-
-  const SingleProIncrease = () => {
-    if ((count < 10) & (count > 0)) {
-      setCount(count + 1);
-    }
-  };
-
-  const SingleProDecrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
     }
   };
 
@@ -106,15 +91,6 @@ const SingleProductDetails = () => {
                   </tbody>
                 </table>
                 <hr />
-                <div className={`count-con add-cart-css`}>
-                  <button className="decrease" onClick={SingleProDecrease}>
-                    -
-                  </button>
-                  <p>{count}</p>
-                  <button className="increase" onClick={SingleProIncrease}>
-                    +
-                  </button>
-                </div>
                 <Link to={`${!authToken ? "" : "/cart"}`} onClick={handleCart}>
                   ADD TO CART
                 </Link>

@@ -129,10 +129,12 @@ table tr td span {
   text-decoration: none;
   background-color: var(--darkblue);
   color: #fff;
-  padding: 8px 15px;
+  padding: 5px 15px;
   border-radius: 5px;
   transition: ease 0.5s all;
-  /* margin-bottom: 20px; */
+  display: block;
+  margin-top: 20px;
+  width: fit-content;
 }
 
 .images-and-details-con article a:hover {
