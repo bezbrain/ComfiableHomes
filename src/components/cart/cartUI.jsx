@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useApiContext } from "../../contexts/apiContext";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context";
+import { toast } from "react-toastify";
 
 const CartUI = ({
   decreaseHandler,
@@ -13,16 +14,13 @@ const CartUI = ({
   roundNumber,
   clearCartHandler,
   shippingFee,
-  authToken,
-  toast,
+  // authToken,
   navigate,
 }) => {
-  const { getCartProduct } = useApiContext();
-  const { isDisable } = useGlobalContext();
+  const { getCartProduct, handleCartProduct } = useApiContext();
+  const { isDisable, setShowNav } = useGlobalContext();
 
-  // useEffect(() => {
-  //   console.log(getCartProduct);
-  // }, [getCartProduct]);
+  const authToken = sessionStorage.getItem("authToken");
 
   return (
     <>
@@ -52,7 +50,10 @@ const CartUI = ({
                     <div className="count-con">
                       <button
                         className="decrease"
-                        onClick={() => decreaseHandler(_id)}
+                        onClick={async () => {
+                          await decreaseHandler(_id, toast);
+                          await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
+                        }}
                       >
                         -
                       </button>
@@ -69,7 +70,10 @@ const CartUI = ({
                   <td>
                     <FaTrash
                       className="delete-product"
-                      onClick={() => handleDeleteCart(_id)}
+                      onClick={async () => {
+                        await handleDeleteCart(_id, toast);
+                        await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
+                      }}
                     />
                   </td>
                 </tr>

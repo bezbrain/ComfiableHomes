@@ -66,22 +66,6 @@ export const AppProvider = ({ children }) => {
 
   const [isDisable, setIsDisable] = useState(false);
 
-  // Cart Page IncreaseHandler
-  const increaseHandler = (index) => {
-    // dispatch({
-    //   type: ACTIONS.INCREASE_COUNT,
-    //   payload: { filterId: index },
-    // });
-  };
-
-  // Cart Page DecreaseHandler
-  const decreaseHandler = (index) => {
-    // dispatch({
-    //   type: ACTIONS.DECREASE_COUNT,
-    //   payload: { filterId: index },
-    // });
-  };
-
   // Quantity of items in cart function
   const quantityOfProductInCart = (getCartProducts) => {
     let sum = 0;
@@ -147,8 +131,6 @@ export const AppProvider = ({ children }) => {
         cartCount,
         setCartCount,
         getCartItems,
-        increaseHandler,
-        decreaseHandler,
         // getProductDetails,
         // setGetProductDetails,
         count,

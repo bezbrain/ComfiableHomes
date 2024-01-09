@@ -16,15 +16,16 @@ import {
 } from "../apis/products";
 
 const Cart = () => {
+  const { handleLoginLogout, setShowNav, setIsDisable } = useGlobalContext();
+
   const {
+    getCartProduct,
+    handleCartProduct,
+    isLoading,
+    handleDeleteCart,
     increaseHandler,
     decreaseHandler,
-    handleLoginLogout,
-    setShowNav,
-    setIsDisable,
-  } = useGlobalContext();
-
-  const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
+  } = useApiContext();
 
   const authToken = sessionStorage.getItem("authToken");
 
@@ -34,17 +35,6 @@ const Cart = () => {
   const location = useLocation();
 
   let roundNumber;
-
-  const handleDeleteCart = async (index) => {
-    try {
-      const response = await deleteCartProduct(index);
-      toast.success(response.message);
-      await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
-    } catch (error) {
-      // console.log(error);
-      toast.error(error.response.data.message || error.message);
-    }
-  };
 
   const clearCartHandler = async () => {
     try {

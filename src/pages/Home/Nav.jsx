@@ -24,8 +24,13 @@ const Nav = () => {
     isDisable,
   } = useGlobalContext();
 
-  const { handleCartProduct, getCartProduct, cartCount, setCartCount } =
-    useApiContext();
+  const {
+    handleCartProduct,
+    getCartProduct,
+    setGetCartProduct,
+    cartCount,
+    setCartCount,
+  } = useApiContext();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,8 +50,8 @@ const Nav = () => {
     // This is to trigger the number of cart items in nav bar
     const getCartCount = async () => {
       try {
-        const res = await getCartProducts();
-        setCartCount(res.count);
+        const { items } = await getCartProducts();
+        setGetCartProduct(items);
       } catch (error) {
         // console.log(error);
         toast.error(error.response.data.message || error.message);
@@ -56,7 +61,7 @@ const Nav = () => {
     if (authToken) {
       getCartCount();
     }
-  }, [getCartProduct]);
+  }, []);
 
   return (
     <>
@@ -107,9 +112,7 @@ const Nav = () => {
                 <FaCartPlus />
               </p>
               <div className="products-in-cart">
-                {authToken
-                  ? cartCount || quantityOfProductInCart(getCartProduct)
-                  : 0}
+                {authToken ? quantityOfProductInCart(getCartProduct) : 0}
               </div>
             </Link>
             <button
