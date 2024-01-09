@@ -52,7 +52,7 @@ const CartUI = ({
                         className="decrease"
                         onClick={async () => {
                           await decreaseHandler(_id, toast);
-                          await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
+                          // await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
                         }}
                       >
                         -

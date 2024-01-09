@@ -55,12 +55,11 @@ export const ApiProvider = ({ children }) => {
   // FUNCTION TO HANDLE DELETING OF CART ITEM
   const handleDeleteCart = async (index, toast) => {
     try {
-      console.log("Running");
       const response = await deleteCartProduct(index);
       toast.success(response.message);
-      console.log("Delete run");
-      // await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
-      console.log("Cart run");
+      // Call the db colection for cart
+      const { items } = await getCartProducts();
+      setGetCartProduct(items);
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message || error.message);
