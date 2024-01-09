@@ -17,7 +17,7 @@ const CartUI = ({
   // authToken,
   navigate,
 }) => {
-  const { getCartProduct, handleCartProduct } = useApiContext();
+  const { getCartProduct, handleCartProduct, isCartDisable } = useApiContext();
   const { isDisable, setShowNav } = useGlobalContext();
 
   const authToken = sessionStorage.getItem("authToken");
@@ -50,9 +50,9 @@ const CartUI = ({
                     <div className="count-con">
                       <button
                         className="decrease"
+                        disabled={isCartDisable}
                         onClick={async () => {
                           await decreaseHandler(_id, toast);
-                          // await handleCartProduct(authToken, toast, setShowNav); // Call this function to get the remaining data after deleting from db
                         }}
                       >
                         -

@@ -15,6 +15,8 @@ export const ApiProvider = ({ children }) => {
 
   const [cartCount, setCartCount] = useState(0);
 
+  const [isCartDisable, setIsCartDisable] = useState(false);
+
   const [cartPageCount, setCartPageCount] = useState(1);
 
   // GET THE DETAILS OF SINGLE PRODUCT
@@ -61,7 +63,7 @@ export const ApiProvider = ({ children }) => {
       const { items } = await getCartProducts();
       setGetCartProduct(items);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.response.data.message || error.message);
     }
   };
@@ -82,13 +84,14 @@ export const ApiProvider = ({ children }) => {
     newCartProduct.counter--;
     if (newCartProduct.counter === 0) {
       try {
+        setIsCartDisable(true);
         await handleDeleteCart(index, toast);
-        console.log("Item deleted");
+        setIsCartDisable(false);
       } catch (error) {
-        console.log(error);
+        // console.log(error);
         toast.error(error.response.data.message || error.message);
+        setIsCartDisable(false);
       }
-      // return;
     }
     setCartPageCount(newCartProduct.counter);
   };
@@ -110,6 +113,8 @@ export const ApiProvider = ({ children }) => {
         decreaseHandler,
         cartPageCount,
         setCartPageCount,
+        isCartDisable,
+        setIsCartDisable,
       }}
     >
       {children}
