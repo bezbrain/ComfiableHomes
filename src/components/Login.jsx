@@ -16,9 +16,10 @@ const Login = () => {
     setloginRegister,
     setLoginLogoutOverlay,
     setIsLogged,
+    quantityOfProductInCart,
   } = useGlobalContext();
 
-  const { getCartProduct, setCartCount } = useApiContext();
+  const { getCartProduct, setCartCount, setGetCartProduct } = useApiContext();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -58,13 +59,11 @@ const Login = () => {
       setIsLoading(false);
       setloginRegister(false);
 
-      // setTimeout(() => {
       setLoginLogoutOverlay(false);
-      // }, 2000);
 
       // Call the get all cart items endpoint to make sure number of items in cart is readily available on login
-      const res = await getCartProducts();
-      setCartCount(res.count);
+      const { items } = await getCartProducts();
+      setGetCartProduct(items);
     } catch (error) {
       setIsLoading(false);
       toast.error(error.response.data.message || error.message);

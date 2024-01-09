@@ -91,7 +91,7 @@ export const AppProvider = ({ children }) => {
         setIsDisable(false);
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 1000);
       } catch (error) {
         // console.log(error);
         setIsDisable(false);
