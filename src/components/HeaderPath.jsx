@@ -7,7 +7,7 @@ import { useApiContext } from "../contexts/apiContext";
 const HeaderPath = () => {
   const { pathHeightRef } = useGlobalContext();
 
-  const { getProductDetails } = useApiContext();
+  const { getProductDetails, isLoading, setIsLoading } = useApiContext();
 
   const location = useLocation();
 
@@ -19,24 +19,26 @@ const HeaderPath = () => {
             <Link to={"/"} style={{ textDecoration: "none", color: "#000" }}>
               <span>Home</span> /
             </Link>
-            <span style={{ color: "blue" }}>
-              {" "}
-              {location.pathname === "/about" ? (
-                "About"
-              ) : location.pathname === "/products" ? (
-                "Products"
-              ) : location.pathname === "/cart" ? (
-                "Cart"
-              ) : location.pathname ===
-                `/products/${getProductDetails?._id}` ? (
-                <span>
-                  <Link to="/products">Products</Link> /{" "}
-                  {getProductDetails.type}
-                </span>
-              ) : (
-                "Error Page"
-              )}
-            </span>
+            {!isLoading && (
+              <span style={{ color: "blue" }}>
+                {" "}
+                {location.pathname === "/about" ? (
+                  "About"
+                ) : location.pathname === "/products" ? (
+                  "Products"
+                ) : location.pathname === "/cart" ? (
+                  "Cart"
+                ) : location.pathname ===
+                  `/products/${getProductDetails?._id}` ? (
+                  <span>
+                    <Link to="/products">Products</Link> /{" "}
+                    {getProductDetails.type}
+                  </span>
+                ) : (
+                  "Error Page"
+                )}
+              </span>
+            )}
           </p>
         </div>
       </section>
