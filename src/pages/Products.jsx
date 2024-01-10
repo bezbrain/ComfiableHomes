@@ -8,8 +8,7 @@ import "../styles/product2.css";
 import { category, company, sortBy } from "../data";
 import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
-import { inputSearch, searchProduct } from "../utils/searchProduct";
-import { search } from "../apis/search";
+import { sortProducts } from "../utils/searchProduct";
 
 const Products = () => {
   const {
@@ -146,7 +145,8 @@ const Products = () => {
 
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    inputSearch(setAllProducts, searchValue, toast);
+    // inputSearch(setAllProducts, searchValue, toast);
+    sortProducts(searchValue, "", "", setAllProducts, toast);
   };
 
   useEffect(() => {
@@ -177,15 +177,16 @@ const Products = () => {
                     <li
                       key={i}
                       className={`${borderBottom === id ? "add-li-css" : ""}`}
-                      onClick={() =>
-                        searchProduct(
+                      onClick={async () => {
+                        await sortProducts(
+                          searchValue,
                           cat,
-                          id,
-                          setBorderBottom,
+                          "",
                           setAllProducts,
                           toast
-                        )
-                      }
+                        );
+                        setBorderBottom(id);
+                      }}
                     >
                       {cat}
                     </li>
@@ -196,7 +197,19 @@ const Products = () => {
           </div>
           <div className="company-con">
             <h3>Company</h3>
-            <select name="" id="" onChange={(e) => companyHandler(e)}>
+            <select
+              name=""
+              id=""
+              onChange={(e) =>
+                sortProducts(
+                  searchValue,
+                  "",
+                  e.target.value,
+                  setAllProducts,
+                  toast
+                )
+              }
+            >
               {company.map((each, i) => {
                 const { id, company } = each;
                 return (
