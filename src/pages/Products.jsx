@@ -8,6 +8,7 @@ import "../styles/product2.css";
 import { category, company, sortBy } from "../data";
 import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
+import { searchProduct } from "../utils/searchProduct";
 
 const Products = () => {
   const {
@@ -151,7 +152,9 @@ const Products = () => {
       <main className="products">
         {/* Left hand side */}
         <aside ref={scrollPage}>
-          <input type="text" placeholder="Search" />
+          <form>
+            <input type="text" placeholder="Search" />
+          </form>
           <div className="category">
             <h3>Category</h3>
             <div>
@@ -162,7 +165,9 @@ const Products = () => {
                     <li
                       key={i}
                       className={`${borderBottom === id ? "add-li-css" : ""}`}
-                      onClick={(e) => categoryHandler(id, e.target)}
+                      onClick={() =>
+                        searchProduct(cat, id, setBorderBottom, setAllProducts)
+                      }
                     >
                       {cat}
                     </li>
