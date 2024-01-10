@@ -3,7 +3,6 @@ import "../../styles/product.css";
 import "../../styles/product2.css";
 import { category } from "../../data";
 import { sortProducts } from "../../utils/searchProduct";
-import { toast } from "react-toastify";
 
 const ProductCategory = ({
   borderBottom,
@@ -12,6 +11,7 @@ const ProductCategory = ({
   searchValue,
   setAllProducts,
   isCompany,
+  toast,
 }) => {
   return (
     <div className="category">

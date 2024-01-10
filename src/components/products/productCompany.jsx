@@ -1,6 +1,7 @@
 import React from "react";
 import { sortProducts } from "../../utils/searchProduct";
-import { toast } from "react-toastify";
+import "../../styles/product.css";
+import "../../styles/product2.css";
 import { company } from "../../data";
 
 const ProductCompany = ({
@@ -8,6 +9,7 @@ const ProductCompany = ({
   searchValue,
   isCategory,
   setAllProducts,
+  toast,
 }) => {
   return (
     <div className="company-con">

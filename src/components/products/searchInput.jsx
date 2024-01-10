@@ -1,6 +1,7 @@
 import React from "react";
 import { sortProducts } from "../../utils/searchProduct";
-import { toast } from "react-toastify";
+import "../../styles/product.css";
+import "../../styles/product2.css";
 
 const SearchInput = ({
   searchValue,
@@ -8,6 +9,7 @@ const SearchInput = ({
   isCompany,
   setAllProducts,
   setSearchValue,
+  toast,
 }) => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();

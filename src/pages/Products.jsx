@@ -12,6 +12,7 @@ import { sortProducts } from "../utils/searchProduct";
 import ProductCategory from "../components/products/productCategory";
 import ProductCompany from "../components/products/productCompany";
 import SearchInput from "../components/products/searchInput";
+import ProductRadio from "../components/products/productRadio";
 
 const Products = () => {
   const { isLoading, setIsLoading, setHoveredIndex, pathHeightRef } =
@@ -157,6 +158,7 @@ const Products = () => {
             isCompany={isCompany}
             setAllProducts={setAllProducts}
             setSearchValue={setSearchValue}
+            toast={toast}
           />
           <ProductCategory
             borderBottom={borderBottom}
@@ -165,14 +167,19 @@ const Products = () => {
             searchValue={searchValue}
             setAllProducts={setAllProducts}
             isCompany={isCompany}
+            toast={toast}
           />
           <ProductCompany
             setIsCompany={setIsCompany}
             searchValue={searchValue}
             isCategory={isCategory}
             setAllProducts={setAllProducts}
+            toast={toast}
           />
-          {/*  */}
+          <ProductRadio
+            rangeValue={rangeValue}
+            rangeValueHandler={rangeValueHandler}
+          />
           <button
             className="clear-filter-btn"
             onClick={() => {
