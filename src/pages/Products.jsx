@@ -10,6 +10,7 @@ import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
 import { sortProducts } from "../utils/searchProduct";
 import ProductCategory from "../components/products/productCategory";
+import ProductCompany from "../components/products/productCompany";
 
 const Products = () => {
   const {
@@ -178,32 +179,12 @@ const Products = () => {
             setAllProducts={setAllProducts}
             isCompany={isCompany}
           />
-          <div className="company-con">
-            <h3>Company</h3>
-            <select
-              name=""
-              id=""
-              onChange={async (e) => {
-                setIsCompany(e.target.value);
-                await sortProducts(
-                  searchValue,
-                  isCategory,
-                  e.target.value,
-                  setAllProducts,
-                  toast
-                );
-              }}
-            >
-              {company.map((each, i) => {
-                const { id, company } = each;
-                return (
-                  <option value={company} key={i}>
-                    {company}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
+          <ProductCompany
+            setIsCompany={setIsCompany}
+            searchValue={searchValue}
+            isCategory={isCategory}
+            setAllProducts={setAllProducts}
+          />
           <div className="radio-price-con">
             <label htmlFor="price">${rangeValue}</label>
             <br />
