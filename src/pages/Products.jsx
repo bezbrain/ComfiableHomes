@@ -14,6 +14,7 @@ import ProductCompany from "../components/products/productCompany";
 import SearchInput from "../components/products/searchInput";
 import ProductRadio from "../components/products/productRadio";
 import ProductHeader from "../components/products/productHeader";
+import ProductCard from "../components/products/productCard";
 
 const Products = () => {
   const { isLoading, setIsLoading, setHoveredIndex, pathHeightRef } =
@@ -26,13 +27,6 @@ const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [isCategory, setIsCategory] = useState("");
   const [isCompany, setIsCompany] = useState("");
-
-  const handleMouseOver = (index) => {
-    setHoveredIndex(index);
-  };
-  const handleMouseOut = () => {
-    setHoveredIndex(false);
-  };
 
   const allProductInStorage = async () => {
     try {
@@ -195,27 +189,16 @@ const Products = () => {
         {/* Right hand side */}
         <section className="products-images-sect scrolling-section">
           <ProductHeader allProducts={allProducts} />
+
           <section className="loader-and-image-sect">
-            {isLoading && <Loader loaderCss="add-product-loader-css" />}
-            {allProducts.map((each, i) => {
-              const { _id, image, type, price } = each;
-              return (
-                <div className="product-images-con" key={_id}>
-                  <div
-                    className="image-con"
-                    onMouseOver={() => handleMouseOver(_id)}
-                    onMouseOut={() => handleMouseOut(_id)}
-                  >
-                    <SearchHover id={_id} />
-                    <img src={image} alt={type} />
-                  </div>
-                  <div className="name-and-amt-con">
-                    <p>{type}</p>
-                    <p>${price}</p>
-                  </div>
-                </div>
-              );
-            })}
+            {isLoading ? (
+              <Loader loaderCss="add-product-loader-css" />
+            ) : (
+              allProducts.map((each, i) => {
+                const { _id, image, type, price } = each;
+                return <ProductCard {...each} key={i} />;
+              })
+            )}
           </section>
         </section>
       </main>
