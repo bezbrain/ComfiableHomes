@@ -11,17 +11,11 @@ import { toast } from "react-toastify";
 import { sortProducts } from "../utils/searchProduct";
 import ProductCategory from "../components/products/productCategory";
 import ProductCompany from "../components/products/productCompany";
+import SearchInput from "../components/products/searchInput";
 
 const Products = () => {
-  const {
-    isLoading,
-    setIsLoading,
-    // allProducts,
-    setHoveredIndex,
-    // setAllProducts,
-    // allProductInStorage,
-    pathHeightRef,
-  } = useGlobalContext();
+  const { isLoading, setIsLoading, setHoveredIndex, pathHeightRef } =
+    useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
   const [rangeValue, setRangeValue] = useState(3099.99);
   const scrollPage = useRef(null);
@@ -147,12 +141,6 @@ const Products = () => {
     }
   };
 
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-    // inputSearch(setAllProducts, searchValue, toast);
-    sortProducts(searchValue, isCategory, isCompany, setAllProducts, toast);
-  };
-
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
     allProductInStorage();
@@ -163,14 +151,13 @@ const Products = () => {
       <main className="products">
         {/* Left hand side */}
         <aside ref={scrollPage}>
-          <form onSubmit={handleSearchSubmit}>
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-            />
-          </form>
+          <SearchInput
+            searchValue={searchValue}
+            isCategory={isCategory}
+            isCompany={isCompany}
+            setAllProducts={setAllProducts}
+            setSearchValue={setSearchValue}
+          />
           <ProductCategory
             borderBottom={borderBottom}
             setIsCategory={setIsCategory}
@@ -185,20 +172,7 @@ const Products = () => {
             isCategory={isCategory}
             setAllProducts={setAllProducts}
           />
-          <div className="radio-price-con">
-            <label htmlFor="price">${rangeValue}</label>
-            <br />
-            <input
-              type="range"
-              id="price"
-              name="price"
-              min="0"
-              max="3099.99"
-              step="0.01"
-              value={rangeValue}
-              onChange={rangeValueHandler}
-            />
-          </div>
+          {/*  */}
           <button
             className="clear-filter-btn"
             onClick={() => {
