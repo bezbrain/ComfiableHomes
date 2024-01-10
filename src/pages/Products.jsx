@@ -13,6 +13,7 @@ import ProductCategory from "../components/products/productCategory";
 import ProductCompany from "../components/products/productCompany";
 import SearchInput from "../components/products/searchInput";
 import ProductRadio from "../components/products/productRadio";
+import ProductHeader from "../components/products/productHeader";
 
 const Products = () => {
   const { isLoading, setIsLoading, setHoveredIndex, pathHeightRef } =
@@ -193,28 +194,7 @@ const Products = () => {
         </aside>
         {/* Right hand side */}
         <section className="products-images-sect scrolling-section">
-          <header className="product-header">
-            {allProducts && (
-              <p>
-                {allProducts.length} product{allProducts.length < 2 ? "" : "s"}{" "}
-                Found
-              </p>
-            )}
-            <hr className="wobble" />
-            <div className="sort-con">
-              <p>Sort By: </p>
-              <select name="" id="" onChange={(e) => sortingHandler(e)}>
-                {sortBy.map((each, i) => {
-                  const { id, sort } = each;
-                  return (
-                    <option value={sort} key={i}>
-                      {sort}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-          </header>
+          <ProductHeader allProducts={allProducts} />
           <section className="loader-and-image-sect">
             {isLoading && <Loader loaderCss="add-product-loader-css" />}
             {allProducts.map((each, i) => {
