@@ -9,6 +9,7 @@ import { category, company, sortBy } from "../data";
 import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
 import { sortProducts } from "../utils/searchProduct";
+import ProductCategory from "../components/products/productCategory";
 
 const Products = () => {
   const {
@@ -26,6 +27,8 @@ const Products = () => {
 
   const [allProducts, setAllProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [isCategory, setIsCategory] = useState("");
+  const [isCompany, setIsCompany] = useState("");
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -146,7 +149,7 @@ const Products = () => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
     // inputSearch(setAllProducts, searchValue, toast);
-    sortProducts(searchValue, "", "", setAllProducts, toast);
+    sortProducts(searchValue, isCategory, isCompany, setAllProducts, toast);
   };
 
   useEffect(() => {
@@ -167,48 +170,29 @@ const Products = () => {
               onChange={(e) => setSearchValue(e.target.value)}
             />
           </form>
-          <div className="category">
-            <h3>Category</h3>
-            <div>
-              <ul>
-                {category.map((each, i) => {
-                  const { id, cat } = each;
-                  return (
-                    <li
-                      key={i}
-                      className={`${borderBottom === id ? "add-li-css" : ""}`}
-                      onClick={async () => {
-                        await sortProducts(
-                          searchValue,
-                          cat,
-                          "",
-                          setAllProducts,
-                          toast
-                        );
-                        setBorderBottom(id);
-                      }}
-                    >
-                      {cat}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
+          <ProductCategory
+            borderBottom={borderBottom}
+            setIsCategory={setIsCategory}
+            setBorderBottom={setBorderBottom}
+            searchValue={searchValue}
+            setAllProducts={setAllProducts}
+            isCompany={isCompany}
+          />
           <div className="company-con">
             <h3>Company</h3>
             <select
               name=""
               id=""
-              onChange={(e) =>
-                sortProducts(
+              onChange={async (e) => {
+                setIsCompany(e.target.value);
+                await sortProducts(
                   searchValue,
-                  "",
+                  isCategory,
                   e.target.value,
                   setAllProducts,
                   toast
-                )
-              }
+                );
+              }}
             >
               {company.map((each, i) => {
                 const { id, company } = each;

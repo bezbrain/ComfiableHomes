@@ -3,7 +3,7 @@ import axios from "axios";
 export const productSorting = async (type, category, company) => {
   const token = sessionStorage.getItem("authToken");
   const { data } = await axios.get(
-    `https://comfiable-homes.onrender.com/api/v1/products/?search=${type}&category=${category}&brand=${company}`,
+    `https://comfiable-homes.onrender.com/api/v1/products/?category=${category}&brand=${company}&search=${type}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -11,6 +11,7 @@ export const productSorting = async (type, category, company) => {
       },
     }
   );
-  //   console.log(data);
+  console.log(data);
+  console.log(type, category, company);
   return data;
 };
