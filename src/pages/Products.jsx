@@ -9,6 +9,7 @@ import { category, company, sortBy } from "../data";
 import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
 import { searchProduct } from "../utils/searchProduct";
+import { search } from "../apis/search";
 
 const Products = () => {
   const {
@@ -25,6 +26,7 @@ const Products = () => {
   const scrollPage = useRef(null);
 
   const [allProducts, setAllProducts] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleMouseOver = (index) => {
     setHoveredIndex(index);
@@ -147,13 +149,30 @@ const Products = () => {
     allProductInStorage();
   }, []);
 
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    console.log(searchValue);
+    try {
+      const { products } = await search(searchValue);
+      console.log(products);
+      setAllProducts(products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <main className="products">
         {/* Left hand side */}
         <aside ref={scrollPage}>
-          <form>
-            <input type="text" placeholder="Search" />
+          <form onSubmit={handleSearchSubmit}>
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
           </form>
           <div className="category">
             <h3>Category</h3>
