@@ -8,7 +8,7 @@ import "../styles/product2.css";
 import { category, company, sortBy } from "../data";
 import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
-import { searchProduct } from "../utils/searchProduct";
+import { inputSearch, searchProduct } from "../utils/searchProduct";
 import { search } from "../apis/search";
 
 const Products = () => {
@@ -144,22 +144,15 @@ const Products = () => {
     }
   };
 
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+    inputSearch(setAllProducts, searchValue, toast);
+  };
+
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
     allProductInStorage();
   }, []);
-
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-    console.log(searchValue);
-    try {
-      const { products } = await search(searchValue);
-      console.log(products);
-      setAllProducts(products);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
@@ -185,7 +178,13 @@ const Products = () => {
                       key={i}
                       className={`${borderBottom === id ? "add-li-css" : ""}`}
                       onClick={() =>
-                        searchProduct(cat, id, setBorderBottom, setAllProducts)
+                        searchProduct(
+                          cat,
+                          id,
+                          setBorderBottom,
+                          setAllProducts,
+                          toast
+                        )
                       }
                     >
                       {cat}
