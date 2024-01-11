@@ -115,7 +115,7 @@ const Products = () => {
               setIsCategory("");
               setIsCompany("");
               setIsSort("");
-              // setRangeValue(3099.99);
+              setRangeValue(3099.99);
               await allProductInStorage();
             }}
           >

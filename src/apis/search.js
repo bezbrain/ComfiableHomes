@@ -28,6 +28,5 @@ export const productSorting = async (
     }
   );
   // console.log(data);
-  // console.log(type, category, company);
   return data;
 };
