@@ -2,11 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../components/context";
 import Loader from "../components/Loader";
-import SearchHover from "../components/SearchHover";
 import "../styles/product.css";
 import "../styles/product2.css";
-import { category, company, sortBy } from "../data";
-import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
 import { sortProducts } from "../utils/searchProduct";
 import ProductCategory from "../components/products/productCategory";
@@ -19,8 +16,7 @@ import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 
 const Products = () => {
-  const { isLoading, setIsLoading, setHoveredIndex, pathHeightRef } =
-    useGlobalContext();
+  const { isLoading, setIsLoading } = useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
   const [rangeValue, setRangeValue] = useState(3099.99);
   const scrollPage = useRef(null);
@@ -32,16 +28,19 @@ const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [isCategory, setIsCategory] = useState("");
   const [isCompany, setIsCompany] = useState("");
+  const [isSort, setIsSort] = useState("");
 
   // Update the URL with the current sorting parameters
   const updatedParams = queryString.stringify({
     search: searchValue,
     category: isCategory,
     brand: isCompany,
+    sort: isSort,
   });
 
+  // Effect to replace query params with the right one
   useEffect(() => {
-    const { search, category, brand } = queryParams;
+    const { search, category, brand, sort } = queryParams;
     // Replace the current URL without causing a page reload
     window.history.replaceState(
       {},
@@ -49,21 +48,25 @@ const Products = () => {
       `${location.pathname}?${updatedParams}`
     );
     // Call the sorting function with the updated parameters
-    sortProducts(search, category, brand, setAllProducts);
-    // console.log("I am running");
+    sortProducts(search, category, brand, sort);
   }, [updatedParams]);
 
   // GET ALL PRODUCTS
   const allProductInStorage = async () => {
     try {
       setIsLoading(true);
-      const products = await sortProducts(searchValue, isCategory, isCompany);
+      const products = await sortProducts(
+        searchValue,
+        isCategory,
+        isCompany,
+        isSort
+      );
       setAllProducts(products);
       setIsLoading(false);
     } catch (error) {
       // console.log(error);
       setIsLoading(false);
-      toast.error(error.message || error.response.data.message);
+      toast.error(error.response.data.message || error.message);
     }
   };
 
@@ -86,7 +89,14 @@ const Products = () => {
 
   useEffect(() => {
     allProductInStorage();
-  }, [searchValue, isCategory, isCompany, setAllProducts, setIsLoading]);
+  }, [
+    searchValue,
+    isCategory,
+    isCompany,
+    setAllProducts,
+    setIsLoading,
+    isSort,
+  ]);
 
   return (
     <>
@@ -95,24 +105,15 @@ const Products = () => {
         <aside ref={scrollPage}>
           <SearchInput
             searchValue={searchValue}
-            isCategory={isCategory}
-            isCompany={isCompany}
             setSearchValue={setSearchValue}
           />
           <ProductCategory
             borderBottom={borderBottom}
             setIsCategory={setIsCategory}
             setBorderBottom={setBorderBottom}
-            // searchValue={searchValue}
-            // isCompany={isCompany}
             isCategory={isCategory}
           />
-          <ProductCompany
-            setIsCompany={setIsCompany}
-            // searchValue={searchValue}
-            // isCategory={isCategory}
-            isCompany={isCompany}
-          />
+          <ProductCompany setIsCompany={setIsCompany} isCompany={isCompany} />
           <ProductRadio
           // rangeValue={rangeValue}
           // rangeValueHandler={rangeValueHandler}
@@ -130,14 +131,13 @@ const Products = () => {
         </aside>
         {/* Right hand side */}
         <section className="products-images-sect scrolling-section">
-          <ProductHeader allProducts={allProducts} />
+          <ProductHeader allProducts={allProducts} setIsSort={setIsSort} />
 
           <section className="loader-and-image-sect">
             {isLoading ? (
               <Loader loaderCss="add-product-loader-css" />
             ) : (
               allProducts.map((each, i) => {
-                const { _id, image, type, price } = each;
                 return <ProductCard {...each} key={i} />;
               })
             )}

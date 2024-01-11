@@ -3,7 +3,20 @@ import "../../styles/product.css";
 import "../../styles/product2.css";
 import { sortBy } from "../../data";
 
-const ProductHeader = ({ allProducts }) => {
+const ProductHeader = ({ allProducts, setIsSort }) => {
+  const handleSorting = (e) => {
+    const value = e.target.value;
+    if (value === "Price (Lowest)") {
+      setIsSort("price");
+    } else if (value === "Price (Highest)") {
+      setIsSort("-price");
+    } else if (value === "Name (A - Z)") {
+      setIsSort("type");
+    } else {
+      setIsSort("-type");
+    }
+  };
+
   return (
     <header className="product-header">
       {allProducts && (
@@ -14,7 +27,13 @@ const ProductHeader = ({ allProducts }) => {
       <hr className="wobble" />
       <div className="sort-con">
         <p>Sort By: </p>
-        <select name="" id="" onChange={(e) => sortingHandler(e)}>
+        <select
+          name=""
+          id=""
+          onChange={(e) => {
+            handleSorting(e);
+          }}
+        >
           {sortBy.map((each, i) => {
             const { id, sort } = each;
             return (

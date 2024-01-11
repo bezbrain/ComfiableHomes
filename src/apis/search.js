@@ -17,13 +17,14 @@ import queryString from "query-string";
 //   return data;
 // };
 
-export const productSorting = async (type, category, company) => {
+export const productSorting = async (type, category, company, sortBy) => {
   const token = sessionStorage.getItem("authToken");
   // Construct the query parameters using query-string library
   const queryParams = queryString.stringify({
     search: type,
     category: category,
     brand: company,
+    sort: sortBy,
   });
   // console.log(queryParams);
   const { data } = await axios.get(

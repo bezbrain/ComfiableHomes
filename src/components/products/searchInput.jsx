@@ -3,15 +3,10 @@ import { sortProducts } from "../../utils/searchProduct";
 import "../../styles/product.css";
 import "../../styles/product2.css";
 
-const SearchInput = ({
-  searchValue,
-  isCategory,
-  isCompany,
-  setSearchValue,
-}) => {
+const SearchInput = ({ searchValue, setSearchValue }) => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    sortProducts(searchValue, isCategory, isCompany);
+    sortProducts(searchValue);
   };
 
   return (

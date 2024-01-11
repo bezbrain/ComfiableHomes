@@ -14,7 +14,6 @@ const CartUI = ({
   roundNumber,
   clearCartHandler,
   shippingFee,
-  // authToken,
   navigate,
 }) => {
   const { getCartProduct, handleCartProduct, isCartDisable } = useApiContext();

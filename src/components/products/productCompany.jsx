@@ -4,12 +4,7 @@ import "../../styles/product.css";
 import "../../styles/product2.css";
 import { company } from "../../data";
 
-const ProductCompany = ({
-  setIsCompany,
-  // searchValue,
-  // isCategory,
-  isCompany,
-}) => {
+const ProductCompany = ({ setIsCompany, isCompany }) => {
   return (
     <div className="company-con">
       <h3>Company</h3>
@@ -18,8 +13,6 @@ const ProductCompany = ({
         id=""
         onChange={async (e) => {
           setIsCompany(e.target.value);
-          console.log(e.target.value);
-          // console.log(isCategory);
           await sortProducts(isCompany);
         }}
       >

@@ -19,7 +19,6 @@ import {
 import { logoutUser } from "../apis/users";
 
 /* =================== */
-/* =================== */
 // AppProvider Component
 export const AppProvider = ({ children }) => {
   const firebaseConfig = {
