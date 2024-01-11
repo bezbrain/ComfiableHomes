@@ -7,13 +7,11 @@ const SearchInput = ({
   searchValue,
   isCategory,
   isCompany,
-  setAllProducts,
   setSearchValue,
-  toast,
 }) => {
   const handleSearchSubmit = async (e) => {
     e.preventDefault();
-    sortProducts(searchValue, isCategory, isCompany, setAllProducts, toast);
+    sortProducts(searchValue, isCategory, isCompany);
   };
 
   return (

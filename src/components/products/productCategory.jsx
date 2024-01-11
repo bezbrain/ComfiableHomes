@@ -8,9 +8,8 @@ const ProductCategory = ({
   borderBottom,
   setIsCategory,
   setBorderBottom,
-  searchValue,
-  setAllProducts,
-  isCompany,
+  // searchValue,
+  // isCompany,
   isCategory,
 }) => {
   return (
@@ -26,12 +25,8 @@ const ProductCategory = ({
                 className={`${borderBottom === id ? "add-li-css" : ""}`}
                 onClick={async () => {
                   setIsCategory(cat);
-                  await sortProducts(
-                    searchValue,
-                    isCategory,
-                    isCompany,
-                    setAllProducts
-                  );
+                  console.log(cat);
+                  await sortProducts(isCategory);
                   setBorderBottom(id);
                 }}
               >

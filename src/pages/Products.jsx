@@ -50,10 +50,10 @@ const Products = () => {
     );
     // Call the sorting function with the updated parameters
     sortProducts(search, category, brand, setAllProducts);
-    // console.log(type, category, company);
-    console.log("I am running");
+    // console.log("I am running");
   }, [updatedParams]);
 
+  // GET ALL PRODUCTS
   const allProductInStorage = async () => {
     try {
       setIsLoading(true);
@@ -82,8 +82,11 @@ const Products = () => {
 
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
+  }, []);
+
+  useEffect(() => {
     allProductInStorage();
-  }, [searchValue, isCategory, isCompany, setAllProducts, setIsLoading, toast]);
+  }, [searchValue, isCategory, isCompany, setAllProducts, setIsLoading]);
 
   return (
     <>
@@ -94,26 +97,21 @@ const Products = () => {
             searchValue={searchValue}
             isCategory={isCategory}
             isCompany={isCompany}
-            setAllProducts={setAllProducts}
             setSearchValue={setSearchValue}
-            toast={toast}
           />
           <ProductCategory
             borderBottom={borderBottom}
             setIsCategory={setIsCategory}
             setBorderBottom={setBorderBottom}
-            searchValue={searchValue}
-            setAllProducts={setAllProducts}
-            isCompany={isCompany}
-            // toast={toast}
+            // searchValue={searchValue}
+            // isCompany={isCompany}
             isCategory={isCategory}
           />
           <ProductCompany
             setIsCompany={setIsCompany}
-            searchValue={searchValue}
-            isCategory={isCategory}
-            setAllProducts={setAllProducts}
-            toast={toast}
+            // searchValue={searchValue}
+            // isCategory={isCategory}
+            isCompany={isCompany}
           />
           <ProductRadio
           // rangeValue={rangeValue}

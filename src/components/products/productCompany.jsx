@@ -6,10 +6,9 @@ import { company } from "../../data";
 
 const ProductCompany = ({
   setIsCompany,
-  searchValue,
-  isCategory,
-  setAllProducts,
-  toast,
+  // searchValue,
+  // isCategory,
+  isCompany,
 }) => {
   return (
     <div className="company-con">
@@ -19,13 +18,9 @@ const ProductCompany = ({
         id=""
         onChange={async (e) => {
           setIsCompany(e.target.value);
-          await sortProducts(
-            searchValue,
-            isCategory,
-            e.target.value,
-            setAllProducts,
-            toast
-          );
+          console.log(e.target.value);
+          // console.log(isCategory);
+          await sortProducts(isCompany);
         }}
       >
         {company.map((each, i) => {
