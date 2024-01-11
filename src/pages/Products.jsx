@@ -18,7 +18,6 @@ import queryString from "query-string";
 const Products = () => {
   const { isLoading, setIsLoading } = useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
-  const [rangeValue, setRangeValue] = useState(3099.99);
   const scrollPage = useRef(null);
 
   const location = useLocation();
@@ -29,6 +28,7 @@ const Products = () => {
   const [isCategory, setIsCategory] = useState("");
   const [isCompany, setIsCompany] = useState("");
   const [isSort, setIsSort] = useState("");
+  const [rangeValue, setRangeValue] = useState(3099.99);
 
   // Update the URL with the current sorting parameters
   const updatedParams = queryString.stringify({
@@ -36,11 +36,12 @@ const Products = () => {
     category: isCategory,
     brand: isCompany,
     sort: isSort,
+    maxPrice: rangeValue,
   });
 
   // Effect to replace query params with the right one
   useEffect(() => {
-    const { search, category, brand, sort } = queryParams;
+    const { search, category, brand, sort, maxPrice } = queryParams;
     // Replace the current URL without causing a page reload
     window.history.replaceState(
       {},
@@ -48,7 +49,7 @@ const Products = () => {
       `${location.pathname}?${updatedParams}`
     );
     // Call the sorting function with the updated parameters
-    sortProducts(search, category, brand, sort);
+    sortProducts(search, category, brand, sort, maxPrice);
   }, [updatedParams]);
 
   // GET ALL PRODUCTS
@@ -59,7 +60,8 @@ const Products = () => {
         searchValue,
         isCategory,
         isCompany,
-        isSort
+        isSort,
+        rangeValue
       );
       setAllProducts(products);
       setIsLoading(false);
@@ -69,19 +71,6 @@ const Products = () => {
       toast.error(error.response.data.message || error.message);
     }
   };
-
-  // const rangeValueHandler = (e) => {
-  //   setRangeValue(e.target.value);
-  //   const newRange = allProductInStorage().filter((each) => {
-  //     //First set category back to All
-  //     setBorderBottom(1);
-  //     setAllProducts(allProductInStorage());
-  //     const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
-  //     const toNumber = Number(cleanedString);
-  //     return toNumber >= Number(rangeValue) && toNumber <= 3099.99;
-  //   });
-  //   setAllProducts(newRange);
-  // };
 
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
@@ -96,6 +85,7 @@ const Products = () => {
     setAllProducts,
     setIsLoading,
     isSort,
+    rangeValue,
   ]);
 
   return (
@@ -111,19 +101,22 @@ const Products = () => {
             borderBottom={borderBottom}
             setIsCategory={setIsCategory}
             setBorderBottom={setBorderBottom}
-            isCategory={isCategory}
           />
-          <ProductCompany setIsCompany={setIsCompany} isCompany={isCompany} />
+          <ProductCompany setIsCompany={setIsCompany} />
           <ProductRadio
-          // rangeValue={rangeValue}
-          // rangeValueHandler={rangeValueHandler}
+            rangeValue={rangeValue}
+            rangeValueHandler={(e) => setRangeValue(e.target.value)}
           />
           <button
             className="clear-filter-btn"
-            onClick={() => {
+            onClick={async () => {
               setBorderBottom(1);
-              setAllProducts(allProductInStorage());
-              setRangeValue(3099.99);
+              setSearchValue("");
+              setIsCategory("");
+              setIsCompany("");
+              setIsSort("");
+              // setRangeValue(3099.99);
+              await allProductInStorage();
             }}
           >
             Clear Filters

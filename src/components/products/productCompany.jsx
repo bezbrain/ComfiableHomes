@@ -4,7 +4,7 @@ import "../../styles/product.css";
 import "../../styles/product2.css";
 import { company } from "../../data";
 
-const ProductCompany = ({ setIsCompany, isCompany }) => {
+const ProductCompany = ({ setIsCompany }) => {
   return (
     <div className="company-con">
       <h3>Company</h3>
@@ -13,7 +13,6 @@ const ProductCompany = ({ setIsCompany, isCompany }) => {
         id=""
         onChange={async (e) => {
           setIsCompany(e.target.value);
-          await sortProducts(isCompany);
         }}
       >
         {company.map((each, i) => {

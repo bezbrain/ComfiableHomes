@@ -4,12 +4,7 @@ import "../../styles/product2.css";
 import { category } from "../../data";
 import { sortProducts } from "../../utils/searchProduct";
 
-const ProductCategory = ({
-  borderBottom,
-  setIsCategory,
-  setBorderBottom,
-  isCategory,
-}) => {
+const ProductCategory = ({ borderBottom, setIsCategory, setBorderBottom }) => {
   return (
     <div className="category">
       <h3>Category</h3>
@@ -23,7 +18,6 @@ const ProductCategory = ({
                 className={`${borderBottom === id ? "add-li-css" : ""}`}
                 onClick={async () => {
                   setIsCategory(cat);
-                  await sortProducts(isCategory);
                   setBorderBottom(id);
                 }}
               >
