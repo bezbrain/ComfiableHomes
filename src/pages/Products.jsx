@@ -15,6 +15,8 @@ import SearchInput from "../components/products/searchInput";
 import ProductRadio from "../components/products/productRadio";
 import ProductHeader from "../components/products/productHeader";
 import ProductCard from "../components/products/productCard";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const Products = () => {
   const { isLoading, setIsLoading, setHoveredIndex, pathHeightRef } =
@@ -23,124 +25,65 @@ const Products = () => {
   const [rangeValue, setRangeValue] = useState(3099.99);
   const scrollPage = useRef(null);
 
+  const location = useLocation();
+  const queryParams = queryString.parse(location.search);
+
   const [allProducts, setAllProducts] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [isCategory, setIsCategory] = useState("");
   const [isCompany, setIsCompany] = useState("");
 
+  // Update the URL with the current sorting parameters
+  const updatedParams = queryString.stringify({
+    search: searchValue,
+    category: isCategory,
+    brand: isCompany,
+  });
+
+  useEffect(() => {
+    const { search, category, brand } = queryParams;
+    // Replace the current URL without causing a page reload
+    window.history.replaceState(
+      {},
+      "",
+      `${location.pathname}?${updatedParams}`
+    );
+    // Call the sorting function with the updated parameters
+    sortProducts(search, category, brand, setAllProducts);
+    // console.log(type, category, company);
+    console.log("I am running");
+  }, [updatedParams]);
+
   const allProductInStorage = async () => {
     try {
       setIsLoading(true);
-      const { products } = await getAllProducts();
+      const products = await sortProducts(searchValue, isCategory, isCompany);
       setAllProducts(products);
       setIsLoading(false);
     } catch (error) {
       // console.log(error);
       setIsLoading(false);
-      toast.error(error.response.data.message || error.message);
+      toast.error(error.message || error.response.data.message);
     }
   };
 
-  // Handle each category
-  const categoryHandler = (index, e) => {
-    setBorderBottom(index);
-
-    if (e.textContent === "All") {
-      console.log("I am all");
-      setAllProducts(allProductInStorage());
-      return;
-    }
-    const newCategory = allProductInStorage().filter(
-      (each) => each.category === e.textContent
-    );
-    // console.log(newCategory);
-    setAllProducts(newCategory);
-  };
-
-  // Handle each company
-  const companyHandler = (e) => {
-    //First set category back to All
-    setBorderBottom(1);
-    setAllProducts(allProductInStorage());
-    if (e.target.value === "All") {
-      setAllProducts(allProductInStorage());
-      return;
-    }
-    const newCompany = allProductInStorage().filter(
-      (each) => each.brand === e.target.value
-    );
-    setAllProducts(newCompany);
-  };
-
-  const rangeValueHandler = (e) => {
-    setRangeValue(e.target.value);
-    const newRange = allProductInStorage().filter((each) => {
-      //First set category back to All
-      setBorderBottom(1);
-      setAllProducts(allProductInStorage());
-      const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
-      const toNumber = Number(cleanedString);
-      return toNumber >= Number(rangeValue) && toNumber <= 3099.99;
-    });
-    setAllProducts(newRange);
-  };
-
-  // "Sort by" Filter function
-  const sortingHandler = (e) => {
-    //First set category back to All
-    setBorderBottom(1);
-    setAllProducts(allProductInStorage());
-    if (e.target.value === "Price (Highest)") {
-      allProductInStorage().sort((a, b) => {
-        let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
-        let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
-        let toNumberA = Number(cleanedStringA);
-        let toNumberB = Number(cleanedStringB);
-        return toNumberB - toNumberA;
-      });
-      setAllProducts(allProductInStorage());
-    } else if (e.target.value === "Price (Lowest)") {
-      allProductInStorage().sort((a, b) => {
-        let cleanedStringA = a.price.replace(/,/g, ""); //Remove the commas
-        let cleanedStringB = b.price.replace(/,/g, ""); //Remove the commas
-        let toNumberA = Number(cleanedStringA);
-        let toNumberB = Number(cleanedStringB);
-        return toNumberA - toNumberB;
-      });
-      setAllProducts(allProductInStorage());
-    } else if (e.target.value === "Name (A - Z)") {
-      allProductInStorage().sort((a, b) => {
-        let nameA = a.type.toUpperCase();
-        let nameB = b.type.toUpperCase();
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        return 0;
-      });
-      setAllProducts(allProductInStorage());
-    } else {
-      allProductInStorage().sort((a, b) => {
-        let nameA = a.type.toUpperCase();
-        let nameB = b.type.toUpperCase();
-        if (nameA < nameB) {
-          return 1;
-        }
-        if (nameA > nameB) {
-          return -1;
-        }
-        return 0;
-      });
-      setAllProducts(allProductInStorage());
-    }
-  };
+  // const rangeValueHandler = (e) => {
+  //   setRangeValue(e.target.value);
+  //   const newRange = allProductInStorage().filter((each) => {
+  //     //First set category back to All
+  //     setBorderBottom(1);
+  //     setAllProducts(allProductInStorage());
+  //     const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
+  //     const toNumber = Number(cleanedString);
+  //     return toNumber >= Number(rangeValue) && toNumber <= 3099.99;
+  //   });
+  //   setAllProducts(newRange);
+  // };
 
   useEffect(() => {
     setBorderBottom(1); //To make "All" have the border botton when page loads
     allProductInStorage();
-  }, []);
+  }, [searchValue, isCategory, isCompany, setAllProducts, setIsLoading, toast]);
 
   return (
     <>
@@ -162,7 +105,8 @@ const Products = () => {
             searchValue={searchValue}
             setAllProducts={setAllProducts}
             isCompany={isCompany}
-            toast={toast}
+            // toast={toast}
+            isCategory={isCategory}
           />
           <ProductCompany
             setIsCompany={setIsCompany}
@@ -172,8 +116,8 @@ const Products = () => {
             toast={toast}
           />
           <ProductRadio
-            rangeValue={rangeValue}
-            rangeValueHandler={rangeValueHandler}
+          // rangeValue={rangeValue}
+          // rangeValueHandler={rangeValueHandler}
           />
           <button
             className="clear-filter-btn"

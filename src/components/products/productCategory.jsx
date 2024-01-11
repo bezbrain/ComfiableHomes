@@ -11,7 +11,7 @@ const ProductCategory = ({
   searchValue,
   setAllProducts,
   isCompany,
-  toast,
+  isCategory,
 }) => {
   return (
     <div className="category">
@@ -28,10 +28,9 @@ const ProductCategory = ({
                   setIsCategory(cat);
                   await sortProducts(
                     searchValue,
-                    cat,
+                    isCategory,
                     isCompany,
-                    setAllProducts,
-                    toast
+                    setAllProducts
                   );
                   setBorderBottom(id);
                 }}
