@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import About from "./pages/About";
-import SharedLayouts from "./pages/SharedLayouts";
+import SharedLayouts from "./components/sharedLayouts/SharedLayouts";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Error from "./pages/Error";
