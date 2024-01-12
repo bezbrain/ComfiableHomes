@@ -1,5 +1,4 @@
 import React from "react";
-import { sortProducts } from "../../utils/searchProduct";
 import "../../styles/product.css";
 import "../../styles/product2.css";
 import { company } from "../../data";

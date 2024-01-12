@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
-import { useGlobalContext } from "../components/context";
+import { useGlobalContext } from "../contexts/context";
 import Loader from "../components/Loader";
 import "../styles/product.css";
 import "../styles/product2.css";

@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import "../styles/register_login.css";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../contexts/context";
 import { useState } from "react";
-import Notification from "./Notification";
 import { toast } from "react-toastify";
 import { registerUser } from "../apis/users";
 

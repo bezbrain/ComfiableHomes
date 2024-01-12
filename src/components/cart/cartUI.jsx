@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useApiContext } from "../../contexts/apiContext";
 import { FaTrash } from "react-icons/fa";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../contexts/context";
 import { toast } from "react-toastify";
 
 const CartUI = ({
@@ -14,12 +14,22 @@ const CartUI = ({
   roundNumber,
   clearCartHandler,
   shippingFee,
-  navigate,
+  // navigate,
 }) => {
   const { getCartProduct, handleCartProduct, isCartDisable } = useApiContext();
   const { isDisable, setShowNav } = useGlobalContext();
 
   const authToken = sessionStorage.getItem("authToken");
+
+  const navigate = useNavigate();
+
+  const handleCheckoutNav = () => {
+    if (authToken) {
+      navigate("/checkout");
+    } else {
+      toast.error("Please Login");
+    }
+  };
 
   return (
     <>
@@ -110,8 +120,9 @@ const CartUI = ({
             </tr>
           </tbody>
         </table>
-        <button onClick={() => handleLoginLogout(toast, navigate)}>
-          {authToken ? "LOGOUT" : "LOGIN"}
+        <button onClick={handleCheckoutNav}>
+          {/* {authToken ? "LOGOUT" : "LOGIN"} */}
+          CHECKOUT
         </button>
       </section>
     </>

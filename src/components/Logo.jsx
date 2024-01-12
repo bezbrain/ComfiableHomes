@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../contexts/context";
 
 const Logo = () => {
   const { setShowNav } = useGlobalContext();

@@ -2,7 +2,6 @@ import React from "react";
 import "../../styles/product.css";
 import "../../styles/product2.css";
 import { category } from "../../data";
-import { sortProducts } from "../../utils/searchProduct";
 
 const ProductCategory = ({ borderBottom, setIsCategory, setBorderBottom }) => {
   return (

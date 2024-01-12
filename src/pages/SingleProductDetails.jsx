@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Loader from "../components/Loader";
-import { useGlobalContext } from "../components/context";
+import { useGlobalContext } from "../contexts/context";
 import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
 import { toast } from "react-toastify";

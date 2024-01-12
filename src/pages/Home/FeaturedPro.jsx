@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import HomeImages from "../../components/HomeImages";
 import AllProductsBtn from "../../components/AllProductsBtn";
-import { useGlobalContext } from "../../components/context";
+import { useGlobalContext } from "../../contexts/context";
 import Loader from "../../components/Loader";
 
 const FeaturedPro = () => {

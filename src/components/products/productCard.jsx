@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/product.css";
 import "../../styles/product2.css";
 import SearchHover from "../SearchHover";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../contexts/context";
 
 const ProductCard = ({ _id, image, type, price }) => {
   const { setHoveredIndex } = useGlobalContext();

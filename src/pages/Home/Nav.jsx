@@ -3,12 +3,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
 import Logo from "../../components/Logo";
 import "../../styles/nav.css";
-// import { navData } from "../../../data/pagesData";
-import { useGlobalContext } from "../../components/context";
+import { useGlobalContext } from "../../contexts/context";
 import { useEffect, useRef } from "react";
-import Notification from "../../components/Notification";
 import { toast } from "react-toastify";
-import { logoutUser } from "../../apis/users";
 import { useApiContext } from "../../contexts/apiContext";
 import { getCartProducts } from "../../apis/products";
 

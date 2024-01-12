@@ -2,7 +2,7 @@ import Register from "./Register";
 import Login from "./Login";
 import { FaTimes } from "react-icons/fa";
 import "../styles/register_login.css";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../contexts/context";
 
 const Register_Login = () => {
   const { loginLogoutOverlay, setLoginLogoutOverlay } = useGlobalContext();

@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { useGlobalContext } from "./context";
+import { useGlobalContext } from "../contexts/context";
 import SearchHover from "./SearchHover";
-import { products } from "../data";
 import { getAllProducts } from "../apis/products";
 import { toast } from "react-toastify";
 
