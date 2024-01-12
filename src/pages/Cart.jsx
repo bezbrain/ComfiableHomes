@@ -2,18 +2,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/cart.css";
 import { useGlobalContext } from "../components/context";
-import Notification from "../components/Notification";
-// import { ACTIONS } from "../components/context";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import CartUI from "../components/cart/cartUI";
 import Loader from "../components/Loader";
-import {
-  deleteAll,
-  deleteCartProduct,
-  getCartProducts,
-} from "../apis/products";
+import { deleteAll } from "../apis/products";
 
 const Cart = () => {
   const { handleLoginLogout, setShowNav, setIsDisable } = useGlobalContext();

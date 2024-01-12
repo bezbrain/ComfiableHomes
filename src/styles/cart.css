@@ -5,6 +5,11 @@
   margin: 3rem auto;
   text-align: center;
 }
+@media screen and (max-width: 500px) {
+  .cart-sect {
+    padding-inline: 1rem;
+  }
+}
 
 .cart-sect h2 {
   font-size: 2rem;
