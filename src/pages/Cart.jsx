@@ -7,10 +7,10 @@ import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import { Loader } from "../components/helpers";
 import { deleteAll } from "../apis/products";
-import { FaTrash } from "react-icons/fa";
 import {
   CartCheckout,
   CartController,
+  CartDelete,
   EmptyCartUI,
 } from "../components/routes/cart";
 
@@ -92,19 +92,8 @@ const Cart = () => {
                             <CartController id={_id} counter={each.counter} />
 
                             <td>${roundNumber}</td>
-                            <td>
-                              <FaTrash
-                                className="delete-product"
-                                onClick={async () => {
-                                  await handleDeleteCart(_id, toast);
-                                  await handleCartProduct(
-                                    authToken,
-                                    toast,
-                                    setShowNav
-                                  ); // Call this function to get the remaining data after deleting from db
-                                }}
-                              />
-                            </td>
+
+                            <CartDelete id={_id} />
                           </tr>
                         );
                       })}
