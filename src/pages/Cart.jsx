@@ -5,11 +5,14 @@ import { useGlobalContext } from "../contexts/context";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
-import CartUI from "../components/routes/cart/cartUI";
 import { Loader } from "../components/helpers";
 import { deleteAll } from "../apis/products";
 import { FaTrash } from "react-icons/fa";
-import { CartCheckout } from "../components/routes/cart";
+import {
+  CartCheckout,
+  CartController,
+  EmptyCartUI,
+} from "../components/routes/cart";
 
 const Cart = () => {
   const { handleLoginLogout, setShowNav, isDisable, setIsDisable } =
@@ -60,26 +63,8 @@ const Cart = () => {
         ) : (
           <>
             {getCartProduct.length === 0 ? (
-              <>
-                <h2>Your cart is empty</h2>
-                <Link to="/products" className="fill-it-btn">
-                  FILL IT
-                </Link>
-              </>
+              <EmptyCartUI />
             ) : (
-              // <CartUI
-              //   decreaseHandler={decreaseHandler}
-              //   increaseHandler={increaseHandler}
-              //   handleDeleteCart={handleDeleteCart}
-              //   calculateSubtotal={calculateSubtotal}
-              //   handleLoginLogout={() => handleLoginLogout(toast, navigate)}
-              //   roundNumber={roundNumber}
-              //   clearCartHandler={clearCartHandler}
-              //   shippingFee={shippingFee}
-              //   authToken={authToken}
-              //   toast={toast}
-              //   navigate={navigate}
-              // />
               <>
                 <table className="cart-content">
                   <tbody>
@@ -103,26 +88,9 @@ const Cart = () => {
                               <p>{name}</p>
                             </td>
                             <td>${price}</td>
-                            <td>
-                              <div className="count-con">
-                                <button
-                                  className="decrease"
-                                  disabled={isCartDisable}
-                                  onClick={async () => {
-                                    await decreaseHandler(_id, toast);
-                                  }}
-                                >
-                                  -
-                                </button>
-                                <p>{each.counter}</p>
-                                <button
-                                  className="increase"
-                                  onClick={() => increaseHandler(_id)}
-                                >
-                                  +
-                                </button>
-                              </div>
-                            </td>
+
+                            <CartController id={_id} counter={each.counter} />
+
                             <td>${roundNumber}</td>
                             <td>
                               <FaTrash
