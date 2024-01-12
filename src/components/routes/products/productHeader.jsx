@@ -1,7 +1,7 @@
 import React from "react";
-import "../../styles/product.css";
-import "../../styles/product2.css";
-import { sortBy } from "../../data";
+import "../../../styles/product.css";
+import "../../../styles/product2.css";
+import { sortBy } from "../../../data";
 
 const ProductHeader = ({ allProducts, setIsSort }) => {
   const handleSorting = (e) => {

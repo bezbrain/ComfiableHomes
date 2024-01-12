@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useApiContext } from "../contexts/apiContext";
 import CartUI from "../components/cart/cartUI";
-import Loader from "../components/Loader";
+import { Loader } from "../components/helpers";
 import { deleteAll } from "../apis/products";
 
 const Cart = () => {

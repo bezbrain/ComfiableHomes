@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import HomeImages from "../../components/HomeImages";
-import AllProductsBtn from "../../components/AllProductsBtn";
-import { useGlobalContext } from "../../contexts/context";
-import Loader from "../../components/Loader";
+import { HomeImages } from "../../general";
+import { AllProductsBtn } from "../../general";
+import { useGlobalContext } from "../../../contexts/context";
+import { Loader } from "../../helpers";
 
 const FeaturedPro = () => {
   const { isLoading, setIsLoading } = useGlobalContext();

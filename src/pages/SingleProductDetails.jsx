@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import Loader from "../components/Loader";
+import { Loader } from "../components/helpers";
 import { useGlobalContext } from "../contexts/context";
 import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
@@ -11,8 +11,6 @@ import { useApiContext } from "../contexts/apiContext";
 
 const SingleProductDetails = () => {
   const { productId } = useParams();
-
-  const { count, setCount } = useGlobalContext();
 
   const { getSingleDetails, getProductDetails, isLoading } = useApiContext();
 

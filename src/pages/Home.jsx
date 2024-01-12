@@ -1,11 +1,11 @@
-// Importing Components
-import FirstSect from "./FirstSect";
-import FeaturedPro from "./FeaturedPro";
-import ThirdSect from "./ThirdSect";
-import FourthSect from "./FourthSect";
-// Importing Styles
-import "../../styles/home.css";
-import "../../styles/home2.css";
+import {
+  FirstSect,
+  FeaturedPro,
+  ThirdSect,
+  FourthSect,
+} from "../components/routes/home";
+import "../styles/home.css";
+import "../styles/home2.css";
 
 const Home = () => {
   return (

@@ -1,7 +1,7 @@
-import "../styles/about.css";
+import "../../styles/about.css";
 import { useLocation, Link } from "react-router-dom";
-import { useGlobalContext } from "../contexts/context";
-import { useApiContext } from "../contexts/apiContext";
+import { useGlobalContext } from "../../contexts/context";
+import { useApiContext } from "../../contexts/apiContext";
 
 const HeaderPath = () => {
   const { pathHeightRef } = useGlobalContext();

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
-import Logo from "../Logo";
+import { Logo } from "../general";
 import "../../styles/nav.css";
 import { useGlobalContext } from "../../contexts/context";
 import { useEffect, useRef } from "react";

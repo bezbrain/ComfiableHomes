@@ -1,17 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import About from "./pages/About";
-import SharedLayouts from "./components/sharedLayouts/SharedLayouts";
-import Products from "./pages/Products";
-import Cart from "./pages/Cart";
-import Error from "./pages/Error";
-import SingleProductDetails from "./pages/SingleProductDetails";
+import {
+  Home,
+  About,
+  Cart,
+  Products,
+  SingleProductDetails,
+  Error,
+} from "./pages";
+import { SharedLayouts } from "./components/sharedLayouts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  // const [isDisplay, setIsDisplay] = useState(true);
-
   return (
     <>
       <BrowserRouter>

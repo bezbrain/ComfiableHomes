@@ -1,7 +1,7 @@
 import React from "react";
-import "../../styles/product.css";
-import "../../styles/product2.css";
-import { company } from "../../data";
+import "../../../styles/product.css";
+import "../../../styles/product2.css";
+import { company } from "../../../data";
 
 const ProductCompany = ({ setIsCompany }) => {
   return (

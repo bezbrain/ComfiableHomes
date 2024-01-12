@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { Link } from "react-router-dom";
-import "../styles/register_login.css";
-import { useGlobalContext } from "../contexts/context";
+import "../../styles/register_login.css";
+import { useGlobalContext } from "../../contexts/context";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { registerUser } from "../apis/users";
+import { registerUser } from "../../apis/users";
 
 const Register = () => {
   const { loginRegister, setloginRegister } = useGlobalContext();

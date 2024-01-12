@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { useGlobalContext } from "../contexts/context";
-import SearchHover from "./SearchHover";
-import { getAllProducts } from "../apis/products";
+import { useGlobalContext } from "../../contexts/context";
+import { SearchHover } from "../helpers";
+import { getAllProducts } from "../../apis/products";
 import { toast } from "react-toastify";
 
-// let getHomeImages;
 const HomeImages = () => {
   const {
     homeProducts,

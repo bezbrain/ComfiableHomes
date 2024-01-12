@@ -1,17 +1,19 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../contexts/context";
-import Loader from "../components/Loader";
+import { Loader } from "../components/helpers";
 import "../styles/product.css";
 import "../styles/product2.css";
 import { toast } from "react-toastify";
 import { sortProducts } from "../utils/searchProduct";
-import ProductCategory from "../components/products/productCategory";
-import ProductCompany from "../components/products/productCompany";
-import SearchInput from "../components/products/searchInput";
-import ProductRadio from "../components/products/productRadio";
-import ProductHeader from "../components/products/productHeader";
-import ProductCard from "../components/products/productCard";
+import {
+  ProductCategory,
+  ProductCompany,
+  SearchInput,
+  ProductRadio,
+  ProductHeader,
+  ProductCard,
+} from "../components/routes/products";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 

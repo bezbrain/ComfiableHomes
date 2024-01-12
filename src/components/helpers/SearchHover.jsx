@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import "../styles/home.css";
+import "../../styles/home.css";
 import { FaSearch } from "react-icons/fa";
-import { useGlobalContext } from "../contexts/context";
+import { useGlobalContext } from "../../contexts/context";
 import { Link } from "react-router-dom";
 
 const SearchHover = ({ id }) => {

@@ -1,7 +1,7 @@
 import React from "react";
-import { sortProducts } from "../../utils/searchProduct";
-import "../../styles/product.css";
-import "../../styles/product2.css";
+import { sortProducts } from "../../../utils/searchProduct";
+import "../../../styles/product.css";
+import "../../../styles/product2.css";
 
 const SearchInput = ({ searchValue, setSearchValue }) => {
   const handleSearchSubmit = async (e) => {
