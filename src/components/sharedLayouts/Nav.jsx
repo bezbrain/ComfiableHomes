@@ -21,13 +21,8 @@ const Nav = () => {
     isDisable,
   } = useGlobalContext();
 
-  const {
-    handleCartProduct,
-    getCartProduct,
-    setGetCartProduct,
-    cartCount,
-    setCartCount,
-  } = useApiContext();
+  const { handleCartProduct, getCartProduct, setGetCartProduct } =
+    useApiContext();
 
   const location = useLocation();
   const navigate = useNavigate();
