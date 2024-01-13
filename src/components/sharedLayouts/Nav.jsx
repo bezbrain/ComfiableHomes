@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
+import { useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
 import { Logo } from "../general";
 import "../../styles/nav.css";
 import { useGlobalContext } from "../../contexts/context";
-import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import { useApiContext } from "../../contexts/apiContext";
 import { getCartProducts } from "../../apis/products";
@@ -19,10 +19,24 @@ const Nav = () => {
     isLogged,
     handleLoginLogout,
     isDisable,
+    headerHeight,
+    setHeaderHeight,
+    pathHeight,
+    filterHeight,
   } = useGlobalContext();
 
   const { handleCartProduct, getCartProduct, setGetCartProduct } =
     useApiContext();
+
+  const navRef = useRef(null);
+
+  // Dynamically set the height of nav header
+  useEffect(() => {
+    if (navRef.current) {
+      const getHeaderHeight = navRef.current.getBoundingClientRect().height;
+      setHeaderHeight(getHeaderHeight);
+    }
+  }, [filterHeight, pathHeight, headerHeight]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -57,7 +71,7 @@ const Nav = () => {
 
   return (
     <>
-      <header className="nav-header">
+      <header className="nav-header" ref={navRef}>
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
         <nav className={showNav}>

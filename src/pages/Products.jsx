@@ -19,9 +19,15 @@ import queryString from "query-string";
 import { FaArrowCircleDown } from "react-icons/fa";
 
 const Products = () => {
-  const { isLoading, setIsLoading } = useGlobalContext();
+  const {
+    isLoading,
+    setIsLoading,
+    pathHeight,
+    headerHeight,
+    filterHeight,
+    setFilterHeight,
+  } = useGlobalContext();
   const [borderBottom, setBorderBottom] = useState(null);
-  const scrollPage = useRef(null);
 
   const location = useLocation();
   const queryParams = queryString.parse(location.search);
@@ -91,15 +97,36 @@ const Products = () => {
     rangeValue,
   ]);
 
+  // Aggregate nav and headerPath heights
+  const headersAgg = pathHeight + headerHeight;
+
+  const filterOptionsRef = useRef(null);
+
+  // Dynamically set the height of filter options
+  useEffect(() => {
+    if (filterOptionsRef.current) {
+      const filterOptionsHeight =
+        filterOptionsRef.current.getBoundingClientRect().height;
+      setFilterHeight(filterOptionsHeight);
+    }
+  }, [filterHeight, pathHeight, headerHeight]);
+
+  // Aggregate nav, headerPath and filter heights
+  const heightAgg = filterHeight + pathHeight + headerHeight;
+
   return (
     <>
       <main className="products">
         {/* Left hand side */}
-        <div className="filter-con">
+        <div
+          className="filter-con"
+          style={{ top: `${headersAgg}px` }}
+          ref={filterOptionsRef}
+        >
           <p>Filter Options</p>
           <FaArrowCircleDown className="arrow-down" />
         </div>
-        <aside ref={scrollPage}>
+        <aside style={{ top: `${heightAgg}px` }}>
           <SearchInput
             searchValue={searchValue}
             setSearchValue={setSearchValue}

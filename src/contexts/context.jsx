@@ -42,8 +42,12 @@ export const AppProvider = ({ children }) => {
   const [hoveredIndex, setHoveredIndex] = useState(false);
 
   // For calculating the height of header path
-  const pathHeightRef = useRef(null);
+  // const pathHeightRef = useRef(null);
   const loginLogoutRef = useRef(null);
+
+  const [headerHeight, setHeaderHeight] = useState();
+  const [pathHeight, setPathHeight] = useState();
+  const [filterHeight, setFilterHeight] = useState();
 
   // For login and logout
   const [toggleLoginLogout, setToggleLoginLogout] = useState(false);
@@ -142,7 +146,7 @@ export const AppProvider = ({ children }) => {
         setLoginLogoutOverlay,
         loginRegister,
         setloginRegister,
-        pathHeightRef,
+        // pathHeightRef,
         loginLogoutRef,
         auth,
         createUserWithEmailAndPassword,
@@ -154,6 +158,12 @@ export const AppProvider = ({ children }) => {
         setIsLogged,
         isDisable,
         setIsDisable,
+        headerHeight,
+        setHeaderHeight,
+        pathHeight,
+        setPathHeight,
+        filterHeight,
+        setFilterHeight,
       }}
     >
       {children}
