@@ -71,7 +71,7 @@ To get started with the project, follow these steps:
 
   3. Code documentation:
 
-     - Document you code by adding comments and explanatory notes where necessary.
+     - Document your code by adding comments and explanatory notes where necessary.
 
   4. Use version control:
 
@@ -80,8 +80,6 @@ To get started with the project, follow these steps:
   5. Create a PR:
      - Once you have completed the project goals, create a pull request to merge your changes into the main repository.
      - While at this, provide a clear description of the changes made and any relevent information for the code review.
-
-(https://comfiablehomesng.netlify.app/)
 
 ## Resources
 
