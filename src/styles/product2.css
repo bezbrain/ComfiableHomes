@@ -12,6 +12,7 @@
 }
 
 .product-header {
+  /* border: 2px solid red; */
   margin-top: 25px;
 }
 
@@ -22,7 +23,7 @@
 @media screen and (max-width: 800px) {
   .product-header {
     /* border: 2px solid red; */
-    margin-top: 50px;
+    margin-top: 12rem;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -72,7 +73,13 @@
 }
 @media screen and (max-width: 800px) {
   .loader-and-image-sect {
+    grid-template-columns: 1fr 1fr;
     margin-top: 20px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .loader-and-image-sect {
+    grid-template-columns: 1fr;
   }
 }
 

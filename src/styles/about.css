@@ -1,6 +1,15 @@
 .header-path {
+  /* border: 2px solid red; */
   background-color: var(--lightblue);
   padding-block: 5vh;
+}
+@media screen and (max-width: 800px) {
+  .header-path {
+    position: fixed;
+    top: 65px;
+    width: 100%;
+    z-index: 99;
+  }
 }
 
 .header-path div {
@@ -8,7 +17,7 @@
   margin-inline: auto;
   padding-inline: var(--pagesectionspadding);
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .header-path div {
     padding-inline: 1rem;
   }
@@ -23,9 +32,9 @@
   text-decoration: none;
   color: var(--darkblue);
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .header-path {
-    padding-block: 3vh;
+    padding-block: 2vh;
   }
 
   .header-path div p {

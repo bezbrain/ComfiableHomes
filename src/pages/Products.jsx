@@ -16,6 +16,7 @@ import {
 } from "../components/routes/products";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
+import { FaArrowCircleDown } from "react-icons/fa";
 
 const Products = () => {
   const { isLoading, setIsLoading } = useGlobalContext();
@@ -94,6 +95,10 @@ const Products = () => {
     <>
       <main className="products">
         {/* Left hand side */}
+        <div className="filter-con">
+          <p>Filter Options</p>
+          <FaArrowCircleDown className="arrow-down" />
+        </div>
         <aside ref={scrollPage}>
           <SearchInput
             searchValue={searchValue}

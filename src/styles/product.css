@@ -1,23 +1,23 @@
 .products {
-  /* border: 2px solid red; */
   position: relative;
   min-height: 70vh;
   padding-inline: var(--pagesectionspadding);
   max-width: var(--pagesectionswidth);
-  margin: 0 auto;
+  margin: 30px auto 60px;
   display: flex;
   justify-content: space-between;
-  margin-block: 30px 60px;
   /* overflow-y: auto; */
 }
 @media screen and (max-width: 800px) {
   .products {
+    /* border: 2px solid red; */
     flex-direction: column;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
   .products {
     padding-inline: 1rem;
+    margin-top: 0;
   }
 }
 
@@ -25,6 +25,46 @@
   /* border: 2px solid yellow; */
   width: 200px;
   margin-top: 20px;
+}
+.filter-con {
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  .products aside {
+    /* border: 2px solid red; */
+    position: fixed;
+    /* height: 0px; */
+    visibility: hidden;
+    z-index: 9;
+    background-color: #dfeff8;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  .filter-con {
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0px 13px 15px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 90%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 9rem;
+  }
+  .filter-con p {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .arrow-down {
+    display: block;
+    margin-left: auto;
+    font-size: 25px;
+  }
 }
 
 .products aside input:first-child {
@@ -42,13 +82,18 @@
 }
 @media screen and (max-width: 800px) {
   .products aside input:first-child {
-    width: 140px;
+    /* width: 140px; */
     /* border: 2px solid red; */
   }
 }
 
 .category {
   margin-block: 50px;
+}
+@media screen and (max-width: 800px) {
+  .category {
+    margin-block: 0px;
+  }
 }
 
 .category h3 {
@@ -85,7 +130,7 @@
 
 .radio-price-con {
   /* border: 2px solid red; */
-  width: 120px;
+  width: 100px;
 }
 
 .radio-price-con input {
@@ -101,4 +146,12 @@
   color: #fff;
   font-size: 16px;
   cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+  .clear-filter-btn {
+    height: fit-content;
+    /* align-self: self-start; */
+    width: 100px;
+    padding-inline: 5px;
+  }
 }

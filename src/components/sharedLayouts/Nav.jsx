@@ -57,7 +57,7 @@ const Nav = () => {
 
   return (
     <>
-      <header>
+      <header className="nav-header">
         <Logo />
         <FaBars className="open" onClick={handleOpen} />
         <nav className={showNav}>
