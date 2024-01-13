@@ -112,6 +112,10 @@
   background-color: var(--darkblue);
   color: #fff;
 }
+.increase,
+.decrease {
+  opacity: 0.5;
+}
 @media screen and (max-width: 800px) {
   .body-of-cart td:nth-child(3) .count-con {
     /* border: 2px solid red; */

@@ -1,24 +1,33 @@
 import React from "react";
 import { useApiContext } from "../../../contexts/apiContext";
-import { toast } from "react-toastify";
 
 const CartController = ({ id, counter }) => {
-  const { increaseHandler, decreaseHandler, isCartDisable } = useApiContext();
+  const {
+    increaseHandler,
+    decreaseHandler,
+    isCartIncrease,
+    isCartDecrease,
+    setIsCartIncrease,
+    setIsCartDecrease,
+  } = useApiContext();
 
   return (
     <td>
       <div className="count-con">
         <button
-          className="decrease"
-          disabled={isCartDisable}
+          className={isCartDecrease ? "decrease" : ""}
+          // disabled={isCartDisable}
           onClick={async () => {
-            await decreaseHandler(id, toast);
+            await decreaseHandler(id);
           }}
         >
           -
         </button>
         <p>{counter}</p>
-        <button className="increase" onClick={() => increaseHandler(id)}>
+        <button
+          className={isCartIncrease ? "increase" : ""}
+          onClick={() => increaseHandler(id)}
+        >
           +
         </button>
       </div>

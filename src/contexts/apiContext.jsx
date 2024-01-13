@@ -15,7 +15,8 @@ export const ApiProvider = ({ children }) => {
 
   const [cartCount, setCartCount] = useState(0);
 
-  const [isCartDisable, setIsCartDisable] = useState(false);
+  const [isCartIncrease, setIsCartIncrease] = useState(false);
+  const [isCartDecrease, setIsCartDecrease] = useState(false);
 
   const [cartPageCount, setCartPageCount] = useState(1);
 
@@ -74,26 +75,26 @@ export const ApiProvider = ({ children }) => {
     if (newCartProduct.counter < 10) {
       newCartProduct.counter++;
       setCartPageCount(newCartProduct.counter);
+      setIsCartDecrease(false);
       return;
+    }
+    if (newCartProduct.counter === 10) {
+      setIsCartIncrease(true);
     }
   };
 
   // Cart Page DecreaseHandler
-  const decreaseHandler = async (index, toast) => {
+  const decreaseHandler = async (index) => {
     const newCartProduct = getCartProduct.find((each) => each._id === index);
-    newCartProduct.counter--;
-    if (newCartProduct.counter === 0) {
-      try {
-        setIsCartDisable(true);
-        await handleDeleteCart(index, toast);
-        setIsCartDisable(false);
-      } catch (error) {
-        // console.log(error);
-        toast.error(error.response.data.message || error.message);
-        setIsCartDisable(false);
-      }
+    if (newCartProduct.counter > 1) {
+      newCartProduct.counter--;
+      setCartPageCount(newCartProduct.counter);
+      setIsCartIncrease(false);
+      return;
     }
-    setCartPageCount(newCartProduct.counter);
+    if (newCartProduct.counter === 1) {
+      setIsCartDecrease(true);
+    }
   };
 
   return (
@@ -113,8 +114,10 @@ export const ApiProvider = ({ children }) => {
         decreaseHandler,
         cartPageCount,
         setCartPageCount,
-        isCartDisable,
-        setIsCartDisable,
+        isCartIncrease,
+        isCartDecrease,
+        setIsCartIncrease,
+        setIsCartDecrease,
       }}
     >
       {children}
