@@ -6,6 +6,7 @@ import {
   Products,
   SingleProductDetails,
   Error,
+  CartCheckout,
 } from "./pages";
 import { SharedLayouts } from "./components/sharedLayouts";
 import { ToastContainer } from "react-toastify";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<CartCheckout />} />
             <Route path="/*" element={<Error />} />
             <Route
               path="products/:productId"

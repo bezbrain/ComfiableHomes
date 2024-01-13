@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { useApiContext } from "../../../contexts/apiContext";
+import { useNavigate } from "react-router-dom";
 
 const CartCheckout = ({ roundNumber }) => {
   const [shippingFee] = useState(5.34);
   const { getCartProduct } = useApiContext();
+
+  const authToken = sessionStorage.getItem("authToken");
+
+  const navigate = useNavigate();
 
   // IF LOGGED IN NAVIGATE TO CHECKOUT DETAILS
   const handleCheckoutNav = () => {
