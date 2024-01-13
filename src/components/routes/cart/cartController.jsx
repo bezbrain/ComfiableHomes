@@ -2,21 +2,14 @@ import React from "react";
 import { useApiContext } from "../../../contexts/apiContext";
 
 const CartController = ({ id, counter }) => {
-  const {
-    increaseHandler,
-    decreaseHandler,
-    isCartIncrease,
-    isCartDecrease,
-    setIsCartIncrease,
-    setIsCartDecrease,
-  } = useApiContext();
+  const { increaseHandler, decreaseHandler, isCartIncrease, isCartDecrease } =
+    useApiContext();
 
   return (
     <td>
       <div className="count-con">
         <button
           className={isCartDecrease ? "decrease" : ""}
-          // disabled={isCartDisable}
           onClick={async () => {
             await decreaseHandler(id);
           }}
