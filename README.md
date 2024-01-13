@@ -85,6 +85,6 @@ To get started with the project, follow these steps:
 
 Here are some resources that may be helpful during your work on this project:
 
-- [React Documentation](https://vitejs.dev/) - Official documentation for Vite, providing guides on how to install Vite application.
+- [Vite Documentation](https://vitejs.dev/) - Official documentation for Vite, providing guides on how to install Vite application.
 
 - [React Documentation](https://create-react-app.dev/) - Official documentation for React, providing detailed information on React concepts and usage.
