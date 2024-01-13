@@ -60,11 +60,8 @@ const Cart = () => {
                               <p>{name}</p>
                             </td>
                             <td>${price}</td>
-
                             <CartController id={_id} counter={each.counter} />
-
                             <td>${roundNumber}</td>
-
                             <CartDelete id={_id} />
                           </tr>
                         );
