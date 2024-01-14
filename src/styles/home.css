@@ -8,7 +8,7 @@
   /* border: 2px solid red; */
   padding-inline: var(--pagesectionspadding);
   max-width: var(--pagesectionswidth);
-  margin: 8rem auto;
+  margin: 6rem auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,7 +41,7 @@
 }
 @media screen and (max-width: 650px) {
   .design-your-comfort {
-    margin-block: 3rem;
+    /* margin-block: 3rem; */
     padding-inline: 10px;
   }
   .design-your-comfort article h2 {
