@@ -1,0 +1,19 @@
+.all-product-con {
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+}
+
+.all-product-btn {
+  background-color: var(--darkblue);
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  transition: ease 0.5s all;
+  cursor: pointer;
+}
+.all-product-btn:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}

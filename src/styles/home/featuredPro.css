@@ -1,0 +1,36 @@
+/* ======== */
+/* Second Body Section */
+.add-bg-con {
+  background-color: var(--verylightblue);
+}
+
+.featured-pro-con {
+  position: relative;
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
+  margin: 0px auto;
+  padding-block: 70px;
+}
+@media screen and (max-width: 500px) {
+  .featured-pro-con {
+    padding-inline: 10px;
+  }
+}
+
+.featured-pro-con h2 {
+  text-align: center;
+  font-size: 40px;
+}
+@media screen and (max-width: 600px) {
+  .featured-pro-con h2 {
+    font-size: 7vw;
+  }
+}
+
+.featured-pro-con hr {
+  width: 100px;
+  height: 5px;
+  background-color: var(--darkblue);
+  margin-inline: auto;
+  margin-top: 10px;
+}

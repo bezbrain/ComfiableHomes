@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
+import "../../../styles/home/thirdSection.css";
 
 const ThirdSect = () => {
   const [isMission, setIsMission] = useState(false);

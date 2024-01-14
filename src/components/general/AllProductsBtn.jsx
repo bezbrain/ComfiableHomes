@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
+import "../../styles/general/allProductBtn.css";
 
 const AllProductsBtn = ({ allProductBtn }) => {
   return (

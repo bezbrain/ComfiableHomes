@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import "../../styles/helpers/filterOptions.css";
 
 const FilterOptions = ({
   isShowFilter,

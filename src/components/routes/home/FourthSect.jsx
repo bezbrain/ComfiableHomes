@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../../styles/home/fourthSection.css";
 
 const FourthSect = () => {
   const [btnValue] = useState("Subscribe");

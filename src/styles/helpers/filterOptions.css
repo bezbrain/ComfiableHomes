@@ -1,0 +1,33 @@
+.filter-con {
+  display: none;
+}
+@media screen and (max-width: 800px) {
+  .filter-con {
+    /* border: 2px solid red; */
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 1rem;
+    box-shadow: 0px 13px 15px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+  }
+  .filter-con p {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .filter-options {
+    /* display: none; */
+    visibility: hidden;
+  }
+  .arrow-down,
+  .arrow-up {
+    display: block;
+    margin-left: auto;
+    font-size: 25px;
+  }
+}

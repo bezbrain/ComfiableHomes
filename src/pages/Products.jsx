@@ -2,8 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../contexts/context";
 import { FilterOptions, Loader } from "../components/helpers";
-import "../styles/product.css";
-import "../styles/product2.css";
+import "../styles/products/product.css";
 import { toast } from "react-toastify";
 import { sortProducts } from "../utils/searchProduct";
 import {

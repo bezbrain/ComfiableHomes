@@ -3,6 +3,7 @@ import { useGlobalContext } from "../../contexts/context";
 import { SearchHover } from "../helpers";
 import { getAllProducts } from "../../apis/products";
 import { toast } from "react-toastify";
+import "../../styles/general/homesImages.css";
 
 const HomeImages = () => {
   const {

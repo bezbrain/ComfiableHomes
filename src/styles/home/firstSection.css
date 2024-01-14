@@ -1,0 +1,93 @@
+/* ======== */
+/* First Body Section */
+.design-your-comfort {
+  /* border: 2px solid red; */
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
+  margin: 6rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.design-your-comfort article {
+  /* border: 2px solid green; */
+  width: 50%;
+}
+
+.design-your-comfort article h2 {
+  font-size: 2.5em;
+  margin-block: 30px;
+}
+
+.design-your-comfort article p {
+  line-height: 0.7cm;
+}
+.brand-name {
+  color: var(--darkblue);
+  font-weight: 900;
+}
+.shop-now-btn {
+  background-color: var(--darkblue);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 30px;
+  transition: ease 0.5s all;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.shop-now-btn:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}
+@media screen and (max-width: 1000px) {
+  .design-your-comfort article {
+    /* border: 2px solid red; */
+    width: 95%;
+    /* width: 700px; */
+    margin-inline: auto;
+  }
+  .design-your-comfort article h2 {
+    /* border: 2px solid red; */
+    max-width: 350px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .design-your-comfort {
+    /* margin-block: 3rem; */
+    padding-inline: 10px;
+  }
+  .design-your-comfort article h2 {
+    font-size: 8vw;
+    margin-block: 10px;
+    /* max-width: 350px; */
+  }
+}
+
+.design-comfort-img-sect {
+  /* border: 2px solid red; */
+  position: relative;
+  width: 50%;
+  text-align: right;
+}
+@media screen and (max-width: 1000px) {
+  .design-comfort-img-sect {
+    display: none;
+  }
+}
+
+.des-comfort-img-one {
+  width: 80%;
+  border-radius: 5px;
+}
+
+.des-comfort-img-two {
+  width: 50%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 5px;
+}

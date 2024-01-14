@@ -4,8 +4,7 @@ import {
   ThirdSect,
   FourthSect,
 } from "../components/routes/home";
-import "../styles/home.css";
-import "../styles/home2.css";
+import "../styles/home/home.css";
 
 const Home = () => {
   return (

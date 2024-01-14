@@ -3,6 +3,7 @@ import { HomeImages } from "../../general";
 import { AllProductsBtn } from "../../general";
 import { useGlobalContext } from "../../../contexts/context";
 import { Loader } from "../../helpers";
+import "../../../styles/home/featuredPro.css";
 
 const FeaturedPro = () => {
   const { isLoading, setIsLoading } = useGlobalContext();

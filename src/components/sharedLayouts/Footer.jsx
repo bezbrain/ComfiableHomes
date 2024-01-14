@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/sharedLayouts.css/footer.css";
 
 const Footer = () => {
   return (
