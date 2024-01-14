@@ -1,4 +1,4 @@
-import "../../styles/about.css";
+import "../../styles/general/headerPath.css";
 import { useLocation, Link } from "react-router-dom";
 import { useApiContext } from "../../contexts/apiContext";
 import { useGlobalContext } from "../../contexts/context";
