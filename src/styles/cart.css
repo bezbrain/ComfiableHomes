@@ -5,6 +5,11 @@
   margin: 3rem auto;
   text-align: center;
 }
+@media screen and (max-width: 800px) {
+  .cart-sect {
+    margin-block: 8rem;
+  }
+}
 @media screen and (max-width: 500px) {
   .cart-sect {
     padding-inline: 1rem;
