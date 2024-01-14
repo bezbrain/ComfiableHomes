@@ -1,6 +1,5 @@
 import React from "react";
-import "../../../styles/product.css";
-import "../../../styles/product2.css";
+import "../../../styles/products/productCat.css";
 import { category } from "../../../data";
 
 const ProductCategory = ({ borderBottom, setIsCategory, setBorderBottom }) => {

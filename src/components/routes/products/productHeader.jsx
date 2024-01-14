@@ -1,6 +1,5 @@
 import React from "react";
-import "../../../styles/product.css";
-import "../../../styles/product2.css";
+import "../../../styles/products/productHeader.css";
 import { sortBy } from "../../../data";
 
 const ProductHeader = ({ allProducts, setIsSort }) => {
@@ -24,7 +23,7 @@ const ProductHeader = ({ allProducts, setIsSort }) => {
           {allProducts.length} product{allProducts.length < 2 ? "" : "s"} Found
         </p>
       )}
-      <hr className="wobble" />
+      <hr />
       <div className="sort-con">
         <p>Sort By: </p>
         <select

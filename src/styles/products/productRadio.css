@@ -1,0 +1,9 @@
+.radio-price-con {
+  margin-bottom: 40px;
+  width: 100px;
+}
+
+.radio-price-con > input {
+  width: 100%;
+  cursor: pointer;
+}

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../contexts/context";
-import { Loader } from "../components/helpers";
+import { FilterOptions, Loader } from "../components/helpers";
 import "../styles/product.css";
 import "../styles/product2.css";
 import { toast } from "react-toastify";
@@ -16,7 +16,6 @@ import {
 } from "../components/routes/products";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 const Products = () => {
   const {
@@ -39,6 +38,7 @@ const Products = () => {
   const [isSort, setIsSort] = useState("");
   const [rangeValue, setRangeValue] = useState(3099.99);
 
+  const filterOptionsRef = useRef(null);
   const [isShowFilter, setIsShowFilter] = useState(false);
 
   // Update the URL with the current sorting parameters
@@ -99,11 +99,6 @@ const Products = () => {
     rangeValue,
   ]);
 
-  // Aggregate nav and headerPath heights
-  const headersAgg = pathHeight + headerHeight;
-
-  const filterOptionsRef = useRef(null);
-
   // Dynamically set the height of filter options
   useEffect(() => {
     if (filterOptionsRef.current) {
@@ -113,6 +108,9 @@ const Products = () => {
     }
   }, [filterHeight, pathHeight, headerHeight]);
 
+  // Aggregate nav and headerPath heights
+  const headersAgg = pathHeight + headerHeight;
+
   // Aggregate nav, headerPath and filter heights
   const heightAgg = filterHeight + pathHeight + headerHeight;
 
@@ -120,16 +118,12 @@ const Products = () => {
     <>
       <main className="products">
         {/* Left hand side */}
-        <div
-          className="filter-con"
-          style={{ top: `${headersAgg}px` }}
-          ref={filterOptionsRef}
-          onClick={() => setIsShowFilter(!isShowFilter)}
-        >
-          <p>Filter Options</p>
-          {isShowFilter && <IoIosArrowDown className="arrow-down" />}
-          {!isShowFilter && <IoIosArrowUp className="arrow-up" />}
-        </div>
+        <FilterOptions
+          isShowFilter={isShowFilter}
+          setIsShowFilter={setIsShowFilter}
+          headersAgg={headersAgg}
+          filterOptionsRef={filterOptionsRef}
+        />
         <aside
           style={{ top: `${heightAgg}px` }}
           className={`${isShowFilter ? "" : "filter-options"}`}

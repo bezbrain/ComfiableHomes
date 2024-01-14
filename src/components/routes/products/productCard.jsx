@@ -1,6 +1,5 @@
 import React from "react";
-import "../../../styles/product.css";
-import "../../../styles/product2.css";
+import "../../../styles/products/productCard.css";
 import { SearchHover } from "../../helpers";
 import { useGlobalContext } from "../../../contexts/context";
 
