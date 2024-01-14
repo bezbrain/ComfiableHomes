@@ -16,7 +16,7 @@ import {
 } from "../components/routes/products";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
-import { FaArrowCircleDown } from "react-icons/fa";
+import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 const Products = () => {
   const {
@@ -38,6 +38,8 @@ const Products = () => {
   const [isCompany, setIsCompany] = useState("");
   const [isSort, setIsSort] = useState("");
   const [rangeValue, setRangeValue] = useState(3099.99);
+
+  const [isShowFilter, setIsShowFilter] = useState(false);
 
   // Update the URL with the current sorting parameters
   const updatedParams = queryString.stringify({
@@ -122,11 +124,17 @@ const Products = () => {
           className="filter-con"
           style={{ top: `${headersAgg}px` }}
           ref={filterOptionsRef}
+          onClick={() => setIsShowFilter(!isShowFilter)}
         >
           <p>Filter Options</p>
-          <FaArrowCircleDown className="arrow-down" />
+          {isShowFilter && <IoIosArrowDown className="arrow-down" />}
+          {!isShowFilter && <IoIosArrowUp className="arrow-up" />}
         </div>
-        <aside style={{ top: `${heightAgg}px` }}>
+        <aside
+          style={{ top: `${heightAgg}px` }}
+          className={`${isShowFilter ? "" : "filter-options"}`}
+          onClick={() => setIsShowFilter(false)}
+        >
           <SearchInput
             searchValue={searchValue}
             setSearchValue={setSearchValue}
