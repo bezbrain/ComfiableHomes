@@ -1,0 +1,19 @@
+.empty-cart-con h2 {
+  font-size: 2rem;
+  margin-block: 1.5rem;
+}
+
+.empty-cart-con > a {
+  text-decoration: none;
+  display: inline-block;
+  background-color: var(--darkblue);
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: ease 0.5s all;
+}
+
+.empty-cart-con > a:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}

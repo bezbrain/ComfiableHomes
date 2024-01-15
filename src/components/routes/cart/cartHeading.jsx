@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../styles/cart/cartHeading.css";
 
 const CartHeading = () => {
   return (

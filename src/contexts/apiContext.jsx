@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
   deleteCartProduct,
   getCartProducts,
@@ -15,8 +15,12 @@ export const ApiProvider = ({ children }) => {
 
   const [cartCount, setCartCount] = useState(0);
 
-  const [isCartIncrease, setIsCartIncrease] = useState(false);
-  const [isCartDecrease, setIsCartDecrease] = useState(false);
+  // const [initialIncrease, setInitialIncrease] = useState(true);
+  const [isIncreaseBlur, setIsIncreaseBlur] = useState(false);
+  const [isDecreaseBlur, setIsDecreaseBlur] = useState(false);
+  const [blurTrack, setBlurTrack] = useState(false);
+
+  const counterNumberRef = useRef(null);
 
   const [cartPageCount, setCartPageCount] = useState(1);
 
@@ -75,11 +79,11 @@ export const ApiProvider = ({ children }) => {
     if (newCartProduct.counter < 10) {
       newCartProduct.counter++;
       setCartPageCount(newCartProduct.counter);
-      setIsCartDecrease(false);
+      setIsDecreaseBlur(false);
       return;
     }
     if (newCartProduct.counter === 10) {
-      setIsCartIncrease(true);
+      setIsIncreaseBlur(newCartProduct._id);
     }
   };
 
@@ -89,11 +93,11 @@ export const ApiProvider = ({ children }) => {
     if (newCartProduct.counter > 1) {
       newCartProduct.counter--;
       setCartPageCount(newCartProduct.counter);
-      setIsCartIncrease(false);
+      setIsIncreaseBlur(false);
       return;
     }
     if (newCartProduct.counter === 1) {
-      setIsCartDecrease(true);
+      setIsDecreaseBlur(newCartProduct._id);
     }
   };
 
@@ -114,10 +118,15 @@ export const ApiProvider = ({ children }) => {
         decreaseHandler,
         cartPageCount,
         setCartPageCount,
-        isCartIncrease,
-        isCartDecrease,
-        setIsCartIncrease,
-        setIsCartDecrease,
+        isIncreaseBlur,
+        isDecreaseBlur,
+        setIsIncreaseBlur,
+        setIsDecreaseBlur,
+        counterNumberRef,
+        // initialIncrease,
+        // setInitialIncrease,
+        blurTrack,
+        setBlurTrack,
       }}
     >
       {children}

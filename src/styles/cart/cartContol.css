@@ -1,0 +1,33 @@
+.count-con {
+  /* border: 2px solid red; */
+  margin-inline: auto;
+}
+
+.count-con > button {
+  /* border: 2px solid red; */
+  font-size: 25px;
+  width: 30px;
+  height: 20px;
+  background-color: var(--darkblue);
+  color: #fff;
+}
+.cart-increase,
+.cart-decrease {
+  opacity: 0.5;
+}
+@media screen and (max-width: 800px) {
+  .count-con {
+    /* border: 2px solid red; */
+    margin-left: auto;
+    font-size: 18px;
+    margin-left: 0;
+    width: 80px;
+  }
+
+  .count-con button {
+    /* border: 2px solid red; */
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+}

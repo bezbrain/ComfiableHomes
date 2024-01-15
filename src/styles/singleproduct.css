@@ -1,11 +1,12 @@
 .single-detail-page {
+  /* border: 2px solid red; */
   min-height: 70vh;
 }
 
 .display-details-con {
   padding-inline: var(--pagesectionspadding);
   max-width: var(--pagesectionswidth);
-  margin: 7vh auto;
+  margin: 10rem auto 7vh;
 }
 
 .back-to-product {

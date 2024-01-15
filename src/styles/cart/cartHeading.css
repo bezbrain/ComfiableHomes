@@ -1,0 +1,11 @@
+@media screen and (max-width: 800px) {
+  .header-of-cart {
+    display: none;
+  }
+}
+
+.header-of-cart td {
+  padding-bottom: 2rem;
+  font-size: 18px;
+  font-weight: 500;
+}
