@@ -1,4 +1,5 @@
 .cart-sect {
+  /* border: 2px solid red; */
   min-height: 65vh;
   padding-inline: var(--pagesectionspadding);
   max-width: var(--pagesectionswidth);
@@ -7,7 +8,7 @@
 }
 @media screen and (max-width: 800px) {
   .cart-sect {
-    margin-block: 8rem;
+    margin-block: 25vw 8rem;
   }
 }
 @media screen and (max-width: 500px) {

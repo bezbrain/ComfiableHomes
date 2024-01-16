@@ -18,7 +18,8 @@ import {
 const Cart = () => {
   const { setShowNav } = useGlobalContext();
 
-  const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
+  const { getCartProduct, handleCartProduct, isLoading, setBlurTrack } =
+    useApiContext();
 
   const authToken = sessionStorage.getItem("authToken");
 
@@ -32,6 +33,25 @@ const Cart = () => {
       handleCartProduct(authToken, toast, setShowNav);
     }
   }, []);
+
+  // const oneProduct = (id) => {
+  //   const newCartProduct = getCartProduct.find((each) => each._id === id);
+  //   console.log(id);
+  //   console.log(newCartProduct);
+  // };
+  // useEffect(() => {
+  //   // console.log("Running");
+
+  //   getCartProduct.forEach((each) => {
+  //     if (each.counter === 1) {
+  //       setBlurTrack(id);
+  //       console.log("I am one");
+  //     } else {
+  //       setBlurTrack(false);
+  //       console.log("Not one");
+  //     }
+  //   });
+  // }, []);
 
   return (
     <>
