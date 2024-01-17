@@ -19,6 +19,12 @@
   cursor: pointer;
 }
 
+.checkout-form > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .checkout-input-con {
   /* border: 2px solid green; */
   display: flex;
@@ -60,6 +66,9 @@
 @media screen and (max-width: 800px) {
   .checkout-form {
     width: 65%;
+    gap: 10px;
+  }
+  .checkout-form > form {
     gap: 10px;
   }
   .checkout-input-con {
