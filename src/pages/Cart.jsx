@@ -18,8 +18,7 @@ import {
 const Cart = () => {
   const { setShowNav } = useGlobalContext();
 
-  const { getCartProduct, handleCartProduct, isLoading, setBlurTrack } =
-    useApiContext();
+  const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
 
   const authToken = sessionStorage.getItem("authToken");
 

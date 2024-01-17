@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import "../../styles/register_login.css";
+import "../../styles/auth/register_login.css";
 import { useGlobalContext } from "../../contexts/context";
 import { useState } from "react";
 import { toast } from "react-toastify";

@@ -1,6 +1,6 @@
 import { Login, Register } from "./";
 import { FaTimes } from "react-icons/fa";
-import "../../styles/register_login.css";
+import "../../styles/auth/register_login.css";
 import { useGlobalContext } from "../../contexts/context";
 
 const Register_Login = () => {
