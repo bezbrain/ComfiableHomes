@@ -1,7 +1,52 @@
 .checkout-cart-summary {
-  border: 2px solid red;
+  /* border: 2px solid red; */
+  background-color: #fff;
+  padding: 20px 10px;
   align-self: flex-start;
   width: 30%;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px 8px rgba(0, 0, 0, 0.1);
+}
+
+.items-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.items-total > p:last-child {
+  font-weight: 600;
+}
+
+.checkout-items-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkout-pay-now-btn {
+  width: 200px;
+  display: block;
+  margin-inline: auto;
+  padding-block: 10px;
+  font-size: 1rem;
+  background-color: var(--darkblue);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.checkout-pay-now-btn:hover {
+  transform: scale(1.02);
+}
+
+hr {
+  margin-block: 10px;
+  opacity: 0.5;
+}
+
+.checkout-condition {
+  font-size: 12px;
+  text-align: center;
 }
 
 @media screen and (max-width: 800px) {
