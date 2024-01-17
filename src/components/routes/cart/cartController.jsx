@@ -7,23 +7,15 @@ const CartController = ({ id, counter }) => {
     increaseHandler,
     decreaseHandler,
     isIncreaseBlur,
-    setIsIncreaseBlur,
     isDecreaseBlur,
-    setIsDecreaseBlur,
     counterNumberRef,
-    setIsCartDecrease,
-    getCartProduct,
-    blurTrack,
-    setBlurTrack,
   } = useApiContext();
 
   return (
     <td>
       <div className="count-con">
         <button
-          className={
-            isDecreaseBlur === id || blurTrack === id ? "cart-decrease" : ""
-          }
+          className={isDecreaseBlur === id ? "cart-decrease" : ""}
           onClick={async () => {
             await decreaseHandler(id);
           }}

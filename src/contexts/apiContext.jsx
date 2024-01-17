@@ -18,7 +18,7 @@ export const ApiProvider = ({ children }) => {
   // const [initialIncrease, setInitialIncrease] = useState(true);
   const [isIncreaseBlur, setIsIncreaseBlur] = useState(false);
   const [isDecreaseBlur, setIsDecreaseBlur] = useState(false);
-  const [blurTrack, setBlurTrack] = useState(false);
+  // const [blurTrack, setBlurTrack] = useState(false);
 
   const counterNumberRef = useRef(null);
 
@@ -93,7 +93,7 @@ export const ApiProvider = ({ children }) => {
     if (newCartProduct.counter > 1) {
       newCartProduct.counter--;
       setCartPageCount(newCartProduct.counter);
-      setIsIncreaseBlur(false);
+      // setIsIncreaseBlur(false);
       return;
     }
     if (newCartProduct.counter === 1) {
@@ -125,8 +125,8 @@ export const ApiProvider = ({ children }) => {
         counterNumberRef,
         // initialIncrease,
         // setInitialIncrease,
-        blurTrack,
-        setBlurTrack,
+        // blurTrack,
+        // setBlurTrack,
       }}
     >
       {children}

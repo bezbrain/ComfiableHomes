@@ -34,25 +34,6 @@ const Cart = () => {
     }
   }, []);
 
-  // const oneProduct = (id) => {
-  //   const newCartProduct = getCartProduct.find((each) => each._id === id);
-  //   console.log(id);
-  //   console.log(newCartProduct);
-  // };
-  // useEffect(() => {
-  //   // console.log("Running");
-
-  //   getCartProduct.forEach((each) => {
-  //     if (each.counter === 1) {
-  //       setBlurTrack(id);
-  //       console.log("I am one");
-  //     } else {
-  //       setBlurTrack(false);
-  //       console.log("Not one");
-  //     }
-  //   });
-  // }, []);
-
   return (
     <>
       <section className="cart-sect">
@@ -72,7 +53,6 @@ const Cart = () => {
                         const { _id, image, name, price } = each;
                         // const cleanedString = price.replace(/,/g, ""); //Remove the commas
                         roundNumber = (each.counter * Number(price)).toFixed(2); //Round number to two decimal places
-                        // check();
                         return (
                           <tr className="body-of-cart" key={i}>
                             <td>
