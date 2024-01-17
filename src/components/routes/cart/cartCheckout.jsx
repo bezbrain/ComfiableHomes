@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useApiContext } from "../../../contexts/apiContext";
 import { useNavigate } from "react-router-dom";
+import "../../../styles/cart/cartCheckout.css";
 
 const CartCheckout = ({ roundNumber }) => {
   const [shippingFee] = useState(5.34);

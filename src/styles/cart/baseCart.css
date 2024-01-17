@@ -1,0 +1,44 @@
+/* Lower section of Cart page */
+.base-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+.base-btns a {
+  text-decoration: none;
+  background-color: var(--darkblue);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: ease 0.5s all;
+}
+.base-btns a:hover {
+  background-color: var(--lightblue);
+  color: #000;
+}
+@media screen and (max-width: 500px) {
+  .base-btns a {
+    padding: 3px 8px;
+    font-size: 15px;
+  }
+  .base-btns a span {
+    display: none;
+  }
+}
+.clear-shopping-cart-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+@media screen and (max-width: 500px) {
+  .clear-shopping-cart-btn {
+    padding: 3px 8px;
+    font-size: 15px;
+  }
+}

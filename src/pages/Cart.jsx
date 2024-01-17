@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../styles/cart.css";
+import "../styles/cart/cart.css";
 import { useGlobalContext } from "../contexts/context";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";

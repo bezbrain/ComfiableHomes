@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../../../contexts/context";
 import { useApiContext } from "../../../contexts/apiContext";
+import "../../../styles/cart/cartDelete.css";
 
 const CartDelete = ({ id }) => {
   const { handleCartProduct, handleDeleteCart } = useApiContext();

@@ -1,0 +1,15 @@
+.delete-product {
+  background-color: red;
+  color: #fff;
+  padding: 5px;
+  font-size: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .delete-product {
+    font-size: 18px;
+    padding: 3px;
+  }
+}
