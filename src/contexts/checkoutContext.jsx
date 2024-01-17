@@ -3,10 +3,12 @@ import React, { createContext, useContext, useState } from "react";
 const CheckoutContext = createContext();
 
 export const CheckoutProvider = ({ children }) => {
-  const [editController, setEditController] = useState(false);
+  const [editController, setEditController] = useState(true);
 
   return (
-    <CheckoutContext.Provider value={{}}>{children}</CheckoutContext.Provider>
+    <CheckoutContext.Provider value={{ editController }}>
+      {children}
+    </CheckoutContext.Provider>
   );
 };
 

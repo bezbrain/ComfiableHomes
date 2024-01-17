@@ -2,10 +2,11 @@ import React from "react";
 import "../../../styles/checkout/deliverInfo.css";
 import { RiEdit2Fill } from "react-icons/ri";
 import { useCheckoutContext } from "../../../contexts/checkoutContext";
-import CheckoutAddressInput from "./checkoutAddressInput";
+import { CheckoutAddressInput, AddressHighlight } from "./";
 
 const DeliveryInfo = () => {
   const { editController } = useCheckoutContext();
+
   return (
     <section className="checkout-section">
       <div className="checkout-header">
@@ -16,7 +17,8 @@ const DeliveryInfo = () => {
           </p>
         )}
       </div>
-      <CheckoutAddressInput />
+
+      {!editController ? <CheckoutAddressInput /> : <AddressHighlight />}
     </section>
   );
 };
