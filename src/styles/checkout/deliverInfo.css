@@ -19,6 +19,13 @@
   cursor: pointer;
 }
 
+.go-to-product {
+  display: flex;
+  align-items: center;
+  color: var(--darkblue);
+  font-weight: 600;
+}
+
 @media screen and (max-width: 800px) {
   .checkout-section {
     width: 65%;
