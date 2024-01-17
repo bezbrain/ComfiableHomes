@@ -1,0 +1,21 @@
+.checkout-page {
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
+  margin: 4rem auto 60px;
+  display: flex;
+  gap: 20px;
+  min-height: 60vh;
+}
+@media screen and (max-width: 800px) {
+  .checkout-page {
+    margin-top: 12rem;
+    min-height: 100vh;
+    padding-inline: 1rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .checkout-page {
+    margin-top: 32vw;
+    flex-direction: column;
+  }
+}

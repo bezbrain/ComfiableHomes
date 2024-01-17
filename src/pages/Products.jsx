@@ -78,7 +78,7 @@ const Products = () => {
     } catch (error) {
       // console.log(error);
       setIsLoading(false);
-      toast.error(error.response.data.message || error.message);
+      toast.error(error.message || error.response.data.message);
     }
   };
 

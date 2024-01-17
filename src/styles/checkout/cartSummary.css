@@ -1,0 +1,11 @@
+.checkout-cart-summary {
+  border: 2px solid red;
+  align-self: flex-start;
+  width: 30%;
+}
+
+@media screen and (max-width: 800px) {
+  .checkout-cart-summary {
+    width: 250px;
+  }
+}

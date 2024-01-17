@@ -1,11 +1,13 @@
 import React from "react";
-import { DeliveryInfo } from "../components/routes/checkout";
+import { CartSummary, DeliveryInfo } from "../components/routes/checkout";
+import "../styles/checkout/checkout.css";
 
 const Checkout = () => {
   return (
-    <div>
+    <main className="checkout-page">
       <DeliveryInfo />
-    </div>
+      <CartSummary />
+    </main>
   );
 };
 
