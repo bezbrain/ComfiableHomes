@@ -29,3 +29,12 @@
 .name-and-amt-con p:nth-child(2) {
   color: var(--darkblue);
 }
+@media screen and (max-width: 500px) {
+  .image-con {
+    margin-top: 0px;
+  }
+
+  .name-and-amt-con {
+    margin-top: 2px;
+  }
+}
