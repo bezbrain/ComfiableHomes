@@ -1,5 +1,4 @@
 .product-header {
-  /* border: 2px solid red; */
   margin-top: 25px;
 }
 
@@ -25,8 +24,16 @@
     font-size: 16px;
   }
 }
+@media screen and (max-width: 500px) {
+  .product-header > p,
+  hr,
+  .sort-con {
+    margin-top: 0px;
+  }
+}
 
 .sort-con {
+  margin-top: -15px;
   display: flex;
 }
 
