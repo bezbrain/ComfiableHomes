@@ -1,14 +1,12 @@
 .base-total {
   width: 350px;
   margin-left: auto;
+  margin-top: 2.5rem;
 }
 @media screen and (max-width: 800px) {
   .base-total {
     width: 300px;
     margin-inline: auto;
-  }
-  .cart-summary {
-    padding: 20px;
   }
 }
 
@@ -20,10 +18,14 @@
 
 .cart-summary {
   border: 2px solid #bcccdc;
-  margin-top: 2.5rem;
   padding: 25px 50px;
   border-radius: 5px;
   width: 100%;
+}
+@media screen and (max-width: 800px) {
+  .cart-summary {
+    padding: 10px 10px;
+  }
 }
 
 .cart-summary tr {
@@ -44,7 +46,7 @@
 @media screen and (max-width: 800px) {
   .cart-summary tr:nth-child(3) th {
     padding-top: 10px;
-    font-size: 3vw;
+    /* font-size: 3vw; */
   }
 }
 
