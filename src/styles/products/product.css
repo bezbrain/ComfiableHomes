@@ -21,18 +21,16 @@
   }
 }
 
-.products aside {
+.products > aside {
   /* border: 2px solid yellow; */
   width: 200px;
   margin-top: 20px;
 }
 @media screen and (max-width: 800px) {
-  .products aside {
+  .products > aside {
     /* border: 2px solid red; */
     position: fixed;
     left: 0;
-    /* height: 0px; */
-    /* visibility: hidden; */
     z-index: 9;
     background-color: #dfeff8;
     width: 100%;
@@ -43,8 +41,13 @@
     gap: 20px;
   }
   .filter-options {
-    /* display: none; */
     visibility: hidden;
+  }
+}
+@media screen and (max-width: 500px) {
+  .products > aside {
+    padding-bottom: 0px;
+    gap: 10px;
   }
 }
 
