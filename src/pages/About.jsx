@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 // import HeaderPath from "../components/HeaderPath";
+import "../styles/about.css";
 
 const AboutPageHead = () => {
   return (
