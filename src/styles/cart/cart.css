@@ -13,6 +13,7 @@
 }
 @media screen and (max-width: 500px) {
   .cart-sect {
+    margin-top: 7rem;
     padding-inline: 1rem;
   }
 }
@@ -77,6 +78,9 @@
 }
 
 @media screen and (max-width: 800px) {
+  .body-of-cart td {
+    padding-block: 20px;
+  }
   .body-of-cart td:nth-child(3) * {
     font-size: inherit;
     margin: inherit;
