@@ -7,7 +7,7 @@ import "../../styles/nav.css";
 import { useGlobalContext } from "../../contexts/context";
 import { toast } from "react-toastify";
 import { useApiContext } from "../../contexts/apiContext";
-import { getCartProducts } from "../../apis/products";
+import { getCartProducts } from "../../apis/cart";
 
 const Nav = () => {
   const {

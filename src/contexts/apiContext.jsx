@@ -1,9 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import {
-  deleteCartProduct,
-  getCartProducts,
-  getSingleProduct,
-} from "../apis/products";
+import { getSingleProduct } from "../apis/products";
+import { getCartProducts, deleteCartProduct } from "../apis/cart";
 
 const ApiContext = React.createContext();
 

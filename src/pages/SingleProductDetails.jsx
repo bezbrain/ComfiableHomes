@@ -5,7 +5,8 @@ import { Loader } from "../components/helpers";
 import { FaStar } from "react-icons/fa";
 import "../styles/singleproduct.css";
 import { toast } from "react-toastify";
-import { addToCart, getSingleProduct } from "../apis/products";
+import { getSingleProduct } from "../apis/products";
+import { addToCart } from "../apis/cart";
 import { useApiContext } from "../contexts/apiContext";
 
 const SingleProductDetails = () => {

@@ -5,7 +5,7 @@ import { useGlobalContext } from "../../contexts/context";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { loginUser } from "../../apis/users";
-import { getCartProducts } from "../../apis/products";
+import { getCartProducts } from "../../apis/cart";
 import { useApiContext } from "../../contexts/apiContext";
 
 const Login = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { deleteAll } from "../../../apis/products";
+import { deleteAll } from "../../../apis/cart";
 import { useGlobalContext } from "../../../contexts/context";
 import { useApiContext } from "../../../contexts/apiContext";
 import "../../../styles/cart/baseCart.css";
