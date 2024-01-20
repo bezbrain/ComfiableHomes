@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useApiContext } from "../../../contexts/apiContext";
 import "../../../styles/cart/cartContol.css";
 import { decreaseItem, increaseItem } from "../../../apis/cartController";
+import { getCartProducts } from "../../../apis/cart";
+import { toast } from "react-toastify";
+import { useGlobalContext } from "../../../contexts/context";
 
 const CartController = ({ id, counter }) => {
   const {
@@ -9,26 +12,43 @@ const CartController = ({ id, counter }) => {
     // decreaseHandler,
     isIncreaseBlur,
     isDecreaseBlur,
+    setIsIncreaseBlur,
+    setIsDecreaseBlur,
     counterNumberRef,
   } = useApiContext();
 
-  const [counterValue, setCounterValue] = useState(1);
+  const { getCartProduct, handleCartProduct } = useApiContext();
+  const { setShowNav } = useGlobalContext();
+
+  const authToken = sessionStorage.getItem("authToken");
 
   const decreaseHandler = async (index) => {
-    console.log(index);
+    // console.log(index);
     try {
-      const data = await decreaseItem(index);
-      console.log(data);
+      if (counter > 0) {
+        setIsDecreaseBlur(false);
+        const data = await decreaseItem(index);
+        await handleCartProduct(authToken, toast, setShowNav);
+        console.log(data);
+      } else {
+        setIsDecreaseBlur(index);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   const increaseHandler = async (index) => {
-    console.log(index);
+    // console.log(index);
     try {
-      const data = await increaseItem(index);
-      console.log(data);
+      if (counter < 10) {
+        setIsIncreaseBlur(false);
+        const data = await increaseItem(index);
+        await handleCartProduct(authToken, toast, setShowNav);
+        console.log(data);
+      } else {
+        setIsIncreaseBlur(index);
+      }
     } catch (error) {
       console.log(error);
     }

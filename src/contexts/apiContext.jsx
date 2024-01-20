@@ -72,16 +72,16 @@ export const ApiProvider = ({ children }) => {
 
   // Cart Page IncreaseHandler
   const increaseHandler = (index) => {
-    const newCartProduct = getCartProduct.find((each) => each._id === index);
-    if (newCartProduct.counter < 10) {
-      newCartProduct.counter++;
-      setCartPageCount(newCartProduct.counter);
-      setIsDecreaseBlur(false);
-      return;
-    }
-    if (newCartProduct.counter === 10) {
-      setIsIncreaseBlur(newCartProduct._id);
-    }
+    // const newCartProduct = getCartProduct.find((each) => each._id === index);
+    // if (newCartProduct.counter < 10) {
+    //   newCartProduct.counter++;
+    //   setCartPageCount(newCartProduct.counter);
+    //   setIsDecreaseBlur(false);
+    //   return;
+    // }
+    // if (newCartProduct.counter === 10) {
+    //   setIsIncreaseBlur(newCartProduct._id);
+    // }
   };
 
   // Cart Page DecreaseHandler

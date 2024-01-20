@@ -14,6 +14,7 @@ import {
   CartHeading,
   EmptyCartUI,
 } from "../components/routes/cart";
+import { getCartProducts } from "../apis/cart";
 
 const Cart = () => {
   const { setShowNav } = useGlobalContext();
