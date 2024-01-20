@@ -1,5 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
+import config from "../utils/config";
 
 export const productSorting = async (
   type,
@@ -19,7 +20,7 @@ export const productSorting = async (
   });
   // console.log(queryParams);
   const { data } = await axios.get(
-    `https://comfiable-homes.onrender.com/api/v1/products?${queryParams}`,
+    `${config.baseUrl}/products?${queryParams}`,
     {
       headers: {
         "Content-Type": "application/json",

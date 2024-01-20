@@ -1,8 +1,11 @@
+import axios from "axios";
+import config from "../utils/config";
+
 // ADD PRODUCT TO CART
 export const addToCart = async (productId) => {
   const token = sessionStorage.getItem("authToken");
   const { data } = await axios.post(
-    "https://comfiable-homes.onrender.com/api/v1/addToCart",
+    `${config.baseUrl}/addToCart`,
     { productId },
     {
       headers: {
@@ -18,15 +21,12 @@ export const addToCart = async (productId) => {
 // GET ALL PRODUCTS IN CART
 export const getCartProducts = async () => {
   const token = sessionStorage.getItem("authToken");
-  const { data } = await axios.get(
-    "https://comfiable-homes.onrender.com/api/v1/getCartItems",
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const { data } = await axios.get(`${config.baseUrl}/getCartItems`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   // console.log(data);
   return data;
 };
@@ -35,7 +35,7 @@ export const getCartProducts = async () => {
 export const deleteCartProduct = async (routeParam) => {
   const token = sessionStorage.getItem("authToken");
   const { data } = await axios.delete(
-    `https://comfiable-homes.onrender.com/api/v1/deleteCart/${routeParam}`,
+    `${config.baseUrl}/deleteCart/${routeParam}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -50,15 +50,12 @@ export const deleteCartProduct = async (routeParam) => {
 // CLEAR ALL ITEMS FROM CART
 export const deleteAll = async () => {
   const token = sessionStorage.getItem("authToken");
-  const { data } = await axios.delete(
-    "https://comfiable-homes.onrender.com/api/v1/deleteAll",
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const { data } = await axios.delete(`${config.baseUrl}/deleteAll`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   // console.log(data);
   return data;
 };
