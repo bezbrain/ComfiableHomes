@@ -86,16 +86,16 @@ export const ApiProvider = ({ children }) => {
 
   // Cart Page DecreaseHandler
   const decreaseHandler = async (index) => {
-    const newCartProduct = getCartProduct.find((each) => each._id === index);
-    if (newCartProduct.counter > 1) {
-      newCartProduct.counter--;
-      setCartPageCount(newCartProduct.counter);
-      // setIsIncreaseBlur(false);
-      return;
-    }
-    if (newCartProduct.counter === 1) {
-      setIsDecreaseBlur(newCartProduct._id);
-    }
+    // const newCartProduct = getCartProduct.find((each) => each._id === index);
+    // if (newCartProduct.counter > 1) {
+    //   newCartProduct.counter--;
+    //   setCartPageCount(newCartProduct.counter);
+    //   // setIsIncreaseBlur(false);
+    //   return;
+    // }
+    // if (newCartProduct.counter === 1) {
+    //   setIsDecreaseBlur(newCartProduct._id);
+    // }
   };
 
   return (
