@@ -65,34 +65,6 @@ export const ApiProvider = ({ children }) => {
     }
   };
 
-  // Cart Page IncreaseHandler
-  const increaseHandler = (index) => {
-    // const newCartProduct = getCartProduct.find((each) => each._id === index);
-    // if (newCartProduct.counter < 10) {
-    //   newCartProduct.counter++;
-    //   setCartPageCount(newCartProduct.counter);
-    //   setIsDecreaseBlur(false);
-    //   return;
-    // }
-    // if (newCartProduct.counter === 10) {
-    //   setIsIncreaseBlur(newCartProduct._id);
-    // }
-  };
-
-  // Cart Page DecreaseHandler
-  const decreaseHandler = async (index) => {
-    // const newCartProduct = getCartProduct.find((each) => each._id === index);
-    // if (newCartProduct.counter > 1) {
-    //   newCartProduct.counter--;
-    //   setCartPageCount(newCartProduct.counter);
-    //   // setIsIncreaseBlur(false);
-    //   return;
-    // }
-    // if (newCartProduct.counter === 1) {
-    //   setIsDecreaseBlur(newCartProduct._id);
-    // }
-  };
-
   return (
     <ApiContext.Provider
       value={{
@@ -106,8 +78,6 @@ export const ApiProvider = ({ children }) => {
         cartCount,
         setCartCount,
         handleDeleteCart,
-        increaseHandler,
-        decreaseHandler,
         cartPageCount,
         setCartPageCount,
         counterNumberRef,

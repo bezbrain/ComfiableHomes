@@ -15,18 +15,17 @@ import {
   EmptyCartUI,
 } from "../components/routes/cart";
 import { getCartProducts } from "../apis/cart";
+import { useCheckoutContext } from "../contexts/checkoutContext";
 
 const Cart = () => {
   const { setShowNav } = useGlobalContext();
-
   const { getCartProduct, handleCartProduct, isLoading } = useApiContext();
+  const { roundNumber } = useCheckoutContext();
 
   const authToken = sessionStorage.getItem("authToken");
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  let roundNumber;
 
   useEffect(() => {
     if (location.pathname === "/cart") {
@@ -49,10 +48,12 @@ const Cart = () => {
                   <tbody>
                     <CartHeading />
                     {getCartProduct &&
-                      getCartProduct.map((each, i) => {
+                      getCartProduct?.map((each, i) => {
                         const { _id, image, name, price } = each;
                         // const cleanedString = price.replace(/,/g, ""); //Remove the commas
-                        roundNumber = (each.counter * Number(price)).toFixed(2); //Round number to two decimal places
+                        const roundNum = (each.counter * Number(price)).toFixed(
+                          2
+                        ); //Round number to two decimal places
                         return (
                           <tr className="body-of-cart" key={i}>
                             <td>
@@ -66,7 +67,7 @@ const Cart = () => {
                               isIncreaseBlur={each.isIncreaseBlur}
                               isDecreaseBlur={each.isDecreaseBlur}
                             />
-                            <td>${roundNumber}</td>
+                            <td>${roundNum}</td>
                             <CartDelete id={_id} />
                           </tr>
                         );
@@ -75,7 +76,7 @@ const Cart = () => {
                 </table>
                 {/* Static base of cart page */}
                 <BaseCart />
-                <CartCheckout roundNumber={roundNumber} />
+                <CartCheckout />
               </>
             )}
           </>
