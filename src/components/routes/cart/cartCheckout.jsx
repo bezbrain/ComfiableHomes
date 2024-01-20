@@ -5,9 +5,8 @@ import "../../../styles/cart/cartCheckout.css";
 import { useCheckoutContext } from "../../../contexts/checkoutContext";
 
 const CartCheckout = () => {
-  const [shippingFee] = useState(5.34);
   const { getCartProduct } = useApiContext();
-  const { calculateSubtotal } = useCheckoutContext();
+  const { calculateSubtotal, shippingFee } = useCheckoutContext();
 
   const authToken = sessionStorage.getItem("authToken");
 

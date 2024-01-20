@@ -6,6 +6,7 @@ export const CheckoutProvider = ({ children }) => {
   const [editController, setEditController] = useState(false);
 
   // const [roundNumber, setRoundNumber] = useState();
+  const [shippingFee] = useState(5.34);
 
   //   CALCULATE THE SUBTOTAL
   const calculateSubtotal = (getCartProduct) => {
@@ -24,6 +25,7 @@ export const CheckoutProvider = ({ children }) => {
       value={{
         editController,
         calculateSubtotal,
+        shippingFee,
         // roundNumber,
         // setRoundNumber,
       }}
