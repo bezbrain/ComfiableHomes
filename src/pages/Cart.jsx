@@ -60,7 +60,12 @@ const Cart = () => {
                               <p>{name}</p>
                             </td>
                             <td>${price}</td>
-                            <CartController id={_id} counter={each.counter} />
+                            <CartController
+                              id={_id}
+                              counter={each.counter}
+                              isIncreaseBlur={each.isIncreaseBlur}
+                              isDecreaseBlur={each.isDecreaseBlur}
+                            />
                             <td>${roundNumber}</td>
                             <CartDelete id={_id} />
                           </tr>

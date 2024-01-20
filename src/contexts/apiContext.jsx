@@ -12,11 +12,6 @@ export const ApiProvider = ({ children }) => {
 
   const [cartCount, setCartCount] = useState(0);
 
-  // const [initialIncrease, setInitialIncrease] = useState(true);
-  const [isIncreaseBlur, setIsIncreaseBlur] = useState(false);
-  const [isDecreaseBlur, setIsDecreaseBlur] = useState(false);
-  // const [blurTrack, setBlurTrack] = useState(false);
-
   const counterNumberRef = useRef(null);
 
   const [cartPageCount, setCartPageCount] = useState(1);
@@ -115,15 +110,7 @@ export const ApiProvider = ({ children }) => {
         decreaseHandler,
         cartPageCount,
         setCartPageCount,
-        isIncreaseBlur,
-        isDecreaseBlur,
-        setIsIncreaseBlur,
-        setIsDecreaseBlur,
         counterNumberRef,
-        // initialIncrease,
-        // setInitialIncrease,
-        // blurTrack,
-        // setBlurTrack,
       }}
     >
       {children}

@@ -6,16 +6,8 @@ import { getCartProducts } from "../../../apis/cart";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../../../contexts/context";
 
-const CartController = ({ id, counter }) => {
-  const {
-    // increaseHandler,
-    // decreaseHandler,
-    isIncreaseBlur,
-    isDecreaseBlur,
-    setIsIncreaseBlur,
-    setIsDecreaseBlur,
-    counterNumberRef,
-  } = useApiContext();
+const CartController = ({ id, counter, isIncreaseBlur, isDecreaseBlur }) => {
+  const { counterNumberRef } = useApiContext();
 
   const { getCartProduct, handleCartProduct } = useApiContext();
   const { setShowNav } = useGlobalContext();
@@ -23,32 +15,20 @@ const CartController = ({ id, counter }) => {
   const authToken = sessionStorage.getItem("authToken");
 
   const decreaseHandler = async (index) => {
-    // console.log(index);
     try {
-      if (counter > 0) {
-        setIsDecreaseBlur(false);
-        const data = await decreaseItem(index);
-        await handleCartProduct(authToken, toast, setShowNav);
-        console.log(data);
-      } else {
-        setIsDecreaseBlur(index);
-      }
+      const data = await decreaseItem(index);
+      await handleCartProduct(authToken, toast, setShowNav);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   const increaseHandler = async (index) => {
-    // console.log(index);
     try {
-      if (counter < 10) {
-        setIsIncreaseBlur(false);
-        const data = await increaseItem(index);
-        await handleCartProduct(authToken, toast, setShowNav);
-        console.log(data);
-      } else {
-        setIsIncreaseBlur(index);
-      }
+      const { updateCounter } = await increaseItem(index);
+      await handleCartProduct(authToken, toast, setShowNav);
+      console.log(updateCounter);
     } catch (error) {
       console.log(error);
     }
@@ -58,14 +38,14 @@ const CartController = ({ id, counter }) => {
     <td>
       <div className="count-con">
         <button
-          className={isDecreaseBlur === id ? "cart-decrease" : ""}
+          className={isDecreaseBlur ? "cart-decrease" : ""}
           onClick={() => decreaseHandler(id)}
         >
           -
         </button>
         <p ref={counterNumberRef}>{counter}</p>
         <button
-          className={isIncreaseBlur === id ? "cart-increase" : ""}
+          className={isIncreaseBlur ? "cart-increase" : ""}
           onClick={() => increaseHandler(id)}
         >
           +
