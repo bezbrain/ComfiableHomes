@@ -5,32 +5,48 @@ import { decreaseItem, increaseItem } from "../../../apis/cartController";
 import { getCartProducts } from "../../../apis/cart";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "../../../contexts/context";
+import { Loader } from "../../helpers";
 
 const CartController = ({ id, counter, isIncreaseBlur, isDecreaseBlur }) => {
-  const { counterNumberRef } = useApiContext();
+  const [isCartControllerLoading, setIsCartControllerLoading] = useState(false);
 
-  const { getCartProduct, handleCartProduct } = useApiContext();
+  const { getCartProduct, handleCartProduct, counterNumberRef } =
+    useApiContext();
   const { setShowNav } = useGlobalContext();
 
   const authToken = sessionStorage.getItem("authToken");
 
+  // DECREASE CONTROLLER
   const decreaseHandler = async (index) => {
     try {
+      setIsCartControllerLoading(true);
       const data = await decreaseItem(index);
       await handleCartProduct(authToken, toast, setShowNav);
       console.log(data);
+      setIsCartControllerLoading(false);
+      if (data.updateCounter.counter === 1) {
+        toast.error(data.message);
+      }
     } catch (error) {
       console.log(error);
+      setIsCartControllerLoading(false);
     }
   };
 
+  // INCREASE CONTROLLER
   const increaseHandler = async (index) => {
     try {
-      const { updateCounter } = await increaseItem(index);
+      setIsCartControllerLoading(true);
+      const data = await increaseItem(index);
       await handleCartProduct(authToken, toast, setShowNav);
-      console.log(updateCounter);
+      console.log(data);
+      setIsCartControllerLoading(false);
+      if (data.updateCounter.counter === 5) {
+        toast.error(data.message);
+      }
     } catch (error) {
       console.log(error);
+      setIsCartControllerLoading(false);
     }
   };
 
@@ -40,11 +56,17 @@ const CartController = ({ id, counter, isIncreaseBlur, isDecreaseBlur }) => {
         <button
           className={isDecreaseBlur ? "cart-decrease" : ""}
           onClick={() => decreaseHandler(id)}
+          disabled={isCartControllerLoading}
         >
           -
         </button>
-        <p ref={counterNumberRef}>{counter}</p>
+        {isCartControllerLoading ? (
+          <Loader />
+        ) : (
+          <p ref={counterNumberRef}>{counter} </p>
+        )}
         <button
+          disabled={isCartControllerLoading}
           className={isIncreaseBlur ? "cart-increase" : ""}
           onClick={() => increaseHandler(id)}
         >
