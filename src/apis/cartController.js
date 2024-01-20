@@ -10,7 +10,7 @@ export const decreaseItem = async (itemId) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -23,6 +23,6 @@ export const increaseItem = async (itemId) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  console.log(data);
+  // console.log(data);
   return data;
 };

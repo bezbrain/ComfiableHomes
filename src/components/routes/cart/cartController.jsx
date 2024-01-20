@@ -22,14 +22,15 @@ const CartController = ({ id, counter, isIncreaseBlur, isDecreaseBlur }) => {
       setIsCartControllerLoading(true);
       const data = await decreaseItem(index);
       await handleCartProduct(authToken, toast, setShowNav);
-      console.log(data);
+      // console.log(data);
       setIsCartControllerLoading(false);
-      if (data.updateCounter.counter === 1) {
+      if (data.updateCounter.isDecreaseBlur) {
         toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
       setIsCartControllerLoading(false);
+      toast.error(error.response.data.message || error.message);
     }
   };
 
@@ -39,14 +40,15 @@ const CartController = ({ id, counter, isIncreaseBlur, isDecreaseBlur }) => {
       setIsCartControllerLoading(true);
       const data = await increaseItem(index);
       await handleCartProduct(authToken, toast, setShowNav);
-      console.log(data);
+      // console.log(data);
       setIsCartControllerLoading(false);
-      if (data.updateCounter.counter === 5) {
+      if (data.updateCounter.isIncreaseBlur) {
         toast.error(data.message);
       }
     } catch (error) {
       console.log(error);
       setIsCartControllerLoading(false);
+      toast.error(error.response.data.message || error.message);
     }
   };
 
