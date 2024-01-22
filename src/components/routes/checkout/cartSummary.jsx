@@ -5,7 +5,8 @@ import { useApiContext } from "../../../contexts/apiContext";
 import { useGlobalContext } from "../../../contexts/context";
 
 const CartSummary = () => {
-  const { calculateSubtotal, shippingFee } = useCheckoutContext();
+  const { calculateSubtotal, shippingFee, addressPreviewLoading } =
+    useCheckoutContext();
   const { getCartProduct } = useApiContext();
   const { quantityOfProductInCart } = useGlobalContext();
 
@@ -31,7 +32,9 @@ const CartSummary = () => {
         </h2>
       </div>
       <hr />
-      <button className="checkout-pay-now-btn">PAY NOW</button>
+      <button className="checkout-pay-now-btn" disabled={addressPreviewLoading}>
+        PAY NOW
+      </button>
       <p className="checkout-condition">
         By proceeding, you are automatically accepting the{" "}
         <a href="">Terms & Conditions</a>

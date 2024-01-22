@@ -4,9 +4,10 @@ import { RiEdit2Fill } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
 import { useCheckoutContext } from "../../../contexts/checkoutContext";
 import { CheckoutAddressInput, AddressHighlight } from "./";
+import { Loader } from "../../helpers";
 
 const DeliveryInfo = () => {
-  const { editController } = useCheckoutContext();
+  const { editController, addressPreviewLoading } = useCheckoutContext();
 
   return (
     <section className="checkout-section">
@@ -19,7 +20,13 @@ const DeliveryInfo = () => {
         )}
       </div>
 
-      {!editController ? <CheckoutAddressInput /> : <AddressHighlight />}
+      {addressPreviewLoading ? (
+        <Loader />
+      ) : !editController ? (
+        <CheckoutAddressInput />
+      ) : (
+        <AddressHighlight />
+      )}
 
       <a href="/products" className="go-to-product">
         <IoIosArrowBack />

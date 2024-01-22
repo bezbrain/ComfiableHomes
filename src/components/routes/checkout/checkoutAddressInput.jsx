@@ -11,6 +11,8 @@ const CheckoutAddressInput = () => {
     isAddressLoading,
     setIsAddressLoading,
     setEditController,
+    addressPreviewLoading,
+    setAddressPreviewLoading,
   } = useCheckoutContext();
   const { firstName, lastName, address, city, zipCode, mobileNumber, email } =
     deliInfo;
@@ -52,8 +54,10 @@ const CheckoutAddressInput = () => {
   useEffect(() => {
     const getAddress = async () => {
       try {
+        setAddressPreviewLoading(true);
         const { data } = await getDeliveryInfo();
-        setEditController(data.address.isAddress);
+        setAddressPreviewLoading(false);
+        setEditController(data.address.isAddress || false);
       } catch (error) {
         console.log(error);
       }

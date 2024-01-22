@@ -16,6 +16,7 @@ export const CheckoutProvider = ({ children }) => {
   const [deliInfo, setDeliInfo] = useState(deliveryInfo);
 
   const [isAddressLoading, setIsAddressLoading] = useState(false);
+  const [addressPreviewLoading, setAddressPreviewLoading] = useState(false);
 
   const [shippingFee] = useState(5.34);
 
@@ -41,6 +42,8 @@ export const CheckoutProvider = ({ children }) => {
         setDeliInfo,
         isAddressLoading,
         setIsAddressLoading,
+        addressPreviewLoading,
+        setAddressPreviewLoading,
       }}
     >
       {children}
