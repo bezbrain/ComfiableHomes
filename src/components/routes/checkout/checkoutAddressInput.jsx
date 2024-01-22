@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../../styles/checkout/checkoutAddress.css";
 import { useCheckoutContext } from "../../../contexts/checkoutContext";
+import { toast } from "react-toastify";
+import { deliveryInfo, getDeliveryInfo } from "../../../apis/checkout";
 
 const CheckoutAddressInput = () => {
-  const { deliInfo, setDeliInfo } = useCheckoutContext();
+  const {
+    deliInfo,
+    setDeliInfo,
+    isAddressLoading,
+    setIsAddressLoading,
+    setEditController,
+  } = useCheckoutContext();
   const { firstName, lastName, address, city, zipCode, mobileNumber, email } =
     deliInfo;
 
@@ -14,6 +22,44 @@ const CheckoutAddressInput = () => {
       [name]: value,
     });
   };
+
+  const handleInputsClick = async (e) => {
+    e.preventDefault();
+    if (
+      !firstName ||
+      !lastName ||
+      !address ||
+      !city ||
+      !zipCode ||
+      !mobileNumber ||
+      !email
+    ) {
+      toast.error("No field should be empty");
+    } else {
+      try {
+        setIsAddressLoading(true);
+        const { data } = await deliveryInfo(deliInfo);
+        toast.success(data.message);
+        setIsAddressLoading(false);
+        setEditController(data.address.isAddress);
+      } catch (error) {
+        console.log(error);
+        toast.error(error.response.data.message || error.message);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const getAddress = async () => {
+      try {
+        const { data } = await getDeliveryInfo();
+        setEditController(data.address.isAddress);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAddress();
+  }, []);
 
   return (
     <form className="checkout-form">
@@ -74,7 +120,13 @@ const CheckoutAddressInput = () => {
           onChange={handleInputChange}
         />
       </div>
-      <button className="checkout-info-btn">Submit Address</button>
+      <button
+        className="checkout-info-btn"
+        onClick={handleInputsClick}
+        disabled={isAddressLoading}
+      >
+        {isAddressLoading ? "Submitting..." : "Submit Address"}
+      </button>
     </form>
   );
 };

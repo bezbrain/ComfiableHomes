@@ -15,6 +15,8 @@ export const CheckoutProvider = ({ children }) => {
   const [editController, setEditController] = useState(false);
   const [deliInfo, setDeliInfo] = useState(deliveryInfo);
 
+  const [isAddressLoading, setIsAddressLoading] = useState(false);
+
   const [shippingFee] = useState(5.34);
 
   //   CALCULATE THE SUBTOTAL
@@ -32,10 +34,13 @@ export const CheckoutProvider = ({ children }) => {
     <CheckoutContext.Provider
       value={{
         editController,
+        setEditController,
         calculateSubtotal,
         shippingFee,
         deliInfo,
         setDeliInfo,
+        isAddressLoading,
+        setIsAddressLoading,
       }}
     >
       {children}
