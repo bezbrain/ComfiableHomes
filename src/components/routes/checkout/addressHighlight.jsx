@@ -1,14 +1,31 @@
 import React from "react";
 import "../../../styles/checkout/addressHighlight.css";
+import { useCheckoutContext } from "../../../contexts/checkoutContext";
 
 const AddressHighlight = () => {
+  const { addresssInfo, setAddressInfo } = useCheckoutContext();
+
+  // console.log(addresssInfo);
+  const {
+    firstName,
+    lastName,
+    address,
+    city,
+    state,
+    country,
+    zipCode,
+    mobileNumber,
+  } = addresssInfo;
+
   return (
     <div className="address-highlight-con">
-      <h2>Quadri Bello</h2>
+      <h2>
+        {firstName} {lastName}
+      </h2>
       <address>
-        Shekins Hostel, Ayofamuyide Street, Old Nepa, AP, Ile-Ife, Osun State.
+        {address}, {city}, {state}, {country}, {zipCode}
       </address>
-      <p>+234816667878</p>
+      <p>{mobileNumber}</p>
     </div>
   );
 };

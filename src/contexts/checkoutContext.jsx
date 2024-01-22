@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { getDeliveryInfo } from "../apis/checkout";
 
 const CheckoutContext = createContext();
 
@@ -11,12 +12,16 @@ export const CheckoutProvider = ({ children }) => {
     zipCode: "",
     mobileNumber: "",
     email: "",
+    state: "",
+    country: "",
   };
   const [editController, setEditController] = useState(false);
   const [deliInfo, setDeliInfo] = useState(deliveryInfo);
 
   const [isAddressLoading, setIsAddressLoading] = useState(false);
   const [addressPreviewLoading, setAddressPreviewLoading] = useState(false);
+
+  const [addresssInfo, setAddressInfo] = useState({});
 
   const [shippingFee] = useState(5.34);
 
@@ -29,6 +34,21 @@ export const CheckoutProvider = ({ children }) => {
       sum += Number(roundNum);
     });
     return sum.toFixed(2);
+  };
+
+  // USE THIS TO MAKE SURE ADDRESS PREVIEW RENDERS IF ADDRESS HAD BEEN FIRST INPUTTED
+  const getAddress = async (toast) => {
+    try {
+      // setAddressPreviewLoading(true);
+      const { data } = await getDeliveryInfo();
+      // setAddressPreviewLoading(false);
+      console.log(data.success);
+      setAddressInfo(data.address || "");
+      setEditController(data.success);
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
   };
 
   return (
@@ -44,6 +64,9 @@ export const CheckoutProvider = ({ children }) => {
         setIsAddressLoading,
         addressPreviewLoading,
         setAddressPreviewLoading,
+        addresssInfo,
+        setAddressInfo,
+        getAddress,
       }}
     >
       {children}

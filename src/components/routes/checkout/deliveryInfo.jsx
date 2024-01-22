@@ -9,6 +9,17 @@ import { Loader } from "../../helpers";
 const DeliveryInfo = () => {
   const { editController, addressPreviewLoading } = useCheckoutContext();
 
+  const checkLoading = () => {
+    if (addressPreviewLoading) {
+      return <Loader />;
+    } else {
+      if (!editController) {
+        return <CheckoutAddressInput />;
+      }
+      return <AddressHighlight />;
+    }
+  };
+
   return (
     <section className="checkout-section">
       <div className="checkout-header">
@@ -20,13 +31,14 @@ const DeliveryInfo = () => {
         )}
       </div>
 
-      {addressPreviewLoading ? (
+      {/* {addressPreviewLoading ? (
         <Loader />
       ) : !editController ? (
         <CheckoutAddressInput />
       ) : (
         <AddressHighlight />
-      )}
+      )} */}
+      {checkLoading()}
 
       <a href="/products" className="go-to-product">
         <IoIosArrowBack />

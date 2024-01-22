@@ -10,12 +10,23 @@ const CheckoutAddressInput = () => {
     setDeliInfo,
     isAddressLoading,
     setIsAddressLoading,
+    editController,
     setEditController,
     addressPreviewLoading,
     setAddressPreviewLoading,
+    getAddress,
   } = useCheckoutContext();
-  const { firstName, lastName, address, city, zipCode, mobileNumber, email } =
-    deliInfo;
+  const {
+    firstName,
+    lastName,
+    address,
+    city,
+    zipCode,
+    mobileNumber,
+    email,
+    state,
+    country,
+  } = deliInfo;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +45,9 @@ const CheckoutAddressInput = () => {
       !city ||
       !zipCode ||
       !mobileNumber ||
-      !email
+      !email ||
+      !state ||
+      !country
     ) {
       toast.error("No field should be empty");
     } else {
@@ -46,23 +59,14 @@ const CheckoutAddressInput = () => {
         setEditController(data.address.isAddress);
       } catch (error) {
         console.log(error);
+        setIsAddressLoading(false);
         toast.error(error.response.data.message || error.message);
       }
     }
   };
 
   useEffect(() => {
-    const getAddress = async () => {
-      try {
-        setAddressPreviewLoading(true);
-        const { data } = await getDeliveryInfo();
-        setAddressPreviewLoading(false);
-        setEditController(data.address.isAddress || false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAddress();
+    getAddress(toast);
   }, []);
 
   return (
@@ -105,6 +109,22 @@ const CheckoutAddressInput = () => {
           placeholder="Zip Code"
           name="zipCode"
           value={zipCode}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="location-con checkout-input-con">
+        <input
+          type="text"
+          placeholder="State"
+          name="state"
+          value={state}
+          onChange={handleInputChange}
+        />
+        <input
+          type="text"
+          placeholder="Country"
+          name="country"
+          value={country}
           onChange={handleInputChange}
         />
       </div>
