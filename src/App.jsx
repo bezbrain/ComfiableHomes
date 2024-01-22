@@ -8,7 +8,7 @@ import {
   Checkout,
   Error,
 } from "./pages";
-import { SharedLayouts } from "./components/sharedLayouts";
+import { ProtectedRoute, SharedLayouts } from "./components/sharedLayouts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -21,13 +21,19 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
+
+            {/* Protected Route */}
+            <Route path="/" element={<ProtectedRoute />}>
+              <Route path="cart" element={<Cart />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route
+                path="products/:productId"
+                element={<SingleProductDetails />}
+              />
+            </Route>
+
+            {/* 404 route */}
             <Route path="/*" element={<Error />} />
-            <Route
-              path="products/:productId"
-              element={<SingleProductDetails />}
-            />
           </Route>
         </Routes>
         <ToastContainer position="top-center" theme="dark" />
