@@ -3,9 +3,18 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 const CheckoutContext = createContext();
 
 export const CheckoutProvider = ({ children }) => {
+  const deliveryInfo = {
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    zipCode: "",
+    mobileNumber: "",
+    email: "",
+  };
   const [editController, setEditController] = useState(false);
+  const [deliInfo, setDeliInfo] = useState(deliveryInfo);
 
-  // const [roundNumber, setRoundNumber] = useState();
   const [shippingFee] = useState(5.34);
 
   //   CALCULATE THE SUBTOTAL
@@ -15,7 +24,6 @@ export const CheckoutProvider = ({ children }) => {
       // const cleanedString = each.price.replace(/,/g, ""); //Remove the commas
       const roundNum = each.counter * Number(each.price);
       sum += Number(roundNum);
-      // setRoundNumber(sum);
     });
     return sum.toFixed(2);
   };
@@ -26,8 +34,8 @@ export const CheckoutProvider = ({ children }) => {
         editController,
         calculateSubtotal,
         shippingFee,
-        // roundNumber,
-        // setRoundNumber,
+        deliInfo,
+        setDeliInfo,
       }}
     >
       {children}
