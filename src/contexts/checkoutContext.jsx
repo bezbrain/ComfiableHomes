@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getDeliveryInfo } from "../apis/checkout";
+import { checkForAddress, getDeliveryInfo } from "../apis/checkout";
 
 const CheckoutContext = createContext();
 
@@ -39,12 +39,12 @@ export const CheckoutProvider = ({ children }) => {
   // USE THIS TO MAKE SURE ADDRESS PREVIEW RENDERS IF ADDRESS HAD BEEN FIRST INPUTTED
   const getAddress = async (toast) => {
     try {
+      // setEditController(true);
       // setAddressPreviewLoading(true);
       const { data } = await getDeliveryInfo();
-      // setAddressPreviewLoading(false);
-      console.log(data.success);
       setAddressInfo(data.address || "");
       setEditController(data.success);
+      setAddressPreviewLoading(false);
     } catch (error) {
       console.log(error);
       toast.error(error.message);

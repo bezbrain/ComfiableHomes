@@ -31,13 +31,6 @@ const DeliveryInfo = () => {
         )}
       </div>
 
-      {/* {addressPreviewLoading ? (
-        <Loader />
-      ) : !editController ? (
-        <CheckoutAddressInput />
-      ) : (
-        <AddressHighlight />
-      )} */}
       {checkLoading()}
 
       <a href="/products" className="go-to-product">

@@ -25,6 +25,20 @@ export const getDeliveryInfo = async () => {
     },
   });
 
+  // console.log(data);
+  return data;
+};
+
+export const checkForAddress = async () => {
+  const authToken = sessionStorage.getItem("authToken");
+
+  const data = await axios.get(`${config.baseUrl}/checkout/checkAddress`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+
   console.log(data);
   return data;
 };

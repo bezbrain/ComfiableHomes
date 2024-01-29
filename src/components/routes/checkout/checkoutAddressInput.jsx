@@ -15,6 +15,8 @@ const CheckoutAddressInput = () => {
     addressPreviewLoading,
     setAddressPreviewLoading,
     getAddress,
+    setAddressInfo,
+    addresssInfo,
   } = useCheckoutContext();
   const {
     firstName,
@@ -67,7 +69,7 @@ const CheckoutAddressInput = () => {
 
   useEffect(() => {
     getAddress(toast);
-  }, []);
+  }, [addresssInfo, isAddressLoading]);
 
   return (
     <form className="checkout-form">
