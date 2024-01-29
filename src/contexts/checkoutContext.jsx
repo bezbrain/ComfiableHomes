@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { checkForAddress, getDeliveryInfo } from "../apis/checkout";
+import { getDeliveryInfo } from "../apis/checkout";
 
 const CheckoutContext = createContext();
 
@@ -17,6 +17,7 @@ export const CheckoutProvider = ({ children }) => {
   };
   const [editController, setEditController] = useState(false);
   const [deliInfo, setDeliInfo] = useState(deliveryInfo);
+  const [changeAddressBtn, setChangeAddressBtn] = useState(false);
 
   const [isAddressLoading, setIsAddressLoading] = useState(false);
   const [addressPreviewLoading, setAddressPreviewLoading] = useState(false);
@@ -67,6 +68,8 @@ export const CheckoutProvider = ({ children }) => {
         addresssInfo,
         setAddressInfo,
         getAddress,
+        changeAddressBtn,
+        setChangeAddressBtn,
       }}
     >
       {children}

@@ -29,10 +29,10 @@ export const getDeliveryInfo = async () => {
   return data;
 };
 
-export const checkForAddress = async () => {
+export const updateDeliveryInfo = async (info) => {
   const authToken = sessionStorage.getItem("authToken");
 
-  const data = await axios.get(`${config.baseUrl}/checkout/checkAddress`, {
+  const data = await axios.patch(`${config.baseUrl}/checkout/address`, info, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authToken}`,
@@ -42,3 +42,17 @@ export const checkForAddress = async () => {
   console.log(data);
   return data;
 };
+
+// export const checkForAddress = async () => {
+//   const authToken = sessionStorage.getItem("authToken");
+
+//   const data = await axios.get(`${config.baseUrl}/checkout/checkAddress`, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${authToken}`,
+//     },
+//   });
+
+//   console.log(data);
+//   return data;
+// };

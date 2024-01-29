@@ -17,6 +17,8 @@ const CheckoutAddressInput = () => {
     getAddress,
     setAddressInfo,
     addresssInfo,
+    changeAddressBtn,
+    setChangeAddressBtn,
   } = useCheckoutContext();
   const {
     firstName,
@@ -65,6 +67,10 @@ const CheckoutAddressInput = () => {
         toast.error(error.response.data.message || error.message);
       }
     }
+  };
+
+  const handleUpdateClick = () => {
+    //
   };
 
   useEffect(() => {
@@ -146,13 +152,24 @@ const CheckoutAddressInput = () => {
           onChange={handleInputChange}
         />
       </div>
-      <button
-        className="checkout-info-btn"
-        onClick={handleInputsClick}
-        disabled={isAddressLoading}
-      >
-        {isAddressLoading ? "Submitting..." : "Submit Address"}
-      </button>
+      {changeAddressBtn && (
+        <button
+          className="checkout-info-btn"
+          onClick={handleInputsClick}
+          disabled={isAddressLoading}
+        >
+          {isAddressLoading ? "Submitting..." : "Submit Address"}
+        </button>
+      )}
+      {!changeAddressBtn && (
+        <button
+          className="checkout-info-btn"
+          onClick={handleUpdateClick}
+          disabled={isAddressLoading}
+        >
+          {isAddressLoading ? "Updating..." : "Update Address"}
+        </button>
+      )}
     </form>
   );
 };

@@ -7,7 +7,13 @@ import { CheckoutAddressInput, AddressHighlight } from "./";
 import { Loader } from "../../helpers";
 
 const DeliveryInfo = () => {
-  const { editController, addressPreviewLoading } = useCheckoutContext();
+  const {
+    editController,
+    setEditController,
+    addressPreviewLoading,
+    changeAddressBtn,
+    setChangeAddressBtn,
+  } = useCheckoutContext();
 
   const checkLoading = () => {
     if (addressPreviewLoading) {
@@ -20,12 +26,17 @@ const DeliveryInfo = () => {
     }
   };
 
+  const handleEditClick = () => {
+    setEditController(false);
+    setChangeAddressBtn(false);
+  };
+
   return (
     <section className="checkout-section">
       <div className="checkout-header">
         <h2>Delivery Information</h2>
         {editController && (
-          <p>
+          <p onClick={handleEditClick}>
             EDIT <RiEdit2Fill />
           </p>
         )}
