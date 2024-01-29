@@ -39,7 +39,7 @@ export const updateDeliveryInfo = async (info) => {
     },
   });
 
-  console.log(data);
+  // console.log(data);
   return data;
 };
 

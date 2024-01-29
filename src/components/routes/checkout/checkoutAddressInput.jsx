@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import "../../../styles/checkout/checkoutAddress.css";
 import { useCheckoutContext } from "../../../contexts/checkoutContext";
 import { toast } from "react-toastify";
-import { deliveryInfo, getDeliveryInfo } from "../../../apis/checkout";
+import {
+  deliveryInfo,
+  getDeliveryInfo,
+  updateDeliveryInfo,
+} from "../../../apis/checkout";
 
 const CheckoutAddressInput = () => {
   const {
@@ -70,11 +74,41 @@ const CheckoutAddressInput = () => {
     }
   };
 
-  const handleUpdateClick = () => {
-    //
+  const handleUpdateClick = async (e) => {
+    e.preventDefault();
+    if (
+      !firstName ||
+      !lastName ||
+      !address ||
+      !city ||
+      !zipCode ||
+      !mobileNumber ||
+      !email ||
+      !state ||
+      !country
+    ) {
+      toast.error("No field should be empty");
+    } else {
+      try {
+        setIsAddressLoading(true);
+        const { data } = await updateDeliveryInfo(deliInfo);
+        toast.success(data.message);
+        setIsAddressLoading(false);
+        setEditController(true);
+        await getAddress(toast); // Call the db to get address as soon as posted
+      } catch (error) {
+        console.log(error);
+        setIsAddressLoading(false);
+        toast.error(error.response.data.message || error.message);
+      }
+    }
   };
 
   useEffect(() => {
+    // This condition is used to make sure getAddress function runs only when changeAddressBtn is true
+    if (!changeAddressBtn) {
+      return;
+    }
     getAddress(toast);
   }, [addresssInfo, isAddressLoading]);
 
