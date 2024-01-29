@@ -17,7 +17,7 @@ export const CheckoutProvider = ({ children }) => {
   };
   const [editController, setEditController] = useState(false);
   const [deliInfo, setDeliInfo] = useState(deliveryInfo);
-  const [changeAddressBtn, setChangeAddressBtn] = useState(false);
+  const [changeAddressBtn, setChangeAddressBtn] = useState(true);
 
   const [isAddressLoading, setIsAddressLoading] = useState(false);
   const [addressPreviewLoading, setAddressPreviewLoading] = useState(false);
