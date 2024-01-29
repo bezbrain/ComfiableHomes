@@ -61,6 +61,7 @@ const CheckoutAddressInput = () => {
         toast.success(data.message);
         setIsAddressLoading(false);
         setEditController(data.address.isAddress);
+        await getAddress(toast); // Call the db to get address as soon as posted
       } catch (error) {
         console.log(error);
         setIsAddressLoading(false);
