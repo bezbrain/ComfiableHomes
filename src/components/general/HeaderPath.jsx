@@ -62,6 +62,10 @@ const HeaderPath = () => {
                   <span>
                     <Link to="/cart">Cart</Link> / Checkout
                   </span>
+                ) : location.pathname === "/payment" ? (
+                  <span>
+                    <Link to="/checkout">Checkout</Link> / Payment
+                  </span>
                 ) : (
                   "Error Page"
                 )}
