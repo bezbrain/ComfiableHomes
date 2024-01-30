@@ -3,12 +3,19 @@ import "../../../styles/checkout/cartSummary.css";
 import { useCheckoutContext } from "../../../contexts/checkoutContext";
 import { useApiContext } from "../../../contexts/apiContext";
 import { useGlobalContext } from "../../../contexts/context";
+import { useNavigate } from "react-router-dom";
 
 const CartSummary = () => {
   const { calculateSubtotal, shippingFee, addressPreviewLoading } =
     useCheckoutContext();
   const { getCartProduct } = useApiContext();
   const { quantityOfProductInCart } = useGlobalContext();
+
+  const navigate = useNavigate();
+
+  const handlePayNowClick = () => {
+    navigate("/payment");
+  };
 
   return (
     <div className="checkout-cart-summary">
@@ -32,7 +39,11 @@ const CartSummary = () => {
         </h2>
       </div>
       <hr />
-      <button className="checkout-pay-now-btn" disabled={addressPreviewLoading}>
+      <button
+        className="checkout-pay-now-btn"
+        disabled={addressPreviewLoading}
+        onClick={handlePayNowClick}
+      >
         PAY NOW
       </button>
       <p className="checkout-condition">

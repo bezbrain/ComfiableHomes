@@ -4,6 +4,16 @@ import Cart from "./Cart";
 import Products from "./Products";
 import SingleProductDetails from "./SingleProductDetails";
 import Checkout from "./Checkout";
+import Payment from "./Payment";
 import Error from "./Error";
 
-export { Home, About, Cart, Products, SingleProductDetails, Checkout, Error };
+export {
+  Home,
+  About,
+  Cart,
+  Products,
+  SingleProductDetails,
+  Checkout,
+  Payment,
+  Error,
+};

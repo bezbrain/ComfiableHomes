@@ -7,6 +7,7 @@ import {
   SingleProductDetails,
   Checkout,
   Error,
+  Payment,
 } from "./pages";
 import { ProtectedRoute, SharedLayouts } from "./components/sharedLayouts";
 import { ToastContainer } from "react-toastify";
@@ -30,6 +31,7 @@ function App() {
                 path="products/:productId"
                 element={<SingleProductDetails />}
               />
+              <Route path="payment" element={<Payment />} />
             </Route>
 
             {/* 404 route */}
