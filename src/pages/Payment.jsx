@@ -24,7 +24,7 @@ const Payment = () => {
             <br />
             <input type="number" readOnly />
           </div>
-          <button className="make__payment__btn">MAKE PAYMENT</button>
+          <button className="make__payment__btn">GO MAKE PAYMENT</button>
         </section>
       </form>
     </main>

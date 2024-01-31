@@ -32,9 +32,9 @@
     flex-direction: column;
   }
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .payment__page {
-    margin-top: 8rem;
+    margin-top: 10rem;
   }
 }
 
@@ -49,7 +49,7 @@
   background-color: var(--darkblue);
   border-radius: 5px;
   /* background-color: var(--lightblue); */
-  width: 400px;
+  max-width: 400px;
   margin: 2rem auto;
 }
 
