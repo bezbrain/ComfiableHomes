@@ -36,6 +36,12 @@
   .payment__page {
     margin-top: 10rem;
   }
+  .payment__header > h2 {
+    font-size: 25px;
+  }
+  .payment__header > p {
+    font-size: 16px;
+  }
 }
 
 .payment__page > form {
@@ -65,10 +71,10 @@
   border-radius: 5px;
   padding-inline: 10px;
   margin-top: 5px;
-  font-size: 16px;
 }
 .email__input > input {
   width: 100%;
+  font-size: 16px;
   margin-bottom: 15px;
 }
 .email__input > input:focus {
@@ -76,6 +82,9 @@
 }
 .amount__input > input {
   width: 150px;
+  font-weight: 900;
+  font-size: 20px;
+  background-color: rgb(248, 246, 246);
 }
 
 .make__payment__btn {
@@ -91,4 +100,8 @@
 }
 .make__payment__btn:hover {
   transform: scale(1.05);
+}
+
+@media screen and (max-width: 500px) {
+  /*  */
 }

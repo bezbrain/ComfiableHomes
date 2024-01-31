@@ -3,14 +3,13 @@ import { createContext, useContext, useState } from "react";
 const AppContext = createContext();
 
 export const PaymentProvider = ({ children }) => {
-  const paymentDetails = {
-    email: "",
-    amount: "",
-  };
+  const [email, setEmail] = useState("");
 
-  const [details, setDetails] = useState(paymentDetails);
-
-  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ email, setEmail }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const paymentGlobalContext = () => {
