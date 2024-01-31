@@ -5,23 +5,26 @@ const Payment = () => {
   return (
     <main className="payment__page">
       <form>
-        <h2>Make your payment via Paystack</h2>
-        <p>
-          On the next page, you will be allowed to select your prefered payment
-          method
-        </p>
+        <div className="payment__header">
+          <h2>Make your payment via Paystack</h2>
+          <p>
+            On the next page, you will be allowed to select your prefered
+            payment method
+          </p>
+        </div>
 
         <section className="payment__input__section">
-          <div>
+          <div className="email__input">
             <label>ENTER EMAIL TO GET YOUR RECEIPT</label>
             <br />
             <input type="text" placeholder="email@gmail.com" />
           </div>
-          <div>
+          <div className="amount__input">
             <label>YOU CHECKOUT AMOUNT HERE</label>
             <br />
-            <input type="number" />
+            <input type="number" readOnly />
           </div>
+          <button className="make__payment__btn">MAKE PAYMENT</button>
         </section>
       </form>
     </main>

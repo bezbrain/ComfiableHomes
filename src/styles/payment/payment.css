@@ -6,7 +6,19 @@
   gap: 20px;
   min-height: 60vh;
 }
-
+.payment__header {
+  /* border: 2px solid red; */
+  max-width: 500px;
+  text-align: center;
+  padding-inline: 1rem;
+}
+.payment__header > h2 {
+  font-size: 30px;
+}
+.payment__header > p {
+  margin-top: 5px;
+  font-size: 18px;
+}
 @media screen and (max-width: 800px) {
   .payment__page {
     margin-top: 12rem;
@@ -27,20 +39,56 @@
 }
 
 .payment__page > form {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   margin-inline: auto;
   height: fit-content;
 }
 
 .payment__input__section {
-  /* border: 2px solid green; */
+  padding: 20px;
+  background-color: var(--darkblue);
+  border-radius: 5px;
+  /* background-color: var(--lightblue); */
   width: 400px;
   margin: 2rem auto;
 }
 
+.payment__input__section > div > label {
+  color: #dfdbdb;
+  font-weight: 600;
+}
+
 .payment__input__section > div > input {
-  width: 100%;
   height: 40px;
   border: none;
+  outline: none;
   border-radius: 5px;
+  padding-inline: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+.email__input > input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.email__input > input:focus {
+  outline: 2px solid var(--darkblue);
+}
+.amount__input > input {
+  width: 150px;
+}
+
+.make__payment__btn {
+  width: 100%;
+  padding-block: 10px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: var(--lightblue);
+  color: #2d2d2d;
+  font-weight: 600;
+}
+.make__payment__btn:hover {
+  transform: scale(1.05);
 }
