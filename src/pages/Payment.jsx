@@ -5,13 +5,16 @@ import { useCheckoutContext } from "../contexts/checkoutContext";
 import { useApiContext } from "../contexts/apiContext";
 import { toast } from "react-toastify";
 import { makePayment } from "../apis/payment";
+import { useNavigate } from "react-router-dom";
 
 const Payment = () => {
-  const { email, setEmail } = paymentGlobalContext();
+  const { email, setEmail, makePaymentLoading, setMakePaymentLoading } =
+    paymentGlobalContext();
   const { calculateSubtotal, shippingFee } = useCheckoutContext();
   const { getCartProduct } = useApiContext();
 
   const amountRef = useRef(null);
+  const navigate = useNavigate();
 
   const amount = (
     Number(calculateSubtotal(getCartProduct)) + shippingFee
@@ -33,13 +36,19 @@ const Payment = () => {
       toast.error("Amount does not correspond with checkout amount");
     } else {
       try {
-        await makePayment({
+        setMakePaymentLoading(true);
+        const { responseData } = await makePayment({
           email: email,
           amount: amount,
         });
-        toast.success("Details submitted");
+        // console.log(responseData);
+        // console.log(responseData.data.authorization_url);
+        // navigate(responseData.data.authorization_url);
+        toast.success(responseData.message);
+        setMakePaymentLoading(false);
       } catch (error) {
         console.log(error);
+        setMakePaymentLoading(false);
       }
     }
   };
@@ -72,10 +81,13 @@ const Payment = () => {
             <input type="number" readOnly value={amount} ref={amountRef} />
           </div>
           <button
-            className="make__payment__btn"
+            className={`make__payment__btn ${
+              makePaymentLoading ? "add__payment__style" : ""
+            }`}
             onClick={handleMakePaymentClick}
+            disabled={makePaymentLoading}
           >
-            GO MAKE PAYMENT
+            {makePaymentLoading ? "LOADING..." : "GO MAKE PAYMENT"}
           </button>
         </section>
       </form>
