@@ -43,14 +43,18 @@
   margin-top: 5px;
 }
 
-.profile-drop-down > p {
+.profile-drop-down > a {
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 450;
+  font-size: 20px;
   padding: 5px 10px;
   cursor: pointer;
 }
-.profile-drop-down > p:hover {
+.profile-drop-down > a:hover {
   background-color: rgb(220, 220, 220);
 }
 

@@ -145,10 +145,13 @@ const Nav = () => {
                 {isDropdown ? <FaAngleUp /> : <FaAngleDown />}
               </p>
               {isDropdown && (
-                <div className="profile-drop-down">
-                  <p>
+                <div
+                  className="profile-drop-down"
+                  onClick={() => setIsDropdown(false)}
+                >
+                  <Link to="">
                     <BsBox2 /> Orders
-                  </p>
+                  </Link>
                   <button
                     className={`${isDisable ? "not-allowed" : ""} login-logout`}
                     ref={loginLogoutRef}
