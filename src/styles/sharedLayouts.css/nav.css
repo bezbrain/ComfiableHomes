@@ -45,7 +45,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 }
 @media screen and (max-width: 800px) {
   .nav-header {
@@ -198,7 +197,7 @@ nav ul a:hover {
 @media screen and (max-width: 1200px) {
   .cart-and-logout-sect {
     /* border: 2px solid red; */
-    width: 35%;
+    width: 250px;
   }
 }
 @media screen and (max-width: 1000px) {
@@ -225,27 +224,4 @@ nav ul a:hover {
   /* border: 2px solid red; */
   position: relative;
   padding: 8px;
-}
-
-.login-logout {
-  margin-left: 20px;
-  font-size: 1.4em;
-  border: none;
-  cursor: pointer;
-  background: inherit;
-}
-
-.products-in-cart {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  background-color: var(--darkblue);
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  color: #fff;
-  font-size: 14px;
-  z-index: 9999;
 }

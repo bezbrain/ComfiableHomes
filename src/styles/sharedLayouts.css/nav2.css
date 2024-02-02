@@ -1,0 +1,76 @@
+.products-in-cart {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: var(--darkblue);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  z-index: 9999;
+}
+
+.full-profile {
+  /* border: 2px solid green; */
+  position: relative;
+}
+
+.full-profile > p {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  /* width: 100px; */
+}
+
+.profile-up {
+  display: none;
+}
+
+.profile-drop-down {
+  /* display: none; */
+  /* border: 2px solid red; */
+  position: absolute;
+  right: 0;
+  z-index: 99;
+  width: 150px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 23px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.profile-drop-down > p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.profile-drop-down > p:hover {
+  background-color: rgb(220, 220, 220);
+}
+
+.login-logout {
+  /* margin-left: 20px; */
+  font-size: 1.4em;
+  border: none;
+  cursor: pointer;
+  background: inherit;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+}
+.login-logout:hover {
+  background-color: rgb(220, 220, 220);
+}
