@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaTimes, FaCartPlus, FaUserPlus, FaBars } from "react-icons/fa";
+import { FaTimes, FaUser, FaBars } from "react-icons/fa";
+import { MdOutlineShoppingCart } from "react-icons/md";
+
 import { Logo } from "../general";
-import "../../styles/nav.css";
+import "../../styles/sharedLayouts.css/nav.css";
 import { useGlobalContext } from "../../contexts/context";
 import { toast } from "react-toastify";
 import { useApiContext } from "../../contexts/apiContext";
@@ -115,21 +117,28 @@ const Nav = () => {
             >
               <p>
                 Cart
-                <FaCartPlus />
+                <MdOutlineShoppingCart />
               </p>
               <div className="products-in-cart">
                 {authToken ? quantityOfProductInCart(getCartProduct) : 0}
               </div>
             </Link>
-            <button
-              className="login-logout"
-              ref={loginLogoutRef}
-              onClick={() => handleLoginLogout(toast, navigate)}
-              disabled={isDisable}
-            >
-              {isLogged}
-              <FaUserPlus />
-            </button>
+            <div>
+              <p>
+                User <FaUser />
+              </p>
+              <div className="profile-drop-down">
+                <button
+                  className="login-logout"
+                  ref={loginLogoutRef}
+                  onClick={() => handleLoginLogout(toast, navigate)}
+                  disabled={isDisable}
+                >
+                  {isLogged}
+                </button>
+                <p>Orders</p>
+              </div>
+            </div>
           </section>
         </nav>
       </header>

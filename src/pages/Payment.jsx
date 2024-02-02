@@ -44,10 +44,12 @@ const Payment = () => {
         // console.log(responseData);
         // console.log(responseData.data.authorization_url);
         // navigate(responseData.data.authorization_url);
+        window.location.href = responseData.data.authorization_url;
         toast.success(responseData.message);
         setMakePaymentLoading(false);
       } catch (error) {
         console.log(error);
+        toast.error(error.message || error.response.data.message);
         setMakePaymentLoading(false);
       }
     }
