@@ -29,10 +29,6 @@
   /* width: 100px; */
 }
 
-.profile-up {
-  display: none;
-}
-
 .profile-drop-down {
   /* display: none; */
   /* border: 2px solid red; */
@@ -73,4 +69,8 @@
 }
 .login-logout:hover {
   background-color: rgb(220, 220, 220);
+}
+
+.not-allowed {
+  cursor: not-allowed;
 }

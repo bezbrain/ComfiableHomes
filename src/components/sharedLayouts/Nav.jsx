@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaTimes,
@@ -18,6 +18,7 @@ import { useGlobalContext } from "../../contexts/context";
 import { toast } from "react-toastify";
 import { useApiContext } from "../../contexts/apiContext";
 import { getCartProducts } from "../../apis/cart";
+import { getUsername } from "../../utils/saveUsername";
 
 const Nav = () => {
   const {
@@ -39,6 +40,10 @@ const Nav = () => {
     useApiContext();
 
   const navRef = useRef(null);
+  const [isDropdown, setIsDropdown] = useState(false);
+
+  const myUsername = getUsername();
+  const token = sessionStorage.getItem("authToken");
 
   // Dynamically set the height of nav header
   useEffect(() => {
@@ -131,25 +136,30 @@ const Nav = () => {
                 {authToken ? quantityOfProductInCart(getCartProduct) : 0}
               </div>
             </Link>
+
+            {/* User profile nav item */}
             <div className="full-profile">
-              <p>
+              <p onClick={() => setIsDropdown(!isDropdown)}>
                 <FaRegUser />
-                User <FaAngleDown /> <FaAngleUp className="profile-up" />
+                {authToken ? myUsername : "User"}{" "}
+                {isDropdown ? <FaAngleUp /> : <FaAngleDown />}
               </p>
-              <div className="profile-drop-down">
-                <p>
-                  <BsBox2 /> Orders
-                </p>
-                <button
-                  className="login-logout"
-                  ref={loginLogoutRef}
-                  onClick={() => handleLoginLogout(toast, navigate)}
-                  disabled={isDisable}
-                >
-                  <IoLogOutOutline />
-                  {isLogged}
-                </button>
-              </div>
+              {isDropdown && (
+                <div className="profile-drop-down">
+                  <p>
+                    <BsBox2 /> Orders
+                  </p>
+                  <button
+                    className={`${isDisable ? "not-allowed" : ""} login-logout`}
+                    ref={loginLogoutRef}
+                    onClick={() => handleLoginLogout(toast, navigate)}
+                    disabled={isDisable}
+                  >
+                    <IoLogOutOutline />
+                    {isLogged}
+                  </button>
+                </div>
+              )}
             </div>
           </section>
         </nav>

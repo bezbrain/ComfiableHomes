@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../utils/config";
+import { saveUsername } from "../utils/saveUsername";
 
 // REGISTER A USER
 export const registerUser = async (person) => {
@@ -10,6 +11,8 @@ export const registerUser = async (person) => {
 // LOGIN A USER
 export const loginUser = async (person) => {
   const user = await axios.post(`${config.baseUrl}/auth/login`, person);
+  // console.log(user.data.user);
+  saveUsername(user.data.user);
   return user;
 };
 
