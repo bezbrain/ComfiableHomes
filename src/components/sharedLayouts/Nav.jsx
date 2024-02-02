@@ -149,7 +149,7 @@ const Nav = () => {
                   className="profile-drop-down"
                   onClick={() => setIsDropdown(false)}
                 >
-                  <Link to="">
+                  <Link to="/orders">
                     <BsBox2 /> Orders
                   </Link>
                   <button
