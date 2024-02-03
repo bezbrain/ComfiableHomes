@@ -158,7 +158,10 @@ const Nav = () => {
                   className="profile-drop-down"
                   onClick={() => setIsDropdown(false)}
                 >
-                  <Link to={`${authToken ? "/orders/open" : ""}`}>
+                  <Link
+                    to={`${authToken ? "/orders/open" : ""}`}
+                    onClick={closeNav}
+                  >
                     <BsBox2 /> Orders
                   </Link>
                   <button
