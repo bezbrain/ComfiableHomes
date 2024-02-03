@@ -16,6 +16,7 @@
 
 .order-summary > p:first-child {
   font-size: 25px;
+  font-weight: 600;
 }
 
 .order-summary > p:nth-child(2) {
@@ -33,7 +34,7 @@
 }
 
 .open-order-card > button {
-  margin-left: auto;
+  margin: 10px 0 0 auto;
   align-self: flex-start;
   background-color: inherit;
   border: none;
@@ -41,4 +42,31 @@
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 640px) {
+  .open-order-card {
+    gap: 15px;
+  }
+  .order-summary > p:first-child {
+    font-size: 20px;
+  }
+  .open-order-card > button {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .open-order-card > img {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .open-order-card {
+    padding: 10px;
+  }
+  .open-order-card > button {
+    width: 100px;
+    margin-top: 5px;
+  }
 }
