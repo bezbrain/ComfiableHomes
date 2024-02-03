@@ -188,16 +188,17 @@ nav ul a:hover {
 }
 
 .cart-and-logout-sect {
-  /* border: 2px solid yellowgreen; */
+  border: 2px solid yellowgreen;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 35%;
+  width: fit-content;
+  gap: 30px;
 }
 @media screen and (max-width: 1200px) {
   .cart-and-logout-sect {
     /* border: 2px solid red; */
-    width: 250px;
+    /* width: 250px; */
   }
 }
 @media screen and (max-width: 1000px) {
@@ -207,12 +208,6 @@ nav ul a:hover {
     top: 50%;
     width: 100%;
     justify-content: center;
-  }
-  .cart-and-logout-sect button {
-    /* margin-left: 20px;
-    font-size: 1.4em;
-    border: none; */
-    /* font-size: 1.5em !important; */
   }
 }
 

@@ -141,7 +141,7 @@ const Nav = () => {
             <div className="full-profile">
               <p onClick={() => setIsDropdown(!isDropdown)}>
                 <FaRegUser />
-                {authToken ? myUsername : "User"}{" "}
+                {authToken ? `Hi, ${myUsername}` : "User"}{" "}
                 {isDropdown ? <FaAngleUp /> : <FaAngleDown />}
               </p>
               {isDropdown && (
@@ -149,7 +149,7 @@ const Nav = () => {
                   className="profile-drop-down"
                   onClick={() => setIsDropdown(false)}
                 >
-                  <Link to="/orders">
+                  <Link to={`${authToken ? "/orders" : ""}`}>
                     <BsBox2 /> Orders
                   </Link>
                   <button
