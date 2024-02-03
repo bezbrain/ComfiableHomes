@@ -34,23 +34,19 @@ const Order = () => {
             className={`${!isActive ? "active-color" : ""}`}
             onClick={handleOpenClick}
           >
-            OPEN ORDERS
+            OPEN <span className="hide-orders">ORDERS</span>
           </Link>
           <Link
             to="closed"
             className={`${isActive ? "second-active-color" : ""}`}
             onClick={handleCloseClick}
           >
-            CLOSED ORDERS
+            CLOSED <span className="hide-orders">ORDERS</span>
           </Link>
         </div>
       </div>
 
       <Outlet />
-
-      {/* <section className="all-orders">
-        <OrderCard />
-      </section> */}
     </main>
   );
 };

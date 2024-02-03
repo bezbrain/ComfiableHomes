@@ -4,11 +4,40 @@
   max-width: var(--pagesectionswidth);
   margin: 30px auto 60px;
 }
+@media screen and (max-width: 800px) {
+  .all-orders-page {
+    margin-top: 10rem;
+    padding-inline: 1rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .all-orders-page {
+    margin-top: 30vw;
+  }
+}
+@media screen and (max-width: 420px) {
+  .all-orders-page {
+    margin-top: 8rem;
+  }
+}
 
 .order-type {
+  /* border: 2px solid red; */
   display: flex;
   gap: 3rem;
   margin-top: 3rem;
+}
+@media screen and (max-width: 640px) {
+  .order-type {
+    width: fit-content;
+    margin: 2rem auto 0;
+    gap: 10vw;
+  }
+}
+@media screen and (max-width: 400px) {
+  .hide-orders {
+    display: none;
+  }
 }
 
 .order-type > a {

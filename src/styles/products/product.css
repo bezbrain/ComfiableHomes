@@ -10,12 +10,7 @@
 }
 @media screen and (max-width: 800px) {
   .products {
-    /* border: 2px solid red; */
     flex-direction: column;
-  }
-}
-@media screen and (max-width: 800px) {
-  .products {
     padding-inline: 1rem;
     margin-top: 0;
   }
