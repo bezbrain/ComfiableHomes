@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/orders/orders.css";
 import { OrderCard } from "../routes/orders";
 import { useLocation } from "react-router-dom";
@@ -16,6 +16,13 @@ const Order = () => {
   const handleCloseClick = () => {
     setisActive(true);
   };
+
+  // Make sure active state is on closed when on closed page
+  useEffect(() => {
+    if (location.pathname === "/orders/closed") {
+      setisActive(true);
+    }
+  }, [location.pathname]);
 
   return (
     <main className="all-orders-page">
