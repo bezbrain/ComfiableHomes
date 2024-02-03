@@ -116,6 +116,11 @@ header nav {
     width: 70%;
   }
 }
+@media screen and (max-width: 1200px) {
+  header nav {
+    width: 65%;
+  }
+}
 @media screen and (max-width: 1000px) {
   header nav {
     flex-direction: column;

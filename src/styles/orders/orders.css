@@ -1,0 +1,26 @@
+.all-orders-page {
+  min-height: 70vh;
+  padding-inline: var(--pagesectionspadding);
+  max-width: var(--pagesectionswidth);
+  margin: 30px auto 60px;
+}
+
+.order-type {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.order-type > p {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 8px 10px 8px;
+}
+
+.order-type > p:hover {
+  border-bottom: 3px solid var(--darkblue);
+}
+
+.all-orders {
+  margin-top: 2rem;
+}

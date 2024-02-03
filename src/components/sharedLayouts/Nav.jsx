@@ -40,10 +40,13 @@ const Nav = () => {
     useApiContext();
 
   const navRef = useRef(null);
+  // const rightNavRef = useRef(null);
   const [isDropdown, setIsDropdown] = useState(false);
 
   const myUsername = getUsername();
   const token = sessionStorage.getItem("authToken");
+
+  // const [headerWidth, setHeaderWidth] = useState();
 
   // Dynamically set the height of nav header
   useEffect(() => {
@@ -52,6 +55,12 @@ const Nav = () => {
       setHeaderHeight(getHeaderHeight);
     }
   }, [filterHeight, pathHeight, headerHeight]);
+
+  // useEffect(() => {
+  //   if (rightNavRef.current) {
+  //     console.log(rightNavRef.current.getBoundingClientRect().width);
+  //   }
+  // }, [headerWidth]);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -149,7 +158,7 @@ const Nav = () => {
                   className="profile-drop-down"
                   onClick={() => setIsDropdown(false)}
                 >
-                  <Link to={`${authToken ? "/orders" : ""}`}>
+                  <Link to={`${authToken ? "/orders/open" : ""}`}>
                     <BsBox2 /> Orders
                   </Link>
                   <button

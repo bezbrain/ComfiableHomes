@@ -33,7 +33,7 @@ function App() {
                 element={<SingleProductDetails />}
               />
               <Route path="payment" element={<Payment />} />
-              <Route path="orders" element={<Order />} />
+              <Route path="orders/open" element={<Order />} />
             </Route>
 
             {/* 404 route */}
