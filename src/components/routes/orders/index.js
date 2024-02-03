@@ -1,3 +1,5 @@
-import Orders from "./orders";
+import OpenOrders from "./openOrders";
+import ClosedOrders from "./closedOrders";
+import OrderCard from "./ordersCard";
 
-export { Orders };
+export { OpenOrders, ClosedOrders, OrderCard };

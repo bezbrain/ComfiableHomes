@@ -11,14 +11,22 @@
   margin-top: 3rem;
 }
 
-.order-type > p {
+.order-type > a {
   font-weight: 700;
   cursor: pointer;
   padding: 0 8px 10px 8px;
+  color: #000;
+  text-decoration: none;
 }
 
-.order-type > p:hover {
+.order-type > a:hover {
+  color: var(--darkblue);
+}
+
+.active-color,
+.second-active-color {
   border-bottom: 3px solid var(--darkblue);
+  color: var(--darkblue);
 }
 
 .all-orders {

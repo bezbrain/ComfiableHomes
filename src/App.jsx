@@ -8,11 +8,15 @@ import {
   Checkout,
   Error,
   Payment,
-  Order,
 } from "./pages";
-import { ProtectedRoute, SharedLayouts } from "./components/sharedLayouts";
+import {
+  Order,
+  ProtectedRoute,
+  SharedLayouts,
+} from "./components/sharedLayouts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ClosedOrders, OpenOrders } from "./components/routes/orders";
 
 function App() {
   return (
@@ -33,7 +37,11 @@ function App() {
                 element={<SingleProductDetails />}
               />
               <Route path="payment" element={<Payment />} />
-              <Route path="orders/open" element={<Order />} />
+
+              <Route path="orders" element={<Order />}>
+                <Route path="open" element={<OpenOrders />} />
+                <Route path="closed" element={<ClosedOrders />} />
+              </Route>
             </Route>
 
             {/* 404 route */}

@@ -5,7 +5,6 @@ import Products from "./Products";
 import SingleProductDetails from "./SingleProductDetails";
 import Checkout from "./Checkout";
 import Payment from "./Payment";
-import Order from "./Order";
 import Error from "./Error";
 
 export {
@@ -16,6 +15,5 @@ export {
   SingleProductDetails,
   Checkout,
   Payment,
-  Order,
   Error,
 };
