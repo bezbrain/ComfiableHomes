@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Home,
@@ -19,6 +20,8 @@ import "react-toastify/dist/ReactToastify.css";
 import { ClosedOrders, OpenOrders } from "./components/routes/orders";
 
 function App() {
+  const [isOrder, setIsOrder] = useState(true);
+
   return (
     <>
       <BrowserRouter>
@@ -39,8 +42,11 @@ function App() {
               <Route path="payment" element={<Payment />} />
 
               <Route path="orders" element={<Order />}>
-                <Route path="open" element={<OpenOrders />} />
-                <Route path="closed" element={<ClosedOrders />} />
+                <Route path="open" element={<OpenOrders isOrder={isOrder} />} />
+                <Route
+                  path="closed"
+                  element={<ClosedOrders isOrder={isOrder} />}
+                />
               </Route>
             </Route>
 

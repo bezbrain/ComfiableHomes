@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { OrderCard } from "./";
 import { NoOrder } from "./";
 
-const ClosedOrders = () => {
-  const [isOrder, setIsOrder] = useState(true);
-
+const ClosedOrders = ({ isOrder }) => {
   return (
     <>
       {isOrder ? (
