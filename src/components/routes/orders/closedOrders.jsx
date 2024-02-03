@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { OrderCard } from "./";
+import { NoOrder } from "./";
 
 const ClosedOrders = () => {
+  const [isOrder, setIsOrder] = useState(true);
+
   return (
-    <div>
-      <p>Closed orders</p>
-    </div>
+    <>
+      {isOrder ? (
+        <NoOrder noOrder="No Closed Order" />
+      ) : (
+        <div>
+          <OrderCard />
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/orders/openOrderCard.css";
 
-const OpenOrderCard = () => {
+const OrderCard = () => {
   return (
     <div className="open-order-card">
       <img
@@ -18,4 +18,4 @@ const OpenOrderCard = () => {
   );
 };
 
-export default OpenOrderCard;
+export default OrderCard;
