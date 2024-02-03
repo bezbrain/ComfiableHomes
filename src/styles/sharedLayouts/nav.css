@@ -104,11 +104,17 @@ header h1 span:last-child {
 }
 
 header nav {
+  /* border: 2px solid red; */
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   transition: ease 0.5s all;
   width: 60%;
+}
+@media screen and (max-width: 1300px) {
+  header nav {
+    width: 70%;
+  }
 }
 @media screen and (max-width: 1000px) {
   header nav {
@@ -122,12 +128,6 @@ header nav {
     z-index: 99999;
   }
 }
-/* @media screen and (max-width: 800px) {
-  header nav {
-    border: 2px solid red;
-    backdrop-filter: blur(0) !important;
-  }
-} */
 
 .add-show-nav-css {
   left: 0;
@@ -138,7 +138,7 @@ nav ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 40%;
+  width: 35%;
   font-size: 18px;
 }
 @media screen and (max-width: 1000px) {
@@ -188,7 +188,7 @@ nav ul a:hover {
 }
 
 .cart-and-logout-sect {
-  border: 2px solid yellowgreen;
+  /* border: 2px solid yellowgreen; */
   display: flex;
   justify-content: space-between;
   align-items: center;

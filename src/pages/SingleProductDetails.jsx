@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Loader } from "../components/helpers";
 import { FaStar } from "react-icons/fa";
-import "../styles/singleproduct.css";
+import "../styles/sharedLayouts/singleproduct.css";
 import { toast } from "react-toastify";
 import { getSingleProduct } from "../apis/products";
 import { addToCart } from "../apis/cart";

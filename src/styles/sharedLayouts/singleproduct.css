@@ -6,7 +6,13 @@
 .display-details-con {
   padding-inline: var(--pagesectionspadding);
   max-width: var(--pagesectionswidth);
-  margin: 10rem auto 7vh;
+  margin: 5rem auto 7vh;
+}
+
+@media screen and (max-width: 800px) {
+  .display-details-con {
+    margin-top: 10rem;
+  }
 }
 
 .back-to-product {

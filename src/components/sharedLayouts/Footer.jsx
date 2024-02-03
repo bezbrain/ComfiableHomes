@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../styles/sharedLayouts.css/footer.css";
+import "../../styles/sharedLayouts/footer.css";
 
 const Footer = () => {
   return (
