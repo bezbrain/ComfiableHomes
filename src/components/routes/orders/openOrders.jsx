@@ -1,9 +1,10 @@
 import React from "react";
+import { OpenOrderCard } from "./";
 
 const OpenOrders = () => {
   return (
     <div>
-      <p>These are open orders</p>
+      <OpenOrderCard />
     </div>
   );
 };

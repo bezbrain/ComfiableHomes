@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../../styles/orders/orders.css";
-import { OrderCard } from "../routes/orders";
 import { useLocation } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 

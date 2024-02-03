@@ -1,0 +1,44 @@
+.open-order-card {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.open-order-card > img {
+  width: 150px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.order-summary > p:first-child {
+  font-size: 25px;
+}
+
+.order-summary > p:nth-child(2) {
+  font-size: 20px;
+  background-color: rgb(6, 190, 6);
+  width: fit-content;
+  color: #fff;
+  padding: 0 10px 5px;
+  margin-block: 20px 10px;
+  border-radius: 5px;
+}
+
+.order-summary > p:last-child {
+  font-weight: 600;
+}
+
+.open-order-card > button {
+  margin-left: auto;
+  align-self: flex-start;
+  background-color: inherit;
+  border: none;
+  color: var(--darkblue);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
