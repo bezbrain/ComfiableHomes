@@ -2,6 +2,7 @@
   /* border: 2px solid red; */
   width: fit-content;
   margin: 3rem auto 1rem;
+  text-align: center;
 }
 
 .no-order > img {
@@ -18,5 +19,17 @@
   }
   100% {
     transform: rotate(0);
+  }
+}
+
+.no-order > p {
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 420px) {
+  .no-order > p {
+    font-size: 1.5rem;
   }
 }
