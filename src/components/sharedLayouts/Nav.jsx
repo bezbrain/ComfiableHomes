@@ -19,6 +19,7 @@ import { toast } from "react-toastify";
 import { useApiContext } from "../../contexts/apiContext";
 import { getCartProducts } from "../../apis/cart";
 import { getUsername } from "../../utils/saveUsername";
+import { paymentGlobalContext } from "../../contexts/paymentContext";
 
 const Nav = () => {
   const {
@@ -38,6 +39,7 @@ const Nav = () => {
 
   const { handleCartProduct, getCartProduct, setGetCartProduct } =
     useApiContext();
+  const { handleOrderProducts } = paymentGlobalContext();
 
   const navRef = useRef(null);
   // const rightNavRef = useRef(null);
@@ -160,7 +162,9 @@ const Nav = () => {
                 >
                   <Link
                     to={`${authToken ? "/orders/open" : ""}`}
-                    onClick={closeNav}
+                    onClick={() =>
+                      handleOrderProducts(authToken, toast, setShowNav)
+                    }
                   >
                     <BsBox2 /> Orders
                   </Link>

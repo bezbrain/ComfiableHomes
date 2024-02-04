@@ -34,7 +34,7 @@ export const ApiProvider = ({ children }) => {
   const handleCartProduct = async (authToken, toast, setShowNav) => {
     if (!authToken) {
       setShowNav("");
-      toast.error("Please Login");
+      toast.error("Please Login to view this page");
       return;
     }
     try {
