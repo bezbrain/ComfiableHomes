@@ -54,7 +54,11 @@ function App() {
             <Route path="/*" element={<Error />} />
           </Route>
         </Routes>
-        <ToastContainer position="top-center" theme="dark" />
+        <ToastContainer
+          position="top-center"
+          theme="dark"
+          toastStyle={{ marginInline: "10px" }}
+        />
       </BrowserRouter>
     </>
   );

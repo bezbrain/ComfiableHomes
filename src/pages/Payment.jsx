@@ -44,7 +44,7 @@ const Payment = () => {
         // console.log(responseData);
         // console.log(responseData.data.authorization_url);
         // navigate(responseData.data.authorization_url);
-        window.location.href = responseData.data.authorization_url;
+        window.location.href = responseData.data?.authorization_url;
         toast.success(responseData.message);
         setMakePaymentLoading(false);
       } catch (error) {
