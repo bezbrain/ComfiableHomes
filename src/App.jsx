@@ -57,7 +57,7 @@ function App() {
         <ToastContainer
           position="top-center"
           theme="dark"
-          toastStyle={{ marginInline: "10px" }}
+          toastStyle={{ marginInline: "10px", backgroundColor: "#005ae2" }}
         />
       </BrowserRouter>
     </>
