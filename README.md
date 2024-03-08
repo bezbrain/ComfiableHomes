@@ -10,7 +10,7 @@ To start working on the project, follow these steps:
 2. Clone the forked repository to your local development environment.
 3. Install the required dependencies by running `npm install` in the project directory.
 4. Open the project in your preferred code editor.
-5. Review the existing code in the sec directory to understand the initial structure and components hierarchy.
+5. Review the existing code in the src directory to understand the initial structure and components hierarchy.
 6. Implement the ecommerce functionalities by modifying the necessary components.
 7. Run the application using `npm run dev`
 8. Commit you changes when significant changes are made, then push them to a branch in your forked repository.
