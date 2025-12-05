@@ -2,11 +2,12 @@
 /* eslint-disable no-unused-vars */
 import "../../styles/auth/register_login.css";
 import { useGlobalContext } from "../../contexts/context";
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { loginUser } from "../../apis/users";
 import { getCartProducts } from "../../apis/cart";
 import { useApiContext } from "../../contexts/apiContext";
+import { useSearchParams } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -67,8 +68,31 @@ const Login = () => {
     }
   };
 
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const portfolioEmail = searchParams.get("portfolioEmail");
+    const portfolioPassword = searchParams.get("portfolioPassword");
+    if (portfolioEmail && portfolioPassword) {
+      setPerson({
+        ...person,
+        email: portfolioEmail,
+        password: portfolioPassword,
+      });
+    }
+  }, [searchParams]);
+
   return (
-    <>
+    <Suspense
+      fallback={
+        <div className="loading-container">
+          <div className="loading-content">
+            <div className="spinner"></div>
+            <p className="loading-text">Loading...</p>
+          </div>
+        </div>
+      }
+    >
       {!loginRegister && (
         <div className="login-con">
           <h2>Login here</h2>
@@ -103,7 +127,7 @@ const Login = () => {
           </form>
         </div>
       )}
-    </>
+    </Suspense>
   );
 };
 
