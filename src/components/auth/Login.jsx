@@ -79,8 +79,8 @@ const Login = () => {
         email: portfolioEmail,
         password: portfolioPassword,
       });
-      setloginRegister(true);
-      setLoginLogoutOverlay(false);
+      // setloginRegister(true);
+      setLoginLogoutOverlay(true);
     }
   }, [searchParams]);
 
